@@ -378,6 +378,114 @@ a,
                 .main-wrapper {
                     overflow: clip;
                 }
+                
+                .herofeature {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                }
+                
+                .herofeaturebg {
+                    background-color: var(--background);
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    width: 256px;
+                    justify-content: center;
+                    border: 1px solid;
+                    border-image: linear-gradient(270deg, #999, #fff);
+                    border-image-slice: 1;
+                }
+                
+                .gap-4 {
+                    gap: 1rem;
+                }
+                
+                .herofeature .subtitle {
+                    font-family: var(--font-sans);
+                    font-size: 9.5px;
+                    font-weight: 700;
+                    letter-spacing: .17em;
+                    text-transform: uppercase;
+                }
+                
+                .herofeature .title {
+                    font-size: 22px;
+                    font-weight: 700;
+                    color: #fff;
+                    text-transform: uppercase;
+                }
+                
+                .gradient-text-2,
+                .texture-text {
+                    -webkit-text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                }
+                
+                .gradient-text-2 {
+                    background-image: linear-gradient(126deg, #ffcf23, #ff8d3a);
+                }
+                
+                .items-center {
+                    align-items: center;
+                }
+                
+                .flex-col {
+                    flex-direction: column;
+                }
+                
+                .w-full {
+                    width: 100%;
+                }
+                
+                .flex {
+                    display: flex;
+                }
+                
+                .mt-8 {
+                    margin-top: 2rem;
+                }
+                
+                .z-20 {
+                    z-index: 20;
+                }
+                
+                .relative {
+                    position: relative;
+                }
+                
+                .feature-container {
+                    width: 100%;
+                    padding: 0rem 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 2rem;
+                }
+                
+                .articles-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    width: 100%;
+                    max-width: 1200px;
+                }
+                
+                @media (min-width: 1024px) {
+                    .feature-container {
+                        padding: 0rem 6rem;
+                        padding-bottom: 2rem;
+                    }
+                    .articles-wrapper {
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                    .herofeature {
+                        flex: 1;
+                    }
+                }
             </style>
         </div>
         <nav data-w-id="4c368e8d-a43a-8186-8801-2072eead6904" class="navigation" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
@@ -445,39 +553,54 @@ a,
                                 <script src="./index_files/sdk.latest.js.download"></script>
                                 <!--  Your JavaScript code below -->
                             </div>
+
+
+                        </div>
+                        <div class="feature-container">
+                            <div class="articles-wrapper flex flex-col lg:flex-row w-full items-center gap-4 mt-8 lg:mt-12 relative z-20">
+                                <article class="herofeature flex-1">
+                                    <div class="herofeaturebg">
+                                        <figure><img loading="lazy" width="31" height="31" decoding="async" data-nimg="1" src="https://www.jointherealworld.com/learning.svg" style="color: transparent;"></figure>
+                                        <div>
+                                            <div class="subtitle gradient-text-2">najbolja aplikacija</div>
+                                            <div class="title">NA TRŽIŠTU</div>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="herofeature flex-1">
+                                    <div class="herofeaturebg">
+                                        <figure><img loading="lazy" width="31" height="31" decoding="async" data-nimg="1" src="https://www.jointherealworld.com/scale.svg" style="color: transparent;"></figure>
+                                        <div>
+                                            <div class="subtitle gradient-text-2">NAJPOVOLJNIJI</div>
+                                            <div class="title">KURSEVI</div>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="herofeature flex-1">
+                                    <div class="herofeaturebg">
+                                        <div>
+                                            <div class="subtitle gradient-text-2">ZA SVE NIVOE</div>
+                                            <div class="title">ZNANJA</div>
+                                        </div>
+                                </article>
+                            </div>
+
                             <div class="button_wrap">
                                 <a href="courses.html" class="button checkout-btn w-inline-block">
                                     <div class="button_text">POGLEDAJ KURSEVE</div>
                                     <div class="circle" style="width: 0px; height: 0px;"></div>
                                 </a>
                             </div>
-                            <div class="hero_checks">
-                                <div class="hflex-center-8">
-                                    <div class="icon-embed-custom-37 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 15 18" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
-                      <path d="M12.2695 15.4011L12.2695 15.4012C12.1251 15.5228 11.9165 15.6 11.6875 15.6H3.37505C3.14602 15.6 2.93745 15.5228 2.79305 15.4012L2.79301 15.4011C2.65055 15.2812 2.58753 15.1347 2.58753 15V2.99995C2.58753 2.8652 2.65056 2.71877 2.79301 2.5988L2.79305 2.59876C2.93745 2.47713 3.14602 2.39993 3.37505 2.39993H11.6875C11.9165 2.39993 12.1251 2.47713 12.2695 2.59877L12.2695 2.5988C12.412 2.71876 12.475 2.8652 12.475 2.99995V15C12.475 15.1347 12.412 15.2812 12.2695 15.4011ZM11.6875 0.6H3.37505C2.65917 0.6 1.96162 0.838868 1.43801 1.2798C0.912378 1.72244 0.6 2.33907 0.6 2.99998V15C0.6 15.6609 0.912378 16.2776 1.43801 16.7202C1.96162 17.1611 2.65917 17.4 3.37505 17.4H11.6875C12.4033 17.4 13.1009 17.1611 13.6245 16.7202C14.1501 16.2776 14.4625 15.6609 14.4625 15V2.99998C14.4625 2.33907 14.1501 1.72244 13.6245 1.2798C13.1009 0.838868 12.4033 0.6 11.6875 0.6Z" fill="currentColor" stroke="currentColor" stroke-width="0.8"></path>
-                      <path d="M7.5314 15.9C8.34099 15.9 9.11893 15.3348 9.11893 14.5C9.11893 13.6651 8.341 13.1 7.5314 13.1C6.7218 13.1 5.94387 13.6651 5.94387 14.5C5.94387 15.3348 6.72181 15.9 7.5314 15.9Z" fill="currentColor" stroke="currentColor" stroke-width="0.8"></path>
-                      <path d="M6.04678 2.1H9.01553C9.33941 2.1 9.66827 2.24467 9.85961 2.52375L6.04678 2.1ZM6.04678 2.1C6.04676 2.1 6.04673 2.1 6.04671 2.1M6.04678 2.1H6.04671M6.04671 2.1C5.72286 2.10002 5.39403 2.24467 5.20269 2.52375L6.04671 2.1ZM9.01553 3.89996H6.04678C5.7229 3.89996 5.39404 3.7553 5.20269 3.47622L9.01553 3.89996ZM9.01553 3.89996C9.01555 3.89996 9.01557 3.89996 9.0156 3.89996M9.01553 3.89996H9.0156M9.0156 3.89996C9.33944 3.89994 9.66828 3.75529 9.85961 3.47622M9.0156 3.89996L9.85961 3.47622M9.85961 3.47622C10.0592 3.18517 10.0592 2.81485 9.85964 2.52379L9.85961 3.47622ZM5.20266 2.5238C5.00311 2.81484 5.00312 3.18513 5.20267 3.47617L5.20266 2.5238Z" fill="currentColor" stroke="currentColor" stroke-width="0.8"></path>
-                    </svg></div>
-                                    <div class="opacity70">Najbolja aplikacija na tržištu</div>
-                                </div>
-                                <div class="hflex-center-8">
-                                    <div class="icon-embed-custom-38 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 13 20" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
-                      <path d="M5.11006 19.9999H6.90783C7.31616 19.9999 7.65492 19.6698 7.65492 19.2611V17.5523L8.02831 17.4537C11.0761 16.6952 12.1569 14.6221 12.1569 13.0806C12.1569 10.2243 9.66674 9.03744 7.22643 8.24936C4.93573 7.50085 4.20358 7.04763 4.20358 6.37784C4.20358 5.7771 4.90569 5.17611 6.47953 5.17611C8.21255 5.17611 9.29817 5.66357 9.76118 5.87545C9.86087 5.91962 9.9653 5.94448 10.0698 5.94448C10.3586 5.94448 10.6225 5.77709 10.7471 5.52081L11.4593 4.02856C11.5438 3.85624 11.554 3.64937 11.4841 3.46705C11.4193 3.27981 11.28 3.13204 11.1006 3.04831C10.2441 2.64951 9.31292 2.39315 8.26188 2.27025L7.82367 2.21614V0.733815C7.82367 0.330006 7.48989 0 7.07657 0H5.30869C4.90035 0 4.56159 0.330085 4.56159 0.733815V2.38353L4.1882 2.47719C1.72797 3.09279 0.258877 4.65385 0.258877 6.64866C0.258877 9.27866 2.89343 10.4505 5.47799 11.2534C7.86331 12.0217 8.18706 12.6865 8.18706 13.2381C8.18706 14.0902 7.07155 14.7105 5.53775 14.7105C4.23291 14.7105 2.82869 14.3805 1.78275 13.829C1.67326 13.7699 1.55372 13.7403 1.42921 13.7403C1.34959 13.7403 1.26975 13.7552 1.19014 13.7798C0.996047 13.8488 0.836591 13.9917 0.75192 14.1786L0.0645922 15.6905C-0.0898853 16.0401 0.0397668 16.4439 0.378213 16.6311C1.24959 17.1285 2.54439 17.4979 3.91905 17.6506L4.36225 17.695V19.2611C4.36271 19.67 4.69649 20 5.1098 20L5.11006 19.9999Z" fill="currentColor"></path>
-                    </svg></div>
-                                    <div class="opacity70">Najpovoljniji kursevi</div>
-                                </div>
-                                <div class="hflex-center-8">
-                                    <div class="icon-embed-custom-42 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 18" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
-                      <path d="M2.45065 17.1255C2.82991 17.2223 3.22803 17.2159 3.60396 17.1073C3.60414 17.1073 3.60432 17.1072 3.6045 17.1072L5.73509 16.5096C6.76312 16.9646 7.87499 17.1998 8.99972 17.2H9.00517C9.25073 17.2 9.51128 17.2 9.78875 17.161C11.7096 16.9621 13.5 16.0968 14.8495 14.7149C16.1999 13.3322 17.0233 11.5202 17.1766 9.59336L17.1766 9.59265C17.2621 8.46751 17.1126 7.3368 16.7376 6.27252C16.3628 5.20826 15.7706 4.23374 14.9989 3.41085C14.2307 2.58837 13.3021 1.93224 12.2702 1.48319C11.2383 1.03404 10.1253 0.80158 9.00001 0.8H8.99973L8.99504 0.8C8.80646 0.799999 8.60612 0.799997 8.40418 0.820841C6.47874 0.97462 4.66813 1.79815 3.28652 3.14844C1.90434 4.49929 1.03911 6.29176 0.840838 8.21449L0.84083 8.21449L0.840672 8.21617C0.709792 9.59956 0.934227 10.9931 1.4923 12.2649L0.887695 14.3841C0.887644 14.3843 0.887593 14.3845 0.887542 14.3846C0.777446 14.7633 0.771051 15.1647 0.869175 15.5468L0.869178 15.5468C0.967344 15.9289 1.16651 16.2778 1.44574 16.5566L1.44634 16.5572C1.72457 16.8326 2.07131 17.0288 2.45065 17.1255ZM2.45065 17.1255L2.49995 16.9323L2.45069 17.1255C2.45068 17.1255 2.45067 17.1255 2.45065 17.1255ZM5.78844 14.0501C5.66082 14.05 5.53376 14.0677 5.41097 14.1028L5.38744 14.1095L5.36623 14.1217L2.86504 15.5595L8.99977 14.8001C8.11785 14.7997 7.24795 14.5956 6.45774 14.2038M5.78844 14.0501L5.7883 14.2501V14.0501H5.78844ZM5.78844 14.0501H5.8258H5.82779V14.0501C6.04675 14.0523 6.26229 14.1049 6.45774 14.2038M6.45774 14.2038C6.45749 14.2037 6.45723 14.2035 6.45698 14.2034L6.36811 14.3826L6.45854 14.2042C6.45827 14.2041 6.45801 14.2039 6.45774 14.2038ZM9.55577 14.7735C9.3686 14.7912 9.18335 14.8001 8.99986 14.8001L3.75145 12.2101H3.95145V12.21L3.95146 12.1751L3.95144 12.1731C3.94926 11.9538 3.89656 11.7379 3.79741 11.5422L3.74506 11.4389C3.30685 10.5062 3.1279 9.47179 3.22816 8.4446C3.36437 7.08305 3.97528 5.81284 4.95374 4.85657C5.93229 3.90029 7.21616 3.31894 8.58012 3.21447L8.58012 3.21454L8.5854 3.21399C8.71835 3.20025 8.85302 3.20008 8.99969 3.20008H8.99973C10.4895 3.19976 11.9223 3.77315 13.0008 4.80125L13.0008 4.80126C14.0794 5.82928 14.7209 7.23321 14.7923 8.72191C14.8638 10.2105 14.3597 11.6695 13.3846 12.7962C12.4096 13.9229 11.0386 14.6309 9.55577 14.7735Z" fill="currentColor" stroke="currentColor" stroke-width="0.4"></path>
-                    </svg></div>
-                                    <div class="opacity70">Za sve nivoe znanja</div>
-                                </div>
-                            </div>
                         </div>
+
+
                     </div>
                     <div class="glow_orange is-hero"></div>
                     <div class="glow_brand is-hero"></div>
                 </div>
+
                 <div class="hero_fade"></div>
             </header>
             <section id="Features" class="section_understand">
@@ -485,13 +608,13 @@ a,
                     <div class="w-layout-grid understand_grid">
                         <div id="w-node-_10adbe5d-823c-3cd8-24c4-dc241382574c-97263376" class="w-layout-vflex understand_title-wrap is-first">
                             <div class="h2_relative">
-                                <h2 class="h2 text-align-left is-mobile" style="opacity: 1;">2024 JE GODINA TVOG NAPRETKA</h2>
+                                <h2 class="h2 text-align-left is-mobile" style="opacity: 1;">2025 JE GODINA TVOG NAPRETKA</h2>
                                 <div data-w-id="cf7c8f1f-8119-7507-8361-d3e7f5ee45a4" style="opacity: 1;" class="svg_scruble w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 401 19" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
                     <path d="M371.114 14.5879C356.956 14.4239 342.795 14.3973 328.638 14.0584C317.286 13.7895 305.941 12.9212 294.572 12.7021C284.746 12.5134 274.853 12.4237 265.084 13.0849C244.566 14.4584 224.138 16.6073 203.604 17.8806C193.72 18.4905 184.073 17.1673 174.479 14.1835C158.831 9.31868 142.521 11.3903 126.508 13.6528C117.163 14.9684 107.898 16.5721 98.5536 17.8003C90.257 18.8907 82.9 17.6939 76.2293 13.1328C69.5094 8.53377 60.7654 9.55652 52.9146 10.8519C41.5047 12.7181 30.3343 15.3988 19.1003 17.8416C12.0603 19.3712 5.73181 18.2362 1.5034 13.5162C0.110289 11.9638 0.49359 8.97074 1.42924 7.02072C1.82056 6.20094 6.37687 5.5418 7.99589 6.2225C13.1669 8.39314 17.7316 7.00974 22.5743 5.99174C36.8196 2.9969 51.1006 -0.222348 66.1447 0.913621C71.0211 1.28235 76.5553 2.19576 80.3157 4.32508C87.9518 8.65999 95.8621 7.95226 104.091 6.98596C118.271 5.31426 132.388 3.31714 146.615 1.93323C157.202 0.90683 167.581 2.01373 177.705 5.09104C190.394 8.93494 203.767 8.14066 216.91 7.15635C238.876 5.51239 260.737 2.85555 282.746 1.77412C294.905 1.17808 307.267 3.13225 319.564 3.51201C335.993 4.01456 352.444 4.03028 368.892 4.39567C377.373 4.58134 385.903 4.81755 394.31 5.63934C396.665 5.86645 400.076 8.0292 400.555 9.69585C401.529 13.0543 397.493 13.2449 394.138 13.3434C386.482 13.592 378.826 13.8654 371.169 14.1389C371.168 14.2888 371.149 14.4385 371.131 14.5756L371.114 14.5879Z" fill="currentColor" fill-opacity="0.18"></path>
                   </svg></div>
                             </div>
                             <div class="spacer-medium-copy"></div>
-                            <p data-w-id="291f8f9e-3f17-5377-8618-8c2888346b91" style="opacity: 1;" class="p_understand">Priprema za ispite može biti izazovna, ali uz prave metode možeš da savladaš <span class="semibold-white">sve što te čeka.</span><br><br>Sa našim kursevima, 2024. godina može biti tvoja godina uspeha.<br><br><span class="semibold-white">Počni na vreme, pripremi se temeljno i položi ispite bez stresa.</span></p>
+                            <p data-w-id="291f8f9e-3f17-5377-8618-8c2888346b91" style="opacity: 1;" class="p_understand">Priprema za ispite može biti izazovna, ali uz prave metode možeš da savladaš <span class="semibold-white">sve što te čeka.</span><br><br>Sa našim kursevima, 2025. godina može biti tvoja godina uspeha.<br><br><span class="semibold-white">Počni na vreme, pripremi se temeljno i položi ispite bez stresa.</span></p>
                         </div>
                         <div id="w-node-_043d95e2-6767-2600-a2ff-41642b4534ac-97263376" class="image_wrap hide-tablet"><img src="images/img1.webp" loading="lazy" id="w-node-_149667a0-d57f-5e62-c1cd-22bfea20c019-97263376" sizes="100vw" alt="" srcset="images/img1.webp, images/img1.webp 776w" class="understand_image hide-tablet" style="opacity: 1;">
                             <div class="image-fade"></div>

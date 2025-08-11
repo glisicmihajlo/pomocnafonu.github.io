@@ -515,11 +515,16 @@ a,
                     max-width: 500px;
                     margin: auto;
                     animation: fadeIn 0.8s ease-out;
+                    padding-top: 3rem;
+                    padding-bottom: 3rem;
                 }
                 
                 h1 {
                     font-size: 2em;
                     margin-bottom: 10px;
+                    text-align: center;
+                    align-items: center;
+                    max-width: none;
                 }
                 
                 p {
@@ -556,12 +561,12 @@ a,
                 }
                 /* Neon boje po predmetima */
                 
-                .math {
+                .epos {
                     border-color: #ff6b6b;
                     animation-delay: 0.1s;
                 }
                 
-                .stats {
+                .uis {
                     border-color: #4ecdc4;
                     animation-delay: 0.2s;
                 }
@@ -574,6 +579,35 @@ a,
                 .econ {
                     border-color: #ffa502;
                     animation-delay: 0.4s;
+                }
+                
+                .section-title {
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                    text-align: left;
+                    padding-left: 10px;
+                }
+                
+                .epos-title {
+                    color: #ff6b6b;
+                    text-shadow: 0 0 2px #ff6b6b;
+                }
+                
+                .uis-title {
+                    color: #4ecdc4;
+                    text-shadow: 0 0 2px #4ecdc4;
+                }
+                
+                .prog-title {
+                    color: #1a73e8;
+                    text-shadow: 0 0 2px #1a73e8;
+                }
+                
+                .econ-title {
+                    color: #ffa502;
+                    text-shadow: 0 0 2px #ffa502;
                 }
                 /* Animacije */
                 
@@ -632,26 +666,15 @@ a,
             </div>
         </nav>
         <div class="container">
-            <h1>📚 Materijali za FON</h1>
-            <p>Ovu listu održava <strong>[Tvoje ime]</strong> – besplatni i plaćeni kursevi za FON studente.</p>
-            <p><em>Poslednje ažuriranje: 10. avgust 2025.</em></p>
+            <h1>Materijali za FON</h1>
 
-            <!-- Matematika 1 -->
-            <a href="https://tvoj-link-kursa" class="link-btn math"><i class="fas fa-calculator"></i>Matematika 1 – Moj kurs (besplatno)</a>
-            <a href="https://zbirka-mat1.pdf" class="link-btn math"><i class="fas fa-book"></i>Zbirka zadataka (PDF)</a>
-            <a href="https://youtube.com/link" class="link-btn math"><i class="fab fa-youtube"></i>Video lekcije</a>
+            <div class="section-title epos-title">EPOS</div>
+            <a href="https://drive.google.com/file/d/15z_hM7PZuV9QoUnKeB-0qo56EZLkE5lR/view?usp=drive_link" class="link-btn epos"><i class="fas fa-calculator"></i>EPOS - Rešenja testova</a>
+            <a href="https://drive.google.com/file/d/1UT00zZ6HmJrZKJxhbgMOyf2JTbj_Sr95/view?usp=drive_link" class="link-btn epos"><i class="fas fa-book"></i>EPOS - Udžbenik</a>
 
-            <!-- Statistika -->
-            <a href="https://zbirka-statistika.pdf" class="link-btn stats"><i class="fas fa-chart-bar"></i>Statistika – Zbirka zadataka</a>
-            <a href="https://youtube.com/statistika" class="link-btn stats"><i class="fab fa-youtube"></i>Video tutorijali</a>
-
-            <!-- Osnove programiranja -->
-            <a href="https://materijali-prog" class="link-btn prog"><i class="fas fa-code"></i>Osnove programiranja – Materijali</a>
-            <a href="https://primeri-koda" class="link-btn prog"><i class="fas fa-file-code"></i>Primeri koda</a>
-
-            <!-- Ekonomija -->
-            <a href="https://skripta-ekonomija.pdf" class="link-btn econ"><i class="fas fa-chart-line"></i>Ekonomija – Skripta</a>
-            <a href="https://pitanja-ekonomija" class="link-btn econ"><i class="fas fa-question-circle"></i>Pitanja sa kolokvijuma</a>
+            <div class="section-title uis-title">UIS</div>
+            <a href="https://drive.google.com/drive/folders/1rL5BdwrI0BLmD0ea4B3-DQyha4Ykvewj?usp=drive_link" class="link-btn uis"><i class="fas fa-chart-bar"></i>UIS - Predispitne</a>
+            <a href="https://drive.google.com/drive/folders/1vVdAP_F4bNxc0UrdgkWIBpZV60TEPzjT?usp=drive_link" class="link-btn uis"><i class="fab fa-youtube"></i>UIS - Ispit</a>
         </div>
         <footer class="footer">
             <div class="padding-global">

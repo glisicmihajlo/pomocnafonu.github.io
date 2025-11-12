@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kupljeni kursevi - Pomoć na FON-u</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 80px; /* Povećaj razmak sa vrha ekrana */
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #ecf0f1;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .logout-btn {
+      background: linear-gradient(135deg, #2f2f2f, #121212); /* Tamni sivo-crni gradijent */
+      border: none;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: auto; /* Prilagodljiva širina */
+    }
+
+    .logout-btn:hover {
+      background: linear-gradient(135deg, #121212, #2f2f2f); /* Invertovani gradijent na hover */
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1200px;
+      margin-top: 2rem;
+    }
+
+    .course-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-align: center;
+      justify-content: flex-start;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .course-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .course-card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #ecf0f1;
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+    }
+
+    .course-card p {
+      font-size: 1rem;
+      color: #bdc3c7;
+    }
+
+    #emptyMsg {
+      color: #7f8c8d;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 120px; /* Povećaj razmak na manjim ekranima */
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+
+      .course-list {
+        width: 95%;
+      }
+    }
+
+  </style>
+
+<link href="/index_files/normalize.css" rel="stylesheet" type="text/css">
+    <link href="/index_files/webflow.css" rel="stylesheet" type="text/css">
+    <link href="/index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <nav data-w-id="4c368e8d-a43a-8186-8801-2072eead6904" class="navigation" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+    <div class="padding-global">
+        <div class="container-large">
+            <div class="navbar_content">
+                <div class="navbar_left-2">
+                    <div na="" data-w-id="146195b1-9eba-678e-5613-a0d933b6a5d2" class="menu-2">
+                        <div class="div-block-30">
+                            <div data-is-ix2-target="1" class="lottie_menu-2" data-w-id="146195b1-9eba-678e-5613-a0d933b6a5d3" data-animation-type="lottie" data-src="https://uploads-ssl.webflow.com/658aa86f8b81cf31cef70c34/658aa86f8b81cf31cef70c5c_lottie-menu.json" data-loop="0"
+                                data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.875" data-duration="2.875" data-ix2-initial-state="0"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 633 509" width="633" height="509" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clippath id="__lottie_element_5"><rect width="633" height="509" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_5)"><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,-190.56900024414062 C-284.8949890136719,-190.56900024414062 -217.76600646972656,-190.56900024414062 -217.76600646972656,-190.56900024414062 C-217.76600646972656,-190.56900024414062 1.4550000429153442,-190.56900024414062 1.4550000429153442,-190.56900024414062 C1.4550000429153442,-190.56900024414062 217.61199951171875,-190.56900024414062 217.61199951171875,-190.56900024414062 C217.61199951171875,-190.56900024414062 285.07598876953125,-190.56900024414062 285.07598876953125,-190.56900024414062"></path></g></g><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,190.56900024414062 C-284.8949890136719,190.56900024414062 -219.64500427246094,190.56900024414062 -219.64500427246094,190.56900024414062 C-219.64500427246094,190.56900024414062 -0.04500000178813934,190.56900024414062 -0.04500000178813934,190.56900024414062 C-0.04500000178813934,190.56900024414062 215.71299743652344,190.56900024414062 215.71299743652344,190.56900024414062 C215.71299743652344,190.56900024414062 285.07598876953125,190.56900024414062 285.07598876953125,190.56900024414062"></path></g></g><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,0.041999999433755875 C-284.8949890136719,0.041999999433755875 285.07598876953125,0.041999999433755875 285.07598876953125,0.041999999433755875"></path></g></g></g></svg></div>
+                            <div class="text-block-2">Meni</div>
+                        </div>
+                    </div>
+                    <div class="nav_menu-2" style="display: none; opacity: 0; transform: translate3d(-20%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                        <div class="menu_link-2">
+                            <a href="/" class="menu_link-2-text lp-link">Početna</a>
+                        </div>
+                        <div class="menu_link-2">
+                            <a href="/materijali" class="menu_link-2-text lp-link">Materijali</a>
+                        </div>
+                        <div class="menu_link-2">
+                            <a href="/kursevi" class="menu_link-2-text lp-link">Kursevi</a>
+                        </div>
+                        <div class="menu_link-2">
+                            <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kursevi</a>
+                        </div>
+                        <div class="menu_link-2">
+                            <a href="/#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+  <button class="logout-btn" id="logoutBtn">Odjavi se</button>
+  <h2>KUPLJENI KURSEVI</h2>
+
+  <div id="courseList" class="course-list"></div>
+  <p id="emptyMsg">Učitavanje kurseva...</p>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+      authDomain: "pomoc-na-fonu.firebaseapp.com",
+      projectId: "pomoc-na-fonu",
+      storageBucket: "pomoc-na-fonu.appspot.com",
+      messagingSenderId: "947001381183",
+      appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+      measurementId: "G-768582D9M9"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const courseList = document.getElementById("courseList");
+    const emptyMsg = document.getElementById("emptyMsg");
+
+    // 📘 mapa naziva kurseva po ID-ju i slike
+    const courseNames = {
+      "oikt": {
+        name: "OIKT",
+        img: "prog1.jpg"
+      },
+      "mat1": {
+        name: "Matematika 1",
+        img: "mat1.jpg"
+      },
+    };
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "/login.html";
+        return;
+      }
+
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        const kursevi = data.kursevi || [];
+
+        if (kursevi.length === 0) {
+          emptyMsg.textContent = "Nemaš nijedan kupljeni kurs još uvek.";
+          return;
+        }
+
+        kursevi.forEach(kursId => {
+          const card = document.createElement("div");
+          card.className = "course-card";
+          const course = courseNames[kursId] || { name: kursId, img: "" };
+          card.innerHTML = `
+            <img src="../images/${course.img}" alt="${course.name}" />
+            <h3>${course.name}</h3>
+          `;
+          card.addEventListener("click", () => {
+            window.location.href = "/kurs/" + kursId + ".html";
+          });
+          courseList.appendChild(card);
+        });
+        emptyMsg.style.display = 'none';
+
+      } else {
+        emptyMsg.textContent = "Greška: korisnik nije pronađen u bazi.";
+      }
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "/login.html";
+    });
+  </script>
+</body>
+</html>

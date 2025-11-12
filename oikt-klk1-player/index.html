@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moji kursevi</title>
+    <style>
+        /* General body styling for dark theme */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+        }
+
+        /* Header styling */
+        header {
+            color: #ffffff; /* White text */
+            padding: 20px 25px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Container layout */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+        }
+
+        /* Navigation panel */
+        nav {
+            width: 250px;
+            background: #2c2c2c; /* Slightly lighter dark background */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation list */
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li:hover,
+        nav ul li.active {
+            background: #1e90ff; /* Bright blue on hover or active */
+            color: #ffffff;
+        }
+
+        /* Main content styling */
+        main {
+            flex: 1;
+            background: #1f1f1f; /* Dark background for main section */
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the iframe player */
+        iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+            border-radius: 6px;
+            position: relative; /* Added to ensure it's correctly layered */
+            z-index: 1000;  /* Added to ensure iframe is above other elements */
+        }
+
+        /* Dodajemo maksimalnu visinu i omogućavamo skrolovanje */
+#lesson-list {
+    max-height: 400px; /* Postavlja maksimalnu visinu */
+    overflow-y: auto;  /* Omogućava vertikalno skrolovanje */
+}
+
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            main {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 22px;
+                padding: 15px 20px;
+            }
+
+            nav ul li {
+                padding: 12px;
+            }
+
+            iframe {
+                height: 300px;
+            }
+
+            #lesson-list {
+        max-height: 130px;  /* Manja visina za telefone */
+    }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 18px;
+                padding: 10px 15px;
+            }
+
+            nav {
+                padding: 15px;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+    <link href="../index_files/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../index_files/webflow.css" rel="stylesheet" type="text/css">
+    <link href="../index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        
+            <div class="padding-global">
+                <div class="container-large">
+                    <div class="navbar_content">
+                        <div class="navbar_left-2">
+                            <div na="" data-w-id="146195b1-9eba-678e-5613-a0d933b6a5d2" class="menu-2">
+                                <div class="div-block-30">
+                                    <div data-is-ix2-target="1" class="lottie_menu-2" data-w-id="146195b1-9eba-678e-5613-a0d933b6a5d3" data-animation-type="lottie" data-src="https://uploads-ssl.webflow.com/658aa86f8b81cf31cef70c34/658aa86f8b81cf31cef70c5c_lottie-menu.json" data-loop="0"
+                                        data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.875" data-duration="2.875" data-ix2-initial-state="0"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 633 509" width="633" height="509" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clippath id="__lottie_element_5"><rect width="633" height="509" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_5)"><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,-190.56900024414062 C-284.8949890136719,-190.56900024414062 -217.76600646972656,-190.56900024414062 -217.76600646972656,-190.56900024414062 C-217.76600646972656,-190.56900024414062 1.4550000429153442,-190.56900024414062 1.4550000429153442,-190.56900024414062 C1.4550000429153442,-190.56900024414062 217.61199951171875,-190.56900024414062 217.61199951171875,-190.56900024414062 C217.61199951171875,-190.56900024414062 285.07598876953125,-190.56900024414062 285.07598876953125,-190.56900024414062"></path></g></g><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,190.56900024414062 C-284.8949890136719,190.56900024414062 -219.64500427246094,190.56900024414062 -219.64500427246094,190.56900024414062 C-219.64500427246094,190.56900024414062 -0.04500000178813934,190.56900024414062 -0.04500000178813934,190.56900024414062 C-0.04500000178813934,190.56900024414062 215.71299743652344,190.56900024414062 215.71299743652344,190.56900024414062 C215.71299743652344,190.56900024414062 285.07598876953125,190.56900024414062 285.07598876953125,190.56900024414062"></path></g></g><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,0.041999999433755875 C-284.8949890136719,0.041999999433755875 285.07598876953125,0.041999999433755875 285.07598876953125,0.041999999433755875"></path></g></g></g></svg></div>
+                                    <div class="text-block-2">Meni</div>
+                                </div>
+                            </div>
+                            <div class="nav_menu-2" style="display: none; opacity: 0; transform: translate3d(-20%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                                <div class="menu_link-2">
+                                    <a href="/" class="menu_link-2-text lp-link">Početna</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/materijali" class="menu_link-2-text lp-link">Materijali</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/kursevi" class="menu_link-2-text lp-link">Kursevi</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kursevi</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <h2>OIKT - prvi kolokvijum</h2></header>
+
+    <div class="container">
+        <nav>
+            <ul id="lesson-list">
+                <li class="active" data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232gHY1JKlGQcI2RXT5uGCfFZGO1A8HmnfhJQ28IZNJrUn59&playbackInfo=eyJ2aWRlb0lkIjoiZjUyYTIxMjUwY2I0NGVkOTkwYTBlY2Q5YzkxMGNhMGIifQ==">Lekcija 1</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232T2N7osORbOexABpoCAeH94eFrewJBW490d7Hc4Ea1er0T&playbackInfo=eyJ2aWRlb0lkIjoiZDk2Mjg5ZDViY2VkNDM4YmE0M2RmYTZkZDUxNjg4MDcifQ==">Lekcija 2</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 3</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 4</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 5</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 6</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 7</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 8</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 3</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 4</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 5</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 6</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 7</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 8</li>
+            </ul>
+        </nav>
+
+        <main>
+            <iframe id="video-player" 
+                    src="https://player.vdocipher.com/v2/?otp=20160313versUSE3232gHY1JKlGQcI2RXT5uGCfFZGO1A8HmnfhJQ28IZNJrUn59&playbackInfo=eyJ2aWRlb0lkIjoiZjUyYTIxMjUwY2I0NGVkOTkwYTBlY2Q5YzkxMGNhMGIifQ==" 
+                    allowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    mozallowfullscreen="true"
+                    allow="encrypted-media"></iframe>
+        </main>
+    </div>
+
+    <script>
+        // Logovanje vrednosti kada se kurs menja
+        const lessonList = document.getElementById('lesson-list');
+        const iframe = document.getElementById('video-player');
+
+        lessonList.addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI') {
+                // Ukloni active class sa svih
+                lessonList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // Logovanje vrednosti pre nego što menjaš src iframe-a
+                console.log('Kliknut je kurs:', e.target.textContent);  // Loguj naziv kursa
+                console.log('Nova iframe URL:', e.target.dataset.iframe);  // Loguj URL koji se koristi za iframe
+
+                // Promeni src iframe-a
+                iframe.src = e.target.dataset.iframe;
+            }
+        });
+
+        // Logovanje podataka iz sessionStorage i localStorage
+        console.log('Session Storage:', sessionStorage.getItem('token'));  // Loguj token u sessionStorage
+        console.log('Local Storage:', localStorage.getItem('user'));  // Loguj korisnika u localStorage
+
+        // Prati promene u veličini ekrana i loguj vrednosti
+        window.addEventListener('resize', function() {
+            console.log('Trenutna širina ekrana:', window.innerWidth);
+            console.log('Aktuelni iframe URL:', iframe.src);  // Loguj trenutni iframe URL
+        });
+
+        // Testiranje full screen
+        iframe.addEventListener('click', function() {
+            console.log('Iframe kliknut');
+        });
+
+        document.addEventListener('fullscreenchange', function() {
+            console.log('Fullscreen promenjen');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1282,54 +1282,7 @@ a,
 
         <iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;"
             aria-hidden="true" tabindex="-1" title="Intercom" src="./index_files/saved_resource(1).html"></iframe>
-        <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
-    authDomain: "pomoc-na-fonu.firebaseapp.com",
-    projectId: "pomoc-na-fonu",
-    storageBucket: "pomoc-na-fonu.appspot.com",
-    messagingSenderId: "947001381183",
-    appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
-    measurementId: "G-768582D9M9"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  const link = document.getElementById("kupljeniKurseviLink");
-  const authBtn = document.getElementById("authBtn");
-  const authBtnText = document.getElementById("authBtnText");
-
-  // Default: sakrij kupljene kurseve
-  link.style.display = "none";
-
-  // Napravimo samo JEDAN listener za dugme
-  authBtn.addEventListener("click", async () => {
-    if (auth.currentUser) {
-      // User je ulogovan → ODJAVA
-      await signOut(auth);
-      window.location.href = "/login.html";
-    } else {
-      // Nije ulogovan → ide na login
-      window.location.href = "/login.html";
-    }
-  });
-
-  // Reagujemo na login stanje
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      link.style.display = "inline-block";
-      authBtnText.textContent = "ODJAVI SE";
-      authBtn.href = "javascript:void(0)";
-    } else {
-      authBtnText.textContent = "PRIJAVI SE";
-      authBtn.href = "/login.html";
-    }
-  });
-</script>
+            <script type="module"> import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"; import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"; const firebaseConfig = { apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c", authDomain: "pomoc-na-fonu.firebaseapp.com", projectId: "pomoc-na-fonu", storageBucket: "pomoc-na-fonu.appspot.com", messagingSenderId: "947001381183", appId: "1:947001381183:web:11a68f03a52c6ebb2a038a", measurementId: "G-768582D9M9" }; const app = initializeApp(firebaseConfig); const auth = getAuth(app); const link = document.getElementById("kupljeniKurseviLink"); const authBtn = document.getElementById("authBtn"); const authBtnText = document.getElementById("authBtnText"); // Sakrij link po default-u link.style.display = "none"; // Prikaži link samo ako je korisnik ulogovan onAuthStateChanged(auth, (user) => { if (user) { link.style.display = "inline-block"; // ili "block", zavisno od stila authBtnText.textContent = "ODJAVI SE"; authBtn.href = "javascript:void(0)"; // ukini link authBtn.addEventListener("click", async () => { await signOut(auth); window.location.href = "/login.html"; }); } else { // 🔴 Nije ulogovan → dugme PRIJAVI SE authBtnText.textContent = "PRIJAVI SE"; authBtn.href = "/login.html"; } }); </script>
 
 
         </body>

@@ -379,6 +379,97 @@ a,
                 .main-wrapper {
                     overflow: clip;
                 }
+                /* Pretpostavljam da je ovo grid u kojem su tekst i slika */
+                
+                .understand_grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    /* tekst | slika na desktopu */
+                    gap: 2rem;
+                }
+                /* Responsive: na ekranima manjih od 768px, slika ide ispod teksta */
+                
+                @media screen and (max-width: 768px) {
+                    .understand_grid {
+                        display: flex;
+                        flex-direction: column;
+                        /* vertikalno */
+                    }
+                    .image_wrap {
+                        order: 2;
+                        /* dolazi posle teksta */
+                        width: 100%;
+                        margin-top: 1rem;
+                        /* razmak od teksta */
+                    }
+                    .hide-tablet {
+                        display: block !important;
+                        /* prikaži ako je prethodno skriveno */
+                    }
+                }
+                /* Stil za sliku u understand sekciji */
+                
+                .image_wrap {
+                    width: 100%;
+                    max-width: 500px;
+                    /* ograniči maksimalnu širinu */
+                    margin: 0 auto;
+                    /* centriraj */
+                    overflow: hidden;
+                    border-radius: 12px;
+                    /* zaobljeni uglovi */
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                    /* blaga senka */
+                }
+                
+                .image_wrap img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    display: block;
+                }
+                /* Responsive: manji ekrani */
+                
+                @media screen and (max-width: 768px) {
+                    .image_wrap {
+                        max-width: 100%;
+                        /* puni ekran ako treba */
+                        margin-top: 1.5rem;
+                    }
+                }
+                /* Wrapper slike */
+                
+                .image_wrap {
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 0 auto;
+                    overflow: hidden;
+                    /* važno za border-radius */
+                    border-radius: 12px;
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                    position: relative;
+                    /* ako koristiš overlay divove */
+                }
+                /* Sama slika */
+                
+                .image_wrap img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    object-fit: cover;
+                    border-bottom-left-radius: 12px;
+                    /* zaobljeni donji levi ugao */
+                    border-bottom-right-radius: 12px;
+                    /* zaobljeni donji desni ugao */
+                }
+                /* Ako ima overlay fade divove, zaobli i njih */
+                
+                .image_wrap .image-fade,
+                .image_wrap .image-fade.is-left,
+                .image_wrap .image-fade.is-right,
+                .image_wrap .image-fade.is-top {
+                    border-radius: 12px;
+                }
             </style>
         </div>
         <nav data-w-id="4c368e8d-a43a-8186-8801-2072eead6904" class="navigation" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
@@ -444,7 +535,6 @@ a,
                             <div class="h2_relative">
                                 <h2 class="h2 text-align-left is-mobile" style="opacity: 1;">PREUZIMANJE KURSA</h2>
                                 <div data-w-id="cf7c8f1f-8119-7507-8361-d3e7f5ee45a4" style="opacity: 1;" class="svg_scruble w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 401 19" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
-                      <path d="M371.114 14.5879C356.956 14.4239 342.795 14.3973 328.638 14.0584C317.286 13.7895 305.941 12.9212 294.572 12.7021C284.746 12.5134 274.853 12.4237 265.084 13.0849C244.566 14.4584 224.138 16.6073 203.604 17.8806C193.72 18.4905 184.073 17.1673 174.479 14.1835C158.831 9.31868 142.521 11.3903 126.508 13.6528C117.163 14.9684 107.898 16.5721 98.5536 17.8003C90.257 18.8907 82.9 17.6939 76.2293 13.1328C69.5094 8.53377 60.7654 9.55652 52.9146 10.8519C41.5047 12.7181 30.3343 15.3988 19.1003 17.8416C12.0603 19.3712 5.73181 18.2362 1.5034 13.5162C0.110289 11.9638 0.49359 8.97074 1.42924 7.02072C1.82056 6.20094 6.37687 5.5418 7.99589 6.2225C13.1669 8.39314 17.7316 7.00974 22.5743 5.99174C36.8196 2.9969 51.1006 -0.222348 66.1447 0.913621C71.0211 1.28235 76.5553 2.19576 80.3157 4.32508C87.9518 8.65999 95.8621 7.95226 104.091 6.98596C118.271 5.31426 132.388 3.31714 146.615 1.93323C157.202 0.90683 167.581 2.01373 177.705 5.09104C190.394 8.93494 203.767 8.14066 216.91 7.15635C238.876 5.51239 260.737 2.85555 282.746 1.77412C294.905 1.17808 307.267 3.13225 319.564 3.51201C335.993 4.01456 352.444 4.03028 368.892 4.39567C377.373 4.58134 385.903 4.81755 394.31 5.63934C396.665 5.86645 400.076 8.0292 400.555 9.69585C401.529 13.0543 397.493 13.2449 394.138 13.3434C386.482 13.592 378.826 13.8654 371.169 14.1389C371.168 14.2888 371.149 14.4385 371.131 14.5756L371.114 14.5879Z" fill="currentColor" fill-opacity="0.18"></path>
                     </svg></div>
                             </div>
                             <div class="spacer-medium-copy"></div>
@@ -452,17 +542,8 @@ a,
                                 Savladajte OIKT i osigurajte uspeh na ispitu kroz praktične zadatke i jasne primere. <br><br> Ovaj kurs će vas pripremiti za svaki ispitni izazov i dati vam znanje potrebno za polaganje.<br><br> Klikom na dugme ispod ulazite
                                 u grupu na WhatsApp-u gde se nalaze sve lekcije ovog kursa.
                             </p>
-                            <div class="spacer-small-copy"></div>
-                            <a data-w-id="0126e1e4-7998-f969-73b7-c05fabdfaf11" style="opacity: 1;" href="https://chat.whatsapp.com/B5mZOQYxUvfDcoqCpbKd7y" class="button checkout-btn w-inline-block">
-                                <div class="button_text">PREUZMI KURS</div>
-                                <div class="circle" style="width: 0px; height: 0px;"></div>
-                            </a>
                         </div>
-                        <div id="w-node-_043d95e2-6767-2600-a2ff-41642b4534ac-97263376" class="image_wrap hide-tablet"><img src="images/prog1.jpg" loading="lazy" id="w-node-_149667a0-d57f-5e62-c1cd-22bfea20c019-97263376" sizes="100vw" alt="" srcset="images/prog1.jpg 500w, images/prog1.jpg 776w" class="understand_image hide-tablet" style="opacity: 1;">
-                            <div class="image-fade"></div>
-                            <div class="image-fade is-left"></div>
-                            <div class="image-fade is-right hide-desktop"></div>
-                            <div class="image-fade is-top"></div>
+                        <div id="w-node-_043d95e2-6767-2600-a2ff-41642b4534ac-97263376" class="image_wrap hide-tablet"><img src="images/uplatnica.png" loading="lazy" id="w-node-_149667a0-d57f-5e62-c1cd-22bfea20c019-97263376" sizes="100vw" alt="" srcset="images/uplatnica.png 500w, images/uplatnica.png 776w" class="understand_image hide-tablet" style="opacity: 1;">
                         </div>
 
                     </div>
@@ -483,8 +564,8 @@ a,
                             </div>
                             <div class="w-layout-vflex footer_right">
                                 <div class="w-layout-vflex footer_support">
-                                    <a href="mailto:info@pomocnafonu.com" class="email_footer w-inline-block">
-                                        <p class="text-size-small text-color-white">info@pomocnafonu.com</p>
+                                    <a href="mailto:pomocnafonu@gmail.com" class="email_footer w-inline-block">
+                                        <p class="text-size-small text-color-white">pomocnafonu@gmail.com</p>
                                     </a>
                                 </div>
                                 <p class="footer_text">Pomoć na fonu &copy;2024.<br>Sva prava zadržana.</p>

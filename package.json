@@ -1,0 +1,28 @@
+{
+  "name": "pomocnafonu",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glisicmihajlo/pomocnafonu.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/glisicmihajlo/pomocnafonu.github.io/issues"
+  },
+  "homepage": "https://github.com/glisicmihajlo/pomocnafonu.github.io#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

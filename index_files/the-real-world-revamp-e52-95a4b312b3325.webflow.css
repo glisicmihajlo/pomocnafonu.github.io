@@ -3729,7 +3729,7 @@ figcaption {
         height: auto;
     }
     .campuses_item {
-        height: 30rem;
+        height: 25rem;
     }
     .campuses_h3 {
         font-size: 1.4rem;
@@ -4001,7 +4001,7 @@ figcaption {
         grid-template-columns: 1fr 1fr;
     }
     .campuses_item {
-        height: 28rem;
+        height: 25rem;
     }
     .path_choices {
         align-items: flex-start;

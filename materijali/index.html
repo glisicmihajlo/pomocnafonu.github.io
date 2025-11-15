@@ -730,6 +730,9 @@ a,
                                     <a href="/kursevi" class="menu_link-2-text lp-link">Kursevi</a>
                                 </div>
                                 <div class="menu_link-2">
+                                    <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kursevi</a>
+                                </div>
+                                <div class="menu_link-2">
                                     <a href="/#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
                                 </div>
                             </div>
@@ -839,8 +842,8 @@ a,
                             </div>
                             <div class="w-layout-vflex footer_right">
                                 <div class="w-layout-vflex footer_support">
-                                    <a href="mailto:info@pomocnafonu.com" class="email_footer w-inline-block">
-                                        <p class="text-size-small text-color-white">info@pomocnafonu.com</p>
+                                    <a href="mailto:pomocnafonu@gmail.com" class="email_footer w-inline-block">
+                                        <p class="text-size-small text-color-white">pomocnafonu@gmail.com</p>
                                     </a>
                                 </div>
                                 <p class="footer_text">Pomoć na fonu &copy;2024.<br>Sva prava zadržana.</p>
@@ -905,6 +908,37 @@ a,
         data-tagging-id="AW-16695797419" data-load-time="1726760507191" height="0" width="0" src="/index_files/16695797419.html" style="display: none; visibility: hidden;"></iframe>
 
     <iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;"
-        aria-hidden="true" tabindex="-1" title="Intercom" src="/index_files/saved_resource(1).html"></iframe></body>
+        aria-hidden="true" tabindex="-1" title="Intercom" src="/index_files/saved_resource(1).html"></iframe>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+    authDomain: "pomoc-na-fonu.firebaseapp.com",
+    projectId: "pomoc-na-fonu",
+    storageBucket: "pomoc-na-fonu.appspot.com",
+    messagingSenderId: "947001381183",
+    appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+    measurementId: "G-768582D9M9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const link = document.getElementById("kupljeniKurseviLink");
+
+  // Sakrij link po default-u
+  link.style.display = "none";
+
+  // Prikaži link samo ako je korisnik ulogovan
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      link.style.display = "inline-block"; // ili "block", zavisno od stila
+    }
+  });
+</script>
+
+    </body>
 
 </html>

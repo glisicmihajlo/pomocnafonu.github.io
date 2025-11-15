@@ -512,7 +512,7 @@ a,
                             </div>
                         </div>
                         <div class="flex w-1/3 justify-end">
-                            <a id="authBtn" class="flex justify-end pointer-events-auto p-[4px] border-[2px] border-white/40 rounded-full lg:w-auto" href="/login.html">
+                            <a id="authBtn" class="flex justify-end pointer-events-auto p-[4px] border-[2px] border-white/40 rounded-full lg:w-auto" href="/login">
                                 <button id="authBtnText" class="transition-all duration-500 hidden lg:block w-auto rounded-full border-white/25 border-[2px] switzer">PRIJAVI SE</button>
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="lg:hidden h-[25px] w-[25px]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="color: rgba(113, 115, 118, 0.51);">
                                     <path d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"></path>
@@ -1311,10 +1311,10 @@ a,
     if (auth.currentUser) {
       // User je ulogovan → ODJAVA
       await signOut(auth);
-      window.location.href = "/login.html";
+      window.location.href = "/login";
     } else {
       // Nije ulogovan → ide na login
-      window.location.href = "/login.html";
+      window.location.href = "/login";
     }
   });
 
@@ -1327,7 +1327,7 @@ a,
     } else {
         kupljeniWrapper.style.display = "none";
       authBtnText.textContent = "PRIJAVI SE";
-      authBtn.href = "/login.html";
+      authBtn.href = "/login";
     }
   });
 </script>

@@ -18,13 +18,13 @@ const logoutBtn = document.getElementById("logout-btn");
 
 // Odjava korisnika
 logoutBtn.addEventListener("click", () => {
-    auth.signOut().then(() => window.location.href="login.html");
+    auth.signOut().then(() => window.location.href="/login");
 });
 
 // Provera prijavljenog korisnika i prikaz kupljenih kurseva
 auth.onAuthStateChanged(user => {
     if (!user) {
-        window.location.href = "login.html";
+        window.location.href = "/login";
         return;
     }
 

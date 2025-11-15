@@ -2,8 +2,20 @@
 <html lang="sr">
 
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-C5JCE202MQ');
+</script>
+
   <meta charset="UTF-8" />
-  <title>Registracija - Pomoć na FON-u</title>
+  <title>Prijava - Pomoć na FON-u</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -18,7 +30,7 @@
       user-select: none;
     }
 
-    .register-container {
+    .login-container {
       background: #1f1f1f;
       padding: 3rem;
       border-radius: 12px;
@@ -81,7 +93,7 @@
         padding: 10px;
       }
 
-      .register-container {
+      .login-container {
         padding: 2.5rem;
         width: 90%;
         max-width: 90%;
@@ -113,7 +125,7 @@
         font-size: 1.1rem;
       }
 
-      .register-container {
+      .login-container {
         max-width: 95%;
       }
     }
@@ -122,19 +134,26 @@
 
 <body>
 
-  <div class="register-container">
-    <h2>Registracija</h2>
+  <div class="login-container">
+    <h2>Prijava na nalog</h2>
     <input type="email" id="email" placeholder="Email" />
     <input type="password" id="password" placeholder="Lozinka" />
-    <button id="registerBtn">Registruj se</button>
+    <button id="loginBtn">Uloguj se</button>
+
+    <p><a href="#" id="forgotPass">Zaboravio si lozinku?</a></p>
+
     <p id="errorMsg"></p>
-    <p>Već imaš nalog? <a href="login.html">Prijavi se</a></p>
+
+    <p>Još nemaš nalog? <a href="/register">Registruj se</a></p>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
@@ -148,17 +167,17 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db = getFirestore(app);
 
-    const registerBtn = document.getElementById("registerBtn");
+    const loginBtn = document.getElementById("loginBtn");
+    const forgotPass = document.getElementById("forgotPass");
     const errorMsg = document.getElementById("errorMsg");
 
-    // Regex dozvoljava oblik poput mg20240050@student.fon.bg.ac.rs
-    const studentEmailRegex = /^[a-z]{2}\d{8}@student\.fon\.bg\.ac\.rs$/;
+    // LOGIN
+    loginBtn.addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-    registerBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+      errorMsg.style.color = "red";
       errorMsg.textContent = "";
 
       if (!email || !password) {
@@ -166,35 +185,49 @@
         return;
       }
 
-      // Provera studentskog emaila
-      if (!studentEmailRegex.test(email)) {
-        errorMsg.textContent = "Možeš se registrovati samo studentskim FON emailom!";
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "/kursevi/";
+      } catch (err) {
+        console.log(err);
+
+        if (err.code === "auth/user-not-found") {
+          errorMsg.textContent = "Korisnik sa tim email-om ne postoji.";
+        } else if (err.code === "auth/wrong-password") {
+          errorMsg.textContent = "Pogrešna lozinka.";
+        } else if (err.code === "auth/invalid-email") {
+          errorMsg.textContent = "Unet je nevalidan email.";
+        } else {
+          errorMsg.textContent = "Došlo je do greške. Pokušaj ponovo.";
+        }
+      }
+    });
+
+    // RESET LOZINKE
+    forgotPass.addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+
+      errorMsg.style.color = "red";
+      errorMsg.textContent = "";
+
+      if (!email) {
+        errorMsg.textContent = "Unesi email da bi resetovao lozinku.";
         return;
       }
 
       try {
-        // Kreiranje naloga
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // Kreiraj dokument u Firestore
-        await setDoc(doc(db, "users", user.uid), {
-          email: email,
-          kursevi: []
-        });
-
-        // Redirekcija
-        window.location.href = "/kursevi/";
-
+        await sendPasswordResetEmail(auth, email);
+        errorMsg.style.color = "lightgreen";
+        errorMsg.textContent = "Poslat je email za reset lozinke.";
       } catch (err) {
-        if (err.code === "auth/email-already-in-use") {
-          errorMsg.textContent = "Ovaj email je već registrovan.";
-        } else if (err.code === "auth/weak-password") {
-          errorMsg.textContent = "Lozinka mora biti duža od 6 karaktera.";
+        console.log(err);
+
+        if (err.code === "auth/user-not-found") {
+          errorMsg.textContent = "Nalog sa ovim email-om ne postoji.";
         } else if (err.code === "auth/invalid-email") {
-          errorMsg.textContent = "Unet je nevalidan email.";
+          errorMsg.textContent = "Email nije validan.";
         } else {
-          errorMsg.textContent = "Greška pri registraciji. Pokušaj ponovo.";
+          errorMsg.textContent = "Došlo je do greške. Pokušaj ponovo.";
         }
       }
     });

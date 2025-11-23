@@ -204,8 +204,8 @@
 
     // 📘 mapa naziva kurseva po ID-ju i slike
     const courseNames = {
-      "oikt": {
-        name: "OIKT",
+      "oikt-klk1": {
+        name: "OIKT - Prvi kolokvijum",
         img: "prog1.jpg"
       },
       "mat1": {
@@ -241,7 +241,7 @@
             <h3>${course.name}</h3>
           `;
           card.addEventListener("click", () => {
-            window.location.href = "/kurs/" + kursId + ".html";
+            window.location.href = "/" + kursId + "-player";
           });
           courseList.appendChild(card);
         });

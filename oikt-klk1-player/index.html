@@ -425,26 +425,51 @@
                 iframe.src = e.target.dataset.iframe;
             }
         });
-
-        // Logovanje podataka iz sessionStorage i localStorage
-        console.log('Session Storage:', sessionStorage.getItem('token'));  // Loguj token u sessionStorage
-        console.log('Local Storage:', localStorage.getItem('user'));  // Loguj korisnika u localStorage
-
-        // Prati promene u veličini ekrana i loguj vrednosti
-        window.addEventListener('resize', function() {
-            console.log('Trenutna širina ekrana:', window.innerWidth);
-            console.log('Aktuelni iframe URL:', iframe.src);  // Loguj trenutni iframe URL
-        });
-
-        // Testiranje full screen
-        iframe.addEventListener('click', function() {
-            console.log('Iframe kliknut');
-        });
-
-        document.addEventListener('fullscreenchange', function() {
-            console.log('Fullscreen promenjen');
-        });
     </script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+  // Firebase konfiguracija
+  const firebaseConfig = {
+      apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+      authDomain: "pomoc-na-fonu.firebaseapp.com",
+      projectId: "pomoc-na-fonu",
+      storageBucket: "pomoc-na-fonu.appspot.com",
+      messagingSenderId: "947001381183",
+      appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+      measurementId: "G-768582D9M9"
+    };
+
+  // Inicijalizacija Firebase-a
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  // Provera da li je korisnik ulogovan i da li je kupio kurs
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      try {
+        const userDoc = await db.collection("users").doc(user.uid).get();
+        const kursevi = userDoc.data()?.kursevi || [];
+
+        if (!kursevi.includes("oikt-klk1")) {
+          alert("Nemate pristup ovom kursu. Bićete preusmereni.");
+          window.location.href = "/oikt";
+        }
+      } catch (error) {
+        console.error("Greška pri proveri kursa:", error);
+        window.location.href = "/";
+      }
+    } else {
+      // Nije ulogovan
+      window.location.href = "/login"; // preusmerenje na login
+    }
+  });
+</script>
+
 
 </body>
 

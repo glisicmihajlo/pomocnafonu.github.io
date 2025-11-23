@@ -1,194 +1,142 @@
 <!DOCTYPE html>
 <html lang="sr">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kupljeni kursevi - Pomoć na FON-u</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 80px; /* Povećaj razmak sa vrha ekrana */
+    }
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #ecf0f1;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
 
-        gtag('config', 'G-C5JCE202MQ');
-    </script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <style>
-        .wf-force-outline-none[tabindex="-1"]:focus {
-            outline: none;
-        }
-    </style>
+    .logout-btn {
+      background: linear-gradient(135deg, #2f2f2f, #121212); /* Tamni sivo-crni gradijent */
+      border: none;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: auto; /* Prilagodljiva širina */
+    }
 
-    <!-- posthog -->
-    <script>
-        ! function(t, e) {
-            var o, n, p, r;
-            e.__SV || (window.posthog = e, e._i = [], e.init = function(i, s, a) {
-                function g(t, e) {
-                    var o = e.split(".");
-                    2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function() {
-                        t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
-                    }
-                }(p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
-                var u = e;
-                for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function(t) {
-                        var e = "posthog";
-                        return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
-                    }, u.people.toString = function() {
-                        return u.toString(1) + ".people (stub)"
-                    }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "), n = 0; n < o.length; n++) g(u, o[n]);
-                e._i.push([i, s, a])
-            }, e.__SV = 1)
-        }(document, window.posthog || []);
-        posthog.init('phc_djGBH65JGJA0hIlfk4cuZFw962pu1e90oVbnIYieTkQ', {
-            api_host: 'https://app.posthog.com'
-        })
-    </script>
-    <!-- End posthog -->
+    .logout-btn:hover {
+      background: linear-gradient(135deg, #121212, #2f2f2f); /* Invertovani gradijent na hover */
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1200px;
+      margin-top: 2rem;
+    }
+
+    .course-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-align: center;
+      justify-content: flex-start;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .course-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .course-card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #ecf0f1;
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+    }
+
+    .course-card p {
+      font-size: 1rem;
+      color: #bdc3c7;
+    }
+
+    #emptyMsg {
+      color: #7f8c8d;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 120px; /* Povećaj razmak na manjim ekranima */
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
 
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Pomoć na fonu",
-            "url": "http://www.pomocnafonu.com/",
-            "logo": "http://pomocnafonu.com/images/logo.png",
-            "sameAs": "https://twitter.com/TRW_global"
-        }
-    </script>
+      .course-list {
+        width: 95%;
+      }
+    }
 
-    <link rel="alternate" href="https://www.pomocnafonu.com/" hreflang="x-default">
+  </style>
 
-
-    <title>Pomoć na fonu</title>
-    <meta content="Naučićemo te kako da položiš svaki ispit." name="description">
-
-    <meta content="Pomoć na fonu" property="og:title">
-    <meta content="Naučićemo te kako da položiš svaki ispit." property="og:description">
-    <meta content="http://pomocnafonu.com/images/logo2.png" property="og:image">
-
-    <meta content="Pomoć na fonu" property="twitter:title">
-    <meta content="Naučićemo te kako da položiš svaki ispit." property="twitter:description">
-    <meta content="http://pomocnafonu.com/images/logo.png" property="twitter:image">
-
-    <meta property="og:type" content="website">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-
-    <link rel="canonical" href="http://www.pomocnafonu.com/">
-
-    <link href="/index_files/normalize.css" rel="stylesheet" type="text/css">
+<link href="/index_files/normalize.css" rel="stylesheet" type="text/css">
     <link href="/index_files/webflow.css" rel="stylesheet" type="text/css">
     <link href="/index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
-    <style>
-        @media (min-width:992px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="05e3b2af-163e-7c08-96b8-5be167bc4bd3"] {
-                opacity: 0;
-            }
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
-                opacity: 0;
-            }
-        }
-        
-        @media (max-width:991px) and (min-width:768px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
-                opacity: 0;
-            }
-        }
-        
-        @media (max-width:767px) and (min-width:480px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
-                opacity: 0;
-            }
-        }
-        
-        @media (max-width:479px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
-                opacity: 0;
-            }
-        }
-    </style>
-    <script type="text/javascript">
-        ! function(o, c) {
-            var n = c.documentElement,
-                t = " w-mod-";
-            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
-        }(window, document);
-    </script>
-    <link href="http://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
-    <link href="http://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
-    <link rel="stylesheet" href="/index_files/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/99f0e583d07ed34f.css" data-precedence="next">
 
-    <script async="" src="/index_files/cmsload.js.download"></script>
-
-    <script src="/index_files/alertify.min.js.download"></script>
-    <link rel="stylesheet" href="/index_files/alertify.min.css">
-    <link rel="stylesheet" href="/index_files/default.min.css">
-    <link rel="stylesheet" href="../99f0e583d07ed34f.css" data-precedence="next">
-    <style>
-        .alertify-notifier .ajs-message.ajs-visible {
-            padding: 0 !important;
-        }
-        
-        .alertify-notifier .ajs-message {
-            background-color: transparent !important;
-            border: none !important;
-        }
-        
-        .purchase-popup {
-            position: relative;
-            z-index: 999;
-            max-width: 80vw;
-            width: 500px;
-            padding: 10px 50px 10px 15px;
-            background-color: #fff;
-            border-radius: 0 15px 15px 0;
-            color: #000 !important;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
-            box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
-            align-content: center;
-        }
-        
-        .purchase-popup strong {
-            color: #000 !important;
-        }
-        
-        .purchase-popup svg {
-            position: absolute;
-            content: '';
-            top: 10px;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        
-        .purchase-popup img {
-            position: absolute;
-            content: '';
-            top: calc(50% - 35px);
-            right: -35px;
-            width: 70px;
-            height: 70px;
-        }
-        
-        .purchase-popup p {
-            font-size: 16px;
-            line-height: 130%;
-            margin: 0;
-            color: #000;
-            text-align: start;
-        }
-    </style>
-    <script type="text/javascript" async="" src="/index_files/f.txt"></script>
-    <script type="text/javascript" async="" src="/index_files/f(1).txt"></script>
 </head>
 <body>
   <nav data-w-id="4c368e8d-a43a-8186-8801-2072eead6904" class="navigation" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">

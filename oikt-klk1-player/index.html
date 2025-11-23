@@ -381,7 +381,7 @@
             <ul id="lesson-list">
                 <li class="active" data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232gHY1JKlGQcI2RXT5uGCfFZGO1A8HmnfhJQ28IZNJrUn59&playbackInfo=eyJ2aWRlb0lkIjoiZjUyYTIxMjUwY2I0NGVkOTkwYTBlY2Q5YzkxMGNhMGIifQ==">Lekcija 1</li>
                 <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232T2N7osORbOexABpoCAeH94eFrewJBW490d7Hc4Ea1er0T&playbackInfo=eyJ2aWRlb0lkIjoiZDk2Mjg5ZDViY2VkNDM4YmE0M2RmYTZkZDUxNjg4MDcifQ==">Lekcija 2</li>
-                <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 3</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232d44aYgFNbOB23L1h2w93oto5OSvcnfekEIpKmGRpcqAss&playbackInfo=eyJ2aWRlb0lkIjoiZGY3MDE0NWNiNTZjNDc4NGI1ZTkwMWJmM2RiOGU1ZjUifQ==">Lekcija 3</li>
                 <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 4</li>
                 <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 5</li>
                 <li data-iframe="https://player.vdocipher.com/v2/?otp=OTP3&playbackInfo=INFO3">Lekcija 6</li>
@@ -397,34 +397,44 @@
         </nav>
 
         <main>
-            <iframe id="video-player" 
-                    src="https://player.vdocipher.com/v2/?otp=20160313versUSE3232gHY1JKlGQcI2RXT5uGCfFZGO1A8HmnfhJQ28IZNJrUn59&playbackInfo=eyJ2aWRlb0lkIjoiZjUyYTIxMjUwY2I0NGVkOTkwYTBlY2Q5YzkxMGNhMGIifQ==" 
-                    allowfullscreen="true" 
-                    webkitallowfullscreen="true" 
-                    mozallowfullscreen="true"
-                    allow="encrypted-media"></iframe>
+            <iframe id="video-player" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"
+          allow="encrypted-media" style="width:100%; height:360px; border:none; border-radius:6px;"></iframe>
         </main>
     </div>
 
     <script>
         // Logovanje vrednosti kada se kurs menja
         const lessonList = document.getElementById('lesson-list');
-        const iframe = document.getElementById('video-player');
+const iframe = document.getElementById('video-player');
 
-        lessonList.addEventListener('click', function(e) {
-            if (e.target.tagName === 'LI') {
-                // Ukloni active class sa svih
-                lessonList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
-                e.target.classList.add('active');
+// Funkcija za menjanje videa
+function loadVideo(url) {
+  // Uklanja prethodni video tako što resetuje src
+  iframe.src = ""; 
+  // Mala pauza (nije obavezno) da browser očisti prethodno učitavanje
+  setTimeout(() => {
+    iframe.src = url;
+  }, 50);
+}
 
-                // Logovanje vrednosti pre nego što menjaš src iframe-a
-                console.log('Kliknut je kurs:', e.target.textContent);  // Loguj naziv kursa
-                console.log('Nova iframe URL:', e.target.dataset.iframe);  // Loguj URL koji se koristi za iframe
+lessonList.addEventListener('click', function(e) {
+  if (e.target.tagName === 'LI') {
+    // ukloni active class sa svih lekcija
+    lessonList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+    e.target.classList.add('active');
 
-                // Promeni src iframe-a
-                iframe.src = e.target.dataset.iframe;
-            }
-        });
+    // Učitaj video samo kliknutog li
+    const videoURL = e.target.dataset.iframe;
+    loadVideo(videoURL);
+  }
+});
+
+// Opcionalno: automatski učitaj prvu lekciju kada stranica učita
+const firstLesson = lessonList.querySelector('li.active') || lessonList.querySelector('li');
+if (firstLesson) {
+  loadVideo(firstLesson.dataset.iframe);
+}
+
     </script>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>

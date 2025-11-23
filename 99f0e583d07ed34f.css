@@ -3571,14 +3571,6 @@ h2 {
     line-height: 28px
 }
 
-h3 {
-    font-size: 12px;
-    font-weight: 200;
-    line-height: 12px;
-    letter-spacing: .32em;
-    color: var(--gray-2);
-}
-
 h4 {
     font-size: 40px;
     font-weight: 300;
@@ -4284,7 +4276,6 @@ body.dev .pu_purchase-popup p {
     }
     h3 {
         font-size: 16px;
-        line-height: 16px
     }
     h4 {
         font-size: 50px;

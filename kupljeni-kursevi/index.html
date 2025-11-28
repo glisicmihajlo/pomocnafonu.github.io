@@ -190,7 +190,7 @@
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
     
-    // Firebase config
+    // Firebase konfiguracija
     const firebaseConfig = {
       apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
       authDomain: "pomoc-na-fonu.firebaseapp.com",
@@ -207,7 +207,6 @@
     
     const courseList = document.getElementById("courseList");
     const emptyMsg = document.getElementById("emptyMsg");
-    
     const link = document.getElementById("kupljeniKurseviLink");
     const authBtn = document.getElementById("authBtn");
     const authBtnText = document.getElementById("authBtnText");
@@ -217,8 +216,7 @@
     let inactivityTimeout;
     const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minuta
     
-    // Resetovanje tajmera neaktivnosti
-    function resetInactivityTimer(user) {
+    function resetInactivityTimer(userToken) {
       clearTimeout(inactivityTimeout);
       inactivityTimeout = setTimeout(async () => {
         alert("Izbačeni ste zbog neaktivnosti. Morate se ponovo prijaviti.");
@@ -226,24 +224,19 @@
         window.location.href = "/login";
       }, INACTIVITY_LIMIT);
     
-      // Sve aktivnosti resetuju timer
-      document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(user);
+      document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(userToken);
     }
     
-    // Generisanje tokena sesije
     function generateSessionToken() {
       return Math.random().toString(36).substring(2) + Date.now().toString(36);
     }
     
-    // Funkcija za proveru jedne sesije po korisniku
     async function setupSingleDevice(user) {
       const userRef = doc(db, "users", user.uid);
       const sessionToken = generateSessionToken();
     
-      // Postavi token u Firestore
       await setDoc(userRef, { sessionToken }, { merge: true });
     
-      // Prati promene u bazi
       onSnapshot(userRef, (docSnap) => {
         const data = docSnap.data();
         if (!data) return;
@@ -253,6 +246,8 @@
           window.location.href = "/login";
         }
       });
+    
+      return sessionToken;
     }
     
     // Dugme za prijavu/odjavu
@@ -265,58 +260,56 @@
       }
     });
     
-    // Prikaz linka i dugmeta
+    // Praćenje stanja ulogovanosti
     onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        link.style.display = "inline-block";
-        authBtnText.textContent = "ODJAVI SE";
-        authBtn.href = "javascript:void(0)";
+      if (!user) {
+        // Ako korisnik nije ulogovan → odmah na login
+        window.location.href = "/login";
+        return;
+      }
     
-        await setupSingleDevice(user);
-        resetInactivityTimer(user);
+      // Ako jeste ulogovan
+      link.style.display = "inline-block";
+      authBtnText.textContent = "ODJAVI SE";
+      authBtn.href = "javascript:void(0)";
     
-        // Prikaz kupljenih kurseva
-        const userRef = doc(db, "users", user.uid);
-        const userSnap = await getDoc(userRef);
-        if (userSnap.exists()) {
-          const data = userSnap.data();
-          const kursevi = data.kursevi || [];
-          if (kursevi.length === 0) {
-            emptyMsg.textContent = "Nemaš nijedan kupljeni kurs još uvek.";
-            emptyMsg.style.display = "block";
-            return;
-          }
+      const token = await setupSingleDevice(user);
+      resetInactivityTimer(token);
     
-          const courseNames = {
-            "oikt-klk1": { name: "OIKT - Prvi kolokvijum", img: "prog1.jpg" },
-            "mat1": { name: "Matematika 1", img: "mat1.jpg" },
-          };
-    
-          kursevi.forEach(kursId => {
-            const card = document.createElement("div");
-            card.className = "course-card";
-            const course = courseNames[kursId] || { name: kursId, img: "" };
-            card.innerHTML = `
-              <img src="../images/${course.img}" alt="${course.name}" />
-              <h3>${course.name}</h3>
-            `;
-            card.addEventListener("click", () => {
-              window.location.href = "/" + kursId + "-player";
-            });
-            courseList.appendChild(card);
-          });
-          emptyMsg.style.display = 'none';
-        } else {
-          emptyMsg.textContent = "Greška: korisnik nije pronađen u bazi.";
-          emptyMsg.style.display = 'block';
+      // Prikaz kupljenih kurseva
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        const kursevi = data.kursevi || [];
+        if (kursevi.length === 0) {
+          emptyMsg.textContent = "Nemaš nijedan kupljeni kurs još uvek.";
+          emptyMsg.style.display = "block";
+          return;
         }
     
+        const courseNames = {
+          "oikt-klk1": { name: "OIKT - Prvi kolokvijum", img: "prog1.jpg" },
+          "mat1": { name: "Matematika 1", img: "mat1.jpg" },
+        };
+    
+        kursevi.forEach(kursId => {
+          const card = document.createElement("div");
+          card.className = "course-card";
+          const course = courseNames[kursId] || { name: kursId, img: "" };
+          card.innerHTML = `
+            <img src="../images/${course.img}" alt="${course.name}" />
+            <h3>${course.name}</h3>
+          `;
+          card.addEventListener("click", () => {
+            window.location.href = "/" + kursId + "-player";
+          });
+          courseList.appendChild(card);
+        });
+        emptyMsg.style.display = 'none';
       } else {
-        link.style.display = "none";
-        authBtnText.textContent = "PRIJAVI SE";
-        authBtn.href = "/login";
-        clearTimeout(inactivityTimeout);
-        courseList.innerHTML = "";
+        emptyMsg.textContent = "Greška: korisnik nije pronađen u bazi.";
+        emptyMsg.style.display = 'block';
       }
     });
     
@@ -326,6 +319,7 @@
       window.location.href = "/login";
     });
     </script>
+    
     
 </body>
 </html>

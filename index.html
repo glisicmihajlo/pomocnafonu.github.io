@@ -1365,7 +1365,7 @@ a,
                     if (!data) return;
                 
                     if (data.sessionToken !== sessionToken) {
-                      alert("Vaš nalog je prijavljen na drugom uređaju.");
+                      alert("Prijavljeni ste preko drugog uređaja.");
                       signOut(auth);
                       window.location.href = "/login";
                     }

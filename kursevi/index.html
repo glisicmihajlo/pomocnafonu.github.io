@@ -689,6 +689,21 @@ a,
             
             let inactivityTimeout;
             const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minuta
+
+            function addPurchasedLink() {
+                  if (!document.getElementById("kupljeniKurseviLink")) {
+                    const menu = document.querySelector(".nav_menu-2");
+                    const div = document.createElement("div");
+                    div.classList.add("menu_link-2");
+                    div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
+                    menu.insertBefore(div, menu.children[3]);
+                  }
+                }
+
+                function removePurchasedLink() {
+                  const link = document.getElementById("kupljeniKurseviLink");
+                  if (link) link.parentElement.remove();
+                }
             
             function resetInactivityTimer(userToken) {
                 clearTimeout(inactivityTimeout);
@@ -735,20 +750,21 @@ a,
             
             // Praćenje stanja ulogovanosti
             onAuthStateChanged(auth, async (user) => {
-                if (user) {
-                    link.style.display = "inline-block";
+                  if (user) {
+                    addPurchasedLink();
                     authBtnText.textContent = "ODJAVI SE";
                     authBtn.href = "javascript:void(0)";
-            
-                    const token = await setupSingleDevice(user);
-                    resetInactivityTimer(token);
-            
-                } else {
-                    link.style.display = "none";
+                
+                    await setupSingleDevice(user);
+                    resetInactivityTimer(user);
+                
+                  } else {
+                    removePurchasedLink();
                     authBtnText.textContent = "PRIJAVI SE";
                     authBtn.href = "/login";
-                }
-            });
+                    clearTimeout(inactivityTimeout);
+                  }
+                });
             </script>
             
 

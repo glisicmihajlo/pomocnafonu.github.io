@@ -1285,7 +1285,8 @@ a,
             <script type="module">
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
                 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-              
+                import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+                
                 const firebaseConfig = {
                   apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
                   authDomain: "pomoc-na-fonu.firebaseapp.com",
@@ -1295,55 +1296,101 @@ a,
                   appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
                   measurementId: "G-768582D9M9"
                 };
-              
+                
                 const app = initializeApp(firebaseConfig);
                 const auth = getAuth(app);
-              
+                const db = getFirestore(app);
+                
                 const authBtn = document.getElementById("authBtn");
                 const authBtnText = document.getElementById("authBtnText");
-              
-                // Funkcija za dodavanje linka "Kupljeni kursevi"
+                
+                let inactivityTimeout;
+                const INACTIVITY_LIMIT =  10 * 60 * 1000; // 10 minuta
+                
+                // Funkcije za dodavanje/uklanjanje linka
                 function addPurchasedLink() {
                   if (!document.getElementById("kupljeniKurseviLink")) {
                     const menu = document.querySelector(".nav_menu-2");
                     const div = document.createElement("div");
                     div.classList.add("menu_link-2");
                     div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
-                    menu.insertBefore(div, menu.children[3]); // ubacuje na 4. mesto
+                    menu.insertBefore(div, menu.children[3]);
                   }
                 }
-              
-                // Funkcija za uklanjanje linka
+                
                 function removePurchasedLink() {
                   const link = document.getElementById("kupljeniKurseviLink");
-                  if (link) link.parentElement.remove(); // uklanja ceo div
+                  if (link) link.parentElement.remove();
                 }
-              
+                
                 // Dugme za prijavu/odjavu
                 authBtn.addEventListener("click", async () => {
                   if (auth.currentUser) {
-                    // User je ulogovan → ODJAVA
                     await signOut(auth);
                     window.location.href = "/login";
                   } else {
-                    // Nije ulogovan → ide na login
                     window.location.href = "/login";
                   }
                 });
-              
+                
+                // Funkcija za kreiranje jedinstvenog tokena po sesiji
+                function generateSessionToken() {
+                  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+                }
+                
+                // Resetovanje tajmera neaktivnosti
+                function resetInactivityTimer(user) {
+                  clearTimeout(inactivityTimeout);
+                  inactivityTimeout = setTimeout(async () => {
+                    alert("Izbačeni ste zbog neaktivnosti. Morate se ponovo prijaviti.");
+                    await signOut(auth);
+                    window.location.href = "/login";
+                  }, INACTIVITY_LIMIT);
+                
+                  // Sve aktivnosti korisnika (klik, pomeranje miša, tastatura) resetuju timer
+                  document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(user);
+                }
+                
+                // Proverava i ažurira token sesije u Firestore-u
+                async function setupSingleDevice(user) {
+                  const userRef = doc(db, "users", user.uid);
+                  const sessionToken = generateSessionToken();
+                
+                  // Postavi ili osveži token u bazi
+                  await setDoc(userRef, { sessionToken }, { merge: true });
+                
+                  // Slušaj promene na korisniku
+                  onSnapshot(userRef, (docSnap) => {
+                    const data = docSnap.data();
+                    if (!data) return;
+                
+                    if (data.sessionToken !== sessionToken) {
+                      alert("Vaš nalog je prijavljen na drugom uređaju.");
+                      signOut(auth);
+                      window.location.href = "/login";
+                    }
+                  });
+                }
+                
                 // Reaguje na promenu stanja ulogovanosti
-                onAuthStateChanged(auth, (user) => {
+                onAuthStateChanged(auth, async (user) => {
                   if (user) {
                     addPurchasedLink();
                     authBtnText.textContent = "ODJAVI SE";
                     authBtn.href = "javascript:void(0)";
+                
+                    await setupSingleDevice(user);
+                    resetInactivityTimer(user);
+                
                   } else {
                     removePurchasedLink();
                     authBtnText.textContent = "PRIJAVI SE";
                     authBtn.href = "/login";
+                    clearTimeout(inactivityTimeout);
                   }
                 });
-              </script>
+                </script>
+                
               
 
 

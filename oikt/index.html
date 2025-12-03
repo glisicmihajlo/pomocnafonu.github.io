@@ -505,7 +505,7 @@ a,
                                     <a href="/materijali" class="menu_link-2-text lp-link">Materijali</a>
                                 </div>
                                 <div class="menu_link-2">
-                                    <a href="courses.html" class="menu_link-2-text lp-link">Kursevi</a>
+                                    <a href="/kursevi" class="menu_link-2-text lp-link">Kursevi</a>
                                 </div>
                                 <div class="menu_link-2">
                                     <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>
@@ -702,6 +702,21 @@ a,
           
             // Default: sakrij kupljene kurseve
             link.style.display = "none";
+
+            function addPurchasedLink() {
+                  if (!document.getElementById("kupljeniKurseviLink")) {
+                    const menu = document.querySelector(".nav_menu-2");
+                    const div = document.createElement("div");
+                    div.classList.add("menu_link-2");
+                    div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
+                    menu.insertBefore(div, menu.children[3]);
+                  }
+                }
+
+                function removePurchasedLink() {
+                  const link = document.getElementById("kupljeniKurseviLink");
+                  if (link) link.parentElement.remove();
+                }
           
             // Napravimo samo JEDAN listener za dugme
             authBtn.addEventListener("click", async () => {
@@ -718,11 +733,11 @@ a,
             // Reagujemo na login stanje
             onAuthStateChanged(auth, (user) => {
               if (user) {
-                link.style.display = "inline-block";
+                addPurchasedLink();
                 authBtnText.textContent = "ODJAVI SE";
                 authBtn.href = "javascript:void(0)";
               } else {
-                link.style.display = "none";
+                removePurchasedLink();
                 authBtnText.textContent = "PRIJAVI SE";
                 authBtn.href = "/login";
               }

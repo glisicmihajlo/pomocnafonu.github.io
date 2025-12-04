@@ -774,6 +774,12 @@ a,
             
             // Praćenje stanja ulogovanosti
             onAuthStateChanged(auth, async (user) => {
+              if (!user) {
+                link.style.display = "none";
+                authBtnText.textContent = "PRIJAVI SE";
+                authBtn.href = "/login";
+              }
+              else {
             
               // Ako jeste ulogovan
               link.style.display = "flex";
@@ -782,6 +788,7 @@ a,
             
               const token = await setupSingleDevice(user);
               resetInactivityTimer(token);
+              }
             
             });
             

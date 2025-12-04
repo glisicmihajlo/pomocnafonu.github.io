@@ -394,6 +394,9 @@ a,
                                     <a href="/kursevi" class="menu_link-2-text lp-link">Kursevi</a>
                                 </div>
                                 <div class="menu_link-2">
+                                    <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>
+                                </div>
+                                <div class="menu_link-2">
                                     <a href="/#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
                                 </div>
                             </div>
@@ -768,33 +771,18 @@ a,
                 window.location.href = "/login";
               }
             });
-
-            function addPurchasedLink() {
-                  if (!document.getElementById("kupljeniKurseviLink")) {
-                    const menu = document.querySelector(".nav_menu-2");
-                    const div = document.createElement("div");
-                    div.classList.add("menu_link-2");
-                    div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
-                    menu.insertBefore(div, menu.children[3]);
-                  }
-                }
-
-                function removePurchasedLink() {
-                  const link = document.getElementById("kupljeniKurseviLink");
-                  if (link) link.parentElement.remove();
-                }
             
             // Praćenje stanja ulogovanosti
             onAuthStateChanged(auth, async (user) => {
               if (!user) {
-                removePurchasedLink();
+                link.parentElement.style.display = "none";
                 authBtnText.textContent = "PRIJAVI SE";
                 authBtn.href = "/login";
               }
               else {
             
               // Ako jeste ulogovan
-              addPurchasedLink();
+              link.parentElement.style.display = "block";
               authBtnText.textContent = "ODJAVI SE";
               authBtn.href = "javascript:void(0)";
             

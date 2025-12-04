@@ -715,7 +715,6 @@ a,
                 measurementId: "G-768582D9M9"
             };
             
-            // Inicijalizacija Firebase-a
             const app = initializeApp(firebaseConfig);
             const auth = getAuth(app);
             const db = getFirestore(app);
@@ -724,87 +723,78 @@ a,
             const authBtn = document.getElementById("authBtn");
             const authBtnText = document.getElementById("authBtnText");
             
-            // Default: sakrij kupljene kurseve
             link.style.display = "none";
             
             let inactivityTimeout;
             const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minuta
-
-            function addPurchasedLink() {
-                  if (!document.getElementById("kupljeniKurseviLink")) {
-                    const menu = document.querySelector(".nav_menu-2");
-                    const div = document.createElement("div");
-                    div.classList.add("menu_link-2");
-                    div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
-                    menu.insertBefore(div, menu.children[3]);
-                  }
-                }
-
-                function removePurchasedLink() {
-                  const link = document.getElementById("kupljeniKurseviLink");
-                  if (link) link.parentElement.remove();
-                }
             
             function resetInactivityTimer(userToken) {
-                clearTimeout(inactivityTimeout);
-                inactivityTimeout = setTimeout(async () => {
-                    alert("Izbačeni ste zbog neaktivnosti. Morate se ponovo prijaviti.");
-                    await signOut(auth);
-                    window.location.href = "/login";
-                }, INACTIVITY_LIMIT);
+              clearTimeout(inactivityTimeout);
+              inactivityTimeout = setTimeout(async () => {
+                alert("Izbačeni ste zbog neaktivnosti. Morate se ponovo prijaviti.");
+                await signOut(auth);
+                window.location.href = "/login";
+              }, INACTIVITY_LIMIT);
             
-                document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(userToken);
+              document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(userToken);
             }
             
             function generateSessionToken() {
-                return Math.random().toString(36).substring(2) + Date.now().toString(36);
+              return Math.random().toString(36).substring(2) + Date.now().toString(36);
             }
             
             async function setupSingleDevice(user) {
-                const userRef = doc(db, "users", user.uid);
-                const sessionToken = generateSessionToken();
-                await setDoc(userRef, { sessionToken }, { merge: true });
+              const userRef = doc(db, "users", user.uid);
+              const sessionToken = generateSessionToken();
             
-                onSnapshot(userRef, (docSnap) => {
-                    const data = docSnap.data();
-                    if (!data) return;
-                    if (data.sessionToken !== sessionToken) {
-                        alert("Prijavljeni ste preko drugog uređaja.");
-                        signOut(auth);
-                        window.location.href = "/login";
-                    }
-                });
+              await setDoc(userRef, { sessionToken }, { merge: true });
             
-                return sessionToken;
+              onSnapshot(userRef, (docSnap) => {
+                const data = docSnap.data();
+                if (!data) return;
+                if (data.sessionToken !== sessionToken) {
+                  alert("Prijavljeni ste preko drugog uređaja.");
+                  signOut(auth);
+                  window.location.href = "/login";
+                }
+              });
+            
+              return sessionToken;
             }
             
             // Dugme za prijavu/odjavu
             authBtn.addEventListener("click", async () => {
-                if (auth.currentUser) {
-                    await signOut(auth);
-                    window.location.href = "/login";
-                } else {
-                    window.location.href = "/login";
-                }
+              if (auth.currentUser) {
+                await signOut(auth);
+                window.location.href = "/login";
+              } else {
+                window.location.href = "/login";
+              }
             });
             
             // Praćenje stanja ulogovanosti
-            onAuthStateChanged(auth, (user) => {
-                  if (user) {
-                    addPurchasedLink();
-                    authBtnText.textContent = "ODJAVI SE";
-                    authBtn.href = "javascript:void(0)";
-                
-                    setupSingleDevice(user);
-                    resetInactivityTimer(user);
-                
-                  } else {
-                    removePurchasedLink();
-                    authBtnText.textContent = "PRIJAVI SE";
-                    authBtn.href = "/login";
-                    clearTimeout(inactivityTimeout);
-                  }
-                });
+            onAuthStateChanged(auth, async (user) => {
+              if (!user) {
+                // Ako korisnik nije ulogovan → odmah na login
+                window.location.href = "/login";
+                return;
+              }
+            
+              // Ako jeste ulogovan
+              link.style.display = "inline-block";
+              authBtnText.textContent = "ODJAVI SE";
+              authBtn.href = "javascript:void(0)";
+            
+              const token = await setupSingleDevice(user);
+              resetInactivityTimer(token);
+            
+            });
+            
+            // Logout dugme na player stranici
+            document.getElementById("logoutBtn")?.addEventListener("click", async () => {
+              await signOut(auth);
+              window.location.href = "/login";
+            });
             </script>
             
 

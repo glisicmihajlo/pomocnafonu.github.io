@@ -723,7 +723,7 @@ a,
             const authBtn = document.getElementById("authBtn");
             const authBtnText = document.getElementById("authBtnText");
             
-            link.style.display = "none";
+            link.parentElement.style.display = "none";
             
             let inactivityTimeout;
             const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minuta

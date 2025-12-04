@@ -774,11 +774,6 @@ a,
             
             // Praćenje stanja ulogovanosti
             onAuthStateChanged(auth, async (user) => {
-              if (!user) {
-                // Ako korisnik nije ulogovan → odmah na login
-                window.location.href = "/login";
-                return;
-              }
             
               // Ako jeste ulogovan
               link.style.display = "flex";

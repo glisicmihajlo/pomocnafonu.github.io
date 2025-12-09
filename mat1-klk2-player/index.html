@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="sr" data-wf-page="66bcb71d6dcf9dfb97263376" data-wf-site="66bcb71d6dcf9dfb97263375" class=" w-mod-js w-mod-ix">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-C5JCE202MQ');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OIKT - Prvi kolokvijum</title>
+    <style>
+        /* General body styling for dark theme */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            padding-top: 80px;
+        }
+
+        /* Header styling */
+        header {
+            color: #ffffff; /* White text */
+            padding: 20px 25px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Container layout */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+        }
+
+        /* Navigation panel */
+        nav {
+            width: 250px;
+            background: #2c2c2c; /* Slightly lighter dark background */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation list */
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li:hover,
+        nav ul li.active {
+            background: #1e90ff; /* Bright blue on hover or active */
+            color: #ffffff;
+        }
+
+        /* Main content styling */
+        main {
+            flex: 1;
+            background: #1f1f1f; /* Dark background for main section */
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the iframe player */
+        iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+            border-radius: 6px;
+            position: relative; /* Added to ensure it's correctly layered */
+        }
+
+        /* Dodajemo maksimalnu visinu i omogućavamo skrolovanje */
+#lesson-list {
+    max-height: 400px; /* Postavlja maksimalnu visinu */
+    overflow-y: auto;  /* Omogućava vertikalno skrolovanje */
+}
+
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            main {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 22px;
+                padding: 15px 20px;
+            }
+
+            nav ul li {
+                padding: 12px;
+            }
+
+            iframe {
+                height: 300px;
+            }
+
+            #lesson-list {
+        max-height: 250px;  /* Manja visina za telefone */
+    }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 18px;
+                padding: 10px 15px;
+            }
+
+            nav {
+                padding: 15px;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+    <link href="../index_files/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../index_files/webflow.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../index_files/alertify.min.css">
+    <link rel="stylesheet" href="../index_files/default.min.css">
+    <link rel="stylesheet" href="../index_files/swiper-bundle.min.css">
+    <link href="../index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        .wf-force-outline-none[tabindex="-1"]:focus {
+            outline: none;
+        }
+    </style>
+
+    <!-- posthog -->
+    <script>
+        ! function(t, e) {
+            var o, n, p, r;
+            e.__SV || (window.posthog = e, e._i = [], e.init = function(i, s, a) {
+                function g(t, e) {
+                    var o = e.split(".");
+                    2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function() {
+                        t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                    }
+                }(p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
+                var u = e;
+                for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function(t) {
+                        var e = "posthog";
+                        return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
+                    }, u.people.toString = function() {
+                        return u.toString(1) + ".people (stub)"
+                    }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "), n = 0; n < o.length; n++) g(u, o[n]);
+                e._i.push([i, s, a])
+            }, e.__SV = 1)
+        }(document, window.posthog || []);
+        posthog.init('phc_djGBH65JGJA0hIlfk4cuZFw962pu1e90oVbnIYieTkQ', {
+            api_host: 'https://app.posthog.com'
+        })
+    </script>
+    <!-- End posthog -->
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Pomoć na fonu",
+            "url": "https://www.pomocnafonu.com/",
+            "logo": "http://pomocnafonu.com/images/logo.png",
+        }
+    </script>
+
+    <link rel="alternate" href="https://www.pomocnafonu.com/" hreflang="x-default">
+
+
+    <title>Pomoć na fonu</title>
+    <meta name="description" content="Online kursevi za FON - Fakultet organizacionih nauka. Pripremi se za ispite sa kvalitetnim materijalima, video lekcijama i iskusnim predavačima. Uspeh na fakultetu garantovan!">
+
+    <meta content="Naučićemo te kako da položiš svaki ispit." name="description">
+
+    <meta content="Pomoć na fonu" property="og:title">
+    <meta content="Naučićemo te kako da položiš svaki ispit." property="og:description">
+    <meta content="http://pomocnafonu.com/images/logo2.png" property="og:image">
+
+    <meta content="Pomoć na fonu" property="twitter:title">
+    <meta content="Naučićemo te kako da položiš svaki ispit." property="twitter:description">
+    <meta content="http://pomocnafonu.com/images/logo.png" property="twitter:image">
+
+    <meta property="og:type" content="website">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <link rel="canonical" href="https://www.pomocnafonu.com/">
+
+    <link href="../index_files/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../index_files/webflow.css" rel="stylesheet" type="text/css">
+    <link href="../index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
+    <style>
+        @media (min-width:992px) {
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="05e3b2af-163e-7c08-96b8-5be167bc4bd3"] {
+                opacity: 0;
+            }
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width:991px) and (min-width:768px) {
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width:767px) and (min-width:480px) {
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width:479px) {
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="05ac9bb2-ebba-f655-ed33-f308425d9cef"] {
+                opacity: 0;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="http://www.pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="http://www.pomocnafonu.com/http://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="../index_files/swiper-bundle.min.css">
+
+    <script async="" src="../index_files/cmsload.js.download"></script>
+
+    <script src="../index_files/alertify.min.js.download"></script>
+    <link rel="stylesheet" href="../index_files/alertify.min.css">
+    <link rel="stylesheet" href="../index_files/default.min.css">
+    <style>
+        .alertify-notifier .ajs-message.ajs-visible {
+            padding: 0 !important;
+        }
+        
+        .alertify-notifier .ajs-message {
+            background-color: transparent !important;
+            border: none !important;
+        }
+        
+        .purchase-popup {
+            position: relative;
+            z-index: 999;
+            max-width: 80vw;
+            width: 500px;
+            padding: 10px 50px 10px 15px;
+            background-color: #fff;
+            border-radius: 0 15px 15px 0;
+            color: #000 !important;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
+            align-content: center;
+        }
+        
+        .purchase-popup strong {
+            color: #000 !important;
+        }
+        
+        .purchase-popup svg {
+            position: absolute;
+            content: '';
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .purchase-popup img {
+            position: absolute;
+            content: '';
+            top: calc(50% - 35px);
+            right: -35px;
+            width: 70px;
+            height: 70px;
+        }
+        
+        .purchase-popup p {
+            font-size: 16px;
+            line-height: 130%;
+            margin: 0;
+            color: #000;
+            text-align: start;
+        }
+    </style>
+    <script type="text/javascript" async="" src="../index_files/f.txt"></script>
+    <script type="text/javascript" async="" src="../index_files/f(1).txt"></script>
+</head>
+
+<body>
+    <header>
+        
+        <h2>Matematika 1 - drugi kolokvijum</h2></header>
+
+    <div class="container">
+        <div data-w-id="4c368e8d-a43a-8186-8801-2072eead6904" class="navigation" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+            <div class="padding-global">
+                <div class="container-large">
+                    <div class="navbar_content">
+                        <div class="navbar_left-2">
+                            <div na="" data-w-id="146195b1-9eba-678e-5613-a0d933b6a5d2" class="menu-2">
+                                <div class="div-block-30">
+                                    <div data-is-ix2-target="1" class="lottie_menu-2" data-w-id="146195b1-9eba-678e-5613-a0d933b6a5d3" data-animation-type="lottie" data-src="https://uploads-ssl.webflow.com/658aa86f8b81cf31cef70c34/658aa86f8b81cf31cef70c5c_lottie-menu.json" data-loop="0"
+                                        data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.875" data-duration="2.875" data-ix2-initial-state="0"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 633 509" width="633" height="509" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clippath id="__lottie_element_5"><rect width="633" height="509" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_5)"><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,-190.56900024414062 C-284.8949890136719,-190.56900024414062 -217.76600646972656,-190.56900024414062 -217.76600646972656,-190.56900024414062 C-217.76600646972656,-190.56900024414062 1.4550000429153442,-190.56900024414062 1.4550000429153442,-190.56900024414062 C1.4550000429153442,-190.56900024414062 217.61199951171875,-190.56900024414062 217.61199951171875,-190.56900024414062 C217.61199951171875,-190.56900024414062 285.07598876953125,-190.56900024414062 285.07598876953125,-190.56900024414062"></path></g></g><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,190.56900024414062 C-284.8949890136719,190.56900024414062 -219.64500427246094,190.56900024414062 -219.64500427246094,190.56900024414062 C-219.64500427246094,190.56900024414062 -0.04500000178813934,190.56900024414062 -0.04500000178813934,190.56900024414062 C-0.04500000178813934,190.56900024414062 215.71299743652344,190.56900024414062 215.71299743652344,190.56900024414062 C215.71299743652344,190.56900024414062 285.07598876953125,190.56900024414062 285.07598876953125,190.56900024414062"></path></g></g><g transform="matrix(1,0,0,1,298,256)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,248,240)" stroke-opacity="1" stroke-width="20" d=" M-284.8949890136719,0.041999999433755875 C-284.8949890136719,0.041999999433755875 285.07598876953125,0.041999999433755875 285.07598876953125,0.041999999433755875"></path></g></g></g></svg></div>
+                                    <div class="text-block-2">Meni</div>
+                                </div>
+                            </div>
+                            <div class="nav_menu-2" style="display: none; opacity: 0; transform: translate3d(-20%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                                <div class="menu_link-2">
+                                    <a href="/" class="menu_link-2-text lp-link">Početna</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/materijali" class="menu_link-2-text lp-link">Materijali</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/kursevi" class="menu_link-2-text lp-link">Kursevi</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>
+                                </div>
+                                <div class="menu_link-2">
+                                    <a href="/#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul id="lesson-list">
+                <li class="active" data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232HUYxR74sHMUy2GJK3F483jmiPSXmypm2QRHOMqPlDTUos&playbackInfo=eyJ2aWRlb0lkIjoiOGI4NzYxNWJlYzYyNGUyZmE2ZjNmNWVhOTJkY2E1N2MifQ==">Nizovi - Zadatak 1</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232AG9QUIE9Qk4XJJpdeaagm2lZQucIHBkLBq7sIDOgPCiQl&playbackInfo=eyJ2aWRlb0lkIjoiNWMwOTdjNWM0OTE4NGU0M2JlOTk3YmVlMDYyN2FhNGQifQ==">Nizovi - Zadatak 2</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232sjps2uwmndwrUqXUBSMgghyWV9Jm4jVXW6e8BYR402OY2&playbackInfo=eyJ2aWRlb0lkIjoiYjI1NGQzNDMyY2M4NDZlNmI5ZTBlMzY0MDk0ZmFjOGIifQ==">Nizovi - Zadatak 3</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232Wu2R8BHCMRFydihnsHDHwT7UbBdaUbAc6ANLV6vCOKOJS&playbackInfo=eyJ2aWRlb0lkIjoiZDQ4YmE5YWFmZGRmNDU1NGFlNWNkYTI2ZGE2MjIyYmIifQ==">Nizovi - Zadatak 4</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232usaFFMPV7N47vEE19f0bVeylqTzwGcUTWvqHJciksP7R8&playbackInfo=eyJ2aWRlb0lkIjoiNjgzNDBkNjQ5ZmE3NDI3NjkyYjk5ZWQzMGM3MWE4ZTYifQ==">Nizovi - Zadatak 5</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232bUTFsiKK2KJlJr5uzP8tlf0l9UPsiQWBvbq77TC4jSBAp&playbackInfo=eyJ2aWRlb0lkIjoiNmE1ZDk0YTczNmM4NGIyNDhjNWMwNWZjOTg0YjM2NmMifQ==">Nizovi - Zadatak 6</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232dGBUyHBcvE74ANR8ShXAiPVWkbtjQV0hm42ZTKabmmxMo&playbackInfo=eyJ2aWRlb0lkIjoiOTVmMjIzZjgwNDBlNDBjNzhjNmIwNWRkMjJhZGFiN2IifQ==">Nizovi - Zadatak 7</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE32327snyxW58iHgNZCLNh3BYVMOm6EplJRcgrrQlvbqhk0CBr&playbackInfo=eyJ2aWRlb0lkIjoiMzFhM2U2YjQ5NWNhNDdjYTk4NzNlMDMyNmQyNDYzNmEifQ==">Tačke Nagomilavanja - Uvod</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE32325xPqvnmG94zU7kyFzA9HnQtkOdZN1fesBAph53GPvwXS3&playbackInfo=eyJ2aWRlb0lkIjoiN2YwMmI3YmM4ZWZlNGU3Yjk4MzZmOGRkNTBmMDU0NWIifQ==">Tačke Nagomilavanja - Zadatak 1</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232wY8C9V6NRmVL69SKZGeNoC9y1U69hVh263nfcTEja2LAc&playbackInfo=eyJ2aWRlb0lkIjoiZmFmMmRlNDJmOTJhNDQ5MDkxNzg5ZWMzODA1Y2M4ZjMifQ==">Tačke Nagomilavanja - Zadatak 2</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232w1XNrqk8rSBNlwZRXFS5SBAp1sbgMtKIlAuLWwWnOdGKF&playbackInfo=eyJ2aWRlb0lkIjoiM2M5YWVjMzBiOWJjNDk2Nzk4ZjFhZDAzMmQyNmRiNWEifQ==">Tačke Nagomilavanja - Zadatak 3</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232IfZjojlhw0MMhpY8SSQisuGjZnIu76ralOr5D4eUZmaXB&playbackInfo=eyJ2aWRlb0lkIjoiM2U5MDVkZWE2ZjFkNDIyMTlkOTU3NjFiMWQyZTRkMjYifQ==">Tačke Nagomilavanja - Zadatak 4</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE32327OJDTk3fnsxDeha7XwZVnC1xO8zLf4DfqcQiVlUOZQ2wJ&playbackInfo=eyJ2aWRlb0lkIjoiODUwM2JlMDM5YzVhNDI5M2I2MGJmMWI0OGQzODgyYzUifQ==">Tačke Nagomilavanja - Zadatak 5</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE323263kz4mwEBhJa0VUBJxQQafyxHpE0j9oBsMBIaFM4d0ZeI&playbackInfo=eyJ2aWRlb0lkIjoiNzVhZTFmNThjZWMzNDJiYzgzODY1MDY4NDc5ZWVjM2EifQ==">Funkcije - Uvod</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232AVkcZhSl1hGYQiMW9UoKPWlnqHvu209xpkjZy3PBFcAng&playbackInfo=eyJ2aWRlb0lkIjoiYTRhNzhhMDljMTkwNDYzZWEwMmVmMDY2YjRkODA1YmIifQ==">Funkcije - Zadatak 1</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232fZ6gf7HRPfvuaEZ323A37GEf249vGTcY56MNehA4TZnxJ&playbackInfo=eyJ2aWRlb0lkIjoiMjY4NzY2YzgyZjZmNDJiY2I0ZWIxNmM3MWIwOGVkOGYifQ==">Maklorenov Polinom - Uvod</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232lnmXgDb8AWMw2HfvsqtxQy2qiaP4gaFSqc9tft8xWQCBK&playbackInfo=eyJ2aWRlb0lkIjoiYTU3ODg1ZmZhYWI4NDk0NWI0Y2JlNjllNWM2OGI2MDEifQ==">Maklorenov Polinom - Zadatak 1</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232HHmXzGTpQi0IHSXweNawbjDLy6d91eiIeaTMvGTFKByiE&playbackInfo=eyJ2aWRlb0lkIjoiNTQzYjJkMGMzY2RkNDBiOWI4ZGQ0YjRlYWY4OTc3NTAifQ==">Maklorenov Polinom - Zadatak 2</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232Zq0H1qRFqmt0nQOJ6q2toofCDRe01QAY9srliFAaCwSnU&playbackInfo=eyJ2aWRlb0lkIjoiMGU4NGIzNjI0MWExNDE0M2JhMmYxNzNjNWQ3NmQzOTEifQ==">Maklorenov Polinom - Zadatak 3</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232sQeONYXOCDrKrJgW4adWLsvbEnLQnTq2oeRn45QQKQFa6&playbackInfo=eyJ2aWRlb0lkIjoiNTc2NDc4OTI4MDUyNDZiN2I1YWI3ZTllOWE5Yzc2MTIifQ==">Tejlorov Polinom - Uvod</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE3232MobOdc6OHeMNCFx6L1NhAgHf93BYz4QQ5U278feMEVobR&playbackInfo=eyJ2aWRlb0lkIjoiM2M1NzYyZjY1YTljNDE4YWJmZmNlYjExZDYyZWNiNjYifQ==">Tejlorov Polinom - Zadatak 1</li>
+                <li data-iframe="https://player.vdocipher.com/v2/?otp=20160313versUSE32328PbQpEsQXF8juIPnPJEIJCO200R8kXV5WI461inze4BzF&playbackInfo=eyJ2aWRlb0lkIjoiNTYzOWZiZGNjYjU3NDlkZWE2YjQ2NmNiNmMwZjZkNTcifQ==">Tejlorov Polinom - Zadatak 2</li>
+            </ul>
+        </nav>
+
+        <main>
+            <iframe id="video-player" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"
+          allow="encrypted-media" style="width:100%; height:360px; border:none; border-radius:6px;"></iframe>
+        </main>
+    </div>
+
+    <script>
+        // Logovanje vrednosti kada se kurs menja
+        const lessonList = document.getElementById('lesson-list');
+const iframe = document.getElementById('video-player');
+
+// Funkcija za menjanje videa
+function loadVideo(url) {
+  // Uklanja prethodni video tako što resetuje src
+  iframe.src = ""; 
+  // Mala pauza (nije obavezno) da browser očisti prethodno učitavanje
+  setTimeout(() => {
+    iframe.src = url;
+  }, 50);
+}
+
+lessonList.addEventListener('click', function(e) {
+  if (e.target.tagName === 'LI') {
+    // ukloni active class sa svih lekcija
+    lessonList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+    e.target.classList.add('active');
+
+    // Učitaj video samo kliknutog li
+    const videoURL = e.target.dataset.iframe;
+    loadVideo(videoURL);
+  }
+});
+
+// Opcionalno: automatski učitaj prvu lekciju kada stranica učita
+const firstLesson = lessonList.querySelector('li.active') || lessonList.querySelector('li');
+if (firstLesson) {
+  loadVideo(firstLesson.dataset.iframe);
+}
+
+    </script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    
+    // Firebase konfiguracija
+    const firebaseConfig = {
+        apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+        authDomain: "pomoc-na-fonu.firebaseapp.com",
+        projectId: "pomoc-na-fonu",
+        storageBucket: "pomoc-na-fonu.appspot.com",
+        messagingSenderId: "947001381183",
+        appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+        measurementId: "G-768582D9M9"
+    };
+    
+    // Inicijalizacija Firebase-a
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    
+    let inactivityTimeout;
+    const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minuta
+    
+    // Funkcija za resetovanje tajmera neaktivnosti
+    function resetInactivityTimer(userToken) {
+        clearTimeout(inactivityTimeout);
+        inactivityTimeout = setTimeout(async () => {
+            alert("Izbačeni ste zbog neaktivnosti. Morate se ponovo prijaviti.");
+            await signOut(auth);
+            window.location.href = "/login";
+        }, INACTIVITY_LIMIT);
+    
+        document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(userToken);
+    }
+    
+    // Generisanje sesion tokena
+    function generateSessionToken() {
+        return Math.random().toString(36).substring(2) + Date.now().toString(36);
+    }
+    
+    // Funkcija za jedinstvenu sesiju po korisniku
+    async function setupSingleDevice(user) {
+        const userRef = doc(db, "users", user.uid);
+        const sessionToken = generateSessionToken();
+    
+        await setDoc(userRef, { sessionToken }, { merge: true });
+    
+        onSnapshot(userRef, (docSnap) => {
+            const data = docSnap.data();
+            if (!data) return;
+            if (data.sessionToken !== sessionToken) {
+                alert("Prijavljeni ste preko drugog uređaja.");
+                signOut(auth);
+                window.location.href = "/login";
+            }
+        });
+    
+        return sessionToken;
+    }
+    
+    // Provera pristupa kursu
+    async function checkCourseAccess(user, courseId) {
+        try {
+            const userRef = doc(db, "users", user.uid);
+            const userSnap = await getDoc(userRef);
+            const kursevi = userSnap.data()?.kursevi || [];
+    
+            if (!kursevi.includes(courseId)) {
+                alert("Nemate pristup ovom kursu. Bićete preusmereni.");
+                window.location.href = "/mat1";
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error("Greška pri proveri kursa:", error);
+            window.location.href = "/";
+            return false;
+        }
+    }
+    
+    // Glavna provera stanja korisnika
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const token = await setupSingleDevice(user);
+            resetInactivityTimer(token);
+    
+            // Provera pristupa kursu Mat1
+            await checkCourseAccess(user, "mat1-klk1");
+    
+        } else {
+            window.location.href = "/login"; // nije ulogovan
+        }
+    });
+    </script>
+    
+  
+
+
+</body>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Pomoć na fonu",
+        "url": "https://www.pomocnafonu.com/",
+        "logo": "http://pomocnafonu.com/images/logo.png"
+    }
+</script>
+<script src="../index_files/jquery-3.5.1.min.dc5e7f18c8.js.download" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="../index_files/webflow.js.download" type="text/javascript"></script>
+<script src="../index_files/swiper-bundle.min.js.download"></script>
+<!--  [Attributes by Finsweet] CMS Load  -->
+<script async="" src="../index_files/cmsload.js.download"></script>
+<script src="../index_files/sdk.latest.js.download"></script>
+<script>
+    (function() {
+        function c() {
+            var b = a.contentDocument || a.contentWindow.document;
+            if (b) {
+                var d = b.createElement('script');
+                d.innerHTML = "window.__CF$cv$params={r:'8c5aae903ae52798',t:'MTcyNjc2MDUwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                b.getElementsByTagName('head')[0].appendChild(d)
+            }
+        }
+        if (document.body) {
+            var a = document.createElement('iframe');
+            a.height = 1;
+            a.width = 1;
+            a.style.position = 'absolute';
+            a.style.top = 0;
+            a.style.left = 0;
+            a.style.border = 'none';
+            a.style.visibility = 'hidden';
+            document.body.appendChild(a);
+            if ('loading' !== document.readyState) c();
+            else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+            else {
+                var e = document.onreadystatechange || function() {};
+                document.onreadystatechange = function(b) {
+                    e(b);
+                    'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                }
+            }
+        }
+    })();
+</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="../index_files/saved_resource.html"></iframe>
+<script defer="" src="../index_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8c5aae903ae52798&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;9b6fd5d2c9614472b02feae860f0684f&quot;}"
+    crossorigin="anonymous"></script><iframe allow="join-ad-interest-group" data-tagging-id="AW-11318434383" data-load-time="1726760507175" height="0" width="0" src="../index_files/11318434383.html" style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group"
+    data-tagging-id="AW-16695797419" data-load-time="1726760507191" height="0" width="0" src="../index_files/16695797419.html" style="display: none; visibility: hidden;"></iframe>
+
+<iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;"
+    aria-hidden="true" tabindex="-1" title="Intercom" src="../index_files/saved_resource(1).html"></iframe>
+
+</html>

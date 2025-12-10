@@ -704,7 +704,7 @@ a,
             const authBtnText = document.getElementById("authBtnText");
           
             // Default: sakrij kupljene kurseve
-            link.style.display = "none";
+            link.parentElement.style.display = "none";
           
             // Napravimo samo JEDAN listener za dugme
             authBtn.addEventListener("click", async () => {

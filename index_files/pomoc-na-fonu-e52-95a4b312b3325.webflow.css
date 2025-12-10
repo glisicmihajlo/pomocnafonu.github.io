@@ -124,7 +124,7 @@ h2 {
     text-align: center;
     text-transform: uppercase;
     -webkit-text-fill-color: transparent;
-    background-image: url('http://www.pomocnafonu.com/images/textBackground.webp'), linear-gradient(125deg, #fff 85%, #fff0);
+    background-image: url('https://www.pomocnafonu.com/images/textBackground.webp'), linear-gradient(125deg, #fff 85%, #fff0);
     background-position: 0 0, 0 0;
     background-size: auto, auto;
     -webkit-background-clip: text;
@@ -3153,7 +3153,7 @@ figcaption {
     background-color: var(--white);
     text-transform: uppercase;
     -webkit-text-fill-color: transparent;
-    background-image: url('http://www.pomocnafonu.com/images/textBackground.webp');
+    background-image: url('https://www.pomocnafonu.com/images/textBackground.webp');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;

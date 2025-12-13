@@ -509,21 +509,6 @@ if (firstLesson) {
     const auth = getAuth(app);
     const db = getFirestore(app);
     
-    let inactivityTimeout;
-    const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minuta
-    
-    // Funkcija za resetovanje tajmera neaktivnosti
-    function resetInactivityTimer(userToken) {
-        clearTimeout(inactivityTimeout);
-        inactivityTimeout = setTimeout(async () => {
-            alert("Izbačeni ste zbog neaktivnosti. Morate se ponovo prijaviti.");
-            await signOut(auth);
-            window.location.href = "/login";
-        }, INACTIVITY_LIMIT);
-    
-        document.onmousemove = document.onkeydown = document.onclick = () => resetInactivityTimer(userToken);
-    }
-    
     // Generisanje sesion tokena
     function generateSessionToken() {
         return Math.random().toString(36).substring(2) + Date.now().toString(36);

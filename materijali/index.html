@@ -946,9 +946,6 @@ a,
                 const authBtn = document.getElementById("authBtn");
                 const authBtnText = document.getElementById("authBtnText");
                 
-                let inactivityTimeout;
-                const INACTIVITY_LIMIT =  10 * 60 * 1000; // 10 minuta
-                
                 // Funkcije za dodavanje/uklanjanje linka
                 function addPurchasedLink() {
                   if (!document.getElementById("kupljeniKurseviLink")) {
@@ -972,13 +969,11 @@ a,
                     authBtn.href = "javascript:void(0)";
                 
                     await setupSingleDevice(user);
-                    resetInactivityTimer(user);
                 
                   } else {
                     removePurchasedLink();
                     authBtnText.textContent = "PRIJAVI SE";
                     authBtn.href = "/login";
-                    clearTimeout(inactivityTimeout);
                   }
                 });
 </script>

@@ -558,7 +558,6 @@ if (firstLesson) {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             const token = await setupSingleDevice(user);
-            resetInactivityTimer(token);
     
             // Provera pristupa kursu OIKT
             await checkCourseAccess(user, "oikt-klk1");

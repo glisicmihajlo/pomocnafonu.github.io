@@ -1364,13 +1364,11 @@ a,
                     authBtn.href = "javascript:void(0)";
                 
                     await setupSingleDevice(user);
-                    resetInactivityTimer(user);
                 
                   } else {
                     removePurchasedLink();
                     authBtnText.textContent = "PRIJAVI SE";
                     authBtn.href = "/login";
-                    clearTimeout(inactivityTimeout);
                   }
                 });
                 </script>

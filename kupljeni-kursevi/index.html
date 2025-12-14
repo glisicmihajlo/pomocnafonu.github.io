@@ -699,7 +699,6 @@ a,
               authBtn.href = "javascript:void(0)";
             
               const token = await setupSingleDevice(user);
-              resetInactivityTimer(token);
             
               // Prikaz kupljenih kurseva
               const userRef = doc(db, "users", user.uid);

@@ -531,7 +531,6 @@ if (firstLesson) {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             const token = await setupSingleDevice(user);
-            resetInactivityTimer(token);
     
             // Provera pristupa kursu Mat1
             await checkCourseAccess(user, "mat1-klk1");

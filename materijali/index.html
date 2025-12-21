@@ -966,7 +966,11 @@ a,
 
                 async function setupMaxTwoDevices(user) {
                     const userRef = doc(db, "users", user.uid);
-                    const sessionToken = generateSessionToken();
+                    let sessionToken = localStorage.getItem("sessionToken");
+                    if (!sessionToken) {
+                        sessionToken = generateSessionToken();
+                        localStorage.setItem("sessionToken", sessionToken);
+                    }
 
                     const snap = await getDoc(userRef);
                     let sessionTokens = [];

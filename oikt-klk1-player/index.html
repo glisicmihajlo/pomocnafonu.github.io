@@ -515,24 +515,47 @@ if (firstLesson) {
     }
     
     // Funkcija za jedinstvenu sesiju po korisniku
-    async function setupSingleDevice(user) {
-        const userRef = doc(db, "users", user.uid);
-        const sessionToken = generateSessionToken();
-    
-        await setDoc(userRef, { sessionToken }, { merge: true });
-    
-        onSnapshot(userRef, (docSnap) => {
-            const data = docSnap.data();
-            if (!data) return;
-            if (data.sessionToken !== sessionToken) {
-                alert("Prijavljeni ste preko drugog uređaja.");
-                signOut(auth);
-                window.location.href = "/login";
-            }
-        });
-    
-        return sessionToken;
-    }
+    async function setupMaxTwoDevices(user) {
+                    const userRef = doc(db, "users", user.uid);
+                    const sessionToken = generateSessionToken();
+
+                    const snap = await getDoc(userRef);
+                    let sessionTokens = [];
+
+                    if (snap.exists() && Array.isArray(snap.data().sessionTokens)) {
+                        sessionTokens = snap.data().sessionTokens;
+                    }
+
+                    // Ako token već postoji (reload stranice)
+                    if (sessionTokens.includes(sessionToken)) {
+                        return;
+                    }
+
+                    // Ako ima već 2 uređaja → zabrani
+                    if (sessionTokens.length >= 2) {
+                        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.");
+                        await signOut(auth);
+                        window.location.href = "/login";
+                        return;
+                    }
+
+                    // Dodaj novi uređaj
+                    sessionTokens.push(sessionToken);
+
+                    await setDoc(userRef, { sessionTokens }, { merge: true });
+
+                    // Slušaj promene – ako ti ručno ukloniš token
+                    onSnapshot(userRef, (docSnap) => {
+                        const data = docSnap.data();
+                        if (!data || !Array.isArray(data.sessionTokens)) return;
+
+                        if (!data.sessionTokens.includes(sessionToken)) {
+                        alert("Pristup ovom uređaju je uklonjen.");
+                        signOut(auth);
+                        window.location.href = "/login";
+                        }
+                    });
+                }
     
     // Provera pristupa kursu
     async function checkCourseAccess(user, courseId) {
@@ -557,7 +580,7 @@ if (firstLesson) {
     // Glavna provera stanja korisnika
     onAuthStateChanged(auth, async (user) => {
         if (user) {
-            const token = await setupSingleDevice(user);
+            const token = await setupMaxTwoDevices(user);
     
             // Provera pristupa kursu OIKT
             await checkCourseAccess(user, "oikt-klk1");

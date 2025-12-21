@@ -1334,27 +1334,6 @@ a,
                 function generateSessionToken() {
                   return Math.random().toString(36).substring(2) + Date.now().toString(36);
                 }
-                
-                // Proverava i ažurira token sesije u Firestore-u
-                async function setupSingleDevice(user) {
-                  const userRef = doc(db, "users", user.uid);
-                  const sessionToken = generateSessionToken();
-                
-                  // Postavi ili osveži token u bazi
-                  await setDoc(userRef, { sessionToken }, { merge: true });
-                
-                  // Slušaj promene na korisniku
-                  onSnapshot(userRef, (docSnap) => {
-                    const data = docSnap.data();
-                    if (!data) return;
-                
-                    if (data.sessionToken !== sessionToken) {
-                      alert("Prijavljeni ste preko drugog uređaja.");
-                      signOut(auth);
-                      window.location.href = "/login";
-                    }
-                  });
-                }
 
                 async function setupMaxTwoDevices(user) {
                     const userRef = doc(db, "users", user.uid);

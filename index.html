@@ -1336,24 +1336,46 @@ a,
                 }
                 
                 // Proverava i ažurira token sesije u Firestore-u
-                async function setupSingleDevice(user) {
-                  const userRef = doc(db, "users", user.uid);
-                  const sessionToken = generateSessionToken();
-                
-                  // Postavi ili osveži token u bazi
-                  await setDoc(userRef, { sessionToken }, { merge: true });
-                
-                  // Slušaj promene na korisniku
-                  onSnapshot(userRef, (docSnap) => {
-                    const data = docSnap.data();
-                    if (!data) return;
-                
-                    if (data.sessionToken !== sessionToken) {
-                      alert("Prijavljeni ste preko drugog uređaja.");
-                      signOut(auth);
-                      window.location.href = "/login";
+                async function setupMaxTwoDevices(user) {
+                    const userRef = doc(db, "users", user.uid);
+                    const sessionToken = generateSessionToken();
+
+                    const snap = await getDoc(userRef);
+                    let sessionTokens = [];
+
+                    if (snap.exists() && Array.isArray(snap.data().sessionTokens)) {
+                        sessionTokens = snap.data().sessionTokens;
                     }
-                  });
+
+                    // Ako token već postoji (reload stranice)
+                    if (sessionTokens.includes(sessionToken)) {
+                        return;
+                    }
+
+                    // Ako ima već 2 uređaja → zabrani
+                    if (sessionTokens.length >= 2) {
+                        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.");
+                        await signOut(auth);
+                        window.location.href = "/login";
+                        return;
+                    }
+
+                    // Dodaj novi uređaj
+                    sessionTokens.push(sessionToken);
+
+                    await setDoc(userRef, { sessionTokens }, { merge: true });
+
+                    // Slušaj promene – ako ti ručno ukloniš token
+                    onSnapshot(userRef, (docSnap) => {
+                        const data = docSnap.data();
+                        if (!data || !Array.isArray(data.sessionTokens)) return;
+
+                        if (!data.sessionTokens.includes(sessionToken)) {
+                        alert("Pristup ovom uređaju je uklonjen.");
+                        signOut(auth);
+                        window.location.href = "/login";
+                        }
+                    });
                 }
                 
                 // Reaguje na promenu stanja ulogovanosti
@@ -1363,7 +1385,7 @@ a,
                     authBtnText.textContent = "ODJAVI SE";
                     authBtn.href = "javascript:void(0)";
                 
-                    await setupSingleDevice(user);
+                    await setupMaxTwoDevices(user);
                 
                   } else {
                     removePurchasedLink();

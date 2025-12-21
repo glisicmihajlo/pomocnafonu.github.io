@@ -1356,6 +1356,52 @@ a,
                   });
                 }
 
+                async function setupSingleActiveDevice(user, maxDevices = 2) {
+  const userRef = doc(db, "users", user.uid);
+  const sessionToken = generateSessionToken();
+
+  const snap = await getDoc(userRef);
+  let sessionTokens = [];
+
+  if (snap.exists() && Array.isArray(snap.data().sessionTokens)) {
+    sessionTokens = snap.data().sessionTokens;
+  }
+
+  // Ako je token vec u nizu → samo update token i nastavi
+  if (sessionTokens.includes(sessionToken)) {
+    // Token vec postoji, znači refresho si stranicu ili isti uređaj
+  } else {
+    // Novi uređaj
+    if (sessionTokens.length >= maxDevices) {
+      alert(
+        "Dostignut je maksimalan broj uređaja za ovaj nalog (" +
+          maxDevices +
+          "). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja."
+      );
+      await signOut(auth);
+      window.location.href = "/login";
+      return;
+    }
+    sessionTokens.push(sessionToken);
+  }
+
+  // Sada je ovo **jedini aktivni token** u Firestore-u
+  await setDoc(userRef, { sessionTokens: [sessionToken] }, { merge: true });
+
+  // Slušaj promene Firestore-a – ako token više nije u nizu → logout
+  onSnapshot(userRef, (docSnap) => {
+    const data = docSnap.data();
+    if (!data || !Array.isArray(data.sessionTokens)) return;
+
+    if (!data.sessionTokens.includes(sessionToken)) {
+      alert("Pristup ovom uređaju je uklonjen ili je neko drugi ulogovan.");
+      signOut(auth);
+      window.location.href = "/login";
+    }
+  });
+}
+
+
                 async function setupMaxTwoDevices(user) {
                     const userRef = doc(db, "users", user.uid);
                     const sessionToken = generateSessionToken();
@@ -1374,7 +1420,7 @@ a,
 
                     // Ako ima već 2 uređaja → zabrani
                     if (sessionTokens.length >= 2) {
-                        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2).");
+                        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.");
                         await signOut(auth);
                         window.location.href = "/login";
                         return;
@@ -1406,7 +1452,7 @@ a,
                     authBtnText.textContent = "ODJAVI SE";
                     authBtn.href = "javascript:void(0)";
                 
-                    await setupMaxTwoDevices(user);
+                    await setupSingleActiveDevice(user);
                 
                   } else {
                     removePurchasedLink();

@@ -3,45 +3,22 @@
 
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-C5JCE202MQ');
-</script>
-
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style>
         .wf-force-outline-none[tabindex="-1"]:focus {
             outline: none;
         }
     </style>
-    <!-- Google Tag Manager -->
-    <script type="text/javascript" async="" src="../index_files/z3s8zv7r"></script>
-    <script type="text/javascript" async="" src="../index_files/js"></script>
-    <script type="text/javascript" async="" src="../index_files/array.js.download"></script>
-    <script async="" src="../index_files/gtm.js.download"></script>
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-TZ7PQM7J');
-    </script>
-    <!-- End Google Tag Manager -->
 
     <!-- posthog -->
     <script>
@@ -78,7 +55,6 @@
             "name": "Pomoć na fonu",
             "url": "https://www.pomocnafonu.com/",
             "logo": "https://pomocnafonu.com/images/logo.png",
-            "sameAs": "https://twitter.com/TRW_global"
         }
     </script>
 
@@ -86,6 +62,8 @@
 
 
     <title>Pomoć na fonu</title>
+    <meta name="description" content="Online kursevi za FON - Fakultet organizacionih nauka. Pripremi se za ispite sa kvalitetnim materijalima, video lekcijama i iskusnim predavačima. Uspeh na fakultetu garantovan!">
+
     <meta content="Naučićemo te kako da položiš svaki ispit." name="description">
 
     <meta content="Pomoć na fonu" property="og:title">
@@ -102,9 +80,9 @@
 
     <link rel="canonical" href="https://www.pomocnafonu.com/">
 
-    <link href="../index_files/normalize.css" rel="stylesheet" type="text/css">
-    <link href="../index_files/webflow.css" rel="stylesheet" type="text/css">
-    <link href="../index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
+    <link href="/index_files/normalize.css" rel="stylesheet" type="text/css">
+    <link href="/index_files/webflow.css" rel="stylesheet" type="text/css">
+    <link href="/index_files/pomoc-na-fonu-e52-95a4b312b3325.webflow.css" rel="stylesheet" type="text/css">
     <style>
         @media (min-width:992px) {
             html.w-mod-js:not(.w-mod-ix) [data-w-id="05e3b2af-163e-7c08-96b8-5be167bc4bd3"] {
@@ -142,13 +120,13 @@
     </script>
     <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
-    <link rel="stylesheet" href="../index_files/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/index_files/swiper-bundle.min.css">
 
-    <script async="" src="../index_files/cmsload.js.download"></script>
+    <script async="" src="/index_files/cmsload.js.download"></script>
 
-    <script src="../index_files/alertify.min.js.download"></script>
-    <link rel="stylesheet" href="../index_files/alertify.min.css">
-    <link rel="stylesheet" href="../index_files/default.min.css">
+    <script src="/index_files/alertify.min.js.download"></script>
+    <link rel="stylesheet" href="/index_files/alertify.min.css">
+    <link rel="stylesheet" href="/index_files/default.min.css">
     <link rel="stylesheet" href="../99f0e583d07ed34f.css" data-precedence="next">
     <style>
         .alertify-notifier .ajs-message.ajs-visible {
@@ -211,8 +189,8 @@
             text-align: start;
         }
     </style>
-    <script type="text/javascript" async="" src="../index_files/f.txt"></script>
-    <script type="text/javascript" async="" src="../index_files/f(1).txt"></script>
+    <script type="text/javascript" async="" src="/index_files/f.txt"></script>
+    <script type="text/javascript" async="" src="/index_files/f(1).txt"></script>
 </head>
 
 <body>
@@ -392,94 +370,340 @@ a,
                 .main-wrapper {
                     overflow: clip;
                 }
-                /* Pretpostavljam da je ovo grid u kojem su tekst i slika */
                 
-                .understand_grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    /* tekst | slika na desktopu */
+                .herofeature {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                }
+                
+                .herofeaturebg {
+                    background-color: var(--background);
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    width: 256px;
+                    justify-content: center;
+                    border: 1px solid;
+                    border-image: linear-gradient(270deg, #999, #fff);
+                    border-image-slice: 1;
+                }
+                
+                .gap-4 {
+                    gap: 1rem;
+                }
+                
+                .herofeature .subtitle {
+                    font-family: var(--font-sans);
+                    font-size: 9.5px;
+                    font-weight: 700;
+                    letter-spacing: .17em;
+                    text-transform: uppercase;
+                }
+                
+                .herofeature .title {
+                    font-size: 22px;
+                    font-weight: 700;
+                    color: #fff;
+                    text-transform: uppercase;
+                }
+                
+                .gradient-text-2,
+                .texture-text {
+                    -webkit-text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                }
+                
+                .gradient-text-2 {
+                    background-image: linear-gradient(126deg, #ffcf23, #ff8d3a);
+                }
+                
+                .items-center {
+                    align-items: center;
+                }
+                
+                .flex-col {
+                    flex-direction: column;
+                }
+                
+                .w-full {
+                    width: 100%;
+                }
+                
+                .flex {
+                    display: flex;
+                }
+                
+                .mt-8 {
+                    margin-top: 2rem;
+                }
+                
+                .z-20 {
+                    z-index: 20;
+                }
+                
+                .relative {
+                    position: relative;
+                }
+                
+                .feature-container {
+                    width: 100%;
+                    padding: 0rem 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     gap: 2rem;
                 }
-                /* Responsive: na ekranima manjih od 768px, slika ide ispod teksta */
                 
-                @media screen and (max-width: 768px) {
-                    .understand_grid {
-                        display: flex;
-                        flex-direction: column;
-                        /* vertikalno */
+                .articles-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    width: 100%;
+                    max-width: 1200px;
+                }
+                
+                @media (min-width: 1024px) {
+                    .feature-container {
+                        padding: 0rem 6rem;
+                        padding-bottom: 2rem;
                     }
-                    .image_wrap {
-                        order: 2;
-                        /* dolazi posle teksta */
-                        width: 100%;
-                        margin-top: 1rem;
-                        /* razmak od teksta */
+                    .articles-wrapper {
+                        flex-direction: row;
+                        justify-content: space-between;
                     }
-                    .hide-tablet {
-                        display: block !important;
-                        /* prikaži ako je prethodno skriveno */
+                    .herofeature {
+                        flex: 1;
                     }
                 }
-                /* Stil za sliku u understand sekciji */
                 
-                .image_wrap {
-                    width: 100%;
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+                body {
+                    font-family: 'Inter', sans-serif;
+                    color: #fff;
+                    padding: 20px;
+                    margin: 0;
+                    transition: background 0.3s, color 0.3s;
+                }
+                
+                .container {
                     max-width: 500px;
-                    /* ograniči maksimalnu širinu */
-                    margin: 0 auto;
-                    /* centriraj */
-                    overflow: hidden;
+                    margin: auto;
+                    animation: fadeIn 0.8s ease-out;
+                    padding-top: 3rem;
+                    padding-bottom: 3rem;
+                }
+                
+                h1 {
+                    font-size: 2em;
+                    margin-bottom: 10px;
+                    text-align: center;
+                    align-items: center;
+                    max-width: none;
+                }
+                
+                p {
+                    font-size: 0.95em;
+                    color: #bbb;
+                    margin-bottom: 20px;
+                }
+                
+                .link-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 15px;
+                    margin: 12px 0;
                     border-radius: 12px;
-                    /* zaobljeni uglovi */
-                    /* blaga senka */
+                    text-decoration: none;
+                    font-weight: 600;
+                    color: white;
+                    background: rgba(255, 255, 255, 0.05);
+                    backdrop-filter: blur(8px);
+                    border: 2px solid transparent;
+                    transition: all 0.25s ease;
+                    opacity: 0;
+                    animation: slideUp 0.5s forwards;
                 }
                 
-                .image_wrap img {
-                    width: 100%;
-                    height: auto;
-                    object-fit: cover;
-                    display: block;
+                .link-btn i {
+                    font-size: 1.2em;
                 }
-                /* Responsive: manji ekrani */
                 
-                @media screen and (max-width: 768px) {
-                    .image_wrap {
-                        max-width: 100%;
-                        /* puni ekran ako treba */
-                        margin-top: 1.5rem;
+                .link-btn:hover {
+                    transform: translateY(-3px) scale(1.02);
+                    background: rgba(255, 255, 255, 0.1);
+                }
+                
+                .section-title {
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                    text-align: left;
+                    padding-left: 10px;
+                }
+                
+                .info {
+                    border-color: #888;
+                }
+                
+                .info-title {
+                    color: #888;
+                    text-shadow: 0 0 2px #888;
+                }
+                /* Ekonomija */
+                
+                .up {
+                    border-color: #f39c12;
+                }
+                
+                .up-title {
+                    color: #f39c12;
+                    text-shadow: 0 0 2px #f39c12;
+                }
+                /* Matematika 1 */
+                
+                .dms {
+                    border-color: #8e44ad;
+                }
+                
+                .dms-title {
+                    color: #8e44ad;
+                    text-shadow: 0 0 2px #8e44ad;
+                }
+                /* Menadžment */
+                
+                .tv {
+                    border-color: #2980b9;
+                }
+                
+                .tv-title {
+                    color: #2980b9;
+                    text-shadow: 0 0 2px #2980b9;
+                }
+                /* OIKT */
+                
+                .aros {
+                    border-color: #16a085;
+                }
+                
+                .aros-title {
+                    color: #16a085;
+                    text-shadow: 0 0 2px #16a085;
+                }
+                /* EPOS */
+                
+                .p1 {
+                    border-color: #e74c3c;
+                }
+                
+                .p1-title {
+                    color: #e74c3c;
+                    text-shadow: 0 0 2px #e74c3c;
+                }
+                /* Engleski jezik */
+                
+                .eng {
+                    border-color: #2ecc71;
+                }
+                
+                .eng-title {
+                    color: #2ecc71;
+                    text-shadow: 0 0 2px #2ecc71;
+                }
+                /* Principi programiranja */
+                
+                .pp {
+                    border-color: #5C4033;
+                }
+                
+                .pp-title {
+                    color: #5C4033;
+                    text-shadow: 0 0 2px #5C4033;
+                }
+                /* Matematika 2 */
+                
+                .mat2 {
+                    border-color: #d35400;
+                }
+                
+                .mat2-title {
+                    color: #d35400;
+                    text-shadow: 0 0 2px #d35400;
+                }
+                /* UIS */
+                
+                .uis {
+                    border-color: #f1c40f;
+                }
+                
+                .uis-title {
+                    color: #f1c40f;
+                    text-shadow: 0 0 2px #f1c40f;
+                }
+                /* Inženjering procesa */
+                
+                .inz {
+                    border-color: #27ae60;
+                }
+                
+                .inz-title {
+                    color: #27ae60;
+                    text-shadow: 0 0 2px #27ae60;
+                }
+                /* Psihologija */
+                
+                .psih {
+                    border-color: #e84393;
+                }
+                
+                .psih-title {
+                    color: #e84393;
+                    text-shadow: 0 0 2px #e84393;
+                }
+                
+                .oo {
+                    border-color: #006666;
+                }
+                
+                .oo-title {
+                    color: #006666;
+                    text-shadow: 0 0 2px #006666;
+                }
+                
+                .soci {
+                    border-color: #6A5ACD;
+                }
+                
+                .soci-title {
+                    color: #6A5ACD;
+                    text-shadow: 0 0 2px #6A5ACD;
+                }
+                /* Animacije */
+                
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
                     }
                 }
-                /* Wrapper slike */
                 
-                .image_wrap {
-                    width: 100%;
-                    max-width: 500px;
-                    margin: 0 auto;
-                    overflow: hidden;
-                    /* važno za border-radius */
-                    border-radius: 12px;
-                    position: relative;
-                    /* ako koristiš overlay divove */
-                }
-                /* Sama slika */
-                
-                .image_wrap img {
-                    width: 100%;
-                    height: auto;
-                    display: block;
-                    object-fit: cover;
-                    border-bottom-left-radius: 12px;
-                    /* zaobljeni donji levi ugao */
-                    border-bottom-right-radius: 12px;
-                    /* zaobljeni donji desni ugao */
-                }
-                /* Ako ima overlay fade divove, zaobli i njih */
-                
-                .image_wrap .image-fade,
-                .image_wrap .image-fade.is-left,
-                .image_wrap .image-fade.is-right,
-                .image_wrap .image-fade.is-top {
-                    border-radius: 12px;
+                @keyframes slideUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(15px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
                 }
             </style>
         </div>
@@ -497,7 +721,7 @@ a,
                             </div>
                             <div class="nav_menu-2" style="display: none; opacity: 0; transform: translate3d(-20%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
                                 <div class="menu_link-2">
-                                    <a href="/index" class="menu_link-2-text lp-link">Početna</a>
+                                    <a href="/" class="menu_link-2-text lp-link">Početna</a>
                                 </div>
                                 <div class="menu_link-2">
                                     <a href="/materijali" class="menu_link-2-text lp-link">Materijali 1. godina</a>
@@ -512,7 +736,7 @@ a,
                                     <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>
                                 </div>
                                 <div class="menu_link-2">
-                                    <a href="/index#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
+                                    <a href="/#FAQ" class="menu_link-2-text lp-link">Česta pitanja</a>
                                 </div>
                             </div>
                         </div>
@@ -528,75 +752,52 @@ a,
                 </div>
             </div>
         </nav>
-        <main class="main-wrapper">
-            <section id="Campuses" class="section_campuses">
-                <div class="container-large">
-                    <div class="padding-section-medium is-hero">
-                        <div data-w-id="d5c42ec1-1138-b4b3-bee0-3ac90c4b5164" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="hero_content">
-                            <div class="logo-wrap">
-                                <h1 class="h1">Pomoć na fonu</h1><img src="https://pomocnafonu.com/images/logo.png" loading="lazy" width="102" alt="Pomoć na fonu Logo" class="trw-logo is-nav">
-                            </div>
-                            <h2 class="hero_heading">EPOS - domaći zadaci, <br>seminarski, moodle test</h2>
-                            <style>
-                                .full-image {
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: cover;
-                                    /* Obezbeđuje da slika ispuni ceo prostor bez praznih delova */
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                }
-                            </style>
-                            <div class="w-embed w-script">
-                                <script src="../index_files/sdk.latest.js.download"></script>
-                                <!--  Your JavaScript code below -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glow_orange is-hero"></div>
-                    <div class="glow_brand is-hero"></div>
-                </div>
-                <div class="padding-section-small is-understand">
-                    <div class="w-layout-grid understand_grid">
-                        <div id="w-node-_10adbe5d-823c-3cd8-24c4-dc241382574c-97263376" class="w-layout-vflex understand_title-wrap is-first">
-                            <div class="h2_relative">
-                                <!--<h2 class="h2 text-align-left is-mobile" style="opacity: 1;">PREUZIMANJE KURSA</h2>-->
-                                <div data-w-id="cf7c8f1f-8119-7507-8361-d3e7f5ee45a4" style="opacity: 1;" class="svg_scruble w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 401 19" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
-                    </svg></div>
-                            </div>
-                            <div class="spacer-medium-copy"></div>
-                            <p data-w-id="291f8f9e-3f17-5377-8618-8c2888346b91" style="opacity: 1;" class="p_understand">
-                                Projekte izrađuju kolege sa dugogodišnjim iskustvom u pravljenju projekata, ne samo iz ovog predmeta već i iz ostalih.<br><br> Uz kupljene projekte dobijate i detaljna objašnjenja kako ih odbraniti za maksimalan broj poena.<br><br>  Cena Internet biznis plana je 3000 dinara, a cena drugog domaćeg i seminarskog zavisi od teme i ispitnog roka, za više informacija nas kontaktirajte na broj:  
-                                    <a href="https://wa.me/381659752402?text=Zdravo,%20želim%20da%20kupim%20projekat%20iz%20eposa" class="whatsapp-link" target="_blank">
-                                      +381 65 975 24 02
-                                    </a>
-                                  <br><br> Cena moodle testa je 1000 dinara, garantovano je 10/10 poena.<br><br> Moodle test je test sa predavanja koji se radi onlajn u ispitnom roku (pismeni deo ispita).
-                            </p>
-                            <style>
-                                .whatsapp-link {
-                                    font-weight: bold;           /* bold tekst */
-                                    color: #25D366;              /* WhatsApp zelena boja */
-                                    text-decoration: none;       /* uklanja podvlačenje */
-                                    padding: 5px 10px;           /* malo prostora oko linka */
-                                    border-radius: 8px;          /* zaobljeni uglovi */
-                                    transition: all 0.3s ease;   /* glatka promena boje pri hover */
-                                }
-                                
-                                .whatsapp-link:hover {
-                                    background-color: #25D366;  /* pozadina postaje zelena na hover */
-                                    color: #ffffff;             /* tekst postaje beo */
-                                    text-decoration: none;
-                                }
-                                </style>
-                        </div>
-                        <div id="w-node-_043d95e2-6767-2600-a2ff-41642b4534ac-97263376" class="image_wrap hide-tablet"><img src="../images/epos2.jpg" loading="lazy" id="w-node-_149667a0-d57f-5e62-c1cd-22bfea20c019-97263376" sizes="100vw" alt="" srcset="../images/epos2.jpg 500w, ../images/epos2.jpg 776w" class="understand_image" style="opacity: 1;">
-                        </div>
+        <div class="container">
+            <h1>Materijali za drugu godinu</h1>
 
-                    </div>
-                </div>
-            </section>
-        </main>
+            <div class="section-title info-title">Informacije za studente druge godine</div>
+            <a href="https://drive.google.com/file/d/139t4LZ-9tOxuDHiy4X_QUFWLqQs4lS_Y/view?usp=sharing" class="link-btn info" target="_blank">Kako položiti svaki predmet</a>
+
+            <div class="section-title up-title">Upravljanje projektima</div>
+            <a href="https://drive.google.com/file/d/1l9j2-fc2qqxrqRndUbLIkYLDEnI3Amsj/view?usp=sharing" class="link-btn up" target="_blank">Skripta - prezentacije sa predavanja</a>
+            <a href="https://drive.google.com/file/d/13DL8KEFUIDJlq9-kKudQnx-nlGE1g0W-/view?usp=sharing" class="link-btn up" target="_blank">Skripta - prezentacije sa vežbi</a>
+            <a href="https://youtube.com/@pmhub638?si=BWMEyGX7Ju3IV23f" class="link-btn up" target="_blank">Youtube playlista - zadaci</a>
+            <a href="https://drive.google.com/drive/folders/10cd5uGWnMXagu8JvDmAS2e1_iMZgJBKT?usp=sharing" class="link-btn up" target="_blank">Prezentacije sa predavanja</a>
+            <a href="https://drive.google.com/drive/folders/1UYDjMVKLpufU5ua92dXzc47qpGgx3up9?usp=sharing" class="link-btn up" target="_blank">Prezentacije sa vežbi</a>
+            <a href="https://drive.google.com/drive/folders/1uKYYmLQSrbieHQYGw9g0G7O6hvkGm0ju?usp=sharing" class="link-btn up" target="_blank">Knjiga</a>
+
+            <div class="section-title dms-title">DMS</div>
+            <a href="https://www.youtube.com/playlist?list=PL08DSMKQIKA_hdMJ0LRgEKTUhbO5Z_3pA" class="link-btn dms" target="_blank">Youtube plejlista - zadaci</a>
+            <a href="https://drive.google.com/file/d/16g_YDU-oFAoh1AkbUcJIw0AmGRdRaKip/view?usp=sharing" class="link-btn dms" target="_blank">Primer prvog kolokvijuma</a>
+            <a href="https://drive.google.com/file/d/1Kyf2YqUjFi4s4CKXplQO4yPlJSdfRVm2/view?usp=sharing" class="link-btn dms" target="_blank">Primer drugog kolokvijuma</a>
+            <a href="https://drive.google.com/file/d/1wupWAAeKPk3i-oE0UiPEMH3PWg4232PU/view?usp=sharing" class="link-btn dms" target="_blank">Primer završnog ispita</a>
+
+            <div class="section-title tv-title">Teorija verovatnoće</div>
+            <a href="https://drive.google.com/file/d/1-h50VpMmmJd8SxML1a_CTsNVY5QLfqnQ/view?usp=sharing" class="link-btn tv" target="_blank">Osnove verovatnoće - udžbenik</a>
+            <a href="https://drive.google.com/file/d/1qRdbSWRPpsQiXL5niK1ucsufrajpQPGc/view?usp=sharing" class="link-btn tv" target="_blank">Zbirka zadataka</a>
+            <a href="https://drive.google.com/file/d/1hW5vRayPym1ZUUgxgc4sQU1-3V853EQE/view?usp=sharing" class="link-btn tv" target="_blank">Stevanović zbirka</a>
+            <a href="https://www.youtube.com/watch?v=KLsw_GY7Hy4&list=PLewZiGkFxVQ_cwqnIJLBcWsedNFNxlOBX" class="link-btn tv" target="_blank">Rešeni rokovi</a>
+            <a href="https://drive.google.com/file/d/1Y6m0DnuJZAEok2kWcjuQOlLvf6ZU7D3g/view?usp=sharing" class="link-btn tv" target="_blank">Januar 2019.</a>
+            <a href="https://drive.google.com/drive/folders/1yZGMaGcYw56tsl_vaJYuoZhFDVc_d5t1?usp=sharing" class="link-btn tv" target="_blank">Tabele - raspodela</a>
+            <a href="https://drive.google.com/drive/folders/15AQDC-OS41Z25KQ9KnOEeIc1ntjNUkPD?usp=sharing" class="link-btn tv" target="_blank">Eliminaciona pitanja</a>
+
+            <div class="section-title aros-title">AROS</div>
+            <a href="https://drive.google.com/file/d/1eFteOcrA37UZZ2KWYdvZ82WnyC6ymqb1/view?usp=sharing" class="link-btn aros" target="_blank">Prvi klk - pitanja</a>
+            <a href="https://drive.google.com/file/d/12HRxWQjEg3v6k_8BLgUYEyCAEZRubtZE/view?usp=sharing" class="link-btn aros" target="_blank">AR - rokovi</a>
+            <a href="https://drive.google.com/file/d/1wnsX3bKozrotZU6CATs3Q8sY8jQnIsrh/view?usp=sharing" class="link-btn aros" target="_blank">AR - teorija rokovi</a>
+            <a href="https://drive.google.com/file/d/1CuDfwbAB5EpqBvCS4Yzg8Bd_XFzGlp8A/view?usp=sharing" class="link-btn aros" target="_blank">Prvi klk - najglavnija skripta</a>
+            <a href="https://drive.google.com/file/d/1nelfI0kIuIAM8xFSluuQRiLFlrcBlLXM/view?usp=sharing" class="link-btn aros" target="_blank">Drugi klk - teorija</a>
+            <a href="https://drive.google.com/file/d/1MbaHf7lEOgt7Eoq98Tk3wKUIwdVgGX76/view?usp=sharing" class="link-btn aros" target="_blank">Drugi klk - rokovi</a>
+            <a href="https://drive.google.com/file/d/1dWmAZdksyuDjMHpHcC6zIC2YX-aAvdyK/view?usp=sharing" class="link-btn aros" target="_blank">AROS Rokovi</a>
+            <a href="https://drive.google.com/file/d/1GKlqZ3ye9Fdqalne-itwl6s-r5-1O8Xv/view?usp=sharing" class="link-btn aros" target="_blank">Rokovi</a>
+            <a href="https://drive.google.com/drive/folders/1WMy2thZB433CPXMpaOHM2kwGiZnm1SI6?usp=sharing" class="link-btn aros" target="_blank">Lab vežbe</a>
+            
+            <div class="section-title p1-title">Programiranje 1</div>
+            <a href="https://drive.google.com/file/d/1XT8H5mF-JZf9wx6tqwIOV20v5ag8srNO/view?usp=sharing" class="link-btn p1" target="_blank">Praktikum</a>
+            <a href="https://drive.google.com/drive/folders/1O3elhwwFD4Lcb636wzO75LXpzFUahsRC?usp=sharing" class="link-btn p1" target="_blank">Interaktivna java zbirka</a>
+            <a href="https://drive.google.com/drive/folders/1wX7b7Xe8lfpvs91x2e1ULqVVMZAhJFQd?usp=sharing" class="link-btn p1" target="_blank">Rokovi</a>
+
+        </div>
         <footer class="footer">
             <div class="padding-global">
                 <div class="container-large">
@@ -631,16 +832,15 @@ a,
             "@type": "Organization",
             "name": "Pomoć na fonu",
             "url": "https://www.pomocnafonu.com/",
-            "logo": "https://pomocnafonu.com/images/logo.png",
-            "sameAs": "https://twitter.com/TRW_global"
+            "logo": "https://pomocnafonu.com/images/logo.png"
         }
     </script>
-    <script src="../index_files/jquery-3.5.1.min.dc5e7f18c8.js.download" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="../index_files/webflow.js.download" type="text/javascript"></script>
-    <script src="../index_files/swiper-bundle.min.js.download"></script>
+    <script src="/index_files/jquery-3.5.1.min.dc5e7f18c8.js.download" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="/index_files/webflow.js.download" type="text/javascript"></script>
+    <script src="/index_files/swiper-bundle.min.js.download"></script>
     <!--  [Attributes by Finsweet] CMS Load  -->
-    <script async="" src="../index_files/cmsload.js.download"></script>
-    <script src="../index_files/sdk.latest.js.download"></script>
+    <script async="" src="/index_files/cmsload.js.download"></script>
+    <script src="/index_files/sdk.latest.js.download"></script>
     <script>
         (function() {
             function c() {
@@ -672,62 +872,112 @@ a,
                 }
             }
         })();
-    </script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="../index_files/saved_resource.html"></iframe>
-    <script defer="" src="../index_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8c5aae903ae52798&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;9b6fd5d2c9614472b02feae860f0684f&quot;}"
-        crossorigin="anonymous"></script><iframe allow="join-ad-interest-group" data-tagging-id="AW-11318434383" data-load-time="1726760507175" height="0" width="0" src="../index_files/11318434383.html" style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group"
-        data-tagging-id="AW-16695797419" data-load-time="1726760507191" height="0" width="0" src="../index_files/16695797419.html" style="display: none; visibility: hidden;"></iframe>
+    </script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="/index_files/saved_resource.html"></iframe>
+    <script defer="" src="/index_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8c5aae903ae52798&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;9b6fd5d2c9614472b02feae860f0684f&quot;}"
+        crossorigin="anonymous"></script><iframe allow="join-ad-interest-group" data-tagging-id="AW-11318434383" data-load-time="1726760507175" height="0" width="0" src="/index_files/11318434383.html" style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group"
+        data-tagging-id="AW-16695797419" data-load-time="1726760507191" height="0" width="0" src="/index_files/16695797419.html" style="display: none; visibility: hidden;"></iframe>
 
     <iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;"
-        aria-hidden="true" tabindex="-1" title="Intercom" src="../index_files/saved_resource(1).html"></iframe>
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-            import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-          
-            const firebaseConfig = {
-              apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
-              authDomain: "pomoc-na-fonu.firebaseapp.com",
-              projectId: "pomoc-na-fonu",
-              storageBucket: "pomoc-na-fonu.appspot.com",
-              messagingSenderId: "947001381183",
-              appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
-              measurementId: "G-768582D9M9"
-            };
-          
-            const app = initializeApp(firebaseConfig);
-            const auth = getAuth(app);
-          
-            const link = document.getElementById("kupljeniKurseviLink");
-            const authBtn = document.getElementById("authBtn");
-            const authBtnText = document.getElementById("authBtnText");
-          
-            // Default: sakrij kupljene kurseve
-            link.parentElement.style.display = "none";
-          
-            // Napravimo samo JEDAN listener za dugme
-            authBtn.addEventListener("click", async () => {
-              if (auth.currentUser) {
-                // User je ulogovan → ODJAVA
-                await signOut(auth);
-                window.location.href = "/login";
-              } else {
-                // Nije ulogovan → ide na login
-                window.location.href = "/login";
-              }
-            });
-          
-            // Reagujemo na login stanje
-            onAuthStateChanged(auth, (user) => {
-              if (user) {
-                link.parentElement.style.display = "block";
-                authBtnText.textContent = "ODJAVI SE";
-                authBtn.href = "javascript:void(0)";
-              } else {
-                link.parentElement.style.display = "none";
-                authBtnText.textContent = "PRIJAVI SE";
-                authBtn.href = "/login";
-              }
-            });
-          </script>
+        aria-hidden="true" tabindex="-1" title="Intercom" src="/index_files/saved_resource(1).html"></iframe>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+                import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+                import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+    authDomain: "pomoc-na-fonu.firebaseapp.com",
+    projectId: "pomoc-na-fonu",
+    storageBucket: "pomoc-na-fonu.appspot.com",
+    messagingSenderId: "947001381183",
+    appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+    measurementId: "G-768582D9M9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app);
+                
+                const authBtn = document.getElementById("authBtn");
+                const authBtnText = document.getElementById("authBtnText");
+                
+                // Funkcije za dodavanje/uklanjanje linka
+                function addPurchasedLink() {
+                  if (!document.getElementById("kupljeniKurseviLink")) {
+                    const menu = document.querySelector(".nav_menu-2");
+                    const div = document.createElement("div");
+                    div.classList.add("menu_link-2");
+                    div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
+                    menu.insertBefore(div, menu.children[3]);
+                  }
+                }
+                
+                function removePurchasedLink() {
+                  const link = document.getElementById("kupljeniKurseviLink");
+                  if (link) link.parentElement.remove();
+                }
+
+                async function setupMaxTwoDevices(user) {
+                    const userRef = doc(db, "users", user.uid);
+                    let sessionToken = localStorage.getItem("sessionToken");
+                    if (!sessionToken) {
+                        sessionToken = generateSessionToken();
+                        localStorage.setItem("sessionToken", sessionToken);
+                    }
+
+                    const snap = await getDoc(userRef);
+                    let sessionTokens = [];
+
+                    if (snap.exists() && Array.isArray(snap.data().sessionTokens)) {
+                        sessionTokens = snap.data().sessionTokens;
+                    }
+
+                    // Ako token već postoji (reload stranice)
+                    if (sessionTokens.includes(sessionToken)) {
+                        return;
+                    }
+
+                    // Ako ima već 2 uređaja → zabrani
+                    if (sessionTokens.length >= 2) {
+                        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.");
+                        await signOut(auth);
+                        window.location.href = "/login";
+                        return;
+                    }
+
+                    // Dodaj novi uređaj
+                    sessionTokens.push(sessionToken);
+
+                    await setDoc(userRef, { sessionTokens }, { merge: true });
+
+                    // Slušaj promene – ako ti ručno ukloniš token
+                    onSnapshot(userRef, (docSnap) => {
+                        const data = docSnap.data();
+                        if (!data || !Array.isArray(data.sessionTokens)) return;
+
+                        if (!data.sessionTokens.includes(sessionToken)) {
+                        alert("Pristup ovom uređaju je uklonjen.");
+                        signOut(auth);
+                        window.location.href = "/login";
+                        }
+                    });
+                }
+
+                onAuthStateChanged(auth, async (user) => {
+                  if (user) {
+                    addPurchasedLink();
+                    authBtnText.textContent = "ODJAVI SE";
+                    authBtn.href = "javascript:void(0)";
+                
+                    await setupMaxTwoDevices(user);
+                
+                  } else {
+                    removePurchasedLink();
+                    authBtnText.textContent = "PRIJAVI SE";
+                    authBtn.href = "/login";
+                  }
+                });
+</script>
 
     </body>
 

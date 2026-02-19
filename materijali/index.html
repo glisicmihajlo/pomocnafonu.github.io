@@ -796,6 +796,7 @@ a,
 
             <div class="section-title ekon-title">Ekonomija</div>
             <a href="https://drive.google.com/drive/folders/15pf6088Uw1jlkfjpyrvM44s1aVnP9qWe?usp=sharing" class="link-btn ekon" target="_blank">Vežbe</a>
+            <a href="https://drive.google.com/file/d/1PV7HZtQ_ya1nYkDCeENezAM4g556IGxf/view?usp=sharing" class="link-btn ekon" target="_blank">Knjiga u PDF-u</a>
             <a href="https://drive.google.com/file/d/1eAf5HjcLhPG5nhAT0zHUZjKhdAgm8lbX/view?usp=sharing" class="link-btn ekon" target="_blank">Skripta za ispit</a>
             <a href="https://drive.google.com/file/d/14FmxHHEPOw1H4YKKMrWia2mIme3tR0tn/view?usp=sharing" class="link-btn ekon" target="_blank">Bobinator skripta</a>
             <a href="https://drive.google.com/file/d/1TOpF3MdfOnLfj_YPLKuCky9cf_4QDnIS/view?usp=sharing" class="link-btn ekon" target="_blank">Skripta sa graficima</a>
@@ -944,105 +945,20 @@ a,
     <iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;"
         aria-hidden="true" tabindex="-1" title="Intercom" src="/index_files/saved_resource(1).html"></iframe>
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-                import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-                import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"; import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"; import { getFirestore, doc, setDoc, getDoc, onSnapshot
+        } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"; const firebaseConfig = { apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c", authDomain: "pomoc-na-fonu.firebaseapp.com", projectId: "pomoc-na-fonu", storageBucket: "pomoc-na-fonu.appspot.com",
+        messagingSenderId: "947001381183", appId: "1:947001381183:web:11a68f03a52c6ebb2a038a", measurementId: "G-768582D9M9" }; const app = initializeApp(firebaseConfig); const auth = getAuth(app); const db = getFirestore(app); const authBtn = document.getElementById("authBtn");
+        const authBtnText = document.getElementById("authBtnText"); // Funkcije za dodavanje/uklanjanje linka function addPurchasedLink() { if (!document.getElementById("kupljeniKurseviLink")) { const menu = document.querySelector(".nav_menu-2"); const
+        div = document.createElement("div"); div.classList.add("menu_link-2"); div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`; menu.insertBefore(div, menu.children[3]);
+        } } function removePurchasedLink() { const link = document.getElementById("kupljeniKurseviLink"); if (link) link.parentElement.remove(); } async function setupMaxTwoDevices(user) { const userRef = doc(db, "users", user.uid); let sessionToken =
+        localStorage.getItem("sessionToken"); if (!sessionToken) { sessionToken = generateSessionToken(); localStorage.setItem("sessionToken", sessionToken); } const snap = await getDoc(userRef); let sessionTokens = []; if (snap.exists() && Array.isArray(snap.data().sessionTokens))
+        { sessionTokens = snap.data().sessionTokens; } // Ako token već postoji (reload stranice) if (sessionTokens.includes(sessionToken)) { return; } // Ako ima već 2 uređaja → zabrani if (sessionTokens.length >= 2) { alert("Dostignut je maksimalan
+        broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja."); await signOut(auth); window.location.href = "/login"; return; } // Dodaj novi uređaj sessionTokens.push(sessionToken); await setDoc(userRef,
+        { sessionTokens }, { merge: true }); // Slušaj promene – ako ti ručno ukloniš token onSnapshot(userRef, (docSnap) => { const data = docSnap.data(); if (!data || !Array.isArray(data.sessionTokens)) return; if (!data.sessionTokens.includes(sessionToken))
+        { alert("Pristup ovom uređaju je uklonjen."); signOut(auth); window.location.href = "/login"; } }); } onAuthStateChanged(auth, async (user) => { if (user) { addPurchasedLink(); authBtnText.textContent = "ODJAVI SE"; authBtn.href = "javascript:void(0)";
+        await setupMaxTwoDevices(user); } else { removePurchasedLink(); authBtnText.textContent = "PRIJAVI SE"; authBtn.href = "/login"; } });
+    </script>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
-    authDomain: "pomoc-na-fonu.firebaseapp.com",
-    projectId: "pomoc-na-fonu",
-    storageBucket: "pomoc-na-fonu.appspot.com",
-    messagingSenderId: "947001381183",
-    appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
-    measurementId: "G-768582D9M9"
-  };
-
-  const app = initializeApp(firebaseConfig);
-                const auth = getAuth(app);
-                const db = getFirestore(app);
-                
-                const authBtn = document.getElementById("authBtn");
-                const authBtnText = document.getElementById("authBtnText");
-                
-                // Funkcije za dodavanje/uklanjanje linka
-                function addPurchasedLink() {
-                  if (!document.getElementById("kupljeniKurseviLink")) {
-                    const menu = document.querySelector(".nav_menu-2");
-                    const div = document.createElement("div");
-                    div.classList.add("menu_link-2");
-                    div.innerHTML = `<a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" class="menu_link-2-text lp-link">Kupljeni kursevi</a>`;
-                    menu.insertBefore(div, menu.children[3]);
-                  }
-                }
-                
-                function removePurchasedLink() {
-                  const link = document.getElementById("kupljeniKurseviLink");
-                  if (link) link.parentElement.remove();
-                }
-
-                async function setupMaxTwoDevices(user) {
-                    const userRef = doc(db, "users", user.uid);
-                    let sessionToken = localStorage.getItem("sessionToken");
-                    if (!sessionToken) {
-                        sessionToken = generateSessionToken();
-                        localStorage.setItem("sessionToken", sessionToken);
-                    }
-
-                    const snap = await getDoc(userRef);
-                    let sessionTokens = [];
-
-                    if (snap.exists() && Array.isArray(snap.data().sessionTokens)) {
-                        sessionTokens = snap.data().sessionTokens;
-                    }
-
-                    // Ako token već postoji (reload stranice)
-                    if (sessionTokens.includes(sessionToken)) {
-                        return;
-                    }
-
-                    // Ako ima već 2 uređaja → zabrani
-                    if (sessionTokens.length >= 2) {
-                        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.");
-                        await signOut(auth);
-                        window.location.href = "/login";
-                        return;
-                    }
-
-                    // Dodaj novi uređaj
-                    sessionTokens.push(sessionToken);
-
-                    await setDoc(userRef, { sessionTokens }, { merge: true });
-
-                    // Slušaj promene – ako ti ručno ukloniš token
-                    onSnapshot(userRef, (docSnap) => {
-                        const data = docSnap.data();
-                        if (!data || !Array.isArray(data.sessionTokens)) return;
-
-                        if (!data.sessionTokens.includes(sessionToken)) {
-                        alert("Pristup ovom uređaju je uklonjen.");
-                        signOut(auth);
-                        window.location.href = "/login";
-                        }
-                    });
-                }
-
-                onAuthStateChanged(auth, async (user) => {
-                  if (user) {
-                    addPurchasedLink();
-                    authBtnText.textContent = "ODJAVI SE";
-                    authBtn.href = "javascript:void(0)";
-                
-                    await setupMaxTwoDevices(user);
-                
-                  } else {
-                    removePurchasedLink();
-                    authBtnText.textContent = "PRIJAVI SE";
-                    authBtn.href = "/login";
-                  }
-                });
-</script>
-
-    </body>
+</body>
 
 </html>

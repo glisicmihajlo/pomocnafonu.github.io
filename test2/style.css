@@ -1,0 +1,249 @@
+:root {
+    --primary: #3b82f6;
+    --primary-glow: rgba(59, 130, 246, 0.5);
+    --bg-dark: #090e1a;
+    --sidebar-bg: #111827;
+    --card-bg: #1f2937;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --success: #10b981;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-shell {
+    display: flex;
+    height: 100vh;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 360px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-top {
+    padding: 30px 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    background: var(--primary);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.progress-card {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.progress-track {
+    background: #374151;
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    background: var(--primary);
+    width: 0%;
+    height: 100%;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+
+/* Accordion & Modules */
+
+.course-nav {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 0 12px 30px;
+}
+
+.module-card {
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+.module-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.module-header:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.module-header h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+
+/* Stik za ceo modul */
+
+.module-card.module-done .module-header h3 {
+    color: var(--success);
+}
+
+.module-card.module-done .module-header::after {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--success);
+    margin-left: 10px;
+}
+
+.lesson-list {
+    display: none;
+    padding-bottom: 10px;
+}
+
+.lesson-list.active {
+    display: block;
+}
+
+.lesson-btn {
+    padding: 10px 16px 10px 40px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+}
+
+.lesson-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.lesson-btn.active-lesson {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.lesson-btn.completed {
+    color: var(--success);
+}
+
+
+/* Main Content */
+
+.content-area {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.player-wrapper {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.video-frame {
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    aspect-ratio: 16/9;
+    border: 1px solid var(--border);
+}
+
+video {
+    width: 100%;
+    height: 100%;
+}
+
+.content-footer {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.badge {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.lesson-meta h1 {
+    margin: 15px 0 10px;
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+}
+
+.lesson-meta p {
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.btn-glow {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px 0 var(--primary-glow);
+}
+
+.btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 var(--primary-glow);
+}

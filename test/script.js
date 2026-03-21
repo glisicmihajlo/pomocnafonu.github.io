@@ -69,6 +69,29 @@ function init() {
         nav.appendChild(moduleCard);
         checkModuleCompletion(mIndex);
     });
+
+    if (courseData.length > 0 && courseData[0].lessons.length > 0) {
+        const firstLesson = courseData[0].lessons[0];
+        const firstModuleTitle = courseData[0].moduleTitle;
+
+        // Selektujemo prvu lekciju ali bez videoPlayer.play() da ne krene zvuk odmah
+        currentLessonId = firstLesson.id;
+        videoPlayer.src = firstLesson.url;
+        titleDisplay.innerText = firstLesson.title;
+        moduleTag.innerText = firstModuleTitle;
+
+        // Aktiviraj vizuelno prvo dugme u sidebaru
+        setTimeout(() => {
+            const firstBtn = document.getElementById(`btn-${firstLesson.id}`);
+            if (firstBtn) firstBtn.classList.add('active-lesson');
+            // Otvori prvi modul
+            const firstList = document.querySelector('.lesson-list');
+            if (firstList) firstList.classList.add('active');
+        }, 100);
+
+        updateButtonState(); // Ovo će sada ispravno proveriti prvu lekciju
+    }
+
     updateGlobalProgress();
 }
 
@@ -76,7 +99,7 @@ function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
     videoPlayer.src = lesson.url;
     titleDisplay.innerText = lesson.title;
-    descDisplay.innerText = lesson.desc;
+    if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;
 
     document.querySelectorAll('.lesson-btn').forEach(b => b.classList.remove('active-lesson'));

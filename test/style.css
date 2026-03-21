@@ -54,16 +54,23 @@ body {
 
 .player-wrapper {
     width: 100%;
-    max-width: 700px;
+    max-width: 1000px;
+    /* Da ne bude preširok na ogromnim monitorima */
+    max-height: 85vh;
+    /* Ne dozvoljava plejeru da zauzme više od 85% visine ekrana */
+    display: flex;
+    flex-direction: column;
 }
 
 .video-frame {
+    flex-shrink: 1;
+    /* Dozvoljava okviru da se smanji ako nema mesta */
+    min-height: 0;
+    /* Važno za flexbox stabilnost */
     background: #000;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     aspect-ratio: 16/9;
-    border: 1px solid var(--border);
 }
 
 video {
@@ -393,6 +400,21 @@ video {
     transition: filter 0.3s ease;
 }
 
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
 
 /* RESPONSIVE */
 
@@ -427,7 +449,19 @@ video {
         box-shadow: -15px 0 40px rgba(0, 0, 0, 0.7);
     }
     .content-area {
-        padding: 15px;
+        flex: 1;
+        height: 100vh;
+        /* Fiksira visinu na visinu ekrana */
+        overflow: hidden;
+        /* UKLANJA SKROLBAR */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Centrira video vertikalno ako ima mesta */
+        align-items: center;
+        /* Centrira video horizontalno */
+        padding: 20px;
+        /* Smanji padding da ostane više mesta za video */
     }
     .content-footer {
         flex-direction: column;

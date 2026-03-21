@@ -45,15 +45,16 @@ body {
 
 .content-area {
     flex: 1;
-    /* Bilo je: padding: 40px; */
-    /* Sada je: gornji desni donji levi */
-    padding: 50px 40px 40px 40px;
+    padding: 20px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .player-wrapper {
     width: 100%;
-    max-width: 750px;
+    max-width: 800px;
 }
 
 .video-frame {
@@ -400,27 +401,16 @@ video {
         flex-direction: column;
     }
     .mobile-nav {
-        display: flex;
+        display: none;
+        /* Sakriveno na desktopu */
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        /* Ovo sada centrira samo logo u sredinu ekrana */
-        position: relative;
-        /* Neophodno da bi dugme moglo da se zakači desno */
-        padding: 0 20px;
+        padding: 10px 20px;
         background: var(--sidebar-bg);
         border-bottom: 1px solid var(--border);
         width: 100%;
         height: 60px;
-    }
-    #menu-toggle {
-        position: absolute;
-        /* Ovo dugme šalje skroz desno bez uticaja na logo */
-        right: 20px;
-        background: none;
-        border: none;
-        color: #f59e0b;
-        font-size: 1.2rem;
-        cursor: pointer;
+        /* Fiksna visina pomaže u centriranju */
     }
     .sidebar {
         position: fixed;
@@ -437,8 +427,7 @@ video {
         box-shadow: -15px 0 40px rgba(0, 0, 0, 0.7);
     }
     .content-area {
-        /* Povećaj padding-top da video ne ide ispod tvoja DVA menija (Webflow + App) */
-        padding: 120px 20px 40px 20px;
+        padding: 15px;
     }
     .content-footer {
         flex-direction: column;

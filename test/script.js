@@ -18,7 +18,7 @@ let completedLessons = JSON.parse(localStorage.getItem('edu_vfinal_stable')) || 
 let currentLessonId = null;
 
 const nav = document.getElementById('course-accordion');
-const videoPlayer = document.getElementById('main-video');
+const vdoPlayer = document.getElementById('vdo-player');
 const titleDisplay = document.getElementById('lesson-title');
 const descDisplay = document.getElementById('lesson-desc');
 const moduleTag = document.getElementById('module-tag');
@@ -74,22 +74,22 @@ function init() {
         const firstLesson = courseData[0].lessons[0];
         const firstModuleTitle = courseData[0].moduleTitle;
 
-        // Selektujemo prvu lekciju ali bez videoPlayer.play() da ne krene zvuk odmah
-        currentLessonId = firstLesson.id;
-        videoPlayer.src = firstLesson.url;
-        titleDisplay.innerText = firstLesson.title;
-        moduleTag.innerText = firstModuleTitle;
+        // Umesto ručnog postavljanja src i teksta, samo pozovi selectLesson.
+        // To će automatski srediti iframe, naslov, modul i stanje dugmeta.
+        selectLesson(firstLesson, firstModuleTitle);
 
-        // Aktiviraj vizuelno prvo dugme u sidebaru
+        // Pošto selectLesson automatski menja src na iframe-u, 
+        // VdoCipher će se učitati, ali neće pustiti zvuk dok korisnik ne klikne "Play"
+        // unutar samog plejera (browseri blokiraju auto-play sa zvukom).
+
+        // Aktiviraj vizuelno prvo dugme u sidebaru i otvori prvi modul
         setTimeout(() => {
             const firstBtn = document.getElementById(`btn-${firstLesson.id}`);
             if (firstBtn) firstBtn.classList.add('active-lesson');
-            // Otvori prvi modul
+
             const firstList = document.querySelector('.lesson-list');
             if (firstList) firstList.classList.add('active');
         }, 100);
-
-        updateButtonState(); // Ovo će sada ispravno proveriti prvu lekciju
     }
 
     updateGlobalProgress();
@@ -97,18 +97,25 @@ function init() {
 
 function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
-    videoPlayer.src = lesson.url;
+
+    // Menjamo samo src na iframe-u
+    if (vdoPlayer) {
+        vdoPlayer.src = lesson.url;
+    }
+
+    // Ažuriramo tekstove
     titleDisplay.innerText = lesson.title;
     if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;
 
+    // Vizuelno označavanje aktivne lekcije u sidebaru
     document.querySelectorAll('.lesson-btn').forEach(b => b.classList.remove('active-lesson'));
     const b = document.getElementById(`btn-${lesson.id}`);
     if (b) b.classList.add('active-lesson');
 
-    videoPlayer.play();
-    updateButtonState(); // Ažurira tekst na glavnom dugmetu čim se učita lekcija
+    updateButtonState();
 
+    // Zatvori sidebar na mobilnom nakon klika
     if (window.innerWidth <= 992) sidebar.classList.remove('open');
 }
 

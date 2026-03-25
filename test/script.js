@@ -98,24 +98,21 @@ function init() {
 function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
 
-    // Menjamo samo src na iframe-u
+    // Menjamo src na iframe-u - VdoCipher sam hendluje učitavanje
     if (vdoPlayer) {
         vdoPlayer.src = lesson.url;
     }
 
-    // Ažuriramo tekstove
     titleDisplay.innerText = lesson.title;
     if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;
 
-    // Vizuelno označavanje aktivne lekcije u sidebaru
     document.querySelectorAll('.lesson-btn').forEach(b => b.classList.remove('active-lesson'));
     const b = document.getElementById(`btn-${lesson.id}`);
     if (b) b.classList.add('active-lesson');
 
     updateButtonState();
 
-    // Zatvori sidebar na mobilnom nakon klika
     if (window.innerWidth <= 992) sidebar.classList.remove('open');
 }
 

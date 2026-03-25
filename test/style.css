@@ -63,6 +63,7 @@ body {
 }
 
 .video-frame {
+    position: relative;
     flex-shrink: 1;
     /* Dozvoljava okviru da se smanji ako nema mesta */
     min-height: 0;
@@ -423,7 +424,7 @@ video {
         flex-direction: column;
     }
     .mobile-nav {
-        display: none;
+        display: flex;
         /* Sakriveno na desktopu */
         justify-content: space-between;
         align-items: center;

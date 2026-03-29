@@ -8,7 +8,7 @@ const courseData = [{
     {
         moduleTitle: "02. Napredne tehnike",
         lessons: [
-            { id: "l3", title: "Funkcionalno programiranje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE323233GoSKibuavvmr4btYblQYWT6pb1CpeaolrqyvZCSBlyn&playbackInfo=eyJ2aWRlb0lkIjoiODFmMmVmOGRmYmQ1NDRlNTgzYWYzN2Y0NTQwMjEyMWMifQ==", desc: "Napredni koncepti Java jezika." },
+            { id: "l3", title: "Funkcionalno programiranje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232DJCitVRaGo5tCf0xoBI2awklWUbOL9sN90nNRZU04qmqH&playbackInfo=eyJ2aWRlb0lkIjoiMmE1NWU3ZTY5YWQzNGNmMjliODFmZmM4Y2UwZWQyMDIifQ==", desc: "Napredni koncepti Java jezika." },
             { id: "l4", title: "Optimizacija algoritama", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Tp1KAO13qRYPNb2otuYX1olk2tJ0uCzQ0AmcE0Kqa9a5B&playbackInfo=eyJ2aWRlb0lkIjoiZDQwZTQ0NGMxZmEzNDBlMWJkZGE5OGQ0YWZlNDVhZWIifQ==", desc: "Efikasnost koda." }
         ]
     }

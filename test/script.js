@@ -2,7 +2,7 @@ const courseData = [{
         moduleTitle: "01. Osnove razvojnog okruženja",
         lessons: [
             { id: "l1", title: "Instalacija i podešavanje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32320CrE2mLiW4HZUOM3qU2HuycDmRMK0aniO8oik5pW4x0de&playbackInfo=eyJ2aWRlb0lkIjoiYjM2MTQyNzBlYmRiNDMwOGJhMzI2MjE5Yzk4ODAzZWUifQ==", desc: "Vodič kroz instalaciju alata." },
-            { id: "l2", title: "Struktura projekta", url: "video2.mp4", desc: "Organizacija fajlova." }
+            { id: "l2", title: "Struktura projekta", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232RyixriZxugboFvZpZJDt4dli9uZDpgzNJ8oCG05O7TthN&playbackInfo=eyJ2aWRlb0lkIjoiY2YyZjhmZWFhZWQzNDllNTg0ZjJkOWNmZmEzZDA2MzUifQ==", desc: "Organizacija fajlova." }
         ]
     },
     {

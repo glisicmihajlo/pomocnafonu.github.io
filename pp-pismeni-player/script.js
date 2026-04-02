@@ -26,15 +26,16 @@ const courseData = [
     {
         moduleTitle: "01. Osnove razvojnog okruženja",
         lessons: [
-            { id: "l1", title: "Instalacija i podešavanje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32320CrE2mLiW4HZUOM3qU2HuycDmRMK0aniO8oik5pW4x0de&playbackInfo=eyJ2aWRlb0lkIjoiYjM2MTQyNzBlYmRiNDMwOGJhMzI2MjE5Yzk4ODAzZWUifQ==", desc: "Vodič kroz instalaciju alata." },
-            { id: "l2", title: "Struktura projekta", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232RyixriZxugboFvZpZJDt4dli9uZDpgzNJ8oCG05O7TthN&playbackInfo=eyJ2aWRlb0lkIjoiY2YyZjhmZWFhZWQzNDllNTg0ZjJkOWNmZmEzZDA2MzUifQ==", desc: "Organizacija fajlova." }
-        ]
-    },
-    {
-        moduleTitle: "02. Napredne tehnike",
-        lessons: [
-            { id: "l3", title: "Funkcionalno programiranje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232DJCitVRaGo5tCf0xoBI2awklWUbOL9sN90nNRZU04qmqH&playbackInfo=eyJ2aWRlb0lkIjoiMmE1NWU3ZTY5YWQzNGNmMjliODFmZmM4Y2UwZWQyMDIifQ==", desc: "Napredni koncepti Java jezika." },
-            { id: "l4", title: "Optimizacija algoritama", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Tp1KAO13qRYPNb2otuYX1olk2tJ0uCzQ0AmcE0Kqa9a5B&playbackInfo=eyJ2aWRlb0lkIjoiZDQwZTQ0NGMxZmEzNDBlMWJkZGE5OGQ0YWZlNDVhZWIifQ==", desc: "Efikasnost koda." }
+            { 
+                id: "l1", 
+                title: "Instalacija i podešavanje", 
+                videoId: "b3614270ebdb4308ba326219c98803ee"
+            },
+            { 
+                id: "l2", 
+                title: "Struktura projekta", 
+                videoId: "cf2f8feaaed349e584f2d9cffa3d0635"
+            }
         ]
     }
 ];
@@ -179,7 +180,13 @@ function init() {
 
 function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
-    if (vdoPlayer) vdoPlayer.src = lesson.url;
+
+    if (vdoPlayer) {
+        const vdoUrl = `https://player.vdocipher.com/v2/?playbackInfo=eyJ2aWRlb0lkIjoi${lesson.videoId}In0=`;
+        
+        vdoPlayer.src = vdoUrl;
+    }
+
     titleDisplay.innerText = lesson.title;
     if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;

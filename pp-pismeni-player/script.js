@@ -24,18 +24,86 @@ const CURRENT_COURSE_ID = "pp-pismeni";
 // --- 2. PODACI O KURSU ---
 const courseData = [
     {
-        moduleTitle: "01. Osnove razvojnog okruženja",
+        moduleTitle: "01. Uvod",
         lessons: [
             { 
-                id: "l1", 
-                title: "Instalacija i podešavanje", 
-                videoId: "b3614270ebdb4308ba326219c98803ee"
+                id: "a1", 
+                title: "Uvod", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232BCsgBnflDFgzgh7zI2qUMDrCfMGI8W8RCt3xnQdmsttfV&playbackInfo=eyJ2aWRlb0lkIjoiYjQzNmE4MDY0YThkNDgxZWE5MTQ0Nzk4MDBjMDVlYWEifQ==" 
             },
             { 
-                id: "l2", 
-                title: "Struktura projekta", 
-                videoId: "cf2f8feaaed349e584f2d9cffa3d0635"
+                id: "a2", 
+                title: "Zadatak 1", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232TOrT7SbRxV3X7LE0ifsJnxFCIGSGh7vLEgK7ekz2UW63g&playbackInfo=eyJ2aWRlb0lkIjoiMmUyZjdiMjcxYTg0NDVmMGEyZjc3ZDQwMThhMTA4MmMifQ==" 
+            },
+            { 
+                id: "a3", 
+                title: "Zadatak 2", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE323280G3VT86qHFQTedAWj7S1zfKfbLpTZZrZflUnXNbnp2Bm&playbackInfo=eyJ2aWRlb0lkIjoiYTMyNzViMGZlNWU1NGQ3NDk5NmEwZmY3Nzk2ZDg5YTIifQ==" 
+            },
+            { 
+                id: "a4", 
+                title: "Zadatak 3", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232IfA9tag0TanfPX8JW4aYI1wfIvn1PIkVzeFICqJFdnZPl&playbackInfo=eyJ2aWRlb0lkIjoiODg2NzUzYTlmZjYzNDUzNDgzZWQ1YTU3YWU3NTY3YjAifQ==" 
+            },
+            { 
+                id: "a5", 
+                title: "Zadatak 4", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232k2QG0NU2ixVMk6lClt7VhzAjclTLKp5NNNKDZBmIxl8fT&playbackInfo=eyJ2aWRlb0lkIjoiZmQ5YmZiN2ZmMmVlNGZhNmI0ZTRjNDk4ZjA0ZDlhZTcifQ==" 
+            },
+            { 
+                id: "a6", 
+                title: "Zadatak 5", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232BxHrbD47KIxxXGAp0QQJQSFf0QX7og1nBSNWPhzRdISB1&playbackInfo=eyJ2aWRlb0lkIjoiOGVmOGE4ODdlNzZiNDY5Yzg5MmRjNzc0NGNmNzQzOWEifQ==" 
+            },
+            { 
+                id: "a7", 
+                title: "Zadatak 6", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232jV9irOgPu25V5G6KfjtWqeaeRbtvBJyWwu97ANDt4BPiE&playbackInfo=eyJ2aWRlb0lkIjoiZDFkOWUzYzRmZjhjNGZkYTk1ZDMzMTQwNzBiMGQwNzMifQ==" 
+            },
+            { 
+                id: "a8", 
+                title: "Zadatak 7", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232hH9W4yyXP1xSFyJtGICYaOjPVLp7bswVv4FpythwgGFsf&playbackInfo=eyJ2aWRlb0lkIjoiNGNkYzNkMmJhZjM0NGUwMzlhY2EzMWI5YzJhMjgyMDAifQ==" 
+            },
+            { 
+                id: "a9", 
+                title: "Zadatak 8", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232HYuu55VSX9A7lqLLtAQ2xSgMLWzSfGjBidct5WLOBMZup&playbackInfo=eyJ2aWRlb0lkIjoiNmZmOTAxNjM3OTczNDYwNjg0MWI1OTQ2YmRiOWEwYmMifQ==" 
+            },
+            { 
+                id: "a10", 
+                title: "Zadatak 9", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232XmASvqyFxRDdV3IYLVDLOUHsk0jmYCtkd3U1xD5rLeWKg&playbackInfo=eyJ2aWRlb0lkIjoiYTBiYTk5Y2M3ODhjNDI5OThhZTk5NTIwZjRjMjlmOWIifQ==" 
+            },
+            { 
+                id: "a11", 
+                title: "Zadatak 10", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232qP4ZLQpYzf5Ww9HwBIUGMKbeos6tyltBQEarz3gSlPDnv&playbackInfo=eyJ2aWRlb0lkIjoiYWE1YTFlODExY2VjNGExMjkwY2YwMDBhNmMxM2E4NTEifQ==" 
+            },
+            { 
+                id: "a12", 
+                title: "Zadatak 11", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232fhHK5GpX3xq3JMtQQypZJxkqJNH6n6JaFPxgvQEA7q2gg&playbackInfo=eyJ2aWRlb0lkIjoiZWI5MmE2NjFmMzkxNDBhODllMDljYzYyYTRiZmY1N2UifQ==" 
+            },
+            { 
+                id: "a13", 
+                title: "Zadatak 12", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232kMXFM3iNlCtwtX0lu1grhZtpFAIldU8K3xwmdP4aEZlWR&playbackInfo=eyJ2aWRlb0lkIjoiODExMmI1MzhhNTI2NDhlOTllODIyNDdhNDJlNDhkZDQifQ==" 
+            },
+            { 
+                id: "a14", 
+                title: "Zadatak 13", 
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232M8TO9jftwleQOdRiaxldyAx2dO6CRKEFp9SV8HYUeiE9w&playbackInfo=eyJ2aWRlb0lkIjoiZmY1YzBjNTAxOWFjNGQ4ZTlhMTBkMmZjNGMyMDMzN2MifQ==" 
             }
+            
+        ]
+    },
+    {
+        moduleTitle: "02. If naredba",
+        lessons: [
+            { id: "l3", title: "Funkcionalno programiranje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232DJCitVRaGo5tCf0xoBI2awklWUbOL9sN90nNRZU04qmqH&playbackInfo=eyJ2aWRlb0lkIjoiMmE1NWU3ZTY5YWQzNGNmMjliODFmZmM4Y2UwZWQyMDIifQ==", desc: "Napredni koncepti Java jezika." },
+            { id: "l4", title: "Optimizacija algoritama", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Tp1KAO13qRYPNb2otuYX1olk2tJ0uCzQ0AmcE0Kqa9a5B&playbackInfo=eyJ2aWRlb0lkIjoiZDQwZTQ0NGMxZmEzNDBlMWJkZGE5OGQ0YWZlNDVhZWIifQ==", desc: "Efikasnost koda." }
         ]
     }
 ];
@@ -180,13 +248,7 @@ function init() {
 
 function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
-
-    if (vdoPlayer) {
-        const vdoUrl = `https://player.vdocipher.com/v2/?playbackInfo=eyJ2aWRlb0lkIjoi${lesson.videoId}In0=`;
-        
-        vdoPlayer.src = vdoUrl;
-    }
-
+    if (vdoPlayer) vdoPlayer.src = lesson.url;
     titleDisplay.innerText = lesson.title;
     if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;

@@ -1,4 +1,25 @@
-const courseData = [{
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+// --- FIREBASE KONFIGURACIJA ---
+const firebaseConfig = {
+    apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+    authDomain: "pomoc-na-fonu.firebaseapp.com",
+    projectId: "pomoc-na-fonu",
+    storageBucket: "pomoc-na-fonu.appspot.com",
+    messagingSenderId: "947001381183",
+    appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+    measurementId: "G-768582D9M9"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// --- PODACI O KURSU ---
+const courseData = [
+    {
         moduleTitle: "01. Osnove razvojnog okruženja",
         lessons: [
             { id: "l1", title: "Instalacija i podešavanje", url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32320CrE2mLiW4HZUOM3qU2HuycDmRMK0aniO8oik5pW4x0de&playbackInfo=eyJ2aWRlb0lkIjoiYjM2MTQyNzBlYmRiNDMwOGJhMzI2MjE5Yzk4ODAzZWUifQ==", desc: "Vodič kroz instalaciju alata." },
@@ -14,7 +35,8 @@ const courseData = [{
     }
 ];
 
-let completedLessons = JSON.parse(localStorage.getItem('edu_vfinal_stable')) || [];
+// --- VARIJABLE I ELEMENTI ---
+let completedLessons = [];
 let currentLessonId = null;
 
 const nav = document.getElementById('course-accordion');
@@ -28,6 +50,62 @@ const sidebar = document.getElementById('sidebar');
 const menuToggle = document.getElementById('menu-toggle');
 const btnComplete = document.getElementById('btn-complete');
 
+// --- SIGURNOST (UREĐAJI I SESIJE) ---
+function generateSessionToken() {
+    return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+async function setupMaxTwoDevices(user) {
+    const userRef = doc(db, "users", user.uid);
+    let sessionToken = localStorage.getItem("sessionToken");
+    if (!sessionToken) {
+        sessionToken = generateSessionToken();
+        localStorage.setItem("sessionToken", sessionToken);
+    }
+
+    const snap = await getDoc(userRef);
+    let sessionTokens = snap.exists() ? (snap.data().sessionTokens || []) : [];
+
+    if (!sessionTokens.includes(sessionToken)) {
+        if (sessionTokens.length >= 2) {
+            alert("Dostignut je maksimalan broj uređaja (2).");
+            await signOut(auth);
+            window.location.href = "/login";
+            return false;
+        }
+        sessionTokens.push(sessionToken);
+        await setDoc(userRef, { sessionTokens }, { merge: true });
+    }
+
+    onSnapshot(userRef, (docSnap) => {
+        const data = docSnap.data();
+        if (data && !data.sessionTokens?.includes(sessionToken)) {
+            alert("Pristup ovom uređaju je uklonjen.");
+            signOut(auth);
+            window.location.href = "/login";
+        }
+    });
+    return true;
+}
+
+// --- PROGRES I SINHRONIZACIJA ---
+async function syncProgress(userId) {
+    const userRef = doc(db, "users", userId);
+    const snap = await getDoc(userRef);
+    if (snap.exists() && snap.data().completedLessons) {
+        completedLessons = snap.data().completedLessons;
+    } else {
+        completedLessons = JSON.parse(localStorage.getItem('edu_vfinal_stable')) || [];
+    }
+}
+
+async function saveProgressToFirebase(userId) {
+    const userRef = doc(db, "users", userId);
+    await setDoc(userRef, { completedLessons }, { merge: true });
+    localStorage.setItem('edu_vfinal_stable', JSON.stringify(completedLessons));
+}
+
+// --- FUNKCIJE INTERFEJSA ---
 function init() {
     nav.innerHTML = '';
     courseData.forEach((module, mIndex) => {
@@ -71,38 +149,18 @@ function init() {
     });
 
     if (courseData.length > 0 && courseData[0].lessons.length > 0) {
-        const firstLesson = courseData[0].lessons[0];
-        const firstModuleTitle = courseData[0].moduleTitle;
-
-        // Umesto ručnog postavljanja src i teksta, samo pozovi selectLesson.
-        // To će automatski srediti iframe, naslov, modul i stanje dugmeta.
-        selectLesson(firstLesson, firstModuleTitle);
-
-        // Pošto selectLesson automatski menja src na iframe-u, 
-        // VdoCipher će se učitati, ali neće pustiti zvuk dok korisnik ne klikne "Play"
-        // unutar samog plejera (browseri blokiraju auto-play sa zvukom).
-
-        // Aktiviraj vizuelno prvo dugme u sidebaru i otvori prvi modul
+        selectLesson(courseData[0].lessons[0], courseData[0].moduleTitle);
         setTimeout(() => {
-            const firstBtn = document.getElementById(`btn-${firstLesson.id}`);
-            if (firstBtn) firstBtn.classList.add('active-lesson');
-
             const firstList = document.querySelector('.lesson-list');
             if (firstList) firstList.classList.add('active');
         }, 100);
     }
-
     updateGlobalProgress();
 }
 
 function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
-
-    // Menjamo src na iframe-u - VdoCipher sam hendluje učitavanje
-    if (vdoPlayer) {
-        vdoPlayer.src = lesson.url;
-    }
-
+    if (vdoPlayer) vdoPlayer.src = lesson.url;
     titleDisplay.innerText = lesson.title;
     if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;
@@ -112,40 +170,30 @@ function selectLesson(lesson, moduleTitle) {
     if (b) b.classList.add('active-lesson');
 
     updateButtonState();
-
     if (window.innerWidth <= 992) sidebar.classList.remove('open');
 }
 
 function toggleLessonStatus(id) {
     if (!id) return;
-
     const index = completedLessons.indexOf(id);
-    if (index > -1) {
-        completedLessons.splice(index, 1);
-    } else {
-        completedLessons.push(id);
-    }
+    if (index > -1) completedLessons.splice(index, 1);
+    else completedLessons.push(id);
 
-    localStorage.setItem('edu_vfinal_stable', JSON.stringify(completedLessons));
+    if (auth.currentUser) saveProgressToFirebase(auth.currentUser.uid);
     updateUI();
-    updateButtonState(); // Ažurira dugme odmah nakon klika
+    updateButtonState();
 }
 
-// Funkcija koja menja tekst i ikonicu na glavnom dugmetu
-// Funkcija koja menja tekst i ikonicu na glavnom dugmetu, i uklanja direktne stilove
 function updateButtonState() {
     if (!currentLessonId) return;
-
     const isDone = completedLessons.includes(currentLessonId);
     const btnTextSpan = btnComplete.querySelector('.button_text');
 
     if (isDone) {
         btnTextSpan.innerHTML = `<i class="fas fa-times"></i> Poništi završetak`;
-        // Opciono: Promeni gradijent u sivkasti kada je lekcija završena
         btnComplete.style.backgroundImage = "linear-gradient(135deg, #666, #333)";
     } else {
         btnTextSpan.innerHTML = `<i class="fas fa-check"></i> Završi lekciju`;
-        // Vrati originalni gradijent
         btnComplete.style.backgroundImage = "linear-gradient(135deg, #ffcf23, #ff8d3a)";
     }
 }
@@ -157,14 +205,8 @@ function updateUI() {
             if (btn) {
                 const isDone = completedLessons.includes(lesson.id);
                 const icon = btn.querySelector('i');
-
-                if (isDone) {
-                    btn.classList.add('completed');
-                    icon.className = 'fas fa-check-circle';
-                } else {
-                    btn.classList.remove('completed');
-                    icon.className = 'far fa-circle';
-                }
+                btn.className = `lesson-btn ${isDone ? 'completed' : ''} ${currentLessonId === lesson.id ? 'active-lesson' : ''}`;
+                icon.className = isDone ? 'fas fa-check-circle' : 'far fa-circle';
             }
         });
         checkModuleCompletion(mIndex);
@@ -176,29 +218,40 @@ function checkModuleCompletion(index) {
     const module = courseData[index];
     const card = document.getElementById(`m-b-${index}`);
     if (!card) return;
-
     const allDone = module.lessons.every(l => completedLessons.includes(l.id));
-    if (allDone) {
-        card.classList.add('module-done');
-    } else {
-        card.classList.remove('module-done');
-    }
+    if (allDone) card.classList.add('module-done');
+    else card.classList.remove('module-done');
 }
 
 function updateGlobalProgress() {
     const totalLessons = courseData.reduce((acc, m) => acc + m.lessons.length, 0);
     const progress = totalLessons > 0 ? Math.round((completedLessons.length / totalLessons) * 100) : 0;
-
     if (progressFill) progressFill.style.width = progress + '%';
     if (percentText) percentText.innerText = progress + '%';
 }
 
-btnComplete.onclick = () => {
-    toggleLessonStatus(currentLessonId);
-};
+// --- GLAVNI AUTH LISTENER ---
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        const deviceOk = await setupMaxTwoDevices(user);
+        if (!deviceOk) return;
 
-if (menuToggle) {
-    menuToggle.onclick = () => sidebar.classList.toggle('open');
-}
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        const kursevi = userSnap.data()?.kursevi || [];
 
-init();
+        if (!kursevi.includes("oikt-klk2")) {
+            alert("Nemate pristup ovom kursu.");
+            window.location.href = "/oikt";
+            return;
+        }
+
+        await syncProgress(user.uid);
+        init();
+    } else {
+        window.location.href = "/login";
+    }
+});
+
+btnComplete.onclick = () => toggleLessonStatus(currentLessonId);
+if (menuToggle) menuToggle.onclick = () => sidebar.classList.toggle('open');

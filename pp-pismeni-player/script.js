@@ -635,7 +635,7 @@ const courseData = [
             },
             { 
                 id: "i5", 
-                title: "Strukture: Rešeni zadaci", 
+                title: "Sortiranje proizvoda po nazivu", 
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Lku6whQnii0ADrt6r3p0uIrpds3mGmG2wf5KhBdSbNuAF&playbackInfo=eyJ2aWRlb0lkIjoiYmI0OGYwOTJjZWJiNDEyYzk4NGY3ZjkwMDIzNTg0ODEifQ==" 
             }
         ]

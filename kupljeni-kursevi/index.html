@@ -284,23 +284,45 @@
                 }
             
                 /* Auth & Logout Buttons */
-                .logout-btn, #authBtnText {
-                    background: rgba(255, 255, 255, 0.05) !important;
-                    border: 1px solid var(--glass-border) !important;
-                    backdrop-filter: blur(5px);
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    font-size: 0.8rem !important;
-                    padding: 12px 24px !important;
-                    border-radius: 50px !important;
-                    transition: all 0.3s ease !important;
-                }
-            
-                .logout-btn:hover, #authBtnText:hover {
-                    background: #fff !important;
-                    color: #000 !important;
-                    transform: scale(1.05);
-                }
+                /* Minimalistički Auth & Logout Buttons sa suptilnim sjajem */
+.logout-btn, #authBtnText {
+    background: rgba(255, 255, 255, 0.03) !important; /* Skoro providno */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #ffffff !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    padding: 12px 28px !important;
+    border-radius: 50px !important;
+    transition: all 0.4s ease !important;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(255, 107, 0, 0); /* Inicijalno bez sjaja */
+}
+
+.logout-btn:hover, #authBtnText:hover {
+    /* Boja pozadine ostaje ista ili se TRUNKU pojača radi čitljivosti */
+    background: rgba(255, 255, 255, 0.07) !important;
+    
+    /* Border postaje malo jasniji, u boji tvog brenda */
+    border-color: rgba(255, 107, 0, 0.5) !important;
+    
+    /* Samo sjaj (glow) ispod dugmeta */
+    box-shadow: 0 10px 30px -5px rgba(255, 107, 0, 0.4);
+    
+    /* Blago podizanje, čisto da se oseti interakcija */
+    transform: translateY(-2px);
+}
+
+/* Pozicioniranje logout dugmeta */
+.logout-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
             
                 #emptyMsg {
                     font-family: 'Switzer', sans-serif;

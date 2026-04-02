@@ -19,7 +19,7 @@ const db = getFirestore(app);
 
 // KLJUČNO: Ovde definišeš koji je ovo kurs. 
 // Ako praviš stranicu za SPA, ovde upiši "spa-klk1"
-const CURRENT_COURSE_ID = "oikt-klk2"; 
+const CURRENT_COURSE_ID = "pp-pismeni"; 
 
 // --- 2. PODACI O KURSU ---
 const courseData = [

@@ -20,7 +20,7 @@ const CURRENT_COURSE_ID = "pp-pismeni";
 
 const courseData = [
     {
-        moduleTitle: "01. Uvod",
+        moduleTitle: "01. Linijski programi",
         lessons: [
             { 
                 id: "a1", 

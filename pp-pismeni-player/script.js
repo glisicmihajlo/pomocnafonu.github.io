@@ -1079,7 +1079,7 @@ onAuthStateChanged(auth, async (user) => {
 
         if (!kursevi.includes(CURRENT_COURSE_ID)) {
             alert("Nemate pristup ovom kursu.");
-            window.location.href = "/oikt";
+            window.location.href = "/pp";
             return;
         }
 

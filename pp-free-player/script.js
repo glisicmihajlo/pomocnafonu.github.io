@@ -4,7 +4,7 @@ const CURRENT_COURSE_ID = "pp-pismeni";
 
 const courseData = [
     {
-        moduleTitle: "01. Linijski programi",
+        moduleTitle: "PISMENI - 01. Linijski programi",
         lessons: [
             { 
                 id: "a1", 
@@ -80,7 +80,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. If naredba",
+        moduleTitle: "PISMENI - 02. If naredba",
         lessons: [
             { 
                 id: "b1", 
@@ -128,7 +128,108 @@ const courseData = [
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232gq0vAualegZ9CY8Y3MvkiSQztMWGE4iETwqYDo3pU84h7&playbackInfo=eyJ2aWRlb0lkIjoiZTkwOTg1NGU2MmU2NDdiODliZDczMjc2ZjdlOGI4NWYifQ==" 
             }
         ]
-    }
+    },
+    {
+        moduleTitle: "USMENI - 01. Osnove i operatori",
+        lessons: [
+            { 
+                id: "c1", 
+                title: "Tipovi i konverzija", 
+                url: "https://www.youtube.com/watch?v=hBKAR9te_y8&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=19" 
+            },
+            { 
+                id: "c2", 
+                title: "Greške u kucanju", 
+                url: "https://www.youtube.com/watch?v=hRgP-jWhQNU&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=2" 
+            },
+            { 
+                id: "c3", 
+                title: "Uslovni i logički izraz", 
+                url: "https://www.youtube.com/watch?v=K6x1Ims5owc&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=3" 
+            },
+            { 
+                id: "c4", 
+                title: "Tipovi podataka - uvod", 
+                url: "https://www.youtube.com/watch?v=QrVnplDFa6Y&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=4" 
+            },
+            { 
+                id: "c5", 
+                title: "Veličina tipova podataka", 
+                url: "https://www.youtube.com/watch?v=YoeGQTTmmJg&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=5" 
+            },
+            { 
+                id: "c6", 
+                title: "Oduzimanje karaktera", 
+                url: "https://www.youtube.com/watch?v=mYnLc5qwb90&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=6" 
+            },
+            { 
+                id: "c7", 
+                title: "Vidljivost promenljivih", 
+                url: "https://www.youtube.com/watch?v=Uj27XrFnREY&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=7" 
+            },
+            { 
+                id: "c8", 
+                title: "Prioritet operatora dodele", 
+                url: "https://www.youtube.com/watch?v=fIccTDgZhnU&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=8" 
+            },
+            { 
+                id: "c9", 
+                title: "Vezani ternarni operatori", 
+                url: "https://www.youtube.com/watch?v=gdSXrnkg-m8&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=9" 
+            },
+            { 
+                id: "c10", 
+                title: "Logička dodela", 
+                url: "https://www.youtube.com/watch?v=CJmIhC3CYRw&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=10" 
+            },
+            { 
+                id: "c11", 
+                title: "Logička poređenja", 
+                url: "https://www.youtube.com/watch?v=MNeP-P_Qmtk&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=11" 
+            },
+            { 
+                id: "c12", 
+                title: "Prekoračenje opsega memorije", 
+                url: "https://www.youtube.com/watch?v=BKAybBsKIEg&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=12" 
+            },
+            { 
+                id: "c13", 
+                title: "Zamka u makroima", 
+                url: "https://www.youtube.com/watch?v=t9yX3KP2JLo&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=13" 
+            },
+            { 
+                id: "c14", 
+                title: "Inkrement u funkciji", 
+                url: "https://www.youtube.com/watch?v=quKJIJlMBOQ&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=14" 
+            },
+            { 
+                id: "c15", 
+                title: "Makro i poređenje", 
+                url: "https://www.youtube.com/watch?v=IObWvhHK5GQ&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=15" 
+            },
+            { 
+                id: "c16", 
+                title: "Makro za različitost", 
+                url: "https://www.youtube.com/watch?v=h_UcJVTvzjo&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=16" 
+            },
+            { 
+                id: "c17", 
+                title: "Granice tipova podataka", 
+                url: "https://www.youtube.com/watch?v=P3VzHBV1lS4&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=17" 
+            },
+            { 
+                id: "c18", 
+                title: "Skraćena evaluacija izraza", 
+                url: "https://www.youtube.com/watch?v=8DGijaLq0tE&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=18" 
+            },
+            { 
+                id: "c19", 
+                title: "Složeni uslovni izraz", 
+                url: "https://www.youtube.com/watch?v=7_R6faFdghI&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=19" 
+            }
+            
+        ]
+    },
 ];
 
 // Inicijalizacija iz localStorage-a (ako postoji progres od ranije)
@@ -147,6 +248,14 @@ const btnComplete = document.getElementById('btn-complete');
 
 function saveProgressLocally() {
     localStorage.setItem(`progress_${CURRENT_COURSE_ID}`, JSON.stringify(completedLessons));
+}
+
+function getEmbedUrl(originalUrl) {
+    if (originalUrl && originalUrl.includes("youtube.com/watch")) {
+        const videoId = new URL(originalUrl).searchParams.get("v");
+        return `https://www.youtube.com/embed/${videoId}`;
+    }
+    return originalUrl; // Ako je VdoCipher ili već embed, ne menja ništa
 }
 
 function init() {
@@ -203,7 +312,7 @@ function init() {
 
 function selectLesson(lesson, moduleTitle) {
     currentLessonId = lesson.id;
-    if (vdoPlayer) vdoPlayer.src = lesson.url;
+    if (vdoPlayer) vdoPlayer.src = getEmbedUrl(lesson.url);
     titleDisplay.innerText = lesson.title;
     moduleTag.innerText = moduleTitle;
 

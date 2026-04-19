@@ -212,11 +212,6 @@ const courseData = [
                 id: "b18",
                 title: "Rekurzivni ispis (n=4)",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232Ueai7Uzrocz9Y2Mr68dxPz1X9iG00a7UcDF8rzjEcU7td&playbackInfo=eyJ2aWRlb0lkIjoiMGI0YjQ0M2U0YTFkNDY1MjkxZDlkNTE0MGMzN2MwYWUifQ=="
-            },
-            {
-                id: "b19",
-                title: "Crtanje slovnog trougla",
-                url:""
             }
         ]
     },
@@ -224,29 +219,139 @@ const courseData = [
         moduleTitle: "03. Funkcije i memorijski segmenti",
         lessons: [
             {
-                id: "",
-                title: "",
-                url:""
+                id: "c1",
+                title: "Memorijski segmenti",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232utoX2x7sc6Hhb59TmckfAQvMw9SeJPGvThY07cu3PhYyr&playbackInfo=eyJ2aWRlb0lkIjoiN2YyNTY5ZDk3YWIzNDcyYTg4YjVmYjY0ZTlhNmUyMzMifQ=="
             },
+            {
+                id: "c2",
+                title: "Povratna vrednost funkcije",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232InZzMHu8iELNHlkuhQhYCE263NaOZnvLZrEsFrXwgMO7B&playbackInfo=eyJ2aWRlb0lkIjoiMmMzNmE4NTNlNjBiNDliNzg2MTRiMmE1MWE3YWZiYzgifQ=="
+            },
+            {
+                id: "c3",
+                title: "Statičke i lokalne promenljive",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232tPlEypiqhLRpDJsmJaVjsxG48NbiUzw2V34mY4twbkUcC&playbackInfo=eyJ2aWRlb0lkIjoiZGExNzhhOWUxMDNmNDIyMDhiNjU4ZGZhYTcxYjZhMTkifQ=="
+            },
+            {
+                id: "c4",
+                title: "Eksterne promenljive",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232Mpbs6oHVICg2cq7SOPmjeDwOV21SCfg5h1NXWpUMwzRZX&playbackInfo=eyJ2aWRlb0lkIjoiZjQ1MDIzOWM1NjFiNDMwM2IyMjczNGU1ODY4YjM2MzIifQ=="
+            }
         ]
     },
     {
         moduleTitle: "04. Pokazivači",
         lessons: [
             {
-                id: "",
-                title: "",
-                url:""
+                id: "d1",
+                title: "Zamena lokalnih pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232gdzTVLfPACJjxC5GxenmERpvjKs7I4xSSkkmXcccHNXuX&playbackInfo=eyJ2aWRlb0lkIjoiMGU1NzljOTQ4ZjdlNGYyNGI5N2ZhYjUzMWJmNThmMzAifQ=="
             },
+            {
+                id: "d2",
+                title: "Dereferenciranje pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232kDnodd8O1VN4tRkIi7gk3SQkn2JaQTBvFPc7seQq05fj7&playbackInfo=eyJ2aWRlb0lkIjoiMTVlMDZmNDU5MDUwNGZlYzkyMjMyZDZlNzVjMjk1YzYifQ=="
+            },
+            {
+                id: "d3",
+                title: "Inkrementiranje i adrese",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232GYjMmTNnuMlQ6dhxYKyoGVY2Tkna7cmxAvOZR0ypR5kjF&playbackInfo=eyJ2aWRlb0lkIjoiNDFiODUyNzdlYTk4NGE3YjgxNDkzZDBmOTQyMDlmNGEifQ=="
+            },
+            {
+                id: "d4",
+                title: "Pokazivači na niz",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232pDNmn6uLqFale1EH1tBMW29Z4FYeOaZzwNIQ0bRSt48xX&playbackInfo=eyJ2aWRlb0lkIjoiYmY1OGNjZGYwYWRmNGJmM2E2YjRiYTYyMWRhMzBiMDkifQ=="
+            },
+            {
+                id: "d5",
+                title: "Veličina pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ejGHyBLvvwW7ygUg0jFap76PfcQYr88LmbHgO9uSxuE2g&playbackInfo=eyJ2aWRlb0lkIjoiYTc1ZWIxMzYxOWQ4NDdmMTllMmEyMWFlYzY2YWRmODYifQ=="
+            },
+            {
+                id: "d6",
+                title: "Inkrement NULL pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ieBIT6bfOVEKtaG7IcEOD8eXpkdX1hemTT37lhRyCjPGX&playbackInfo=eyJ2aWRlb0lkIjoiZjFmYzljYmM0NmZhNDM1M2EzNDAwNmFmYmU4YTFiNDQifQ=="
+            },
+            {
+                id: "d7",
+                title: "Prenos po vrednosti",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232r9y0dJXbol0i4evfug9AElYOmuMTawid946urlyQwDPmK&playbackInfo=eyJ2aWRlb0lkIjoiNDYxOTAwNGZiY2RiNGQyYjk5ZmViM2MzN2Q1N2U0ZDcifQ=="
+            },
+            {
+                id: "d8",
+                title: "Izostanak dodele vrednosti",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE32328f0SaZqAhNYK6Fuu72nJRDwr6T0yF5oUIiENkIDHmd4HE&playbackInfo=eyJ2aWRlb0lkIjoiZGRlNGRlZWNiOGRkNGE2YTg4NTRjNGMxMDYzMTJkZDAifQ=="
+            },
+            {
+                id: "d9",
+                title: "Dvostruki pokazivači",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232j4chrfDjUwfXwIwj1pj6xDBA9Bg4HlXYxACfHMD15s88A&playbackInfo=eyJ2aWRlb0lkIjoiMWIzYWM1OGMwNjQ5NGZlOWFlZWRmMTA0NmEyZmFlYWYifQ=="
+            },
+            {
+                id: "d10",
+                title: "Pokazivačka aritmetika",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232dcGxdmvmLdPo2B8JdtZy3JarOlZFJAhQ4nwEjz71du4zS&playbackInfo=eyJ2aWRlb0lkIjoiYjM1YmEwNmQwODMwNGQyYjllZjlhZjMwM2YxNDU3OWEifQ=="
+            }
         ]
     },
     {
         moduleTitle: "05. Nizovi",
         lessons: [
             {
-                id: "",
+                id: "e1",
                 title: "",
-                url:""
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232OwzVSA949bZf84jA0ll2P6wbb2l6jGnWaD9vpEvSXFHIE&playbackInfo=eyJ2aWRlb0lkIjoiMjYxZGJiZmQ2ZjAwNGEyNGIxNDI4ZjdmZTE3YWE5Y2MifQ=="
+            },
+            {
+                id: "e2",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32323I654YQOAtDcMx54qtJ0wtxGkuae2TCvaoEbB3swJYCXU&playbackInfo=eyJ2aWRlb0lkIjoiZDk1ODM4ODM2MzU4NGM4OGE5NGNkOWQ4NTJlOTY2MWEifQ=="
+            },
+            {
+                id: "e3",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Unba35Mpl15ZK0Wkzzn2uLZTcSfBfk6UXLEdzWH4Zms8r&playbackInfo=eyJ2aWRlb0lkIjoiMWRkNzlmMjM1YjdkNDAwMGJhMTcwZGNlZGZjZjdkOWQifQ=="
+            },
+            {
+                id: "e4",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232PltxZ5SDnN9zCEVaEHh9lUSx7uGVmEUN2P9GjivTV6uSC&playbackInfo=eyJ2aWRlb0lkIjoiZmRmYmI2MjI1NjljNGZmZmFjYjExN2JiMGMzZjhhNzkifQ=="
+            },
+            {
+                id: "e5",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232wCHQiaOU1R8nbL8v66stR5tx7c41uLxUu09bqlxPHj3EI&playbackInfo=eyJ2aWRlb0lkIjoiNjA3OGMwMGM0NDFkNDY2NWIyODc4ZGI3NDU5NTc5NjUifQ=="
+            },
+            {
+                id: "e6",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32321733tKhmWOOX9RRSehaSyu4nOIJnyYVxqQ0lyt2dZDqbN&playbackInfo=eyJ2aWRlb0lkIjoiMWUwOTY5NTUzZjU2NGMzYjk4YjJhYjYxNjYyNjA1NjAifQ=="
+            },
+            {
+                id: "e7",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232j1y7jZpJZgQy1Acat4teUzR58kPkhJVzdfoXpyDKUbmQb&playbackInfo=eyJ2aWRlb0lkIjoiNzA4ZWUxMTdkZDZmNGFjM2JkMDk0MDM3NGJhNTRiZWUifQ=="
+            },
+            {
+                id: "e8",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232jpm4fuDWTs2MkBKmJRNt8cUqxPlQJvt41uGdGMiDFcN1d&playbackInfo=eyJ2aWRlb0lkIjoiMmQ4Yzc2M2IxYzJmNGNiYTliZGFmNTlhZDE4OGMwMWUifQ=="
+            },
+            {
+                id: "e9",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232G16pMomSceDW71vKRwIf5u2PGczBgxu8nKCx4jmNgB6NG&playbackInfo=eyJ2aWRlb0lkIjoiODVjNWJkNTQ1MGRmNDQ4MTk5ZWE3YWQ5YzZhZWE5MDcifQ=="
+            },
+            {
+                id: "e10",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232X7QIerUGDFsbp69wk00B6MaG6p47EVZ74WzW0PiY2I5GP&playbackInfo=eyJ2aWRlb0lkIjoiYzJlYTdjNmU3OTVhNDkwZGFjNDBjMjczM2MxMzgzN2EifQ=="
+            },
+            {
+                id: "e11",
+                title: "",
+                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232k2tdZe7LcB2H8TfNrItzwC0xH2kLyim542oZXNkW5KCOm&playbackInfo=eyJ2aWRlb0lkIjoiYmY1OGNjZGYwYWRmNGJmM2E2YjRiYTYyMWRhMzBiMDkifQ=="
             },
         ]
     },
@@ -256,7 +361,7 @@ const courseData = [
             {
                 id: "",
                 title: "",
-                url:""
+                url: ""
             },
         ]
     },
@@ -266,7 +371,7 @@ const courseData = [
             {
                 id: "",
                 title: "",
-                url:""
+                url: ""
             },
         ]
     },
@@ -276,7 +381,7 @@ const courseData = [
             {
                 id: "",
                 title: "",
-                url:""
+                url: ""
             },
         ]
     }

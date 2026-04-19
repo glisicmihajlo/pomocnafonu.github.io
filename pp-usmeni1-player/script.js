@@ -165,53 +165,63 @@ const courseData = [
             },
             {
                 id: "b9",
+                title: "Ternarni operator i unos",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232dq8khIPZKF9QVP86QGDWpLvhmGlhKqOLqTDioNTjRLvqe&playbackInfo=eyJ2aWRlb0lkIjoiMjFkYjQ0MjVkYjdhNDEyZmI4NjUzYWY0MDA5ODJlNjMifQ=="
+            },
+            {
+                id: "b10",
                 title: "Crtanje oblika (trougao)",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232qOwZuE4kFkYfD8NWVVwF7Ki7sLugmYo4DdqTvMRvJUOiS&playbackInfo=eyJ2aWRlb0lkIjoiMWY0YzA2MDRiZDNlNGI0ZDhhNTYxYjAxYTRlMTdjMDMifQ=="
             },
             {
-                id: "b10",
+                id: "b11",
                 title: "Crtanje šupljeg romba",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232fGZ8vr5qAu5nDPY91JmeS9Rp8Y4MxJKNsIwEKH7YbcYSH&playbackInfo=eyJ2aWRlb0lkIjoiY2YzM2RhYTQwZDQwNGRkMjkwNjJhMjAwYTFlMDllNjQifQ=="
             },
             {
-                id: "b11",
+                id: "b12",
                 title: "While i dekrement",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232H4Zgdi0gDpkvfB5BfhhF1Jobw1NVUa2s8iVJOXsyTh09n&playbackInfo=eyJ2aWRlb0lkIjoiZjliNzU1ZTRiZTk0NGZiZDhiZmI2MzViZTRkYjE5NzQifQ=="
             },
             {
-                id: "b12",
+                id: "b13",
                 title: "While i ternarni",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232CcWxWZrSgBKuiTPcgRN3soh1riY1IxyapzsmCNvcU2thd&playbackInfo=eyJ2aWRlb0lkIjoiNjM3ZjFjM2MwZDg1NDljMGEwMDNjOTFkNTc4YTFiNDMifQ=="
             },
             {
-                id: "b13",
+                id: "b14",
                 title: "For i moduo",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232J2QkWScCCyJspqB62Unvw5bbl8XyYheVf2U9w7B9YkNMx&playbackInfo=eyJ2aWRlb0lkIjoiMjhlMTdjYmUyZjNkNDc4ZGFkZDY1Y2YxOGQ4MTgxNTkifQ=="
             },
             {
-                id: "b14",
+                id: "b15",
                 title: "Crtanje okvira trougla",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232n2PX2pvDJsg8lt9ReD2TE90VzfZzQc0Iwp3EVUaEJAWiz&playbackInfo=eyJ2aWRlb0lkIjoiZGIwNGEyNzc0NDk2NGMxNGE2M2EyNzUwMGE1ZjkwODYifQ=="
             },
             {
-                id: "b15",
+                id: "b16",
                 title: "Switch bez break-a",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232BdB0wrgITni9gfFlTyljnT6t6K0XwQA3PT1pWFZekrXMa&playbackInfo=eyJ2aWRlb0lkIjoiMTQ3OTBiNTEyYmM4NGU5OTg3NGE5YTNjMDUxMmJjMjQifQ=="
             },
             {
-                id: "b16",
+                id: "b17",
                 title: "Jednostavna do-while petlja",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232AlXnOhK4RxCgIZeDOc9C6n9M9bDutnomEdw0cnmAm9XoC&playbackInfo=eyJ2aWRlb0lkIjoiZTE2YjNiYzViNTAzNDY0MTk5YjI1ZGU2OGYzYmU5MDUifQ=="
             },
             {
-                id: "b17",
+                id: "b18",
                 title: "Switch unutar for-a",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ZSGNvsKnmKNMu6W54xq46VBeSWdckrf8Kjh5JWihwphjT&playbackInfo=eyJ2aWRlb0lkIjoiOWQwZmMxYmIzMTg1NDg3Yjg0NmZhM2FlYjFkODFlMDUifQ=="
             },
             {
-                id: "b18",
-                title: "Rekurzivni ispis (n=4)",
+                id: "b19",
+                title: "Rekurzivni ispis",
                 url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232Ueai7Uzrocz9Y2Mr68dxPz1X9iG00a7UcDF8rzjEcU7td&playbackInfo=eyJ2aWRlb0lkIjoiMGI0YjQ0M2U0YTFkNDY1MjkxZDlkNTE0MGMzN2MwYWUifQ=="
+            },
+            {
+                id: "b20",
+                title: "Logički izrazi i prioritet",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232PKvA10lXdNyTKofNqznw6mvuHBNygnfPXoxcjld7ePJtv&playbackInfo=eyJ2aWRlb0lkIjoiYTEwZDU0Y2RiZGNiNDdlNmE5OWJmNzM2MGIwMTMwYjgifQ=="
             }
         ]
     },
@@ -347,11 +357,6 @@ const courseData = [
                 id: "e10",
                 title: "",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232X7QIerUGDFsbp69wk00B6MaG6p47EVZ74WzW0PiY2I5GP&playbackInfo=eyJ2aWRlb0lkIjoiYzJlYTdjNmU3OTVhNDkwZGFjNDBjMjczM2MxMzgzN2EifQ=="
-            },
-            {
-                id: "e11",
-                title: "",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232k2tdZe7LcB2H8TfNrItzwC0xH2kLyim542oZXNkW5KCOm&playbackInfo=eyJ2aWRlb0lkIjoiYmY1OGNjZGYwYWRmNGJmM2E2YjRiYTYyMWRhMzBiMDkifQ=="
             },
         ]
     },

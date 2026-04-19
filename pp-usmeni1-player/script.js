@@ -310,52 +310,52 @@ const courseData = [
         lessons: [
             {
                 id: "e1",
-                title: "",
+                title: "Prolaz pokazivačem kroz niz",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232OwzVSA949bZf84jA0ll2P6wbb2l6jGnWaD9vpEvSXFHIE&playbackInfo=eyJ2aWRlb0lkIjoiMjYxZGJiZmQ2ZjAwNGEyNGIxNDI4ZjdmZTE3YWE5Y2MifQ=="
             },
             {
                 id: "e2",
-                title: "",
+                title: "Dinamička alokacija niza",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32323I654YQOAtDcMx54qtJ0wtxGkuae2TCvaoEbB3swJYCXU&playbackInfo=eyJ2aWRlb0lkIjoiZDk1ODM4ODM2MzU4NGM4OGE5NGNkOWQ4NTJlOTY2MWEifQ=="
             },
             {
                 id: "e3",
-                title: "",
+                title: "Niz sa enum konstantama",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Unba35Mpl15ZK0Wkzzn2uLZTcSfBfk6UXLEdzWH4Zms8r&playbackInfo=eyJ2aWRlb0lkIjoiMWRkNzlmMjM1YjdkNDAwMGJhMTcwZGNlZGZjZjdkOWQifQ=="
             },
             {
                 id: "e4",
-                title: "",
+                title: "Osnovna inicijalizacija niza",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232PltxZ5SDnN9zCEVaEHh9lUSx7uGVmEUN2P9GjivTV6uSC&playbackInfo=eyJ2aWRlb0lkIjoiZmRmYmI2MjI1NjljNGZmZmFjYjExN2JiMGMzZjhhNzkifQ=="
             },
             {
                 id: "e5",
-                title: "",
+                title: "Indeksirana inicijalizacija elemenata",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232wCHQiaOU1R8nbL8v66stR5tx7c41uLxUu09bqlxPHj3EI&playbackInfo=eyJ2aWRlb0lkIjoiNjA3OGMwMGM0NDFkNDY2NWIyODc4ZGI3NDU5NTc5NjUifQ=="
             },
             {
                 id: "e6",
-                title: "",
+                title: "Pristup preko indeksa",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32321733tKhmWOOX9RRSehaSyu4nOIJnyYVxqQ0lyt2dZDqbN&playbackInfo=eyJ2aWRlb0lkIjoiMWUwOTY5NTUzZjU2NGMzYjk4YjJhYjYxNjYyNjA1NjAifQ=="
             },
             {
                 id: "e7",
-                title: "",
+                title: "Alternativna sintaksa (digrafi)",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232j1y7jZpJZgQy1Acat4teUzR58kPkhJVzdfoXpyDKUbmQb&playbackInfo=eyJ2aWRlb0lkIjoiNzA4ZWUxMTdkZDZmNGFjM2JkMDk0MDM3NGJhNTRiZWUifQ=="
             },
             {
                 id: "e8",
-                title: "",
+                title: "Sizeof niza u funkciji",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232jpm4fuDWTs2MkBKmJRNt8cUqxPlQJvt41uGdGMiDFcN1d&playbackInfo=eyJ2aWRlb0lkIjoiMmQ4Yzc2M2IxYzJmNGNiYTliZGFmNTlhZDE4OGMwMWUifQ=="
             },
             {
                 id: "e9",
-                title: "",
+                title: "Adresni pristup elementu",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232G16pMomSceDW71vKRwIf5u2PGczBgxu8nKCx4jmNgB6NG&playbackInfo=eyJ2aWRlb0lkIjoiODVjNWJkNTQ1MGRmNDQ4MTk5ZWE3YWQ5YzZhZWE5MDcifQ=="
             },
             {
                 id: "e10",
-                title: "",
+                title: "Provera adrese niza",
                 url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232X7QIerUGDFsbp69wk00B6MaG6p47EVZ74WzW0PiY2I5GP&playbackInfo=eyJ2aWRlb0lkIjoiYzJlYTdjNmU3OTVhNDkwZGFjNDBjMjczM2MxMzgzN2EifQ=="
             },
         ]

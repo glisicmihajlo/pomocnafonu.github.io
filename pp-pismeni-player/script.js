@@ -995,6 +995,8 @@ function init() {
         }, 100);
     }
     updateGlobalProgress();
+
+    moveWatermark();
 }
 
 function selectLesson(lesson, moduleTitle) {
@@ -1067,6 +1069,28 @@ function updateGlobalProgress() {
     const progress = totalLessons > 0 ? Math.round((completedLessons.length / totalLessons) * 100) : 0;
     if (progressFill) progressFill.style.width = progress + '%';
     if (percentText) percentText.innerText = progress + '%';
+}
+
+function moveWatermark() {
+    const wm = document.getElementById('video-watermark');
+    if (!wm) return;
+
+    // Ako tajmer već postoji, nemoj pokretati novi
+    if (window.watermarkInterval) return;
+
+    // Funkcija koja menja poziciju
+    const setRandomPos = () => {
+        const x = Math.floor(Math.random() * 60) + 10; // Između 10% i 70% širine
+        const y = Math.floor(Math.random() * 60) + 10; // Između 10% i 70% visine
+        wm.style.left = x + '%';
+        wm.style.top = y + '%';
+    };
+
+    // Postavi početnu poziciju odmah
+    setRandomPos();
+
+    // Pokreni interval i sačuvaj ga u globalni prozor
+    window.watermarkInterval = setInterval(setRandomPos, 8000); // Menja na 8 sekundi
 }
 
 onAuthStateChanged(auth, async (user) => {

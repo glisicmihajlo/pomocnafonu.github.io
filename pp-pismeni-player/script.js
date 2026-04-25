@@ -1071,6 +1071,11 @@ function updateGlobalProgress() {
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
+        const watermarkEl = document.getElementById('video-watermark');
+        if (watermarkEl) {
+            watermarkEl.innerText = user.email; // Uzima email direktno iz Firebase Auth-a
+        }
+
         const deviceOk = await setupMaxTwoDevices(user);
         if (!deviceOk) return;
 

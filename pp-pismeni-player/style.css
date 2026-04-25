@@ -417,6 +417,24 @@ video {
     color: var(--primary);
 }
 
+.video-frame {
+    position: relative; /* Ovo već imaš, ali je ključno */
+}
+
+.watermark {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    pointer-events: none; /* Ključno: omogućava klikove "kroz" tekst na video plejer */
+    color: rgba(255, 255, 255, 0.3); /* Polu-providna bela */
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 10;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 
 /* RESPONSIVE */
 

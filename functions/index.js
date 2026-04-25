@@ -1,24 +1,44 @@
-import * as functions from "firebase-functions/v2";
+const { onCall, HttpsError } = require("firebase-functions/v2/https");
+const axios = require("axios");
 
-// PROIZVODNA verzija: vraća OTP samo prijavljenim korisnicima
-export const getPlaybackToken = functions.https.onCall(async (request) => {
-  const user = request.auth; // ovo Firebase automatski popunjava
+exports.getVideoAuth = onCall(async (request) => {
+    if (!request.auth) {
+        throw new HttpsError('unauthenticated', 'Moraš biti ulogovan.');
+    }
 
-  if (!user) {
-    throw new functions.https.HttpsError(
-      "unauthenticated",
-      "Moraš biti prijavljen da bi dobio video token."
-    );
-  }
+    const videoId = request.data.videoId;
+    const userEmail = request.auth.token.email;
 
-  const videoId = request.data.videoId;
+    try {
+        const response = await axios.post(
+            `https://dev.vdocipher.com/api/videos/${videoId}/otp`,
+            {
+                "ttl": 3600,
+                "annotate": JSON.stringify([
+                    {
+                        "type": "rtext", // Random tekst koji se pomera
+                        "text": userEmail,
+                        "alpha": 0.7,
+                        "color": "0xFF0000", // Jarko crvena boja
+                        "size": 25,
+                        "interval": 5000 // Menja poziciju na svakih 5 sekundi
+                    }
+                ])
+            },
+            {
+                headers: {
+                    'Authorization': `Apisecret uSVhYApIkFZO68cxx1s6YJ3ISqp5pKpDMNXKpKfRbtIyoRZgQXdf7HFnEHCu89L6`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
 
-  console.log(`Korisnik ${user.uid} traži token za videoId: ${videoId}`);
-
-  // OVDE stavi stvarne vrednosti sa VdoCipher dashboarda za svoj video
-  // Za produkciju bi ovde mogla da ide i logika koja proverava da li je korisnik kupio kurs
-  return {
-    otp: "20160313versUSE3232E09r1t0Mb7uTFcqnwK7JxhBPsrbJSYnExaOdw73hvFtmk",
-    playbackInfo: "eyJ2aWRlb0lkIjoiZjUyYTIxMjUwY2I0NGVkOTkwYTBlY2Q5YzkxMGNhMGIifQ=="
-  };
+        return {
+            otp: response.data.otp,
+            playbackInfo: response.data.playbackInfo
+        };
+    } catch (error) {
+        console.error("VdoCipher Error:", error.response ? error.response.data : error.message);
+        throw new HttpsError('internal', 'Greška pri autorizaciji videa.');
+    }
 });

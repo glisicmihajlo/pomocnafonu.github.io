@@ -1,171 +1,81 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principi programiranja | Premium Masterclass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Pomoć na fonu</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
 </head>
+
 <body>
 
-    <div class="glow-bg"></div>
-
-    <div class="content-area">
-        
-        <header class="hero-section reveal">
-            <div class="tagline">PROGRAMSKI JEZIK C</div>
-            <h1>Principi programiranja</h1>
-            <p class="hero-subtitle">Sve što ti je potrebno da očistiš ispit sa maksimalnom ocenom.</p>
+    <div class="app-shell">
+        <header class="mobile-nav">
+            <div class="brand-logo"><img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">Pomoć na fonu</div>
+            <button id="menu-toggle" style="background:none; border:none; color:#f59e0b; font-size:1.2rem;"><i class="fas fa-bars"></i></button>
         </header>
 
-        <div class="marquee-container">
-            <div class="marquee-row">
-                <div class="marquee-content">
-                    <div class="topic-card">Linijski programi</div>
-                    <div class="topic-card">If naredba</div>
-                    <div class="topic-card">Petlje (For/While)</div>
-                    <div class="topic-card">Funkcije</div>
-                    <div class="topic-card">Nizovi</div>
-                    <div class="topic-card">Linijski programi</div>
-                    <div class="topic-card">If naredba</div>
-                    <div class="topic-card">Petlje (For/While)</div>
-                    <div class="topic-card">Funkcije</div>
-                    <div class="topic-card">Nizovi</div>
-                </div>
-            </div>
-            <div class="marquee-row reverse">
-                <div class="marquee-content">
-                    <div class="topic-card">Matrice</div>
-                    <div class="topic-card">Stringovi</div>
-                    <div class="topic-card">Strukture</div>
-                    <div class="topic-card">Liste</div>
-                    <div class="topic-card">Liste sa strukturama</div>
-                    <div class="topic-card">Tekstualne datoteke</div>
-                    <div class="topic-card">Binarne datoteke</div>
-                    <div class="topic-card">Matrice</div>
-                    <div class="topic-card">Stringovi</div>
-                    <div class="topic-card">Strukture</div>
-                </div>
-            </div>
-        </div>
-
-        <section class="guide-section reveal">
-            <div class="guide-content">
-                <div class="guide-text">
-                    <span class="small-badge">NAČIN POLAGANJA</span>
-                    <h2>Kako se polaže ovaj predmet?</h2>
-                    <p>Ispit testira tvoju logiku kroz pismeni i usmeni deo. Pismeni zahteva rešavanje algoritamskih problema, dok usmeni zahteva poznavanje teorije i rada memorije.</p>
-                    <p>Naš kurs te vodi korak po korak: od osnovnih tipova podataka do kompleksnih struktura i rada sa fajlovima.</p>
-                </div>
-                <div class="guide-visual">
-                    <div class="visual-box">Pismeni (Kod)</div>
-                    <div class="visual-box plus">+</div>
-                    <div class="visual-box">Usmeni (Teorija)</div>
-                </div>
-            </div>
-        </section>
-
-        <div class="player-wrapper reveal">
-            <div class="free-cta-box">
-                <span class="small-badge">POKLON</span>
-                <h2>Probaj pre nego što kupiš</h2>
-                <p>Prve dve oblasti (Linijski programi i If naredba) su potpuno besplatne. Pogledaj kako predajemo.</p>
-                <a href="besplatno.html" style="text-decoration: none; display: inline-block; width: 100%; max-width: 320px;">
-                    <div class="btn-glow">GLEDAJ BESPLATNO <i class="fa-solid fa-play" style="margin-left: 10px;"></i></div>
+        <main class="content-area">
+            <div class="player-wrapper">
+                <a href="/kupljeni-kursevi/" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Kupljeni kursevi
                 </a>
-            </div>
-        </div>
-
-        <section id="cene" class="pricing-section">
-            <div class="pricing-aura"></div>
-            <h2 class="section-title">Investiraj u svoju ocenu</h2>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Pismeni deo</h3>
-                            <div class="price">2.000 <span>RSD</span></div>
-                            <p>Dostupno odmah. 150+ zadataka sa detaljnim objašnjenjima. Sadrži i zadatke sa rokova.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-pp-pismeni.png">
-                                <span class="button_text">KUPI PISMENI</span>
-                            </button>
-                        </div>
-                    </div>
+                <div class="video-frame">
+                    <iframe id="vdo-player" src="" style="border:0; width:100%; height:100%; position:absolute; top:0; left:0;" allow="encrypted-media" allowfullscreen>
+                    </iframe>
                 </div>
 
-                <div class="pricing-card featured reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">POPULARNO & NAJBOLJA VREDNOST</div>
-                            <h3>Pismeni + Usmeni</h3>
-                            <div class="price">3.000 <span>RSD</span></div>
-                            <p>Kompletan ispit. Pismeni odmah, usmeni čim bude objavljen.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-pp-sve.png">OSIGURAJ KOMPLET</button>
-                        </div>
+                <div class="content-footer">
+                    <div class="lesson-meta">
+                        <span class="badge" id="module-tag">Modul</span>
+                        <h1 id="lesson-title">Izaberite lekciju</h1>
+                        <!--<p id="lesson-desc">Dobrodošli! Vaš napredak se automatski beleži.</p>-->
                     </div>
-                </div>
-
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="status-badge">USKORO</div>
-                            <h3>Usmeni (Ceo)</h3>
-                            <div class="price">2.000 <span>RSD</span></div>
-                            <p>Kompletna teorija i analiza "tracing" zadataka (šta dati kod ispisuje)</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-pp-pismeni.png">
-                                <span class="button_text">REZERVIŠI</span>
-                            </button>
-                        </div>
+                    <div class="actions">
+                        <button id="btn-complete" class="button">
+                            <span class="button_text">
+                                <i class="fas fa-check"></i> Završi lekciju
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <div class="partial-pricing reveal">
-                <div class="partial-card">
-                    <div class="p-header">
-                        <h4>Usmeni - I Kolokvijum</h4>
-                        <span class="status-badge">USKORO</span>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="brand desktop-only"><img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">Pomoć na fonu</div>
+                <div class="progress-card">
+                    <div class="card-header">
+                        <small>PROGRES</small>
+                        <b id="percent-text">0%</b>
                     </div>
-                    <div class="p-footer">
-                        <b class="p-price">1.200 RSD</b>
-                        <a href="#" class="btn-preorder buy-trigger" data-image="../images/uplatnica-pp-usmeni-deo.png">REZERVIŠI</a>
-                    </div>
-                </div>
-                <div class="partial-card">
-                    <div class="p-header">
-                        <h4>Usmeni - II Kolokvijum</h4>
-                        <span class="status-badge">USKORO</span>
-                    </div>
-                    <div class="p-footer">
-                        <b class="p-price">1.200 RSD</b>
-                        <a href="#" class="btn-preorder buy-trigger" data-image="../images/uplatnica-pp-usmeni-deo.png">REZERVIŠI</a>
+                    <div class="progress-track">
+                        <div id="progress-fill"></div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <footer class="main-footer">
-            <p>&copy; 2024 Pomoć na fonu</p>
-        </footer>
+            <nav class="course-nav" id="course-accordion"></nav>
+        </aside>
     </div>
 
-    <div id="payment-modal" class="modal-overlay">
-        <div class="modal-container">
-            <span class="close-modal">&times;</span>
-            <img src="../images/uplatnica-mat1.png" alt="Uplatnica" class="modal-img">
-            <p style="margin-top: 15px; color: var(--text-muted);">Slikaj uplatnicu i pošalji potvrdu na mejl/Instagram.</p>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
+
 </html>

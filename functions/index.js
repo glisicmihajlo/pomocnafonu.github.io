@@ -20,9 +20,9 @@ exports.getVideoAuth = onCall(async (request) => {
                     {
                         "type": "rtext",
                         "text": userEmail,
-                        "alpha": 0.6,
-                        "color": "0xFF0000", // Crvena boja za test
-                        "size": 20,
+                        "alpha": 0.15,
+                        "color": "0xFFFFFF", // Crvena boja za test
+                        "size": 14,
                         "interval": 5000,
                         "skip_on_hls": false // Ključno za Safari/iOS
                     }

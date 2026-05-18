@@ -23,12 +23,12 @@ const CURRENT_COURSE_ID = "pp-pismeni";
 
 const courseData = [
     {
-        moduleTitle: "01. Linijski programi",
+        moduleTitle: "01. Parcijalni izvodi",
         lessons: [
             { 
                 id: "a1", 
-                title: "Prvi program u C-u", 
-                vdoId: "166d46d03b9c4eeaab45c9c2455d0c6a"
+                title: "Uvod", 
+                vdoId: "86fea9adf290404f9422889ef183da0e"
             },
         ]
     },

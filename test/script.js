@@ -30,6 +30,11 @@ const courseData = [
                 title: "Uvod", 
                 vdoId: "86fea9adf290404f9422889ef183da0e"
             },
+            { 
+                id: "a2", 
+                title: "Proba", 
+                vdoId: "ff5c0c5019ac4d8e9a10d2fc4c20337c"
+            },
         ]
     },
 ];

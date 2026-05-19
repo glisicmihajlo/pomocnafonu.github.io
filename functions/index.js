@@ -23,7 +23,7 @@ exports.getVideoAuth = onCall(async (request) => {
                         "alpha": 0.25,
                         "color": "0x000000",
                         "size": 15,
-                        "interval": 5000,
+                        "interval": 4000,
                         "skip_on_hls": false
                     },
                     {
@@ -32,7 +32,7 @@ exports.getVideoAuth = onCall(async (request) => {
                         "alpha": 0.25,
                         "color": "0xFFFFFF",
                         "size": 15,
-                        "interval": 5000,
+                        "interval": 6000,
                         "skip_on_hls": false
                     }
                 ]),

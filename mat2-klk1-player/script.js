@@ -57,6 +57,101 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "02. Totalni diferencijal",
+        lessons: [
+            { 
+                id: "b1", 
+                title: "Uvod", 
+                vdoId: "729043ebeb3441a3b6c306f90f048c00"
+            },
+            { 
+                id: "b2", 
+                title: "Zadatak 1", 
+                vdoId: "1029013815864a93b4850a597f580bb4"
+            },
+            { 
+                id: "b3", 
+                title: "Zadatak 2", 
+                vdoId: "a990d3fda5f1428b9ae36b2e50d965ed"
+            },
+            { 
+                id: "b4", 
+                title: "Zadatak 3", 
+                vdoId: "15da7de4a4c24a879af1d593a41027d3"
+            },
+        ]
+    },
+    {
+        moduleTitle: "03. Izvod i diferencijal implicitno zadate funkcije",
+        lessons: [
+            { 
+                id: "c1", 
+                title: "Uvod", 
+                vdoId: "36b9b7342c57464baaf750923ff556b2"
+            },
+            { 
+                id: "c2", 
+                title: "Zadatak 1", 
+                vdoId: "b8c89c02ffe542e58d5fa2decd747e43"
+            },
+            { 
+                id: "c3", 
+                title: "Zadatak 2", 
+                vdoId: "3db28cea32ad4470803acc1e5436b07d"
+            },
+            { 
+                id: "c4", 
+                title: "Zadatak 3", 
+                vdoId: "802725fe35104c91a667ad3e4a517b95"
+            },
+            { 
+                id: "c5", 
+                title: "Zadatak 4", 
+                vdoId: "d39bf9196f3b42e8b70dbfb86d3177e3"
+            },
+            { 
+                id: "c6", 
+                title: "Zadatak 5", 
+                vdoId: "fb7a4a036acf4fb6a993616ceedc6487"
+            },
+            { 
+                id: "c7", 
+                title: "Zadatak 6", 
+                vdoId: "6e564f302e8441679adfe8b07061c9f4"
+            },
+        ]
+    },
+    {
+        moduleTitle: "04. Parcijalni izvodi i diferencijali višeg reda",
+        lessons: [
+            { 
+                id: "d1", 
+                title: "Uvod", 
+                vdoId: "979635227f7f4ba58434b989dc6bfb2a"
+            },
+            { 
+                id: "d2", 
+                title: "Zadatak 1", 
+                vdoId: "5a769c19ae90400296744c5cc2b192de"
+            },
+            { 
+                id: "d3", 
+                title: "Zadatak 2", 
+                vdoId: "231fac5b06a44f119fda0e0a325e56be"
+            },
+            { 
+                id: "d4", 
+                title: "Zadatak 3", 
+                vdoId: "deb27b064d56460ab1c34a3eab8ce336"
+            },
+            { 
+                id: "d5", 
+                title: "Zadatak 4", 
+                vdoId: "4a29890b87854b7abfc62104437db6c6"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

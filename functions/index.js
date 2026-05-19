@@ -20,19 +20,10 @@ exports.getVideoAuth = onCall(async (request) => {
                     {
                         "type": "rtext",
                         "text": userEmail,
-                        "alpha": 0.25,
+                        "alpha": 0.35,
                         "color": "0x000000",
                         "size": 15,
-                        "interval": 4000,
-                        "skip_on_hls": false
-                    },
-                    {
-                        "type": "rtext",
-                        "text": userEmail,
-                        "alpha": 0.25,
-                        "color": "0xFFFFFF",
-                        "size": 15,
-                        "interval": 6000,
+                        "interval": 5000,
                         "skip_on_hls": false
                     }
                 ]),

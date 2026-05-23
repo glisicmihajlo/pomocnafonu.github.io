@@ -361,52 +361,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "06. Matrice i višedimenzionalni nizovi",
-        lessons: [
-            {
-                id: "f1",
-                title: "Popunjavanje elemenata matrice",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232F7aAD7MJRcOBnjqDnBVzpTl2YtoAOMoZLb5c1OZmnS4vF&playbackInfo=eyJ2aWRlb0lkIjoiN2U5ODE0YjZkMTg1NDRiMWFmMmRlYjY3YWZmZjQzOGMifQ=="
-            },
-            {
-                id: "f2",
-                title: "Modifikacija elemenata kolone",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232gP6vstmXHSzxKzKqFGrOLEgwb20MuuUPdhCh49LUCrNp4&playbackInfo=eyJ2aWRlb0lkIjoiOTliNDQ3MDJjMGMyNGVjODg4YjkwMjUwNWYxZjY4YTUifQ=="
-            },
-            {
-                id: "f3",
-                title: "Aritmetika pokazivača u matrici",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232a6iKJTQnzASPM4UQvW9GNele80OlMJOo83llesJO1B51S&playbackInfo=eyJ2aWRlb0lkIjoiYzJiZjMxZjE5Nzc1NDE1MGE5ZWVmN2NkNzU1NmU5NjgifQ==   "
-            },
-            {
-                id: "f4",
-                title: "Linearizacija matrice pokazivačem",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232BNRmED1EflOMu0ZJnUIPAhWIkomCsYbx7eL426gjiuWnK&playbackInfo=eyJ2aWRlb0lkIjoiYjgzMjkyZTE1ZWVmNDVmYWJlOTA2NmE4M2FhNmU1MDkifQ=="
-            },
-            {
-                id: "f5",
-                title: "Analiza dvoimenzionalnog niza",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232RMwxf5pNnmDdek3CfdxEqhJrmtqgucti5wmBbCd072t9b&playbackInfo=eyJ2aWRlb0lkIjoiMGVjNWY0NWQwYjg3NDc2NmJiNGE2NWEyZjA5NzdiNDAifQ=="
-            },
-            {
-                id: "f6",
-                title: "Iteracija kroz celu matricu",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Q7U8lD2Xisy8BDXRjvBfizpOteMoEoZUMDfoeYBk2TjZ5&playbackInfo=eyJ2aWRlb0lkIjoiZTk4OTBiNmY3MjcwNDk5YmExNzhiZmUxOWRjMjM3OWMifQ=="
-            },
-            {
-                id: "f7",
-                title: "Inicijalizacija 3D niza",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232hdTO07vCjJMWMA2tOJymlqKUAczmz2k9drKsjxQaDBUfA&playbackInfo=eyJ2aWRlb0lkIjoiMzI1ZDAwZmFlNmEzNDUzYWFjZTY5OGEwNzU2NjNkMmEifQ=="
-            },
-            {
-                id: "f8",
-                title: "Pristup 3D elementima",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232opAJdqLBENzrVKbyawRrfIY7MAMz6WIU9c7LAgadkwWAM&playbackInfo=eyJ2aWRlb0lkIjoiZThjMDk2ZjE4MTU0NDhlMzlhYTgxMDUzMTEyMmJiZWIifQ=="
-            },
-        ]
-    },
-    {
-        moduleTitle: "07. Stringovi",
+        moduleTitle: "06. Stringovi",
         lessons: [
             {
                 id: "g1",
@@ -501,7 +456,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "08. Rekurzija",
+        moduleTitle: "07. Rekurzija",
         lessons: [
             {
                 id: "h1",
@@ -526,7 +481,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "09. Primer usmenog",
+        moduleTitle: "08. Primer usmenog",
         lessons: [
             {
                 id: "i1",

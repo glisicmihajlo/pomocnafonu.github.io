@@ -28,42 +28,42 @@ const courseData = [
             {
                 id: "f1",
                 title: "Popunjavanje elemenata matrice",
-                vdoId: ""
+                vdoId: "7e9814b6d18544b1af2deb67afff438c"
             },
             {
                 id: "f2",
                 title: "Modifikacija elemenata kolone",
-                vdoId: ""
+                vdoId: "99b44702c0c24ec888b902505f1f68a5"
             },
             {
                 id: "f3",
                 title: "Aritmetika pokazivača u matrici",
-                vdoId: ""
+                vdoId: "c2bf31f197754150a9eef7cd7556e968"
             },
             {
                 id: "f4",
                 title: "Linearizacija matrice pokazivačem",
-                vdoId: ""
+                vdoId: "b83292e15eef45fabe9066a83aa6e509"
             },
             {
                 id: "f5",
                 title: "Analiza dvoimenzionalnog niza",
-                vdoId: ""
+                vdoId: "0ec5f45d0b874766bb4a65a2f0977b40"
             },
             {
                 id: "f6",
                 title: "Iteracija kroz celu matricu",
-                vdoId: ""
+                vdoId: "e9890b6f7270499ba178bfe19dc2379c"
             },
             {
                 id: "f7",
                 title: "Inicijalizacija 3D niza",
-                vdoId: ""
+                vdoId: "325d00fae6a3453aace698a075663d2a"
             },
             {
                 id: "f8",
                 title: "Pristup 3D elementima",
-                vdoId: ""
+                vdoId: "e8c096f1815448e39aa810531122bbeb"
             },
         ]
     },
@@ -220,6 +220,16 @@ const courseData = [
     {
         moduleTitle: "05. Primer kolokvijuma",
         lessons: [
+            { 
+                id: "d6", 
+                title: "Adrese 3D niza", 
+                vdoId: "7386e74425b84e438927a5679cd328f9"
+            },
+            { 
+                id: "d7", 
+                title: "Indeksirana 3D inicijalizacija", 
+                vdoId: "ab2cf65ce2e54a1f8dec81b949980509"
+            },
             { 
                 id: "d1", 
                 title: "Kopije naspram originala", 

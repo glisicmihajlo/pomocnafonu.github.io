@@ -110,7 +110,7 @@ const courseData = [
             { 
                 id: "a1", 
                 title: "Prvi program u C-u", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232BCsgBnflDFgzgh7zI2qUMDrCfMGI8W8RCt3xnQdmsttfV&playbackInfo=eyJ2aWRlb0lkIjoiYjQzNmE4MDY0YThkNDgxZWE5MTQ0Nzk4MDBjMDVlYWEifQ==" 
+                url: "https://www.youtube.com/watch?v=JKAfk1pDcCE&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=1&pp=iAQB0gcJCQYLAYcqIYzvsAgC" 
             },
             { 
                 id: "a2", 

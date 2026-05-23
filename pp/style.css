@@ -28,8 +28,11 @@ body {
 }
 
 .content-area {
-    position: relative; z-index: 10;
-    max-width: 1200px; margin: 0 auto; padding: 80px 20px;
+    position: relative; 
+    z-index: 10;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 100px 20px 80px 20px; /* Povećan gornji padding sa 80px na 100px */
 }
 
 /* HERO */
@@ -189,6 +192,26 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; letter-
     transform: translateY(0);
 }
 
+.back-link {
+    position: absolute;
+    top: 40px;   /* Pozicionira je lepo iznad naslova */
+    left: 20px;  /* Poravnava je savršeno sa levom ivicom tvog sadržaja/kartica */
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--primary);
+    transform: translateX(-4px); /* Suptilno se pomeri ulevo na hover, što daje premium osećaj */
+}
+
 @media (max-width: 900px) {
     .partial-pricing { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
@@ -221,5 +244,22 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; letter-
     .visual-box.plus {
         padding: 5px;
         font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-area {
+        padding-top: 110px; /* Daje još malo prostora na vrhu za telefon */
+    }
+
+    .back-link {
+        left: 50%;
+        transform: translateX(-50%); /* Savršeno centrira strelicu na sredinu ekrana */
+        top: 30px; /* Spušta je malo niže od samog vrha ekrana */
+        font-size: 0.85rem;
+    }
+    
+    .back-link:hover {
+        transform: translateX(-50%) translateY(-2px); /* Lagani efekat nagore umesto ulevo na telefonu */
     }
 }

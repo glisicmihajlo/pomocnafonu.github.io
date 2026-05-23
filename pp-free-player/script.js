@@ -110,72 +110,72 @@ const courseData = [
             { 
                 id: "a1", 
                 title: "Prvi program u C-u", 
-                url: "https://www.youtube.com/watch?v=JKAfk1pDcCE&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=1&pp=iAQB0gcJCQYLAYcqIYzvsAgC" 
+                url: "https://www.youtube.com/watch?v=JKAfk1pDcCE&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=1" 
             },
             { 
                 id: "a2", 
                 title: "Promenljive i tipovi", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232TOrT7SbRxV3X7LE0ifsJnxFCIGSGh7vLEgK7ekz2UW63g&playbackInfo=eyJ2aWRlb0lkIjoiMmUyZjdiMjcxYTg0NDVmMGEyZjc3ZDQwMThhMTA4MmMifQ==" 
+                url: "https://www.youtube.com/watch?v=VXbOQF3UIrY&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=2" 
             },
             { 
                 id: "a3", 
                 title: "Formatiran ispis (printf)", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE323280G3VT86qHFQTedAWj7S1zfKfbLpTZZrZflUnXNbnp2Bm&playbackInfo=eyJ2aWRlb0lkIjoiYTMyNzViMGZlNWU1NGQ3NDk5NmEwZmY3Nzk2ZDg5YTIifQ==" 
+                url: "https://www.youtube.com/watch?v=Z3_MncZwErQ&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=3" 
             },
             { 
                 id: "a4", 
                 title: "Unos podataka (scanf)", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232IfA9tag0TanfPX8JW4aYI1wfIvn1PIkVzeFICqJFdnZPl&playbackInfo=eyJ2aWRlb0lkIjoiODg2NzUzYTlmZjYzNDUzNDgzZWQ1YTU3YWU3NTY3YjAifQ==" 
+                url: "https://www.youtube.com/watch?v=9JBCgM-qsh0&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=4" 
             },
             { 
                 id: "a5", 
                 title: "Matematičke operacije i funkcije", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232k2QG0NU2ixVMk6lClt7VhzAjclTLKp5NNNKDZBmIxl8fT&playbackInfo=eyJ2aWRlb0lkIjoiZmQ5YmZiN2ZmMmVlNGZhNmI0ZTRjNDk4ZjA0ZDlhZTcifQ==" 
+                url: "https://www.youtube.com/watch?v=997kajCXpqg&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=5" 
             },
             { 
                 id: "a6", 
                 title: "Ispis tekstualnih poruka", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232BxHrbD47KIxxXGAp0QQJQSFf0QX7og1nBSNWPhzRdISB1&playbackInfo=eyJ2aWRlb0lkIjoiOGVmOGE4ODdlNzZiNDY5Yzg5MmRjNzc0NGNmNzQzOWEifQ==" 
+                url: "https://www.youtube.com/watch?v=klDUzJ2XlFM&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=6" 
             },
             { 
                 id: "a7", 
                 title: "Konverzija valuta (dolar-dinar)", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232jV9irOgPu25V5G6KfjtWqeaeRbtvBJyWwu97ANDt4BPiE&playbackInfo=eyJ2aWRlb0lkIjoiZDFkOWUzYzRmZjhjNGZkYTk1ZDMzMTQwNzBiMGQwNzMifQ==" 
+                url: "https://www.youtube.com/watch?v=_PmbxSmRQ0M&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=7" 
             },
             { 
                 id: "a8", 
                 title: "Obim i površina kruga", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232hH9W4yyXP1xSFyJtGICYaOjPVLp7bswVv4FpythwgGFsf&playbackInfo=eyJ2aWRlb0lkIjoiNGNkYzNkMmJhZjM0NGUwMzlhY2EzMWI5YzJhMjgyMDAifQ==" 
+                url: "https://www.youtube.com/watch?v=5hXyOaQgnLM&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=8" 
             },
             { 
                 id: "a9", 
                 title: "Program za kusur", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232HYuu55VSX9A7lqLLtAQ2xSgMLWzSfGjBidct5WLOBMZup&playbackInfo=eyJ2aWRlb0lkIjoiNmZmOTAxNjM3OTczNDYwNjg0MWI1OTQ2YmRiOWEwYmMifQ==" 
+                url: "https://www.youtube.com/watch?v=HrGEp2eIfNg&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=9" 
             },
             { 
                 id: "a10", 
                 title: "Pretvaranje ugla (stepeni-minuti-sekunde)", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232XmASvqyFxRDdV3IYLVDLOUHsk0jmYCtkd3U1xD5rLeWKg&playbackInfo=eyJ2aWRlb0lkIjoiYTBiYTk5Y2M3ODhjNDI5OThhZTk5NTIwZjRjMjlmOWIifQ==" 
+                url: "https://www.youtube.com/watch?v=oep-N-GOwIk&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=10" 
             },
             { 
                 id: "a11", 
                 title: "Proizvod cifara četvorocifrenog broja", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232qP4ZLQpYzf5Ww9HwBIUGMKbeos6tyltBQEarz3gSlPDnv&playbackInfo=eyJ2aWRlb0lkIjoiYWE1YTFlODExY2VjNGExMjkwY2YwMDBhNmMxM2E4NTEifQ==" 
+                url: "https://www.youtube.com/watch?v=Ix9rmCL4Wcg&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=11"
             },
             { 
                 id: "a12", 
                 title: "Verovatnoća izvlačenja loptica", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232fhHK5GpX3xq3JMtQQypZJxkqJNH6n6JaFPxgvQEA7q2gg&playbackInfo=eyJ2aWRlb0lkIjoiZWI5MmE2NjFmMzkxNDBhODllMDljYzYyYTRiZmY1N2UifQ==" 
+                url: "https://www.youtube.com/watch?v=xg6bNooDI7M&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=12"
             },
             { 
                 id: "a13", 
                 title: "Stepenovanje slučajnih brojeva", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232kMXFM3iNlCtwtX0lu1grhZtpFAIldU8K3xwmdP4aEZlWR&playbackInfo=eyJ2aWRlb0lkIjoiODExMmI1MzhhNTI2NDhlOTllODIyNDdhNDJlNDhkZDQifQ==" 
+                url: "https://www.youtube.com/watch?v=Q39oCsCS2OI&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=13"
             },
             { 
                 id: "a14", 
                 title: "Nasumičan izbor iz intervala", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232M8TO9jftwleQOdRiaxldyAx2dO6CRKEFp9SV8HYUeiE9w&playbackInfo=eyJ2aWRlb0lkIjoiZmY1YzBjNTAxOWFjNGQ4ZTlhMTBkMmZjNGMyMDMzN2MifQ==" 
+                url: "https://www.youtube.com/watch?v=MbqNBQMBVgs&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=14"
             }
             
         ]
@@ -186,47 +186,47 @@ const courseData = [
             { 
                 id: "b1", 
                 title: "Uvod i parnost broja", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32323D8UZp6MrrqSeFS2ZlM2CcJofN7XBVGiZgN9ROzHxjZLI&playbackInfo=eyJ2aWRlb0lkIjoiM2ZiYjRhYjc5MjU1NDY4MzhlZDZlZjg1M2YzNjQyNDQifQ==" 
+                url: "https://www.youtube.com/watch?v=lO6uxQzv1dA&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=15"
             },
             { 
                 id: "b2", 
                 title: "Poređenje broja sa nulom", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Ltr7TK4xYSYooJ6eBIos5WctYFAfwqcCn7Lvwzdfgotqs&playbackInfo=eyJ2aWRlb0lkIjoiYmYwYWY3YjJjNmVkNGRjNDllMzI4ZWY2M2ZjYzQzNmYifQ==" 
+                url: "https://www.youtube.com/watch?v=AJMY_nOfaBg&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=16"
             },
             { 
                 id: "b3", 
                 title: "Određivanje ocene na ispitu", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232s9jbSqv8qgWTj37Jckis7zQSSMdEIkcpWM7DI9TTkf0ym&playbackInfo=eyJ2aWRlb0lkIjoiZDg1NzI4NTMwZmM5NGQzZWI2YjMzYjdjNzI1NmZlOGQifQ==" 
+                url: "https://www.youtube.com/watch?v=zI184gBzf_o&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=17"
             },
             { 
                 id: "b4", 
                 title: "Najveći od tri broja", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32329FeCQJLDBfoqth3FajjKXPF6zSlENkdsaOUTQ9lim2ml7&playbackInfo=eyJ2aWRlb0lkIjoiMTFjNDJlNWUyMTMyNDE2ZDg2NWJjZTRhYTMxOTNmMGYifQ==" 
+                url: "https://www.youtube.com/watch?v=Ak_4cnl7wL0&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=18"
             },
             { 
                 id: "b5", 
                 title: "Koren i provera greške", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32325Qh6SZyYaRgHuhNOgQwZLtIW1y34jlYv2qUmG9VVf8zGo&playbackInfo=eyJ2aWRlb0lkIjoiOTcwZDk0NWIyM2JmNGIyNTg1OTQ4NDA2NTEyZDdhYjAifQ==" 
+                url: "https://www.youtube.com/watch?v=e5HfmFtvFG0&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=19"
             },
             { 
                 id: "b6", 
                 title: "Zbir ili razlika (uslovna)", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232OaHaxP5Dz1FsS69zvUrYx27AhcfbxwCaXoXilbd53NP2U&playbackInfo=eyJ2aWRlb0lkIjoiMGI0ODg1NDA4MzI4NGJiMGI1N2Y3ZTYyMjQ0Mjk2YzUifQ==" 
+                url: "https://www.youtube.com/watch?v=JucmQ04cSFE&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=20"
             },
             { 
                 id: "b7", 
                 title: "Deljivost broja M sa N", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232U7yUmFO8k5Qm4HB6Ynrx3qQCVfehyzTIi0tzv2oQqmwmN&playbackInfo=eyJ2aWRlb0lkIjoiNTdiMmUyNWRkYzIzNDU1M2JiOTc1NGQxODQxYWFlYjUifQ==" 
+                url: "https://www.youtube.com/watch?v=ARWZSKSMcKI&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=21"
             },
             { 
                 id: "b8", 
                 title: "Provera Armstrongovog broja", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232G4aPSAh6WxpiJmhpJ7cGDNf2UHJ2NaQJHe0C7nSYjRhFZ&playbackInfo=eyJ2aWRlb0lkIjoiYjdlZGQzY2QyNDEzNDU2NGI2NjA1ZGRhNjE4YTYzYjMifQ==" 
+                url: "https://www.youtube.com/watch?v=eEqdBDxn_Hg&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=22"
             },
             { 
                 id: "b9", 
                 title: "Opisni prikaz ocena", 
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232gq0vAualegZ9CY8Y3MvkiSQztMWGE4iETwqYDo3pU84h7&playbackInfo=eyJ2aWRlb0lkIjoiZTkwOTg1NGU2MmU2NDdiODliZDczMjc2ZjdlOGI4NWYifQ==" 
+                url: "https://www.youtube.com/watch?v=HhUae2gkRec&list=PLl8BFSumqv-bpHLgcaRDXnA_Ns_t4xR0v&index=23"
             }
         ]
     },

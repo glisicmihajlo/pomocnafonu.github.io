@@ -23,7 +23,7 @@ const CURRENT_COURSE_ID = "oikt-klk1";
 
 const courseData = [
     {
-        moduleTitle: "01. Konverzija brojeva",
+        moduleTitle: "01. Brojevni sistemi",
         lessons: [
             { 
                 id: "a1", 

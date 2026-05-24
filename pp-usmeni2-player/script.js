@@ -23,7 +23,62 @@ const CURRENT_COURSE_ID = "pp-usmeni2";
 
 const courseData = [
     {
-        moduleTitle: "01. Matrice i višedimenzionalni nizovi",
+        moduleTitle: "01. Pokazivači (isto kao za 1. klk)",
+        lessons: [
+            {
+                id: "e1",
+                title: "Zamena lokalnih pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232gdzTVLfPACJjxC5GxenmERpvjKs7I4xSSkkmXcccHNXuX&playbackInfo=eyJ2aWRlb0lkIjoiMGU1NzljOTQ4ZjdlNGYyNGI5N2ZhYjUzMWJmNThmMzAifQ=="
+            },
+            {
+                id: "e2",
+                title: "Dereferenciranje pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232kDnodd8O1VN4tRkIi7gk3SQkn2JaQTBvFPc7seQq05fj7&playbackInfo=eyJ2aWRlb0lkIjoiMTVlMDZmNDU5MDUwNGZlYzkyMjMyZDZlNzVjMjk1YzYifQ=="
+            },
+            {
+                id: "e3",
+                title: "Inkrementiranje i adrese",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232GYjMmTNnuMlQ6dhxYKyoGVY2Tkna7cmxAvOZR0ypR5kjF&playbackInfo=eyJ2aWRlb0lkIjoiNDFiODUyNzdlYTk4NGE3YjgxNDkzZDBmOTQyMDlmNGEifQ=="
+            },
+            {
+                id: "e4",
+                title: "Pokazivači na niz",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232pDNmn6uLqFale1EH1tBMW29Z4FYeOaZzwNIQ0bRSt48xX&playbackInfo=eyJ2aWRlb0lkIjoiYmY1OGNjZGYwYWRmNGJmM2E2YjRiYTYyMWRhMzBiMDkifQ=="
+            },
+            {
+                id: "e5",
+                title: "Veličina pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ejGHyBLvvwW7ygUg0jFap76PfcQYr88LmbHgO9uSxuE2g&playbackInfo=eyJ2aWRlb0lkIjoiYTc1ZWIxMzYxOWQ4NDdmMTllMmEyMWFlYzY2YWRmODYifQ=="
+            },
+            {
+                id: "e6",
+                title: "Inkrement NULL pokazivača",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ieBIT6bfOVEKtaG7IcEOD8eXpkdX1hemTT37lhRyCjPGX&playbackInfo=eyJ2aWRlb0lkIjoiZjFmYzljYmM0NmZhNDM1M2EzNDAwNmFmYmU4YTFiNDQifQ=="
+            },
+            {
+                id: "e7",
+                title: "Prenos po vrednosti",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232r9y0dJXbol0i4evfug9AElYOmuMTawid946urlyQwDPmK&playbackInfo=eyJ2aWRlb0lkIjoiNDYxOTAwNGZiY2RiNGQyYjk5ZmViM2MzN2Q1N2U0ZDcifQ=="
+            },
+            {
+                id: "e8",
+                title: "Izostanak dodele vrednosti",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE32328f0SaZqAhNYK6Fuu72nJRDwr6T0yF5oUIiENkIDHmd4HE&playbackInfo=eyJ2aWRlb0lkIjoiZGRlNGRlZWNiOGRkNGE2YTg4NTRjNGMxMDYzMTJkZDAifQ=="
+            },
+            {
+                id: "e9",
+                title: "Dvostruki pokazivači",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232j4chrfDjUwfXwIwj1pj6xDBA9Bg4HlXYxACfHMD15s88A&playbackInfo=eyJ2aWRlb0lkIjoiMWIzYWM1OGMwNjQ5NGZlOWFlZWRmMTA0NmEyZmFlYWYifQ=="
+            },
+            {
+                id: "e10",
+                title: "Pokazivačka aritmetika",
+                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232dcGxdmvmLdPo2B8JdtZy3JarOlZFJAhQ4nwEjz71du4zS&playbackInfo=eyJ2aWRlb0lkIjoiYjM1YmEwNmQwODMwNGQyYjllZjlhZjMwM2YxNDU3OWEifQ=="
+            }
+        ]
+    },
+    {
+        moduleTitle: "02. Matrice i višedimenzionalni nizovi",
         lessons: [
             {
                 id: "f1",
@@ -68,7 +123,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. Strukture i unije",
+        moduleTitle: "03. Strukture i unije",
         lessons: [
             { 
                 id: "a1", 
@@ -108,7 +163,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "03. Datoteke",
+        moduleTitle: "04. Datoteke",
         lessons: [
             { 
                 id: "b1", 
@@ -178,7 +233,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "04. Liste",
+        moduleTitle: "05. Liste",
         lessons: [
             { 
                 id: "c1", 
@@ -218,7 +273,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "05. Primer kolokvijuma",
+        moduleTitle: "06. Primer kolokvijuma",
         lessons: [
             { 
                 id: "d6", 

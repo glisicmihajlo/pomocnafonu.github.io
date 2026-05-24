@@ -1,3 +1,4 @@
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-functions.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
@@ -15,6 +16,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const functions = getFunctions(app);
+const getVideoAuth = httpsCallable(functions, 'getVideoAuth');
 
 const CURRENT_COURSE_ID = "pp-usmeni1"; 
 
@@ -25,99 +28,98 @@ const courseData = [
             { 
                 id: "a1", 
                 title: "Tipovi i konverzija", 
-                url: "https://www.youtube.com/watch?v=hBKAR9te_y8&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=19" 
+                vdoId: "06f52d13776a42eebbf7d36d04205916" 
             },
             { 
                 id: "a2", 
                 title: "Greške u kucanju", 
-                url: "https://www.youtube.com/watch?v=hRgP-jWhQNU&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=2" 
+                vdoId: "4fa9f82cdadc46ab9b5f9c1ac0dfa10d" 
             },
             { 
                 id: "a3", 
                 title: "Uslovni i logički izraz", 
-                url: "https://www.youtube.com/watch?v=K6x1Ims5owc&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=3" 
+                vdoId: "c3212315d4a44799848ccb6bac702b33" 
             },
             { 
                 id: "a4", 
                 title: "Tipovi podataka - uvod", 
-                url: "https://www.youtube.com/watch?v=QrVnplDFa6Y&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=4" 
+                vdoId: "58d922b9046a46f7815adf82c3bf5de9" 
             },
             { 
                 id: "a5", 
                 title: "Veličina tipova podataka", 
-                url: "https://www.youtube.com/watch?v=YoeGQTTmmJg&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=5" 
+                vdoId: "0735641e8a724ff3920ef0658d2dc929" 
             },
             { 
                 id: "a6", 
                 title: "Oduzimanje karaktera", 
-                url: "https://www.youtube.com/watch?v=mYnLc5qwb90&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=6" 
+                vdoId: "91c6262c5a6d452b9043541bd5bf04ba" 
             },
             { 
                 id: "a7", 
                 title: "Vidljivost promenljivih", 
-                url: "https://www.youtube.com/watch?v=Uj27XrFnREY&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=7" 
+                vdoId: "ff2afa9d76cf43b49876583584f8b690" 
             },
             { 
                 id: "a8", 
                 title: "Prioritet operatora dodele", 
-                url: "https://www.youtube.com/watch?v=fIccTDgZhnU&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=8" 
+                vdoId: "8c781c67b7cc4072820a21fa62003943" 
             },
             { 
                 id: "a9", 
                 title: "Vezani ternarni operatori", 
-                url: "https://www.youtube.com/watch?v=gdSXrnkg-m8&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=9" 
+                vdoId: "7a244fa7a3364c68855dc8e2e6326116" 
             },
             { 
                 id: "a10", 
                 title: "Logička dodela", 
-                url: "https://www.youtube.com/watch?v=CJmIhC3CYRw&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=10" 
+                vdoId: "2724eb6eab6a469cac18f6ec77594488" 
             },
             { 
                 id: "a11", 
                 title: "Logička poređenja", 
-                url: "https://www.youtube.com/watch?v=MNeP-P_Qmtk&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=11" 
+                vdoId: "601b6831bc344ca5b6b7afd813960fc9" 
             },
             { 
                 id: "a12", 
                 title: "Prekoračenje opsega memorije", 
-                url: "https://www.youtube.com/watch?v=BKAybBsKIEg&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=12" 
+                vdoId: "3ad7d436b08d4b35b30caa01828cdfab" 
             },
             { 
                 id: "a13", 
                 title: "Zamka u makroima", 
-                url: "https://www.youtube.com/watch?v=t9yX3KP2JLo&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=13" 
+                vdoId: "e3866335dfa74d4cabe5ed17563041f5" 
             },
             { 
                 id: "a14", 
                 title: "Inkrement u funkciji", 
-                url: "https://www.youtube.com/watch?v=quKJIJlMBOQ&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=14" 
+                vdoId: "b31a836ae91940609d7a870b083737ef" 
             },
             { 
                 id: "a15", 
                 title: "Makro i poređenje", 
-                url: "https://www.youtube.com/watch?v=IObWvhHK5GQ&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=15" 
+                vdoId: "09de736e6cf14ffcbb1288092bc33778" 
             },
             { 
                 id: "a16", 
                 title: "Makro za različitost", 
-                url: "https://www.youtube.com/watch?v=h_UcJVTvzjo&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=16" 
+                vdoId: "32f7ed7a560c45a9af172717ff90f06a" 
             },
             { 
                 id: "a17", 
                 title: "Granice tipova podataka", 
-                url: "https://www.youtube.com/watch?v=P3VzHBV1lS4&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=17" 
+                vdoId: "408ecfa378b84676aedfcb3138821c98" 
             },
             { 
                 id: "a18", 
                 title: "Skraćena evaluacija izraza", 
-                url: "https://www.youtube.com/watch?v=8DGijaLq0tE&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=18" 
+                vdoId: "cfc9b7a6eec94f2f8e1988d6f939d548" 
             },
             { 
                 id: "a19", 
                 title: "Složeni uslovni izraz", 
-                url: "https://www.youtube.com/watch?v=7_R6faFdghI&list=PLl8BFSumqv-b7BgSROarNJPAt8dGK6sQC&index=19" 
+                vdoId: "4d02ab9180534f68a6c42f912053b817" 
             }
-            
         ]
     },
     {
@@ -126,102 +128,102 @@ const courseData = [
             {
                 id: "b1",
                 title: "While i break",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232wOli4H5aB4FJkOjjFL7MU7JyBzvIKcst319D5z2DybmLq&playbackInfo=eyJ2aWRlb0lkIjoiZTE3MjY4YTQ0Y2U5NDBjOTk0ZTViMWQ1YjBhZjVlYjYifQ=="
+                vdoId: "e17268a44ce940c994e5b1d5b0af5eb6"
             },
             {
                 id: "b2",
                 title: "Do-while i uslov",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232H4nNYYGpMlSwgHP2acbJzyGfcSbMmmoxdiqNcHJO4srHC&playbackInfo=eyJ2aWRlb0lkIjoiM2U1ZDQ1ZTBlMTY5NDJlNjkzMzgxOTVjYzk0Mjg2NzMifQ=="
+                vdoId: "3e5d45e0e16942e69338195cc9428673"
             },
             {
                 id: "b3",
                 title: "Unsigned tip u petlji",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE32323DIdRqLJ7chjWVMQNIip348keLCkK1dkTQVXbTqGtb5EN&playbackInfo=eyJ2aWRlb0lkIjoiYTEzNDA1ZGQwYjhmNGIzNWEwOTY0MzU2N2JhYjI2MjEifQ=="
+                vdoId: "a13405dd0b8f4b35a09643567bab2621"
             },
             {
                 id: "b4",
                 title: "Switch i enum",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232eyb7ohFCBTzc3wZMqgkSRjhUitfJx0zAAQPEgBtAL3bd2&playbackInfo=eyJ2aWRlb0lkIjoiM2IwMjRkZjQ0MDQ1NGFlNTkzMzgxOTk2OWUxNTQzNmUifQ=="
+                vdoId: "3b024df440454ae5933819969e15436e"
             },
             {
                 id: "b5",
                 title: "Ugneždene while petlje",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232c8yzvVxRygIBpygkGCdqannA27jElCUb4UFc1bEe3TU1v&playbackInfo=eyJ2aWRlb0lkIjoiNmQ3MmJjNjUzMjdiNDZiM2JlMWQwZTg0N2VjNjI5NjYifQ=="
+                vdoId: "6d72bc65327b46b3be1d0e847ec62966"
             },
             {
                 id: "b6",
                 title: "For petlja i continue",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232vwY5p9C2GPDAld15LRAuXKPDk2jLkj884sPN5f2P5lmFh&playbackInfo=eyJ2aWRlb0lkIjoiYWU1MGZlMzk3N2I4NGJhMzhkMmZiNzRmOWI5N2JlYjEifQ=="
+                vdoId: "ae50fe3977b84ba38d2fb74f9b97beb1"
             },
             {
                 id: "b7",
                 title: "Switch sa default-om",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232mhPUDtwR6vVaiqOQ3buRGGhUYbMrAHQRkPFYodk8835iu&playbackInfo=eyJ2aWRlb0lkIjoiOTg4ZDhkZDgwNmIxNDNhZDlhZTY2NmRiMmUyYzE2NjUifQ=="
+                vdoId: "988d8dd806b143ad9ae666db2e2c1665"
             },
             {
                 id: "b8",
                 title: "Redosled case grana",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232iUbth223SOBagndvgMxO36MLuYP38PqFIWPElF35kYmU7&playbackInfo=eyJ2aWRlb0lkIjoiNWIxMWMyOTg1YmNhNDk4MTkwYzJlYmRhMGY4MjEwOWUifQ=="
+                vdoId: "5b11c2985bca498190c2ebda0f82109e"
             },
             {
                 id: "b9",
                 title: "Ternarni operator i unos",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232dq8khIPZKF9QVP86QGDWpLvhmGlhKqOLqTDioNTjRLvqe&playbackInfo=eyJ2aWRlb0lkIjoiMjFkYjQ0MjVkYjdhNDEyZmI4NjUzYWY0MDA5ODJlNjMifQ=="
+                vdoId: "21db4425db7a412fb8653af400982e63"
             },
             {
                 id: "b10",
                 title: "Crtanje oblika (trougao)",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232qOwZuE4kFkYfD8NWVVwF7Ki7sLugmYo4DdqTvMRvJUOiS&playbackInfo=eyJ2aWRlb0lkIjoiMWY0YzA2MDRiZDNlNGI0ZDhhNTYxYjAxYTRlMTdjMDMifQ=="
+                vdoId: "1f4c0604bd3e4b4d8a561b01a4e17c03"
             },
             {
                 id: "b11",
                 title: "Crtanje šupljeg romba",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232fGZ8vr5qAu5nDPY91JmeS9Rp8Y4MxJKNsIwEKH7YbcYSH&playbackInfo=eyJ2aWRlb0lkIjoiY2YzM2RhYTQwZDQwNGRkMjkwNjJhMjAwYTFlMDllNjQifQ=="
+                vdoId: "cf33daa40d404dd29062a200a1e09e64"
             },
             {
                 id: "b12",
                 title: "While i dekrement",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232H4Zgdi0gDpkvfB5BfhhF1Jobw1NVUa2s8iVJOXsyTh09n&playbackInfo=eyJ2aWRlb0lkIjoiZjliNzU1ZTRiZTk0NGZiZDhiZmI2MzViZTRkYjE5NzQifQ=="
+                vdoId: "f9b755e4be944fbd8bfb635be4db1974"
             },
             {
                 id: "b13",
                 title: "While i ternarni",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232CcWxWZrSgBKuiTPcgRN3soh1riY1IxyapzsmCNvcU2thd&playbackInfo=eyJ2aWRlb0lkIjoiNjM3ZjFjM2MwZDg1NDljMGEwMDNjOTFkNTc4YTFiNDMifQ=="
+                vdoId: "637f1c3c0d8549c0a003c91d578a1b43"
             },
             {
                 id: "b14",
                 title: "For i moduo",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232J2QkWScCCyJspqB62Unvw5bbl8XyYheVf2U9w7B9YkNMx&playbackInfo=eyJ2aWRlb0lkIjoiMjhlMTdjYmUyZjNkNDc4ZGFkZDY1Y2YxOGQ4MTgxNTkifQ=="
+                vdoId: "28e17cbe2f3d478dadd65cf18d818159"
             },
             {
                 id: "b15",
                 title: "Crtanje okvira trougla",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232n2PX2pvDJsg8lt9ReD2TE90VzfZzQc0Iwp3EVUaEJAWiz&playbackInfo=eyJ2aWRlb0lkIjoiZGIwNGEyNzc0NDk2NGMxNGE2M2EyNzUwMGE1ZjkwODYifQ=="
+                vdoId: "db04a27744964c14a63a27500a5f9086"
             },
             {
                 id: "b16",
                 title: "Switch bez break-a",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232BdB0wrgITni9gfFlTyljnT6t6K0XwQA3PT1pWFZekrXMa&playbackInfo=eyJ2aWRlb0lkIjoiMTQ3OTBiNTEyYmM4NGU5OTg3NGE5YTNjMDUxMmJjMjQifQ=="
+                vdoId: "14790b512bc84e99874a9a3c0512bc24"
             },
             {
                 id: "b17",
                 title: "Jednostavna do-while petlja",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232AlXnOhK4RxCgIZeDOc9C6n9M9bDutnomEdw0cnmAm9XoC&playbackInfo=eyJ2aWRlb0lkIjoiZTE2YjNiYzViNTAzNDY0MTk5YjI1ZGU2OGYzYmU5MDUifQ=="
+                vdoId: "e16b3bc5b503464199b25de68f3be905"
             },
             {
                 id: "b18",
                 title: "Switch unutar for-a",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ZSGNvsKnmKNMu6W54xq46VBeSWdckrf8Kjh5JWihwphjT&playbackInfo=eyJ2aWRlb0lkIjoiOWQwZmMxYmIzMTg1NDg3Yjg0NmZhM2FlYjFkODFlMDUifQ=="
+                vdoId: "9d0fc1bb3185487b846fa3aeb1d81e05"
             },
             {
                 id: "b19",
                 title: "Rekurzivni ispis",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232Ueai7Uzrocz9Y2Mr68dxPz1X9iG00a7UcDF8rzjEcU7td&playbackInfo=eyJ2aWRlb0lkIjoiMGI0YjQ0M2U0YTFkNDY1MjkxZDlkNTE0MGMzN2MwYWUifQ=="
+                vdoId: "0b4b443e4a1d465291d9d5140c37c0ae"
             },
             {
                 id: "b20",
                 title: "Logički izrazi i prioritet",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232PKvA10lXdNyTKofNqznw6mvuHBNygnfPXoxcjld7ePJtv&playbackInfo=eyJ2aWRlb0lkIjoiYTEwZDU0Y2RiZGNiNDdlNmE5OWJmNzM2MGIwMTMwYjgifQ=="
+                vdoId: "a10d54cdbdcb47e6a99bf7360b0130b8"
             }
         ]
     },
@@ -231,22 +233,22 @@ const courseData = [
             {
                 id: "c1",
                 title: "Memorijski segmenti",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232utoX2x7sc6Hhb59TmckfAQvMw9SeJPGvThY07cu3PhYyr&playbackInfo=eyJ2aWRlb0lkIjoiN2YyNTY5ZDk3YWIzNDcyYTg4YjVmYjY0ZTlhNmUyMzMifQ=="
+                vdoId: "7f2569d97ab3472a88b5fb64e9a6e233"
             },
             {
                 id: "c2",
                 title: "Povratna vrednost funkcije",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232InZzMHu8iELNHlkuhQhYCE263NaOZnvLZrEsFrXwgMO7B&playbackInfo=eyJ2aWRlb0lkIjoiMmMzNmE4NTNlNjBiNDliNzg2MTRiMmE1MWE3YWZiYzgifQ=="
+                vdoId: "2c36a853e60b49b78614b2a51a7afbc8"
             },
             {
                 id: "c3",
                 title: "Statičke i lokalne promenljive",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232tPlEypiqhLRpDJsmJaVjsxG48NbiUzw2V34mY4twbkUcC&playbackInfo=eyJ2aWRlb0lkIjoiZGExNzhhOWUxMDNmNDIyMDhiNjU4ZGZhYTcxYjZhMTkifQ=="
+                vdoId: "da178a9e103f42208b658dfaa71b6a19"
             },
             {
                 id: "c4",
                 title: "Eksterne promenljive",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232Mpbs6oHVICg2cq7SOPmjeDwOV21SCfg5h1NXWpUMwzRZX&playbackInfo=eyJ2aWRlb0lkIjoiZjQ1MDIzOWM1NjFiNDMwM2IyMjczNGU1ODY4YjM2MzIifQ=="
+                vdoId: "f450239c561b4303b22734e5868b3632"
             }
         ]
     },
@@ -256,52 +258,52 @@ const courseData = [
             {
                 id: "d1",
                 title: "Zamena lokalnih pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232gdzTVLfPACJjxC5GxenmERpvjKs7I4xSSkkmXcccHNXuX&playbackInfo=eyJ2aWRlb0lkIjoiMGU1NzljOTQ4ZjdlNGYyNGI5N2ZhYjUzMWJmNThmMzAifQ=="
+                vdoId: "0e579c948f7e4f24b97fab531bf58f30"
             },
             {
                 id: "d2",
                 title: "Dereferenciranje pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232kDnodd8O1VN4tRkIi7gk3SQkn2JaQTBvFPc7seQq05fj7&playbackInfo=eyJ2aWRlb0lkIjoiMTVlMDZmNDU5MDUwNGZlYzkyMjMyZDZlNzVjMjk1YzYifQ=="
+                vdoId: "15e06f4590504fec92232d6e75c295c6"
             },
             {
                 id: "d3",
                 title: "Inkrementiranje i adrese",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232GYjMmTNnuMlQ6dhxYKyoGVY2Tkna7cmxAvOZR0ypR5kjF&playbackInfo=eyJ2aWRlb0lkIjoiNDFiODUyNzdlYTk4NGE3YjgxNDkzZDBmOTQyMDlmNGEifQ=="
+                vdoId: "41b85277ea984a7b81493d0f94209f4a"
             },
             {
                 id: "d4",
                 title: "Pokazivači na niz",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232pDNmn6uLqFale1EH1tBMW29Z4FYeOaZzwNIQ0bRSt48xX&playbackInfo=eyJ2aWRlb0lkIjoiYmY1OGNjZGYwYWRmNGJmM2E2YjRiYTYyMWRhMzBiMDkifQ=="
+                vdoId: "bf58ccdf0adf4bf3a6b4ba621da30b09"
             },
             {
                 id: "d5",
                 title: "Veličina pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ejGHyBLvvwW7ygUg0jFap76PfcQYr88LmbHgO9uSxuE2g&playbackInfo=eyJ2aWRlb0lkIjoiYTc1ZWIxMzYxOWQ4NDdmMTllMmEyMWFlYzY2YWRmODYifQ=="
+                vdoId: "a75eb13619d847f19e2a21aec66adf86"
             },
             {
                 id: "d6",
                 title: "Inkrement NULL pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ieBIT6bfOVEKtaG7IcEOD8eXpkdX1hemTT37lhRyCjPGX&playbackInfo=eyJ2aWRlb0lkIjoiZjFmYzljYmM0NmZhNDM1M2EzNDAwNmFmYmU4YTFiNDQifQ=="
+                vdoId: "f1fc9cbc46fa4353a34006afbe8a1b44"
             },
             {
                 id: "d7",
                 title: "Prenos po vrednosti",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232r9y0dJXbol0i4evfug9AElYOmuMTawid946urlyQwDPmK&playbackInfo=eyJ2aWRlb0lkIjoiNDYxOTAwNGZiY2RiNGQyYjk5ZmViM2MzN2Q1N2U0ZDcifQ=="
+                vdoId: "4619004fbcdb4d2b99feb3c37d57e4d7"
             },
             {
                 id: "d8",
                 title: "Izostanak dodele vrednosti",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE32328f0SaZqAhNYK6Fuu72nJRDwr6T0yF5oUIiENkIDHmd4HE&playbackInfo=eyJ2aWRlb0lkIjoiZGRlNGRlZWNiOGRkNGE2YTg4NTRjNGMxMDYzMTJkZDAifQ=="
+                vdoId: "dde4deecb8dd4a6a8854c4c106312dd0"
             },
             {
                 id: "d9",
                 title: "Dvostruki pokazivači",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232j4chrfDjUwfXwIwj1pj6xDBA9Bg4HlXYxACfHMD15s88A&playbackInfo=eyJ2aWRlb0lkIjoiMWIzYWM1OGMwNjQ5NGZlOWFlZWRmMTA0NmEyZmFlYWYifQ=="
+                vdoId: "1b3ac58c06494fe9aeedf1046a2faeaf"
             },
             {
                 id: "d10",
                 title: "Pokazivačka aritmetika",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232dcGxdmvmLdPo2B8JdtZy3JarOlZFJAhQ4nwEjz71du4zS&playbackInfo=eyJ2aWRlb0lkIjoiYjM1YmEwNmQwODMwNGQyYjllZjlhZjMwM2YxNDU3OWEifQ=="
+                vdoId: "b35ba06d08304d2b9ef9af303f14579a"
             }
         ]
     },
@@ -311,53 +313,53 @@ const courseData = [
             {
                 id: "e1",
                 title: "Prolaz pokazivačem kroz niz",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232OwzVSA949bZf84jA0ll2P6wbb2l6jGnWaD9vpEvSXFHIE&playbackInfo=eyJ2aWRlb0lkIjoiMjYxZGJiZmQ2ZjAwNGEyNGIxNDI4ZjdmZTE3YWE5Y2MifQ=="
+                vdoId: "261dbbfd6f004a24b1428f7fe17aa9cc"
             },
             {
                 id: "e2",
                 title: "Dinamička alokacija niza",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32323I654YQOAtDcMx54qtJ0wtxGkuae2TCvaoEbB3swJYCXU&playbackInfo=eyJ2aWRlb0lkIjoiZDk1ODM4ODM2MzU4NGM4OGE5NGNkOWQ4NTJlOTY2MWEifQ=="
+                vdoId: "d958388363584c88a94cd9d852e9661a"
             },
             {
                 id: "e3",
                 title: "Niz sa enum konstantama",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Unba35Mpl15ZK0Wkzzn2uLZTcSfBfk6UXLEdzWH4Zms8r&playbackInfo=eyJ2aWRlb0lkIjoiMWRkNzlmMjM1YjdkNDAwMGJhMTcwZGNlZGZjZjdkOWQifQ=="
+                vdoId: "1dd79f235b7d4000ba170dcedfcf7d9d"
             },
             {
                 id: "e4",
                 title: "Osnovna inicijalizacija niza",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232PltxZ5SDnN9zCEVaEHh9lUSx7uGVmEUN2P9GjivTV6uSC&playbackInfo=eyJ2aWRlb0lkIjoiZmRmYmI2MjI1NjljNGZmZmFjYjExN2JiMGMzZjhhNzkifQ=="
+                vdoId: "fdfbb622569c4fffacb117bb0c3f8a79"
             },
             {
                 id: "e5",
                 title: "Indeksirana inicijalizacija elemenata",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232wCHQiaOU1R8nbL8v66stR5tx7c41uLxUu09bqlxPHj3EI&playbackInfo=eyJ2aWRlb0lkIjoiNjA3OGMwMGM0NDFkNDY2NWIyODc4ZGI3NDU5NTc5NjUifQ=="
+                vdoId: "6078c00c441d4665b2878db745957965"
             },
             {
                 id: "e6",
                 title: "Pristup preko indeksa",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32321733tKhmWOOX9RRSehaSyu4nOIJnyYVxqQ0lyt2dZDqbN&playbackInfo=eyJ2aWRlb0lkIjoiMWUwOTY5NTUzZjU2NGMzYjk4YjJhYjYxNjYyNjA1NjAifQ=="
+                vdoId: "1e0969553f564c3b98b2ab6166260560"
             },
             {
                 id: "e7",
                 title: "Alternativna sintaksa (digrafi)",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232j1y7jZpJZgQy1Acat4teUzR58kPkhJVzdfoXpyDKUbmQb&playbackInfo=eyJ2aWRlb0lkIjoiNzA4ZWUxMTdkZDZmNGFjM2JkMDk0MDM3NGJhNTRiZWUifQ=="
+                vdoId: "708ee117dd6f4ac3bd0940374ba54bee"
             },
             {
                 id: "e8",
                 title: "Sizeof niza u funkciji",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232jpm4fuDWTs2MkBKmJRNt8cUqxPlQJvt41uGdGMiDFcN1d&playbackInfo=eyJ2aWRlb0lkIjoiMmQ4Yzc2M2IxYzJmNGNiYTliZGFmNTlhZDE4OGMwMWUifQ=="
+                vdoId: "2d8c763b1c2f4cba9bdaf59ad188c01e"
             },
             {
                 id: "e9",
                 title: "Adresni pristup elementu",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232G16pMomSceDW71vKRwIf5u2PGczBgxu8nKCx4jmNgB6NG&playbackInfo=eyJ2aWRlb0lkIjoiODVjNWJkNTQ1MGRmNDQ4MTk5ZWE3YWQ5YzZhZWE5MDcifQ=="
+                vdoId: "85c5bd5450df448199ea7ad9c6aea907"
             },
             {
                 id: "e10",
                 title: "Provera adrese niza",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232X7QIerUGDFsbp69wk00B6MaG6p47EVZ74WzW0PiY2I5GP&playbackInfo=eyJ2aWRlb0lkIjoiYzJlYTdjNmU3OTVhNDkwZGFjNDBjMjczM2MxMzgzN2EifQ=="
-            },
+                vdoId: "c2ea7c6e795a490dac40c2733c13837a"
+            }
         ]
     },
     {
@@ -366,93 +368,93 @@ const courseData = [
             {
                 id: "g1",
                 title: "Mala u velika slova",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232WbdYCzk9HqlCxgAEFgrP7LarqTSZg3RYha3V3XyEXtmll&playbackInfo=eyJ2aWRlb0lkIjoiMmZjNzQ3ZGYzZjU5NDZmYjhjMDdhZmY2NTcwMTAxMjUifQ=="
+                vdoId: "2fc747df3f5946fb8c07aff657010125"
             },
             {
                 id: "g2",
                 title: "Različiti zapisi indeksa",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232YY1Haxp9o7biY5tglhQdb5FwpcUEzMrkrmcTrJUgFNdZL&playbackInfo=eyJ2aWRlb0lkIjoiNzdiMDlhZmIyZTUyNDM4ZWJkOGE2NTNhOGYxNzk5NTkifQ=="
+                vdoId: "77b09afb2e52438ebd8a653a8f179959"
             },
             {
                 id: "g3",
                 title: "ASCII vrednosti i ciklus",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232NHizPPUn44dnbVq2OSsLcHLV5xmZ064tZCviMmE9eX9bq&playbackInfo=eyJ2aWRlb0lkIjoiNjJmZGZiNTMyNzFkNDM2Yjk5YzFhN2EwMTEyYjNlY2IifQ=="
+                vdoId: "62fdfb53271d436b99c1a7a0112b3ecb"
             },
             {
                 id: "g4",
                 title: "Opseg tipa char",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232sr51D1ajwVkkyWdLhRVb9xc9I0NnXI7EbKU8SwADuyarO&playbackInfo=eyJ2aWRlb0lkIjoiMTAxM2M5MmNiNjgwNDg5Yjg1ZGY5NmY4MzI3OTRmZTkifQ=="
+                vdoId: "1013c92cb680489b85df96f832794fe9"
             },
             {
                 id: "g5",
                 title: "Opseg unsigned char",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232BskkLdtTT8oPhP1GAswqoN5PWDz5wPJmognQldhcBp8pj&playbackInfo=eyJ2aWRlb0lkIjoiMTVjOTdjNjA1ZTk4NDFlZjg4Yzk5YzllODQyOTI3MzMifQ=="
+                vdoId: "15c97c605e9841ef88c99c9e84292733"
             },
             {
                 id: "g6",
                 title: "Ispis stringa pokazivačem",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Tdfv7Cx2MtyBjtFyQ52t7Em4dSKCPHBsl6VYrWHDG6bby&playbackInfo=eyJ2aWRlb0lkIjoiNmNlNDdlZWMwN2E3NGJkZThmOGZlMGJiMjAzMjBiOWIifQ=="
+                vdoId: "6ce47eec07a74bde8f8fe0bb20320b9b"
             },
             {
                 id: "g7",
                 title: "Pomeranje početka stringa",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Szi9i6iFgq1PUhjQHgm0SsYPkFwQ6rQcFFtZ0inANix05&playbackInfo=eyJ2aWRlb0lkIjoiMTk4ZWNiODBjODY2NDQwZmEzYjFmMzAxOTk5MGY5ZmIifQ=="
+                vdoId: "198ecb80c866440fa3b1f3019990f9fb"
             },
             {
                 id: "g8",
                 title: "Modifikacija parnih pozicija",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232cv8q281iPHxlDTP3MtdRqHqUha9ZQfr8X9JoJDs9OgNzO&playbackInfo=eyJ2aWRlb0lkIjoiZTA1ZmM2MDhiZjQ1NDMyZjhmM2M0OGVhYWVlNDZmMjMifQ=="
+                vdoId: "e05fc608bf45432f8f3c48eaaee46f23"
             },
             {
                 id: "g9",
                 title: "Inkrementiranje string pokazivača",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232MUf3K6jIfdyEHly2EKt8khYKEGkz0XDDHXJM5pQAUBq9x&playbackInfo=eyJ2aWRlb0lkIjoiZGY4NDM3ZTU0Yjk4NGE3NTk3MTkyZWM5MWM0ZWJjMTkifQ=="
+                vdoId: "df8437e54b984a7597192ec91c4ebc19"
             },
             {
                 id: "g10",
                 title: "Strlen vs sizeof stringa",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232rO8PRDaYqqD1NZ4fT24SEDum0I3avl8x7jiYes1hIvfZ5&playbackInfo=eyJ2aWRlb0lkIjoiNzFiZGMwNmQ5NjM2NGQ2YWI4MTdlNDFkNzgwNmRmN2IifQ=="
+                vdoId: "71bdc06d96364d6ab817e41d7806df7b"
             },
             {
                 id: "g11",
                 title: "Funkcija za kapitalizaciju",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232ukVX8racTYBPBtqcY3NZgY5wsabWy9YbZOMl6UqxingbP&playbackInfo=eyJ2aWRlb0lkIjoiZTE3YjgzZThmMmNhNDFjMjkxZmNkMDQ4MzYwZGNlZmYifQ=="
+                vdoId: "e17b83e8f2ca41c291fcd048360dceff"
             },
             {
                 id: "g12",
                 title: "Piramidalni ispis stringa",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32326k5hAq8hyHII9frk0msaqWcFxIHlM1Bf7cZHp2Z0Og0pa&playbackInfo=eyJ2aWRlb0lkIjoiMTdkMDM0Zjk1NjQ3NGIzYjg4YjkyMWQxNGRhODJlMTEifQ=="
+                vdoId: "17d034f956474b3b88b921d14da82e11"
             },
             {
                 id: "g13",
                 title: "Dodela adrese stringu",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232wnZbKaOqiKfimYUBvluxdF68RsNIY2TKJgUUtvmaIo0GD&playbackInfo=eyJ2aWRlb0lkIjoiZTZhMzc1MDYyMmI5NDhmNWFiN2JmZGMyODI3NDE0YjIifQ=="
+                vdoId: "e6a3750622b948f5ab7bfdc2827414b2"
             },
             {
                 id: "g14",
                 title: "Trougao od karaktera",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232O5IlCjYYR091y5uK0O0DF7QNBfcMS0DusQY3Dqabvc895&playbackInfo=eyJ2aWRlb0lkIjoiY2QzN2YyNzEzMWQ5NDAwOTliNTI2NTJiMmMwZjUyMzcifQ=="
+                vdoId: "cd37f27131d940099b52652b2c0f5237"
             },
             {
                 id: "g15",
                 title: "String kroz više redova",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232EzF7nnnFGONYMqoKGqCFyuvmljd8WEgRId4o7V6wVjhkV&playbackInfo=eyJ2aWRlb0lkIjoiNzNjNWExZDY2NWNkNDU5YTlhMDU1NTM2MjNiYjQwZDMifQ=="
+                vdoId: "73c5a1d665cd459a9a05553623bb40d3"
             },
             {
                 id: "g16",
                 title: "Strlen i strcpy",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232nItfJhpokGFpNJQBb6upigFO4m78Hb35ZU0qmI3FGFKdv&playbackInfo=eyJ2aWRlb0lkIjoiNTNkOTA1ZDkyMzA1NDRlYzg1NjI5MDhiOGNkMDk0NDAifQ=="
+                vdoId: "53d905d9230544ec8562908b8cd09440"
             },
             {
                 id: "g17",
                 title: "Adrese karaktera u nizu",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232uBuGAlsDPROaDqLPMrU4Cz8a17aRqZoE1bhYoakLTMaIB&playbackInfo=eyJ2aWRlb0lkIjoiNWNiNzM1YWRmNmZkNGQ2YTgzNTY4MDFhYmZkYzI0YTUifQ=="
+                vdoId: "5cb735adf6fd4d6a8356801abfdc24a5"
             },
             {
                 id: "g18",
                 title: "Poređenje dužina stringova",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232SOOT5kUxetHL6230rbUn2nLdEwY53wPsD6tqCkBgeJYvJ&playbackInfo=eyJ2aWRlb0lkIjoiM2EwZjMzNTNiNDhjNGNjYjkzMDJlYzA5ZDRiY2Q0YzAifQ=="
-            },
+                vdoId: "3a0f3353b48c4ccb9302ec09d4bcd4c0"
+            }
         ]
     },
     {
@@ -461,23 +463,23 @@ const courseData = [
             {
                 id: "h1",
                 title: "Rekurzivni faktorijel",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232PUZDwrocQe2FLoeuCczOOcYU8Yq61RN1ByOBhiolRKSmO&playbackInfo=eyJ2aWRlb0lkIjoiY2VlOTc1MDE3ZmYwNGFlOGEwYzJhNjU4YjQxNTc2ZjEifQ=="
+                vdoId: "cee975017ff04ae8a0c2a658b41576f1"
             },
             {
                 id: "h2",
                 title: "Rekurzivna suma cifara",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232LFGUE5M3ZB0gwbuwzsirO72uCYwsyXxRRklcX4HhNYHcG&playbackInfo=eyJ2aWRlb0lkIjoiOTA0NDlhN2IwYzFiNDUxODhmZjg2MjE4NzM0MDFhMGEifQ=="
+                vdoId: "90449a7b0c1b45188ff8621873401a0a"
             },
             {
                 id: "h3",
                 title: "Redosled rekurzivnog ispisa",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232daGh6SHN6FNe18nkFFg2Ks7UJY8r70s6yPBzBn43UWeFC&playbackInfo=eyJ2aWRlb0lkIjoiNjhjZjY3NDQzNjA3NDIyNWEzN2QyZjI4MTVhYjI5YTcifQ=="
+                vdoId: "68cf674436074225a37d2f2815ab29a7"
             },
             {
                 id: "h4",
                 title: "Rekurzivni poziv main-a",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232ejzfs9DJgyLUd1rgq4JuQ9z51tv0endTm6YYc7dvV6OjN&playbackInfo=eyJ2aWRlb0lkIjoiNDI1MTA0OWYzMzFmNDg2YWJiOWU5OTQ3N2IzYTMxNzQifQ=="
-            },
+                vdoId: "4251049f331f486abb9e99477b3a3174"
+            }
         ]
     },
     {
@@ -486,43 +488,43 @@ const courseData = [
             {
                 id: "i1",
                 title: "Indirektna dodela vrednosti",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232NbpslGhGj8iU6XHL046Nj9QYLuMgFUDcK7XbHi20anxBC&playbackInfo=eyJ2aWRlb0lkIjoiYjhiODkwMjkwZTlkNDk1NjlmMzdkODcwOWQ2NDNmNzMifQ=="
+                vdoId: "b8b890290e9d49569f37d8709d643f73"
             },
             {
                 id: "i2",
                 title: "Adrese 3D niza",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232jmVsDlnmtcyUtI0juH2ZwJbzU9Xtbv9GKyZRsV3YnTNE1&playbackInfo=eyJ2aWRlb0lkIjoiNzM4NmU3NDQyNWI4NGU0Mzg5MjdhNTY3OWNkMzI4ZjkifQ=="
+                vdoId: "7386e74425b84e438927a5679cd328f9"
             },
             {
                 id: "i3",
                 title: "Stanje steka pri pozivu",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232MGerGMSnOTdtyz1NgJjCAWcaf4JdTn3MB5q9mjOrtY7II&playbackInfo=eyJ2aWRlb0lkIjoiNzQzMTc0OGI1ZmZiNGU3OWJiM2E5NzJmNzBhOWYwOTMifQ=="
+                vdoId: "7431748b5ffb4e79bb3a972f70a9f093"
             },
             {
                 id: "i4",
                 title: "Eksplicitni null terminator",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232T9Ai6Kf9N90GHXobgNjKjD9WEtZ3neRfmk95sGH1ybyls&playbackInfo=eyJ2aWRlb0lkIjoiYjNjMmFiZmE1ZGFiNGNlZGFjMTgyNzM3NDY1MmI1NDMifQ=="
+                vdoId: "b3c2abfa5dab4cedac1827374652b543"
             },
             {
                 id: "i5",
                 title: "Indeksirana 3D inicijalizacija",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232mWPnnE7PKczGRN3EiCSaRmP29T4kF5xfjQLryLsVmxSjH&playbackInfo=eyJ2aWRlb0lkIjoiYWIyY2Y2NWNlMmU1NGExZjhkZWM4MWI5NDk5ODA1MDkifQ=="
+                vdoId: "ab2cf65ce2e54a1f8dec81b949980509"
             },
             {
                 id: "i6",
                 title: "Redosled case-a i fall-through",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232sCiF78ACnMAihiHxHuqRxjW0mr1G3et9ldAsFoCQiDZD1&playbackInfo=eyJ2aWRlb0lkIjoiZWEzOWRhM2UxZDk0NDllMTk5Mzc2NWE3ZGI2MmJlMTUifQ=="
+                vdoId: "ea39da3e1d9449e1993765a7db62be15"
             },
             {
                 id: "i7",
                 title: "ASCII aritmetika",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE3232Unk3ZQacDT4GJQnUtB9Z7F4yrgzGmlAeVNVLLJjFcDNmU&playbackInfo=eyJ2aWRlb0lkIjoiMTY2ZDQ2ZDAzYjljNGVlYWFiNDVjOWMyNDU1ZDBjNmEifQ=="
+                vdoId: "166d46d03b9c4eeaab45c9c2455d0c6a"
             },
             {
                 id: "i8",
                 title: "Prekid funkcije u petlji",
-                url: "https://player.vdocipher.com/v2/?otp=20160313versUSE32327UBAEHpFzUHPKxzzGZKo0TLzpmyICIQgXOxhDZPw3eSOE&playbackInfo=eyJ2aWRlb0lkIjoiZTAyOTlhNjkyMGNlNDllYjlhZWI4OTZlMmU5MTUzZmIifQ=="
-            },
+                vdoId: "e0299a6920ce49eb9aeb896e2e9153fb"
+            }
         ]
     }
 ];
@@ -605,14 +607,6 @@ async function saveProgressToFirebase(userId) {
     localStorage.setItem(`progress_${CURRENT_COURSE_ID}`, JSON.stringify(completedLessons));
 }
 
-function getEmbedUrl(originalUrl) {
-    if (originalUrl && originalUrl.includes("youtube.com/watch")) {
-        const videoId = new URL(originalUrl).searchParams.get("v");
-        return `https://www.youtube.com/embed/${videoId}`;
-    }
-    return originalUrl; // Ako je VdoCipher ili već embed, ne menja ništa
-}
-
 function init() {
     nav.innerHTML = '';
     courseData.forEach((module, mIndex) => {
@@ -665,18 +659,30 @@ function init() {
     updateGlobalProgress();
 }
 
-function selectLesson(lesson, moduleTitle) {
-    currentLessonId = lesson.id;
-    if (vdoPlayer) vdoPlayer.src = getEmbedUrl(lesson.url);
+async function selectLesson(lesson, moduleTitle) {
+    currentLessonId = lesson.id; // Važno da bi "Završi lekciju" dugme znalo šta završava
     titleDisplay.innerText = lesson.title;
-    if (descDisplay) descDisplay.innerText = lesson.desc;
     moduleTag.innerText = moduleTitle;
 
+    vdoPlayer.src = ""; 
+
+    try {
+        const result = await getVideoAuth({ videoId: lesson.vdoId });
+        const { otp, playbackInfo } = result.data;
+        vdoPlayer.src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}`;
+    } catch (error) {
+        console.error("Greška kod backenda:", error);
+        alert("Došlo je do greške pri autorizaciji videa.");
+    }
+
+    // Dodajemo "active-lesson" klasu na kliknuto dugme
     document.querySelectorAll('.lesson-btn').forEach(b => b.classList.remove('active-lesson'));
-    const b = document.getElementById(`btn-${lesson.id}`);
-    if (b) b.classList.add('active-lesson');
+    const activeBtn = document.getElementById(`btn-${lesson.id}`);
+    if (activeBtn) activeBtn.classList.add('active-lesson');
 
     updateButtonState();
+    
+    // Zatvori sidebar na mobilnom nakon klika
     if (window.innerWidth <= 992) sidebar.classList.remove('open');
 }
 
@@ -739,6 +745,11 @@ function updateGlobalProgress() {
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
+        const watermarkEl = document.getElementById('video-watermark');
+        if (watermarkEl) {
+            watermarkEl.innerText = user.email; // Uzima email direktno iz Firebase Auth-a
+        }
+
         const deviceOk = await setupMaxTwoDevices(user);
         if (!deviceOk) return;
 

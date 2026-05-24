@@ -26,54 +26,54 @@ const courseData = [
         moduleTitle: "01. Pokazivači (isto kao za 1. klk)",
         lessons: [
             {
-                id: "e1",
+                id: "d1",
                 title: "Zamena lokalnih pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232gdzTVLfPACJjxC5GxenmERpvjKs7I4xSSkkmXcccHNXuX&playbackInfo=eyJ2aWRlb0lkIjoiMGU1NzljOTQ4ZjdlNGYyNGI5N2ZhYjUzMWJmNThmMzAifQ=="
+                vdoId: "0e579c948f7e4f24b97fab531bf58f30"
             },
             {
-                id: "e2",
+                id: "d2",
                 title: "Dereferenciranje pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232kDnodd8O1VN4tRkIi7gk3SQkn2JaQTBvFPc7seQq05fj7&playbackInfo=eyJ2aWRlb0lkIjoiMTVlMDZmNDU5MDUwNGZlYzkyMjMyZDZlNzVjMjk1YzYifQ=="
+                vdoId: "15e06f4590504fec92232d6e75c295c6"
             },
             {
-                id: "e3",
+                id: "d3",
                 title: "Inkrementiranje i adrese",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232GYjMmTNnuMlQ6dhxYKyoGVY2Tkna7cmxAvOZR0ypR5kjF&playbackInfo=eyJ2aWRlb0lkIjoiNDFiODUyNzdlYTk4NGE3YjgxNDkzZDBmOTQyMDlmNGEifQ=="
+                vdoId: "41b85277ea984a7b81493d0f94209f4a"
             },
             {
-                id: "e4",
+                id: "d4",
                 title: "Pokazivači na niz",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232pDNmn6uLqFale1EH1tBMW29Z4FYeOaZzwNIQ0bRSt48xX&playbackInfo=eyJ2aWRlb0lkIjoiYmY1OGNjZGYwYWRmNGJmM2E2YjRiYTYyMWRhMzBiMDkifQ=="
+                vdoId: "bf58ccdf0adf4bf3a6b4ba621da30b09"
             },
             {
-                id: "e5",
+                id: "d5",
                 title: "Veličina pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ejGHyBLvvwW7ygUg0jFap76PfcQYr88LmbHgO9uSxuE2g&playbackInfo=eyJ2aWRlb0lkIjoiYTc1ZWIxMzYxOWQ4NDdmMTllMmEyMWFlYzY2YWRmODYifQ=="
+                vdoId: "a75eb13619d847f19e2a21aec66adf86"
             },
             {
-                id: "e6",
+                id: "d6",
                 title: "Inkrement NULL pokazivača",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232ieBIT6bfOVEKtaG7IcEOD8eXpkdX1hemTT37lhRyCjPGX&playbackInfo=eyJ2aWRlb0lkIjoiZjFmYzljYmM0NmZhNDM1M2EzNDAwNmFmYmU4YTFiNDQifQ=="
+                vdoId: "f1fc9cbc46fa4353a34006afbe8a1b44"
             },
             {
-                id: "e7",
+                id: "d7",
                 title: "Prenos po vrednosti",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232r9y0dJXbol0i4evfug9AElYOmuMTawid946urlyQwDPmK&playbackInfo=eyJ2aWRlb0lkIjoiNDYxOTAwNGZiY2RiNGQyYjk5ZmViM2MzN2Q1N2U0ZDcifQ=="
+                vdoId: "4619004fbcdb4d2b99feb3c37d57e4d7"
             },
             {
-                id: "e8",
+                id: "d8",
                 title: "Izostanak dodele vrednosti",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE32328f0SaZqAhNYK6Fuu72nJRDwr6T0yF5oUIiENkIDHmd4HE&playbackInfo=eyJ2aWRlb0lkIjoiZGRlNGRlZWNiOGRkNGE2YTg4NTRjNGMxMDYzMTJkZDAifQ=="
+                vdoId: "dde4deecb8dd4a6a8854c4c106312dd0"
             },
             {
-                id: "e9",
+                id: "d9",
                 title: "Dvostruki pokazivači",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232j4chrfDjUwfXwIwj1pj6xDBA9Bg4HlXYxACfHMD15s88A&playbackInfo=eyJ2aWRlb0lkIjoiMWIzYWM1OGMwNjQ5NGZlOWFlZWRmMTA0NmEyZmFlYWYifQ=="
+                vdoId: "1b3ac58c06494fe9aeedf1046a2faeaf"
             },
             {
-                id: "e10",
+                id: "d10",
                 title: "Pokazivačka aritmetika",
-                url:"https://player.vdocipher.com/v2/?otp=20160313versUSE3232dcGxdmvmLdPo2B8JdtZy3JarOlZFJAhQ4nwEjz71du4zS&playbackInfo=eyJ2aWRlb0lkIjoiYjM1YmEwNmQwODMwNGQyYjllZjlhZjMwM2YxNDU3OWEifQ=="
+                vdoId: "b35ba06d08304d2b9ef9af303f14579a"
             }
         ]
     },

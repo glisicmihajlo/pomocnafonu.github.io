@@ -151,12 +151,12 @@ const courseData = [
                 vdoId: "57647892805246b7b5ab7e9e9a9c7612"
             },
             {
-                id: "e1",
+                id: "e2",
                 title: "Zadatak 1",
                 vdoId: "3c5762f65a9c418abffceb11d62ecb66"
             },
             {
-                id: "e1",
+                id: "e3",
                 title: "Zadatak 2",
                 vdoId: "5639fbdccb5749dea6b466cb6c0f6d57"
             },

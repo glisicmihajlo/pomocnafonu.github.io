@@ -19,136 +19,161 @@ const db = getFirestore(app);
 const functions = getFunctions(app);
 const getVideoAuth = httpsCallable(functions, 'getVideoAuth');
 
-const CURRENT_COURSE_ID = "mat2-klk1"; 
+const CURRENT_COURSE_ID = "mat1-klk1"; 
 
 const courseData = [
     {
-        moduleTitle: "01. Parcijalni izvodi",
+        moduleTitle: "01. Algebarske strukture",
         lessons: [
-            { 
-                id: "a1", 
-                title: "Uvod", 
-                vdoId: "00d45048474b41d9815f3de23f0148cf"
+            {
+                id: "a1",
+                title: "Uvod",
+                vdoId: "c431b9d5280b4fe9a9c3331212311216"
             },
-            { 
-                id: "a2", 
-                title: "Zadatak 1", 
-                vdoId: "90eb60e41e72443d9e66c2c666d84055"
+            {
+                id: "a2",
+                title: "Osobine",
+                vdoId: "dced05f442fe4072b91c2cec3b9779b8"
             },
-            { 
-                id: "a3", 
-                title: "Zadatak 2", 
-                vdoId: "00cc0c2a4690404e993790d1631712b3"
+            {
+                id: "a3",
+                title: "Zadatak 1",
+                vdoId: "32f4aae317044a00bd6a0bc2e496a58b"
             },
-            { 
-                id: "a4", 
-                title: "Zadatak 3", 
-                vdoId: "c03af50a5fde4c1282cb29f18a3d9f9e"
+            {
+                id: "a4",
+                title: "Zadatak 2",
+                vdoId: "f6660aea55dd4ff09a047499284dfb83"
             },
-            { 
-                id: "a5", 
-                title: "Zadatak 4", 
-                vdoId: "69a93ab19f8b452cb13100625dfb11c6"
+            {
+                id: "a5",
+                title: "Zadatak 3",
+                vdoId: "e84eb4c480bd4a709dab6955f5c351bf"
             },
-            { 
-                id: "a6", 
-                title: "Zadatak 5", 
-                vdoId: "c486371428bf455ba52b183fa0ad665c"
+            {
+                id: "a6",
+                title: "Zadatak 4",
+                vdoId: "0770ba288dd44078b7fc21cfd9f175dd"
             },
         ]
     },
     {
-        moduleTitle: "02. Totalni diferencijal",
+        moduleTitle: "02. Determinante",
         lessons: [
-            { 
-                id: "b1", 
-                title: "Uvod", 
-                vdoId: "729043ebeb3441a3b6c306f90f048c00"
+            {
+                id: "b1",
+                title: "Uvod",
+                vdoId: "e5d1222b0c684a7097ede8b295b944f8"
             },
-            { 
-                id: "b2", 
-                title: "Zadatak 1", 
-                vdoId: "1029013815864a93b4850a597f580bb4"
-            },
-            { 
-                id: "b3", 
-                title: "Zadatak 2", 
-                vdoId: "a990d3fda5f1428b9ae36b2e50d965ed"
-            },
-            { 
-                id: "b4", 
-                title: "Zadatak 3", 
-                vdoId: "15da7de4a4c24a879af1d593a41027d3"
+            {
+                id: "b2",
+                title: "Zadatak sa parametrima",
+                vdoId: "18fe2a7f6ece43a4bf4f1af2e6b40756"
             },
         ]
     },
     {
-        moduleTitle: "03. Izvod i diferencijal implicitno zadate funkcije",
+        moduleTitle: "03. Matrične jednačine",
         lessons: [
-            { 
-                id: "c1", 
-                title: "Uvod", 
-                vdoId: "36b9b7342c57464baaf750923ff556b2"
+            {
+                id: "c1",
+                title: "Inverzna matrica",
+                vdoId: "3a1e10d4b5084ced90ce9106366a849e"
             },
-            { 
-                id: "c2", 
-                title: "Zadatak 1", 
-                vdoId: "b8c89c02ffe542e58d5fa2decd747e43"
+            {
+                id: "c2",
+                title: "Zadatak 1",
+                vdoId: "1f84171e1c6d4ae1afb6eefdf4e7a2dd"
             },
-            { 
-                id: "c3", 
-                title: "Zadatak 2", 
-                vdoId: "3db28cea32ad4470803acc1e5436b07d"
+            {
+                id: "c3",
+                title: "Zadatak 2",
+                vdoId: "952ff676fbc44b849475e3edb8773c56"
             },
-            { 
-                id: "c4", 
-                title: "Zadatak 3", 
-                vdoId: "802725fe35104c91a667ad3e4a517b95"
-            },
-            { 
-                id: "c5", 
-                title: "Zadatak 4", 
-                vdoId: "d39bf9196f3b42e8b70dbfb86d3177e3"
-            },
-            { 
-                id: "c6", 
-                title: "Zadatak 5", 
-                vdoId: "fb7a4a036acf4fb6a993616ceedc6487"
-            },
-            { 
-                id: "c7", 
-                title: "Zadatak 6", 
-                vdoId: "6e564f302e8441679adfe8b07061c9f4"
+            {
+                id: "c4",
+                title: "Zadatak 3",
+                vdoId: "c6402e48a4a54afe83ea5198a5d2fd28"
             },
         ]
     },
     {
-        moduleTitle: "04. Parcijalni izvodi i diferencijali višeg reda",
+        moduleTitle: "04. Vektori",
         lessons: [
-            { 
-                id: "d1", 
-                title: "Uvod", 
-                vdoId: "979635227f7f4ba58434b989dc6bfb2a"
+            {
+                id: "d1",
+                title: "Zadatak 1",
+                vdoId: "cd005eb540f54af1910fb7d53b9c9a0c"
             },
-            { 
-                id: "d2", 
-                title: "Zadatak 1", 
-                vdoId: "5a769c19ae90400296744c5cc2b192de"
+            {
+                id: "d2",
+                title: "Zadatak 2",
+                vdoId: "baf2fa1fe7004b768229f96293d25696"
             },
-            { 
-                id: "d3", 
-                title: "Zadatak 2", 
-                vdoId: "231fac5b06a44f119fda0e0a325e56be"
+            {
+                id: "d3",
+                title: "Zadatak 3",
+                vdoId: "8ac3b3bc78eb4c7eb8b48fa46db12b44"
             },
-            { 
-                id: "d4", 
-                title: "Zadatak 3", 
-                vdoId: "deb27b064d56460ab1c34a3eab8ce336"
+            {
+                id: "d4",
+                title: "Zadatak 4",
+                vdoId: "f23261179c614abebda39bb3640e3f20"
             },
-            { 
-                id: "d5", 
-                title: "Zadatak 4", 
-                vdoId: "4a29890b87854b7abfc62104437db6c6"
+            {
+                id: "d5",
+                title: "Zadatak 5",
+                vdoId: "627906551587427aa33ce2b33819d3c5"
+            },
+        ]
+    },
+    {
+        moduleTitle: "05. Sistemi jednačina",
+        lessons: [
+            {
+                id: "e1",
+                title: "Zadatak 1",
+                vdoId: "2fa0b515964340b88e7ae4b55e339ab0"
+            },
+            {
+                id: "e2",
+                title: "Zadatak 2",
+                vdoId: "323b2800ad5b4f708dab48f1a9613f71"
+            },
+            {
+                id: "e3",
+                title: "Zadatak 3",
+                vdoId: "14ee03457926419596c3a90760b5ada5"
+            },
+            {
+                id: "e4",
+                title: "Zadatak 4",
+                vdoId: "714b1d92e52c4c7d8854d3bb11072134"
+            },
+        ]
+    },
+    {
+        moduleTitle: "06. Analitička geometrija",
+        lessons: [
+            {
+                id: "f1",
+                title: "Zadatak 1",
+                vdoId: "431580c1bad342e4a5ca4fb2d59d64e5"
+            },
+            {
+                id: "f2",
+                title: "Zadatak 2",
+                vdoId: "0b444a944682420796876fba17978772"
+            },
+            {
+                id: "f3",
+                title: "Zadatak 3",
+                vdoId: "c96563036a8246efb1244610fc127ba9"
+            },
+            {
+                id: "f4",
+                title: "Zadatak 4",
+                vdoId: "8eafa9410c414739a58248975edfa423"
             },
         ]
     },
@@ -383,7 +408,7 @@ onAuthStateChanged(auth, async (user) => {
 
         if (!kursevi.includes(CURRENT_COURSE_ID)) {
             alert("Nemate pristup ovom kursu.");
-            window.location.href = "/mat2";
+            window.location.href = "/pp";
             return;
         }
 

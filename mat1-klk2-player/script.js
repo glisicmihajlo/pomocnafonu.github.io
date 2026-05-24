@@ -19,136 +19,146 @@ const db = getFirestore(app);
 const functions = getFunctions(app);
 const getVideoAuth = httpsCallable(functions, 'getVideoAuth');
 
-const CURRENT_COURSE_ID = "mat2-klk1"; 
+const CURRENT_COURSE_ID = "mat1-klk2"; 
 
 const courseData = [
     {
-        moduleTitle: "01. Parcijalni izvodi",
+        moduleTitle: "01. Nizovi",
         lessons: [
-            { 
-                id: "a1", 
-                title: "Uvod", 
-                vdoId: "00d45048474b41d9815f3de23f0148cf"
+            {
+                id: "a1",
+                title: "Zadatak 1",
+                vdoId: "8b87615bec624e2fa6f3f5ea92dca57c"
             },
-            { 
-                id: "a2", 
-                title: "Zadatak 1", 
-                vdoId: "90eb60e41e72443d9e66c2c666d84055"
+            {
+                id: "a2",
+                title: "Zadatak 2",
+                vdoId: "5c097c5c49184e43be997bee0627aa4d"
             },
-            { 
-                id: "a3", 
-                title: "Zadatak 2", 
-                vdoId: "00cc0c2a4690404e993790d1631712b3"
+            {
+                id: "a3",
+                title: "Zadatak 3",
+                vdoId: "b254d3432cc846e6b9e0e364094fac8b"
             },
-            { 
-                id: "a4", 
-                title: "Zadatak 3", 
-                vdoId: "c03af50a5fde4c1282cb29f18a3d9f9e"
+            {
+                id: "a4",
+                title: "Zadatak 4",
+                vdoId: "d48ba9aafddf4554ae5cda26da6222bb"
             },
-            { 
-                id: "a5", 
-                title: "Zadatak 4", 
-                vdoId: "69a93ab19f8b452cb13100625dfb11c6"
+            {
+                id: "a5",
+                title: "Zadatak 5",
+                vdoId: "68340d649fa7427692b99ed30c71a8e6"
             },
-            { 
-                id: "a6", 
-                title: "Zadatak 5", 
-                vdoId: "c486371428bf455ba52b183fa0ad665c"
+            {
+                id: "a6",
+                title: "Zadatak 6",
+                vdoId: "6a5d94a736c84b248c5c05fc984b366c"
+            },
+            {
+                id: "a7",
+                title: "Zadatak 7",
+                vdoId: "95f223f8040e40c78c6b05dd22adab7b"
             },
         ]
     },
     {
-        moduleTitle: "02. Totalni diferencijal",
+        moduleTitle: "02. Tačke nagomilavanja",
         lessons: [
-            { 
-                id: "b1", 
-                title: "Uvod", 
-                vdoId: "729043ebeb3441a3b6c306f90f048c00"
+            {
+                id: "b1",
+                title: "Uvod",
+                vdoId: "31a3e6b495ca47ca9873e0326d24636a"
             },
-            { 
-                id: "b2", 
-                title: "Zadatak 1", 
-                vdoId: "1029013815864a93b4850a597f580bb4"
+            {
+                id: "b2",
+                title: "Zadatak 1",
+                vdoId: "7f02b7bc8efe4e7b9836f8dd50f0545b"
             },
-            { 
-                id: "b3", 
-                title: "Zadatak 2", 
-                vdoId: "a990d3fda5f1428b9ae36b2e50d965ed"
+            {
+                id: "b3",
+                title: "Zadatak 2",
+                vdoId: "faf2de42f92a449091789ec3805cc8f3"
             },
-            { 
-                id: "b4", 
-                title: "Zadatak 3", 
-                vdoId: "15da7de4a4c24a879af1d593a41027d3"
+            {
+                id: "b4",
+                title: "Zadatak 3",
+                vdoId: "3c9aec30b9bc496798f1ad032d26db5a"
+            },
+            {
+                id: "b5",
+                title: "Zadatak 4",
+                vdoId: "3e905dea6f1d42219d95761b1d2e4d26"
+            },
+            {
+                id: "b6",
+                title: "Zadatak 5",
+                vdoId: "8503be039c5a4293b60bf1b48d3882c5"
             },
         ]
     },
     {
-        moduleTitle: "03. Izvod i diferencijal implicitno zadate funkcije",
+        moduleTitle: "03. Funkcije",
         lessons: [
-            { 
-                id: "c1", 
-                title: "Uvod", 
-                vdoId: "36b9b7342c57464baaf750923ff556b2"
+            {
+                id: "c1",
+                title: "Uvod",
+                vdoId: "75ae1f58cec342bc83865068479eec3a"
             },
-            { 
-                id: "c2", 
-                title: "Zadatak 1", 
-                vdoId: "b8c89c02ffe542e58d5fa2decd747e43"
+            {
+                id: "c2",
+                title: "Zadatak 1",
+                vdoId: "a4a78a09c190463ea02ef066b4d805bb"
             },
-            { 
-                id: "c3", 
-                title: "Zadatak 2", 
-                vdoId: "3db28cea32ad4470803acc1e5436b07d"
-            },
-            { 
-                id: "c4", 
-                title: "Zadatak 3", 
-                vdoId: "802725fe35104c91a667ad3e4a517b95"
-            },
-            { 
-                id: "c5", 
-                title: "Zadatak 4", 
-                vdoId: "d39bf9196f3b42e8b70dbfb86d3177e3"
-            },
-            { 
-                id: "c6", 
-                title: "Zadatak 5", 
-                vdoId: "fb7a4a036acf4fb6a993616ceedc6487"
-            },
-            { 
-                id: "c7", 
-                title: "Zadatak 6", 
-                vdoId: "6e564f302e8441679adfe8b07061c9f4"
+            {
+                id: "c3",
+                title: "Zadatak 2",
+                vdoId: "d37b0599af6349909d1b3c0ec91589bc"
             },
         ]
     },
     {
-        moduleTitle: "04. Parcijalni izvodi i diferencijali višeg reda",
+        moduleTitle: "04. Maklorenov polinom",
         lessons: [
-            { 
-                id: "d1", 
-                title: "Uvod", 
-                vdoId: "979635227f7f4ba58434b989dc6bfb2a"
+            {
+                id: "d1",
+                title: "Uvod",
+                vdoId: "268766c82f6f42bcb4eb16c71b08ed8f"
             },
-            { 
-                id: "d2", 
-                title: "Zadatak 1", 
-                vdoId: "5a769c19ae90400296744c5cc2b192de"
+            {
+                id: "d2",
+                title: "Zadatak 1",
+                vdoId: "a57885ffaab84945b4cbe69e5c68b601"
             },
-            { 
-                id: "d3", 
-                title: "Zadatak 2", 
-                vdoId: "231fac5b06a44f119fda0e0a325e56be"
+            {
+                id: "d3",
+                title: "Zadatak 2",
+                vdoId: "543b2d0c3cdd40b9b8dd4b4eaf897750"
             },
-            { 
-                id: "d4", 
-                title: "Zadatak 3", 
-                vdoId: "deb27b064d56460ab1c34a3eab8ce336"
+            {
+                id: "d4",
+                title: "Zadatak 3",
+                vdoId: "0e84b36241a14143ba2f173c5d76d391"
             },
-            { 
-                id: "d5", 
-                title: "Zadatak 4", 
-                vdoId: "4a29890b87854b7abfc62104437db6c6"
+        ]
+    },
+    {
+        moduleTitle: "05. Tejlorov polinom",
+        lessons: [
+            {
+                id: "e1",
+                title: "Uvod",
+                vdoId: "57647892805246b7b5ab7e9e9a9c7612"
+            },
+            {
+                id: "e1",
+                title: "Zadatak 1",
+                vdoId: "3c5762f65a9c418abffceb11d62ecb66"
+            },
+            {
+                id: "e1",
+                title: "Zadatak 2",
+                vdoId: "5639fbdccb5749dea6b466cb6c0f6d57"
             },
         ]
     },
@@ -383,7 +393,7 @@ onAuthStateChanged(auth, async (user) => {
 
         if (!kursevi.includes(CURRENT_COURSE_ID)) {
             alert("Nemate pristup ovom kursu.");
-            window.location.href = "/mat2";
+            window.location.href = "/pp";
             return;
         }
 

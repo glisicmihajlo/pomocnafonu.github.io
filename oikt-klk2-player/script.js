@@ -19,291 +19,246 @@ const db = getFirestore(app);
 const functions = getFunctions(app);
 const getVideoAuth = httpsCallable(functions, 'getVideoAuth');
 
-const CURRENT_COURSE_ID = "oikt-klk1"; 
+const CURRENT_COURSE_ID = "oikt-klk2"; 
 
 const courseData = [
     {
-        moduleTitle: "01. Konverzija brojeva",
+        moduleTitle: "01. SQL",
         lessons: [
             { 
                 id: "a1", 
-                title: "Konverzija iz dekadnog u binarni sistem", 
-                vdoId: "68c07918ff5b43d3a5ce6ff01a5e169b" 
+                title: "Zadatak 1", 
+                vdoId: "f49e88ea42be4171963b52322d5a4322" 
             },
             { 
                 id: "a2", 
-                title: "Konverzija iz binarnog u dekadni sistem", 
-                vdoId: "1aa0db34974d443bad6a268254b70f30" 
+                title: "Zadatak 2", 
+                vdoId: "6c037972d4c046198cb8c182a0ea72d7" 
             },
             { 
                 id: "a3", 
-                title: "Konverzija iz dekadnog u heksadecimalni sistem", 
-                vdoId: "f218fd62e20c4a02a4af94d4a5736bb9" 
+                title: "Zadatak 3", 
+                vdoId: "27aa4396c563478ea85a58b3053dee0e" 
             },
             { 
                 id: "a4", 
-                title: "Konverzija iz binarnog u heksadecimalni sistem", 
-                vdoId: "f0a35ff0e1864edf9f481da8db9033cf" 
+                title: "Zadatak 4", 
+                vdoId: "8ab42a8564e54519ba5f5a39c421d002" 
             },
             { 
                 id: "a5", 
-                title: "Konverzija iz binarnog u oktalni sistem", 
-                vdoId: "5c0b3c3ccee145a5a15958d14a07ee59" 
+                title: "Zadatak 5", 
+                vdoId: "def4c5d289864a5d9986e309ba2f7a84" 
             },
             { 
                 id: "a6", 
-                title: "Konverzija iz oktalnog u dekadni sistem", 
-                vdoId: "4f9249da64c14da5b4a363dbdbb5e3d5" 
+                title: "Zadatak 6", 
+                vdoId: "e5812802867c4055ac42c8adddd2b426" 
             },
             { 
                 id: "a7", 
-                title: "Konverzija iz heksadecimalnog u dekadni sistem", 
-                vdoId: "60607b6534cb499ca2ee3599a3757690" 
+                title: "Zadatak 7", 
+                vdoId: "c8aba1442d874d5bbc8dc63c913df468" 
             },
             { 
                 id: "a8", 
-                title: "Oduzimanje binarnih brojeva", 
-                vdoId: "34fd8912f85d4ce4be7428a7586869e4" 
-            },
-            { 
-                id: "a11", 
-                title: "Konverzija negativnog broja", 
-                vdoId: "bce49eec334446978dfa837456cbcba7" 
+                title: "Zadatak 8", 
+                vdoId: "973232c98d8648c38a75b87759b17244" 
             },
             { 
                 id: "a9", 
-                title: "Zadatak 1", 
-                vdoId: "76f0384f43914a56adae0f07be1ec50a" 
+                title: "Zadatak 9", 
+                vdoId: "708a2591cc2041bc92a8528f40ce7ed2" 
             },
             { 
                 id: "a10", 
-                title: "Zadatak 2", 
-                vdoId: "136c707a6090474d9ba8513043b00b88" 
+                title: "Zadatak 10", 
+                vdoId: "853c71804888419bad472eb270cbdd30" 
+            },
+            { 
+                id: "a11", 
+                title: "Zadatak 11", 
+                vdoId: "2d8891a3b4af402ea014d2881191d3a6" 
             },
             { 
                 id: "a12", 
-                title: "Zadatak 3", 
-                vdoId: "df0eceebfa994788a13bd78d33ec5dad" 
-            },
-            { 
-                id: "a15", 
-                title: "Zadatak 4", 
-                vdoId: "a7315f2ebd57456cb37a2b3fa38a6b4c" 
+                title: "Zadatak 12", 
+                vdoId: "fccbe3afed154d139a3d1394c84eb75e" 
             },
             { 
                 id: "a13", 
-                title: "Konverzija decimalnog - Zadatak 1", 
-                vdoId: "a36de11205624c6280150f24a8c444aa" 
+                title: "Zadatak 13", 
+                vdoId: "d9e463f624b548fbb1b47496a1b02151" 
             },
             { 
                 id: "a14", 
-                title: "Konverzija decimalnog - Zadatak 2", 
-                vdoId: "4e0939b712e04886a857bc94fa9f571a" 
+                title: "Zadatak 14", 
+                vdoId: "4f9e46dc1479472db1da59865979ffb7" 
+            },
+            { 
+                id: "a15", 
+                title: "Zadatak 15", 
+                vdoId: "853277096f7244f38d37dd4ced648212" 
+            },
+            { 
+                id: "a16", 
+                title: "Zadatak 16", 
+                vdoId: "181bc7cf28b741d2a88e352359cca5c5" 
+            },
+            { 
+                id: "a17", 
+                title: "Zadatak 17", 
+                vdoId: "e507bb8a33694205b86717f5d64d13e1" 
+            },
+            { 
+                id: "a18", 
+                title: "Zadatak 18", 
+                vdoId: "7fb92c27b2294d508bff407b13f0c5b7" 
+            },
+            { 
+                id: "a19", 
+                title: "Zadatak 19", 
+                vdoId: "901bec25d8634e0c808bfb7fa9222b1c" 
+            },
+            { 
+                id: "a20", 
+                title: "Zadatak 20", 
+                vdoId: "0ee1e57a10124a6492b2df3fd472cd4b" 
+            },
+            { 
+                id: "a21", 
+                title: "Zadatak 21", 
+                vdoId: "dca36e4dd4264c2aa45fa8d713c2b81d" 
+            },
+            { 
+                id: "a22", 
+                title: "Zadatak 22", 
+                vdoId: "5e07ba65c80944a89806dbcd32bd4ea7" 
             }
         ]
     },
     {
-        moduleTitle: "02. BCD kod",
+        moduleTitle: "02. Magnetni diskovi",
         lessons: [
             { 
                 id: "b1", 
                 title: "Zadatak 1", 
-                vdoId: "f3437a61d84147eea470b6ddfd2159bc" 
+                vdoId: "baa1b5552ff74e288118a69c4fcae5ed" 
             },
             { 
                 id: "b2", 
                 title: "Zadatak 2", 
-                vdoId: "b7c5dde677ce4350bc6525da744b7ae8" 
+                vdoId: "d14dd86c82af429a8769f396f969bf90" 
             },
             { 
                 id: "b3", 
-                title: "Decimalni broj", 
-                vdoId: "b91ee791d1d242f1993f6940567ab80b" 
+                title: "Zadatak 3", 
+                vdoId: "433b8051deb140abb98b0183a5fcff84" 
             }
         ]
     },
     {
-        moduleTitle: "03. IP adrese",
+        moduleTitle: "03. Java",
         lessons: [
             { 
                 id: "c1", 
                 title: "Zadatak 1", 
-                vdoId: "e1e2e3677b8e465ab1ad8f58b27322ff" 
+                vdoId: "d7c80cd5f10c4749a4d021e57ea0e8ba" 
             },
             { 
                 id: "c2", 
                 title: "Zadatak 2", 
-                vdoId: "d18732604a514edcbbca995cb0af3a0d" 
+                vdoId: "3183e1824d95479e9cd38f99883e964b" 
             },
             { 
                 id: "c3", 
                 title: "Zadatak 3", 
-                vdoId: "1cc8e4ecab64424a962c90adb18fe7cb" 
+                vdoId: "2c526fdb39eb4dbbbf2b8287b53c7a61" 
             },
             { 
                 id: "c4", 
                 title: "Zadatak 4", 
-                vdoId: "087bf337b023419db059e59be3b10df4" 
+                vdoId: "632d9130a5764deaaded52579b76734b" 
             },
             { 
                 id: "c5", 
                 title: "Zadatak 5", 
-                vdoId: "5ed8a11a46b042eeabaeaf98bce77d69" 
+                vdoId: "3a4121a05a0849378fddfb405247f1ad" 
+            },
+            { 
+                id: "c6", 
+                title: "Zadatak 6", 
+                vdoId: "da4ef190bc4343698e0f4336b2ea251a" 
+            },
+            { 
+                id: "c7", 
+                title: "Zadatak 7", 
+                vdoId: "92902b572f9540a99e2a2c6d761554b8" 
+            },
+            { 
+                id: "c8", 
+                title: "Zadatak 8", 
+                vdoId: "ffc5bb816e01447aa7c67ccdb1e43234" 
+            },
+            { 
+                id: "c9", 
+                title: "Zadatak 9", 
+                vdoId: "b619bdf7a28d4d858643b48e594b526b" 
+            },
+            { 
+                id: "c10", 
+                title: "Zadatak 10", 
+                vdoId: "b2cc6cd912aa43449a0489b8c3d08aea" 
+            },
+            { 
+                id: "c11", 
+                title: "Zadatak 11", 
+                vdoId: "f182d153cc7f4234941f57334e85db72" 
+            },
+            { 
+                id: "c12", 
+                title: "Zadatak 12", 
+                vdoId: "04998853737e49f1947c0a50180c3c1a" 
+            },
+            { 
+                id: "c13", 
+                title: "Zadatak 13", 
+                vdoId: "2ba4e9739e6b4ab39221ea42d3cb5b60" 
+            },
+            { 
+                id: "c14", 
+                title: "Zadatak 14", 
+                vdoId: "2bf59cbb3a274391b70331184fb4ad8e" 
             }
         ]
     },
     {
-        moduleTitle: "04. Big Endian",
+        moduleTitle: "04. IP adrese",
         lessons: [
             { 
                 id: "d1", 
                 title: "Zadatak 1", 
-                vdoId: "1f94b24a66504f72b8f5473337eb1c34" 
+                vdoId: "152bfb8e5aaa4abebc35eb5b307fc99e" 
             },
             { 
                 id: "d2", 
                 title: "Zadatak 2", 
-                vdoId: "d3c8125fb41c4282a846f22a5642ded7" 
+                vdoId: "3a5b8665f8ea4e0380754b495a4e3f86" 
             },
             { 
                 id: "d3", 
                 title: "Zadatak 3", 
-                vdoId: "90884d31e10e49f4be6a8587da6b7b14" 
+                vdoId: "54233bf767814493a8427be229e482e9" 
             },
             { 
                 id: "d4", 
                 title: "Zadatak 4", 
-                vdoId: "8de8b871bdf34f649480490a466f62da" 
+                vdoId: "972645423a004ac5825395bb0cc5c1dc" 
             },
             { 
                 id: "d5", 
                 title: "Zadatak 5", 
-                vdoId: "09e0d8385f1c4c2f98744f702a82f7f8" 
-            },
-            { 
-                id: "d6", 
-                title: "Zadatak 6", 
-                vdoId: "b4853750ec124168b9e0266ec4f1e8bd" 
-            }
-        ]
-    },
-    {
-        moduleTitle: "05. Little Endian",
-        lessons: [
-            { 
-                id: "e1", 
-                title: "Zadatak 1", 
-                vdoId: "bc8e0684b2384940ba3f4bcb2a6277c0" 
-            },
-            { 
-                id: "e2", 
-                title: "Zadatak 2", 
-                vdoId: "6a05fd46fded43bcba2e6a4a7d81145d" 
-            },
-            { 
-                id: "e3", 
-                title: "Zadatak 3", 
-                vdoId: "93bb6491608e4c528ec3369ad891ba55" 
-            }
-        ]
-    },
-    {
-        moduleTitle: "06. Količina informacije",
-        lessons: [
-            { 
-                id: "f1", 
-                title: "Zadatak 1", 
-                vdoId: "b5ec4b2227bc4098b5d85ecc66d49442" 
-            },
-            { 
-                id: "f2", 
-                title: "Zadatak 2", 
-                vdoId: "1819295d63fd439bb200efa966f789c2" 
-            },
-            { 
-                id: "f3", 
-                title: "Zadatak 3", 
-                vdoId: "4abe9e3501b9430186fc42c5a2632da5" 
-            }
-        ]
-    },
-    {
-        moduleTitle: "07. Entropija",
-        lessons: [
-            { 
-                id: "g1", 
-                title: "Zadatak 1", 
-                vdoId: "1af360f0c64742ad97869693f9e0bde1" 
-            },
-            { 
-                id: "g2", 
-                title: "Zadatak 2", 
-                vdoId: "d97e61149def4633a7174affdd605f4d" 
-            },
-            { 
-                id: "g3", 
-                title: "Zadatak 3", 
-                vdoId: "d668a54435ac467fafb30770b2e2b50a" 
-            },
-            { 
-                id: "g4", 
-                title: "Zadatak 4", 
-                vdoId: "80ff206268bc48ed9c240ce2c6e8a2f5" 
-            }
-        ]
-    },
-    {
-        moduleTitle: "08. Algoritmi sortiranja",
-        lessons: [
-            { 
-                id: "h1", 
-                title: "Bubble sort - Zadatak 1", 
-                vdoId: "47e78cded118429fbca27fbaff4eda71" 
-            },
-            { 
-                id: "h2", 
-                title: "Bubble sort - Zadatak 2", 
-                vdoId: "1457c55463d744bc82a55fdcc385efb2" 
-            },
-            { 
-                id: "h3", 
-                title: "Selection sort - Zadatak 1", 
-                vdoId: "13a2070bfaca49bd9a9a20edd055a2f6" 
-            },
-            { 
-                id: "h4", 
-                title: "Selection sort - Zadatak 2", 
-                vdoId: "0a488b022e9c4b74897f2d06c700c920" 
-            },
-            { 
-                id: "h5", 
-                title: "Insertion sort - Zadatak 1", 
-                vdoId: "79c4911aaf96456b8af51014c2de65c2" 
-            },
-            { 
-                id: "h6", 
-                title: "Insertion sort - Zadatak 2", 
-                vdoId: "34a75c87166c4b96976bae60fe65eeaa" 
-            },
-            { 
-                id: "h7", 
-                title: "Merge sort - Zadatak 1", 
-                vdoId: "d5eafe17b24b4c9599b0947fe4a2aea3" 
-            },
-            { 
-                id: "h8", 
-                title: "Merge sort - Zadatak 2", 
-                vdoId: "4acb798ef26142709a7e3e14b9a4cee1" 
-            },
-            { 
-                id: "h9", 
-                title: "Radix sort - Zadatak 1", 
-                vdoId: "118e8708ff024cacb72472325b177c9c" 
-            },
-            { 
-                id: "h10", 
-                title: "Radix sort - Zadatak 2", 
-                vdoId: "31f0f1697a504a56b3892a626cb50e72" 
+                vdoId: "57041745e8694d89807f7902012548a7" 
             }
         ]
     }

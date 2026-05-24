@@ -1,80 +1,140 @@
 /* SVI FIREBASE IMPORTI SU UKLONJENI */
 
-const CURRENT_COURSE_ID = "mat1"; 
+const CURRENT_COURSE_ID = "oikt"; 
 
 const courseData = [
     {
-        moduleTitle: "PRVI KLK - 01. Algebarske strukture",
+        moduleTitle: "PRVI KLK - 01. Brojevni sistemi",
         lessons: [
             { 
-                id: "a1",
-                title: "Uvod",
-                url: "https://www.youtube.com/watch?v=hToQzaAJ0V0&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=1"
+                id: "a1", 
+                title: "Konverzija iz dekadnog u binarni sistem", 
+                url: "https://www.youtube.com/watch?v=kJs1SRhwKUI&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=1" 
             },
             { 
-                id: "a2",
-                title: "Osobine",
-                url: "https://www.youtube.com/watch?v=3b4b9Zs_BQo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=2"
+                id: "a2", 
+                title: "Konverzija iz binarnog u dekadni sistem", 
+                url: "https://www.youtube.com/watch?v=j83aySJNG6U&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=2" 
             },
             { 
-                id: "a3",
-                title: "Zadatak 1",
-                url: "https://www.youtube.com/watch?v=X4l6H325zxc&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=3"
+                id: "a3", 
+                title: "Konverzija iz dekadnog u heksadecimalni sistem", 
+                url: "https://www.youtube.com/watch?v=gfv6u8wmXCQ&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=3" 
             },
             { 
-                id: "a4",
-                title: "Zadatak 2",
-                url: "https://www.youtube.com/watch?v=3_DUpVCbn54&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=4"
+                id: "a4", 
+                title: "Konverzija iz binarnog u heksadecimalni sistem", 
+                url: "https://www.youtube.com/watch?v=KyTGvT_ybws&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=4" 
             },
             { 
-                id: "a5",
-                title: "Zadatak 3",
-                url: "https://www.youtube.com/watch?v=UryY5Ww6mWA&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=5"
+                id: "a5", 
+                title: "Konverzija iz binarnog u oktalni sistem", 
+                url: "https://www.youtube.com/watch?v=_K6tAZFgz9Y&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=5" 
             },
             { 
-                id: "a6",
-                title: "Zadatak 4",
-                url: "https://www.youtube.com/watch?v=I-wydu8jOeU&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=6"
+                id: "a6", 
+                title: "Konverzija iz oktalnog u dekadni sistem", 
+                url: "https://www.youtube.com/watch?v=6Q7vDimzRSM&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=6" 
             },
+            { 
+                id: "a7", 
+                title: "Konverzija iz heksadecimalnog u dekadni sistem", 
+                url: "https://www.youtube.com/watch?v=dgpfaIkFHPM&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=7" 
+            },
+            { 
+                id: "a8", 
+                title: "Oduzimanje binarnih brojeva", 
+                url: "https://www.youtube.com/watch?v=jig1aVO3Cwc&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=8" 
+            },
+            { 
+                id: "a11", 
+                title: "Konverzija negativnog broja", 
+                url: "https://www.youtube.com/watch?v=k8ohX9QV_lw&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=9" 
+            },
+            { 
+                id: "a9", 
+                title: "Zadatak 1", 
+                url: "https://www.youtube.com/watch?v=TnVly9LCVEU&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=10" 
+            },
+            { 
+                id: "a10", 
+                title: "Zadatak 2", 
+                url: "https://www.youtube.com/watch?v=PA8HTK1pSGI&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=11" 
+            },
+            { 
+                id: "a12", 
+                title: "Zadatak 3", 
+                url: "https://www.youtube.com/watch?v=QjTO3nt42RQ&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=12" 
+            },
+            { 
+                id: "a15", 
+                title: "Zadatak 4", 
+                url: "https://www.youtube.com/watch?v=e6pkXBl2tQs&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=13" 
+            },
+            { 
+                id: "a13", 
+                title: "Konverzija decimalnog - Zadatak 1", 
+                url: "https://www.youtube.com/watch?v=3x_OwoKpTLk&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=14" 
+            },
+            { 
+                id: "a14", 
+                title: "Konverzija decimalnog - Zadatak 2", 
+                url: "https://www.youtube.com/watch?v=4hRgAclrnJ8&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=15" 
+            }
         ]
     },
     {
-        moduleTitle: "DRUGI KLK - 01. Nizovi",
+        moduleTitle: "DRUGI KLK - 01. SQL",
         lessons: [
             { 
-                id: "b1",
-                title: "Zadatak 1",
-                url: "https://www.youtube.com/watch?v=bLFUMnNFWn4&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=7"
+                id: "b1", 
+                title: "Zadatak 1", 
+                url: "https://www.youtube.com/watch?v=ryeZOxt3HGk&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=1" 
             },
             { 
-                id: "b2",
-                title: "Zadatak 2",
-                url: "https://www.youtube.com/watch?v=kMp1V3E5Zjo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=8"
+                id: "b2", 
+                title: "Zadatak 2", 
+                url: "https://www.youtube.com/watch?v=XFdMmu6W8sI&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=2" 
             },
             { 
-                id: "b3",
-                title: "Zadatak 3",
-                url: "https://www.youtube.com/watch?v=zyCVbj6Y4mI&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=9"
+                id: "b3", 
+                title: "Zadatak 3", 
+                url: "https://www.youtube.com/watch?v=oZT4HLQPymw&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=3" 
             },
             { 
-                id: "b4",
-                title: "Zadatak 4",
-                url: "https://www.youtube.com/watch?v=Dtdq8AkWddc&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=10"
+                id: "b4", 
+                title: "Zadatak 4", 
+                url: "https://www.youtube.com/watch?v=5UhyItRPes0&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=4" 
             },
             { 
-                id: "b5",
-                title: "Zadatak 5",
-                url: "https://www.youtube.com/watch?v=WL3YUVO0E7w&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=11"
+                id: "b5", 
+                title: "Zadatak 5", 
+                url: "https://www.youtube.com/watch?v=pYRRmOKE74g&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=5" 
             },
             { 
-                id: "b6",
-                title: "Zadatak 6",
-                url: "https://www.youtube.com/watch?v=VpYpemkVGaY&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=12"
+                id: "b6", 
+                title: "Zadatak 6", 
+                url: "https://www.youtube.com/watch?v=hK41H2VtVO4&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=6" 
             },
             { 
-                id: "b7",
-                title: "Zadatak 7",
-                url: "https://www.youtube.com/watch?v=UMwIsmiydDY&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=13"
+                id: "b7", 
+                title: "Zadatak 7", 
+                url: "https://www.youtube.com/watch?v=wcVNpk1e7Vw&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=7" 
+            },
+            { 
+                id: "b8", 
+                title: "Zadatak 8", 
+                url: "https://www.youtube.com/watch?v=hIJ_bGL8eKU&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=8" 
+            },
+            { 
+                id: "b9", 
+                title: "Zadatak 9", 
+                url: "https://www.youtube.com/watch?v=iLRTeeGk_as&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=9" 
+            },
+            { 
+                id: "b10", 
+                title: "Zadatak 10", 
+                url: "https://www.youtube.com/watch?v=PUdWSKRrSqE&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=10" 
             },
         ]
     },

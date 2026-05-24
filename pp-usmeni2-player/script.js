@@ -541,11 +541,11 @@ onAuthStateChanged(auth, async (user) => {
         const userSnap = await getDoc(doc(db, "users", user.uid));
         const kursevi = (userSnap.exists() && userSnap.data().kursevi) ? userSnap.data().kursevi : [];
 
-        /*if (!kursevi.includes(CURRENT_COURSE_ID)) {
+        if (!kursevi.includes(CURRENT_COURSE_ID)) {
             alert("Nemate pristup ovom kursu.");
             window.location.href = "/pp";
             return;
-        }*/
+        }
 
         await syncProgress(user.uid);
         init();

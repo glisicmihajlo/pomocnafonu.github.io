@@ -9,7 +9,7 @@ const courseData = [
             { 
                 id: "a1", 
                 title: "Konverzija iz dekadnog u binarni sistem", 
-                url: "https://www.youtube.com/watch?v=kJs1SRhwKUI&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=1" 
+                url: "https://www.youtube.com/watch?v=DHl7zevrgbQ&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=1" 
             },
             { 
                 id: "a2", 

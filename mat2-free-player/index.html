@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomoć na fonu</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+</head>
+
+<body>
+
+    <div class="app-shell">
+        <header class="mobile-nav">
+            <div class="brand-logo"><img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">Pomoć na fonu</div>
+            <button id="menu-toggle" style="background:none; border:none; color:#f59e0b; font-size:1.2rem;"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <main class="content-area">
+            <div class="player-wrapper">
+                <a href="/mat2/" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Matematika 2
+                </a>
+                <div class="video-frame">
+                    <iframe id="vdo-player" src="" style="border:0; width:100%; height:100%; position:absolute; top:0; left:0;" allow="encrypted-media" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="content-footer">
+                    <div class="lesson-meta">
+                        <span class="badge" id="module-tag">Modul</span>
+                        <h1 id="lesson-title">Izaberite lekciju</h1>
+                        <!--<p id="lesson-desc">Dobrodošli! Vaš napredak se automatski beleži.</p>-->
+                    </div>
+                    <div class="actions">
+                        <button id="btn-complete" class="button">
+                            <span class="button_text">
+                                <i class="fas fa-check"></i> Završi lekciju
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="brand desktop-only"><img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">Pomoć na fonu</div>
+                <div class="progress-card">
+                    <div class="card-header">
+                        <small>PROGRES</small>
+                        <b id="percent-text">0%</b>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <nav class="course-nav" id="course-accordion"></nav>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

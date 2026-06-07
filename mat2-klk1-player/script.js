@@ -152,6 +152,196 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "05. Tejlorov i Maklorenov polinom",
+        lessons: [
+            { 
+                id: "e1", 
+                title: "Uvod", 
+                vdoId: "1175cb8a947a49348f5831ec08bbcdb6"
+            },
+            { 
+                id: "e2", 
+                title: "Zadatak 1", 
+                vdoId: "783429378c3c42bb9aa1b43468c9b9e0"
+            },
+            { 
+                id: "e3", 
+                title: "Zadatak 2", 
+                vdoId: "c8298f72fe03452c93fc0c61c12b3aba"
+            },
+            { 
+                id: "e4", 
+                title: "Zadatak 3 (I klk 2009)", 
+                vdoId: "f7a40af71ad548f48e83385a65ee3c29"
+            },
+            { 
+                id: "e5", 
+                title: "Zadatak 4 (Septembar 2009)", 
+                vdoId: "9d980581df9545fbb03830ed79e4e69a"
+            },
+        ]
+    },
+    {
+        moduleTitle: "06. Lokalni ekstremum funkcije 2 promenljive",
+        lessons: [
+            { 
+                id: "f1", 
+                title: "Uvod", 
+                vdoId: "d8b1b86caf8d4c83826530b7b0a371de"
+            },
+            { 
+                id: "f2", 
+                title: "Zadatak 1", 
+                vdoId: "d4753190854449f8a654a191c5a72d5f"
+            },
+            { 
+                id: "f3", 
+                title: "Zadatak 2", 
+                vdoId: "0b6ef462fe8f4d609ae9023485d03e91"
+            },
+        ]
+    },
+    {
+        moduleTitle: "07. Lokalni ekstremum funkcije 3 promenljive",
+        lessons: [
+            { 
+                id: "g1", 
+                title: "Uvod", 
+                vdoId: "7ff72e898bbe4e1180f8ced265f1bc39"
+            },
+            { 
+                id: "g2", 
+                title: "Zadatak 1", 
+                vdoId: "92a3245e54db4a82a7f3b3681da22502"
+            },
+            { 
+                id: "g3", 
+                title: "Zadatak 2", 
+                vdoId: "85c47e1581e447da8dcb4884db396113"
+            },
+        ]
+    },
+    {
+        moduleTitle: "08. Uslovni ekstremum funkcije 2 i 3 promenljive",
+        lessons: [
+            { 
+                id: "h1", 
+                title: "Uvod", 
+                vdoId: "622fbed7b0e244b6a7f4cbfce38513cf"
+            },
+            { 
+                id: "h2", 
+                title: "Zadatak 1", 
+                vdoId: "fd66d432936845e7b59559227694c4df"
+            },
+            { 
+                id: "h3", 
+                title: "Zadatak 2", 
+                vdoId: "21179573b63048eaa1357b61f7b961bd"
+            },
+            { 
+                id: "h4", 
+                title: "Zadatak 3", 
+                vdoId: "60d21064701b46c99838440934bb2d86"
+            },
+            { 
+                id: "h5", 
+                title: "Zadatak 4", 
+                vdoId: "f1d7e7635fd74ff1866a248df165d7f2"
+            },
+        ]
+    },
+    {
+        moduleTitle: "09. Najveća i najmanja vrednost",
+        lessons: [
+            { 
+                id: "i1", 
+                title: "Uvod", 
+                vdoId: "16081d3f06b14d9db209f7a93f117cf1"
+            },
+            { 
+                id: "i2", 
+                title: "Zadatak 1", 
+                vdoId: "26ea6c4e9b4440b59cde340e17f428d2"
+            },
+            { 
+                id: "i3", 
+                title: "Zadatak 2", 
+                vdoId: "9a9e1548423047e9ae3ecacd439978f9"
+            },
+            { 
+                id: "i4", 
+                title: "Zadatak 3", 
+                vdoId: "39db7dfdaa8a4a1b86cc4417ca3e3e42"
+            },
+            { 
+                id: "i5", 
+                title: "Zadatak 4", 
+                vdoId: "a7844851923a483ea9ffe76e89ae6046"
+            },
+            { 
+                id: "i6", 
+                title: "Zadatak 5", 
+                vdoId: "dd16d162279541c1800dc585a950abe6"
+            },
+        ]
+    },
+    {
+        moduleTitle: "10. Kolokvijum 2007",
+        lessons: [
+            { 
+                id: "j1", 
+                title: "Zadatak 1", 
+                vdoId: "7117271a5ad6433482f4e51faae00bfe"
+            },
+            { 
+                id: "j2", 
+                title: "Zadatak 2", 
+                vdoId: "2e4462a0a9ec4de2aa0a424b34648662"
+            },
+            { 
+                id: "j3", 
+                title: "Zadatak 3", 
+                vdoId: "30a5c023c7204a8f91627c107e062fd6"
+            },
+        ]
+    },
+    {
+        moduleTitle: "11. Kolokvijum 2023 Grupa 1",
+        lessons: [
+            { 
+                id: "k1", 
+                title: "Zadatak 1", 
+                vdoId: "490cbb8b579b48e8a57ee74c04b8f70e"
+            },
+            { 
+                id: "k2", 
+                title: "Zadatak 2", 
+                vdoId: "7abd556f049e444c832d30d00d0efd93"
+            },
+            { 
+                id: "k3", 
+                title: "Zadatak 3", 
+                vdoId: "d3a496b2dde04673ac408d7b93610c4d"
+            },
+        ]
+    },
+    {
+        moduleTitle: "12. Kolokvijum 2023 Grupa 3",
+        lessons: [
+            { 
+                id: "l1", 
+                title: "Zadatak 1", 
+                vdoId: "6eae1d2c1276427a8c5474388501bb45"
+            },
+            { 
+                id: "l2", 
+                title: "Zadatak 2", 
+                vdoId: "07ecf47788044c96adb1a4fd4e408eae"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

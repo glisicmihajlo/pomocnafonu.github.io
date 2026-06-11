@@ -653,17 +653,17 @@ const courseData = [
             },
             { 
                 id: "j2", 
-                title: "Ispis elemenata liste", 
+                title: "Dodavanje na početak liste", 
                 vdoId: "815059e64ead44fb9f701ca39d9cd1d7" 
             },
             { 
                 id: "j3", 
-                title: "Dodavanje na početak liste", 
+                title: "Dodavanje na kraj liste", 
                 vdoId: "284f133bffd640989334b9e656c21370" 
             },
             { 
                 id: "j4", 
-                title: "Dodavanje na kraj liste", 
+                title: "Ispis elemenata liste", 
                 vdoId: "356cc73c10824d8a9f711d23f379399d" 
             },
             { 

@@ -308,37 +308,62 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "11. Kolokvijum 2023 Grupa 1",
+        moduleTitle: "11. Kolokvijum 2022 Grupa 5",
         lessons: [
             { 
                 id: "k1", 
                 title: "Zadatak 1", 
-                vdoId: "490cbb8b579b48e8a57ee74c04b8f70e"
+                vdoId: "448894b6e0f04aa185f35bddd765fb09"
             },
             { 
                 id: "k2", 
                 title: "Zadatak 2", 
-                vdoId: "7abd556f049e444c832d30d00d0efd93"
+                vdoId: "dabcd025bcd54161b5b40248575bf90e"
             },
             { 
                 id: "k3", 
+                title: "Zadatak 3", 
+                vdoId: "9484e23038404544bd1e684e6e4f83e2"
+            },
+        ]
+    },
+    {
+        moduleTitle: "12. Kolokvijum 2023 Grupa 1",
+        lessons: [
+            { 
+                id: "l1", 
+                title: "Zadatak 1", 
+                vdoId: "490cbb8b579b48e8a57ee74c04b8f70e"
+            },
+            { 
+                id: "l2", 
+                title: "Zadatak 2", 
+                vdoId: "7abd556f049e444c832d30d00d0efd93"
+            },
+            { 
+                id: "l3", 
                 title: "Zadatak 3", 
                 vdoId: "d3a496b2dde04673ac408d7b93610c4d"
             },
         ]
     },
     {
-        moduleTitle: "12. Kolokvijum 2023 Grupa 3",
+        moduleTitle: "13. Kolokvijum 2023 Grupa 3",
         lessons: [
             { 
-                id: "l1", 
+                id: "m1", 
                 title: "Zadatak 1", 
                 vdoId: "6eae1d2c1276427a8c5474388501bb45"
             },
             { 
-                id: "l2", 
+                id: "m2", 
                 title: "Zadatak 2", 
                 vdoId: "07ecf47788044c96adb1a4fd4e408eae"
+            },
+            { 
+                id: "m3", 
+                title: "Zadatak 3", 
+                vdoId: "c8e11215d1cd4a5f8da4b0dc2e2f8ad6"
             },
         ]
     },

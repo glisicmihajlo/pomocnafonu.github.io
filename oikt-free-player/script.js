@@ -82,62 +82,7 @@ const courseData = [
                 url: "https://www.youtube.com/watch?v=4hRgAclrnJ8&list=PLl8BFSumqv-YhXNiQ2DKgHy0DYVQmqrAP&index=15" 
             }
         ]
-    },
-    {
-        moduleTitle: "DRUGI KLK - 01. SQL",
-        lessons: [
-            { 
-                id: "b1", 
-                title: "Zadatak 1", 
-                url: "https://www.youtube.com/watch?v=ryeZOxt3HGk&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=1" 
-            },
-            { 
-                id: "b2", 
-                title: "Zadatak 2", 
-                url: "https://www.youtube.com/watch?v=XFdMmu6W8sI&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=2" 
-            },
-            { 
-                id: "b3", 
-                title: "Zadatak 3", 
-                url: "https://www.youtube.com/watch?v=oZT4HLQPymw&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=3" 
-            },
-            { 
-                id: "b4", 
-                title: "Zadatak 4", 
-                url: "https://www.youtube.com/watch?v=5UhyItRPes0&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=4" 
-            },
-            { 
-                id: "b5", 
-                title: "Zadatak 5", 
-                url: "https://www.youtube.com/watch?v=pYRRmOKE74g&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=5" 
-            },
-            { 
-                id: "b6", 
-                title: "Zadatak 6", 
-                url: "https://www.youtube.com/watch?v=hK41H2VtVO4&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=6" 
-            },
-            { 
-                id: "b7", 
-                title: "Zadatak 7", 
-                url: "https://www.youtube.com/watch?v=wcVNpk1e7Vw&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=7" 
-            },
-            { 
-                id: "b8", 
-                title: "Zadatak 8", 
-                url: "https://www.youtube.com/watch?v=hIJ_bGL8eKU&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=8" 
-            },
-            { 
-                id: "b9", 
-                title: "Zadatak 9", 
-                url: "https://www.youtube.com/watch?v=iLRTeeGk_as&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=9" 
-            },
-            { 
-                id: "b10", 
-                title: "Zadatak 10", 
-                url: "https://www.youtube.com/watch?v=PUdWSKRrSqE&list=PLl8BFSumqv-ZQU_uOy8T9zmJ_5MFTd8JF&index=10" 
-            },
-        ]
-    },
+    }
 ];
 
 // Inicijalizacija iz localStorage-a (ako postoji progres od ranije)

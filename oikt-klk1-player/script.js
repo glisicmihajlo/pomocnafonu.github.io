@@ -28,7 +28,7 @@ const courseData = [
             { 
                 id: "a1", 
                 title: "Konverzija iz dekadnog u binarni sistem", 
-                vdoId: "68c07918ff5b43d3a5ce6ff01a5e169b" 
+                vdoId: "4f4490037aac425cbe958d9c93eb47a4" 
             },
             { 
                 id: "a2", 

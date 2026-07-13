@@ -26,16 +26,6 @@ const courseData = [
                 title: "Zadatak 2",
                 url: "https://www.youtube.com/watch?v=3_DUpVCbn54&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=4"
             },
-            { 
-                id: "a5",
-                title: "Zadatak 3",
-                url: "https://www.youtube.com/watch?v=UryY5Ww6mWA&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=5"
-            },
-            { 
-                id: "a6",
-                title: "Zadatak 4",
-                url: "https://www.youtube.com/watch?v=I-wydu8jOeU&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=6"
-            },
         ]
     },
     {

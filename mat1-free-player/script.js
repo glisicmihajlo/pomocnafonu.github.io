@@ -44,17 +44,17 @@ const courseData = [
             {
                 id: "b1",
                 title: "Zadatak 1",
-                vdoId: "https://www.youtube.com/watch?v=FdFJMu6EJvM&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=5"
+                url: "https://www.youtube.com/watch?v=FdFJMu6EJvM&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=5"
             },
             {
                 id: "b2",
                 title: "Zadatak 2",
-                vdoId: "https://www.youtube.com/watch?v=F-BT8KilCR0&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=6"
+                url: "https://www.youtube.com/watch?v=F-BT8KilCR0&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=6"
             },
             {
                 id: "b3",
                 title: "Zadatak 3",
-                vdoId: "https://www.youtube.com/watch?v=EMTDXvl8spo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=7"
+                url: "https://www.youtube.com/watch?v=EMTDXvl8spo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=7"
             },
         ]
     },

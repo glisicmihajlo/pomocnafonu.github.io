@@ -45,16 +45,6 @@ const courseData = [
                 title: "Zadatak 2",
                 vdoId: "f6660aea55dd4ff09a047499284dfb83"
             },
-            {
-                id: "a5",
-                title: "Zadatak 3",
-                vdoId: "e84eb4c480bd4a709dab6955f5c351bf"
-            },
-            {
-                id: "a6",
-                title: "Zadatak 4",
-                vdoId: "0770ba288dd44078b7fc21cfd9f175dd"
-            },
         ]
     },
     {
@@ -89,11 +79,6 @@ const courseData = [
                 id: "c3",
                 title: "Zadatak 2",
                 vdoId: "952ff676fbc44b849475e3edb8773c56"
-            },
-            {
-                id: "c4",
-                title: "Zadatak 3",
-                vdoId: "c6402e48a4a54afe83ea5198a5d2fd28"
             },
         ]
     },
@@ -145,11 +130,6 @@ const courseData = [
                 title: "Zadatak 3",
                 vdoId: "14ee03457926419596c3a90760b5ada5"
             },
-            {
-                id: "e4",
-                title: "Zadatak 4",
-                vdoId: "714b1d92e52c4c7d8854d3bb11072134"
-            },
         ]
     },
     {
@@ -160,20 +140,65 @@ const courseData = [
                 title: "Zadatak 1",
                 vdoId: "431580c1bad342e4a5ca4fb2d59d64e5"
             },
+        ]
+    },
+    {
+        moduleTitle: "07. Kolokvijum 2023 Grupa 1",
+        lessons: [
             {
-                id: "f2",
+                id: "g1",
+                title: "Zadatak 1",
+                vdoId: "66c9cf61f1b3405c8a9da16ecabe741e"
+            },
+            {
+                id: "g2",
                 title: "Zadatak 2",
-                vdoId: "0b444a944682420796876fba17978772"
+                vdoId: "6fa06b904fb34299b313055d9aaf14d1"
             },
             {
-                id: "f3",
+                id: "g3",
                 title: "Zadatak 3",
-                vdoId: "c96563036a8246efb1244610fc127ba9"
+                vdoId: "b5717b5825b940cabfdcfa8b6caf5952"
+            },
+        ]
+    },
+    {
+        moduleTitle: "08. Kolokvijum 2023 Grupa 2",
+        lessons: [
+            {
+                id: "h1",
+                title: "Zadatak 1",
+                vdoId: "0c92fd5eb40743f099f95129c24c3a27"
             },
             {
-                id: "f4",
-                title: "Zadatak 4",
-                vdoId: "8eafa9410c414739a58248975edfa423"
+                id: "h2",
+                title: "Zadatak 2",
+                vdoId: "d390b37023844ba4abd8d9108ba603b0"
+            },
+            {
+                id: "h3",
+                title: "Zadatak 3",
+                vdoId: "25ed8947b2cc4b08b33e42e7370103b1"
+            },
+        ]
+    },
+    {
+        moduleTitle: "09. Kolokvijum 2023 Grupa 3",
+        lessons: [
+            {
+                id: "i1",
+                title: "Zadatak 1",
+                vdoId: "b422a39c43e24aed838247c5488f9a47"
+            },
+            {
+                id: "i2",
+                title: "Zadatak 2",
+                vdoId: "44b9b42e093649638a05bd26b97e1bc9"
+            },
+            {
+                id: "i3",
+                title: "Zadatak 3",
+                vdoId: "52cbcae17fc542c2846dee73dfcc7fac"
             },
         ]
     },

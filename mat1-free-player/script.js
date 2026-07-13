@@ -4,7 +4,7 @@ const CURRENT_COURSE_ID = "mat1";
 
 const courseData = [
     {
-        moduleTitle: "PRVI KLK - 01. Algebarske strukture",
+        moduleTitle: "PRVI KLK - Algebarske strukture",
         lessons: [
             { 
                 id: "a1",
@@ -39,40 +39,60 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "DRUGI KLK - 01. Nizovi",
+        moduleTitle: "PRVI KLK - 2023 Grupa 3",
+        lessons: [
+            {
+                id: "b1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "b2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+            {
+                id: "b3",
+                title: "Zadatak 3",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "DRUGI KLK - Nizovi",
         lessons: [
             { 
-                id: "b1",
+                id: "c1",
                 title: "Zadatak 1",
                 url: "https://www.youtube.com/watch?v=bLFUMnNFWn4&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=7"
             },
             { 
-                id: "b2",
+                id: "c2",
                 title: "Zadatak 2",
                 url: "https://www.youtube.com/watch?v=kMp1V3E5Zjo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=8"
             },
             { 
-                id: "b3",
+                id: "c3",
                 title: "Zadatak 3",
                 url: "https://www.youtube.com/watch?v=zyCVbj6Y4mI&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=9"
             },
             { 
-                id: "b4",
+                id: "c4",
                 title: "Zadatak 4",
                 url: "https://www.youtube.com/watch?v=Dtdq8AkWddc&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=10"
             },
             { 
-                id: "b5",
+                id: "c5",
                 title: "Zadatak 5",
                 url: "https://www.youtube.com/watch?v=WL3YUVO0E7w&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=11"
             },
             { 
-                id: "b6",
+                id: "c6",
                 title: "Zadatak 6",
                 url: "https://www.youtube.com/watch?v=VpYpemkVGaY&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=12"
             },
             { 
-                id: "b7",
+                id: "c7",
                 title: "Zadatak 7",
                 url: "https://www.youtube.com/watch?v=UMwIsmiydDY&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=13"
             },

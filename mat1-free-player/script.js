@@ -4,87 +4,22 @@ const CURRENT_COURSE_ID = "mat1";
 
 const courseData = [
     {
-        moduleTitle: "PRVI KLK - Algebarske strukture",
-        lessons: [
-            { 
-                id: "a1",
-                title: "Uvod",
-                url: "https://www.youtube.com/watch?v=hToQzaAJ0V0&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=1"
-            },
-            { 
-                id: "a2",
-                title: "Osobine",
-                url: "https://www.youtube.com/watch?v=3b4b9Zs_BQo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=2"
-            },
-            { 
-                id: "a3",
-                title: "Zadatak 1",
-                url: "https://www.youtube.com/watch?v=X4l6H325zxc&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=3"
-            },
-            { 
-                id: "a4",
-                title: "Zadatak 2",
-                url: "https://www.youtube.com/watch?v=3_DUpVCbn54&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=4"
-            },
-        ]
-    },
-    {
         moduleTitle: "PRVI KLK - 2023 Grupa 3",
         lessons: [
             {
-                id: "b1",
+                id: "a1",
                 title: "Zadatak 1",
                 url: "https://www.youtube.com/watch?v=FdFJMu6EJvM&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=5"
             },
             {
-                id: "b2",
+                id: "a2",
                 title: "Zadatak 2",
                 url: "https://www.youtube.com/watch?v=F-BT8KilCR0&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=6"
             },
             {
-                id: "b3",
+                id: "a3",
                 title: "Zadatak 3",
                 url: "https://www.youtube.com/watch?v=EMTDXvl8spo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=7"
-            },
-        ]
-    },
-    {
-        moduleTitle: "DRUGI KLK - Nizovi",
-        lessons: [
-            { 
-                id: "c1",
-                title: "Zadatak 1",
-                url: "https://www.youtube.com/watch?v=bLFUMnNFWn4&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=7"
-            },
-            { 
-                id: "c2",
-                title: "Zadatak 2",
-                url: "https://www.youtube.com/watch?v=kMp1V3E5Zjo&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=8"
-            },
-            { 
-                id: "c3",
-                title: "Zadatak 3",
-                url: "https://www.youtube.com/watch?v=zyCVbj6Y4mI&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=9"
-            },
-            { 
-                id: "c4",
-                title: "Zadatak 4",
-                url: "https://www.youtube.com/watch?v=Dtdq8AkWddc&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=10"
-            },
-            { 
-                id: "c5",
-                title: "Zadatak 5",
-                url: "https://www.youtube.com/watch?v=WL3YUVO0E7w&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=11"
-            },
-            { 
-                id: "c6",
-                title: "Zadatak 6",
-                url: "https://www.youtube.com/watch?v=VpYpemkVGaY&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=12"
-            },
-            { 
-                id: "c7",
-                title: "Zadatak 7",
-                url: "https://www.youtube.com/watch?v=UMwIsmiydDY&list=PLl8BFSumqv-ZKwldZMptuTAxmM51iDvOb&index=13"
             },
         ]
     },

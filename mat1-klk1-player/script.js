@@ -202,6 +202,46 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "10. Kolokvijum 2023 Grupa 4",
+        lessons: [
+            {
+                id: "j1",
+                title: "Zadatak 1",
+                vdoId: "d8fb89ce719345d8875189f82a7e070e"
+            },
+            {
+                id: "j2",
+                title: "Zadatak 2",
+                vdoId: "3180be93f92b414ab49d613b6b8bb3c5"
+            },
+            {
+                id: "j3",
+                title: "Zadatak 3",
+                vdoId: "89273ace6cad4a74a77926f4d4c5d1de"
+            },
+        ]
+    },
+    {
+        moduleTitle: "11. Kolokvijum 2023 Grupa 5",
+        lessons: [
+            {
+                id: "k1",
+                title: "Zadatak 1",
+                vdoId: "d6228c90eca44295a5f8d996badab5eb"
+            },
+            {
+                id: "k2",
+                title: "Zadatak 2",
+                vdoId: "5728e10faff24796a95af723eff2c388"
+            },
+            {
+                id: "k3",
+                title: "Zadatak 3",
+                vdoId: "0207b90c14ff41c98a44cb7a5b88678a"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

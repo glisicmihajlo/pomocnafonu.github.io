@@ -242,6 +242,46 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "12. Kolokvijum 2023 Grupa 6",
+        lessons: [
+            {
+                id: "l1",
+                title: "Zadatak 1",
+                vdoId: "9c62ba5fd9df48f0b0e91765e5d6c396"
+            },
+            {
+                id: "l2",
+                title: "Zadatak 2",
+                vdoId: "8f5708c5cf0f40caa447f471610f59b2"
+            },
+            {
+                id: "l3",
+                title: "Zadatak 3",
+                vdoId: "676d442e342c4859947e1f71b6519cca"
+            },
+        ]
+    },
+    {
+        moduleTitle: "13. Kolokvijum 2023 Grupa 7",
+        lessons: [
+            {
+                id: "m1",
+                title: "Zadatak 1",
+                vdoId: "fad19277cb024b56ba9767d1f96e9dc9"
+            },
+            {
+                id: "m2",
+                title: "Zadatak 2",
+                vdoId: "4746c65fbbe9420e9160b2fca2df5947"
+            },
+            {
+                id: "m3",
+                title: "Zadatak 3",
+                vdoId: "2c2383f8ac30465d8850f0b2c7b00669"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

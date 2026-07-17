@@ -282,6 +282,26 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "14. Kolokvijum 2023 Grupa 8",
+        lessons: [
+            {
+                id: "n1",
+                title: "Zadatak 1",
+                vdoId: "0bdcb7ec8371427292ef882d247b390b"
+            },
+            {
+                id: "n2",
+                title: "Zadatak 2",
+                vdoId: "534cf2249cea426ebf3c806275f63fc9"
+            },
+            {
+                id: "n3",
+                title: "Zadatak 3",
+                vdoId: "8cccef95f1434945ab8f2d18c7cc9a7d"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

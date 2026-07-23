@@ -162,6 +162,141 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "06. 2021 Jun G2",
+        lessons: [
+            {
+                id: "f1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "f2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "07. 2021 Septembar G1",
+        lessons: [
+            {
+                id: "g1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "g2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "08. 2022 Januar G1",
+        lessons: [
+            {
+                id: "h1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "h2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "09. 2022 Januar G2",
+        lessons: [
+            {
+                id: "i1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "i2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "10. 2022 Januar G3",
+        lessons: [
+            {
+                id: "j1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "j2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "11. 2022 Januar G4",
+        lessons: [
+            {
+                id: "k1",
+                title: "Zadatak 1",
+                vdoId: "0a30da3cb3e4427c82c2b2e795604881"
+            },
+            {
+                id: "k2",
+                title: "Zadatak 2",
+                vdoId: "0f40ff7741d24f4c90f401393bcec51c"
+            },
+        ]
+    },
+    {
+        moduleTitle: "12. 2022 Jun G2",
+        lessons: [
+            {
+                id: "l1",
+                title: "Zadatak 1",
+                vdoId: ""
+            },
+            {
+                id: "l2",
+                title: "Zadatak 2",
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "13. 2023 Jul G1",
+        lessons: [
+            {
+                id: "m1",
+                title: "Zadatak 1",
+                vdoId: "28968219ca6a4f6ea0cdc89f1eaed81a"
+            },
+            {
+                id: "m2",
+                title: "Zadatak 2",
+                vdoId: "78631805fbf84316b8b6d6905deda2a0"
+            },
+        ]
+    },
+    {
+        moduleTitle: "14. 2023 Septembar G1",
+        lessons: [
+            {
+                id: "n1",
+                title: "Zadatak 1",
+                vdoId: "fee4b97cf1ec45ba84d45c0ac5907017"
+            },
+            {
+                id: "n2",
+                title: "Zadatak 2",
+                vdoId: "ee8d6969e19e40f189c346d8224ce0e7"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

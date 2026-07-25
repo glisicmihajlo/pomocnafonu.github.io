@@ -162,8 +162,8 @@ const courseData = [
             },
         ]
     },
-    {
-        moduleTitle: "06. 2021 Jun G2",
+    /*{
+        moduleTitle: "06. 2021 Februar G4",
         lessons: [
             {
                 id: "f1",
@@ -176,37 +176,38 @@ const courseData = [
                 vdoId: ""
             },
         ]
-    },
+    },*/
     {
-        moduleTitle: "07. 2021 Septembar G1",
+        moduleTitle: "07. 2021 Jun G1",
         lessons: [
             {
                 id: "g1",
                 title: "Zadatak 1",
-                vdoId: ""
+                vdoId: "24da9c71cf0443979613b73b1f79b127"
             },
-            {
+            /*{
                 id: "g2",
                 title: "Zadatak 2",
                 vdoId: ""
-            },
+            },*/
         ]
     },
     {
-        moduleTitle: "08. 2022 Januar G1",
+        moduleTitle: "08. 2021 Septembar G1",
         lessons: [
             {
                 id: "h1",
                 title: "Zadatak 1",
-                vdoId: ""
+                vdoId: "6bea9fceb0ea4fc185984b6dc765bc88"
             },
             {
                 id: "h2",
                 title: "Zadatak 2",
-                vdoId: ""
+                vdoId: "75dd5643d63a43f6b816fb85807b8a46"
             },
         ]
     },
+    /*
     {
         moduleTitle: "09. 2022 Januar G2",
         lessons: [
@@ -221,19 +222,19 @@ const courseData = [
                 vdoId: ""
             },
         ]
-    },
+    },*/
     {
         moduleTitle: "10. 2022 Januar G3",
         lessons: [
             {
                 id: "j1",
                 title: "Zadatak 1",
-                vdoId: ""
+                vdoId: "3fe66dff0a994418892000379298fc77"
             },
             {
                 id: "j2",
                 title: "Zadatak 2",
-                vdoId: ""
+                vdoId: "44f0759decdf47baac96c95a4fac8fcb"
             },
         ]
     },
@@ -258,12 +259,12 @@ const courseData = [
             {
                 id: "l1",
                 title: "Zadatak 1",
-                vdoId: ""
+                vdoId: "cd32cd50cc424040a01c35d414211557"
             },
             {
                 id: "l2",
                 title: "Zadatak 2",
-                vdoId: ""
+                vdoId: "b6e5fa5a44bd4dc9bc73e1fc5e4b3f63"
             },
         ]
     },

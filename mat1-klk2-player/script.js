@@ -162,21 +162,21 @@ const courseData = [
             },
         ]
     },
-    /*{
+    {
         moduleTitle: "06. 2021 Februar G4",
         lessons: [
             {
                 id: "f1",
                 title: "Zadatak 1",
-                vdoId: ""
+                vdoId: "24da9c71cf0443979613b73b1f79b127"
             },
             {
                 id: "f2",
                 title: "Zadatak 2",
-                vdoId: ""
+                vdoId: "66957953dcbb4599b186f73587b7e650"
             },
         ]
-    },*/
+    },
     {
         moduleTitle: "07. 2021 Jun G1",
         lessons: [
@@ -185,11 +185,11 @@ const courseData = [
                 title: "Zadatak 1",
                 vdoId: "24da9c71cf0443979613b73b1f79b127"
             },
-            /*{
+            {
                 id: "g2",
                 title: "Zadatak 2",
-                vdoId: ""
-            },*/
+                vdoId: "9941e18b89974cef9c03d9af430495b9"
+            },
         ]
     },
     {
@@ -207,22 +207,21 @@ const courseData = [
             },
         ]
     },
-    /*
     {
         moduleTitle: "09. 2022 Januar G2",
         lessons: [
             {
                 id: "i1",
                 title: "Zadatak 1",
-                vdoId: ""
+                vdoId: "271896db6e6e45fab1ec800db5cca108"
             },
             {
                 id: "i2",
                 title: "Zadatak 2",
-                vdoId: ""
+                vdoId: "18da4fead63b447ab8070e89a1e41a4f"
             },
         ]
-    },*/
+    },
     {
         moduleTitle: "10. 2022 Januar G3",
         lessons: [

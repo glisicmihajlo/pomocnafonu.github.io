@@ -23,7 +23,7 @@ const CURRENT_COURSE_ID = "mat2-klk2";
 
 const courseData = [
     {
-        moduleTitle: "01. Neodredjeni integral",
+        moduleTitle: "01. Neodredjeni integral - metoda smene",
         lessons: [
             { 
                 id: "a1", 
@@ -79,6 +79,26 @@ const courseData = [
                 id: "a11", 
                 title: "Zadatak 8", 
                 vdoId: "51864cc18c8942d9821704f2d87405e8"
+            },
+            { 
+                id: "a12", 
+                title: "Zadatak 9", 
+                vdoId: "a778ed0f745b42438fe48b66562519a6"
+            },
+            { 
+                id: "a13", 
+                title: "Zadatak 10", 
+                vdoId: "c3cb26034b164bdf90f3a9821bc42b62"
+            },
+            { 
+                id: "a14", 
+                title: "Zadatak 11", 
+                vdoId: "36f897d7247b4da8988388be77028a4d"
+            },
+            { 
+                id: "a15", 
+                title: "Zadatak 12", 
+                vdoId: "d824313d58854425ac5e2951d35ce360"
             },
         ]
     },

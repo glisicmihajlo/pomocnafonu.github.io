@@ -122,10 +122,13 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; letter-
 
 .price { font-size: 3.2rem; font-weight: 800; color: #fff; margin: 10px 0; }
 .old-price {
-    text-decoration: line-through;
+    text-decoration: line-through !important;
+    -webkit-text-decoration-line: line-through !important; /* Za starije iOS Safari verzije */
     font-size: 0.55em;
     opacity: 0.5;
     margin-right: 6px;
+    display: inline-block; /* Rešava Safari bug sa renderovanjem linija u inline elementima */
+    color: var(--text-main); /* Eksplicitno postavljanje boje da linija ne ostane providna */
 }
 .price span { font-size: 1rem; color: var(--text-muted); }
 

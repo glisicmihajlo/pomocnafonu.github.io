@@ -121,6 +121,12 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; letter-
 .button:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(245, 158, 11, 0.2); }
 
 .price { font-size: 3.2rem; font-weight: 800; color: #fff; margin: 10px 0; }
+.old-price {
+    text-decoration: line-through;
+    font-size: 0.55em;
+    opacity: 0.5;
+    margin-right: 6px;
+}
 .price span { font-size: 1rem; color: var(--text-muted); }
 
 /* PARCIJALNE KARTICE - FIX */
@@ -271,5 +277,21 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; letter-
     
     .back-link:hover {
         transform: translateX(-50%) translateY(-2px); /* Lagani efekat nagore umesto ulevo na telefonu */
+    }
+
+    /* 1. Smanjujemo font cene na telefonu da sigurno stane u jedan red */
+    .price {
+        font-size: 2.2rem;
+        white-space: nowrap; /* Sada staje jer je font prilagođen ekranu */
+    }
+
+    /* 2. Ukidamo scale(1.05) na telefonu jer probija širinu ekrana */
+    .pricing-card.featured {
+        transform: none;
+    }
+
+    /* 3. Smanjujemo unutrašnji padding kartice za bolji prostor */
+    .card-inner {
+        padding: 30px 20px;
     }
 }

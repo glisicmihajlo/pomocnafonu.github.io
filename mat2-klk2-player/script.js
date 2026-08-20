@@ -102,6 +102,66 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "02. Neodredjeni integral - parcijalna integracija",
+        lessons: [
+            { 
+                id: "b1", 
+                title: "Uvod", 
+                vdoId: "0ed71b93a1fa41688cb44ffca3b6e124"
+            },
+            { 
+                id: "b2", 
+                title: "Zadatak 1", 
+                vdoId: "9c02c85c06f14955b6f06c00484b8e05"
+            },
+            { 
+                id: "b3", 
+                title: "Zadatak 2", 
+                vdoId: "47b585c93b27411ba308b77c7efab680"
+            },
+            { 
+                id: "b4", 
+                title: "Zadatak 3", 
+                vdoId: "d50f9df724514d35bbfce59526407887"
+            },
+            { 
+                id: "b5", 
+                title: "Zadatak 4", 
+                vdoId: "91e05ed087c940e7ad51a98a9f54ccb1"
+            },
+            { 
+                id: "b6", 
+                title: "Zadatak 5", 
+                vdoId: "eddf2d24f6594924b0047e143509b3b5"
+            },
+            { 
+                id: "b7", 
+                title: "Zadatak 6", 
+                vdoId: "dada4a997e3c471db0eeb41709543dee"
+            },
+            { 
+                id: "b8", 
+                title: "Zadatak 7", 
+                vdoId: "e555a37293a745618a0b8bc4ed08259a"
+            },
+            { 
+                id: "b9", 
+                title: "Zadatak 8", 
+                vdoId: "29ff0527bc3645578ba6dfa097d682a4"
+            },
+            { 
+                id: "b10", 
+                title: "Zadatak 9", 
+                vdoId: "701ad7e073fe42a1b58cbaf99f2fe7ac"
+            },
+            { 
+                id: "b11", 
+                title: "Zadatak 10", 
+                vdoId: "8ddcb2669c034796883ab9de949c66db"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

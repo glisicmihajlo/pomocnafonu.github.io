@@ -23,7 +23,7 @@ const CURRENT_COURSE_ID = "mat2-klk2";
 
 const courseData = [
     {
-        moduleTitle: "01. Neodređeni integral - metoda smene",
+        moduleTitle: "01. Neodređeni integral - tablična integracija i metoda smene",
         lessons: [
             { 
                 id: "a1", 
@@ -123,7 +123,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. Neodređeni integral - parcijalna integracija",
+        moduleTitle: "02. Parcijalna integracija",
         lessons: [
             { 
                 id: "b1", 
@@ -183,7 +183,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "03. Neodređeni integral - integracija racionalnih funkcija",
+        moduleTitle: "03. Integracija racionalnih funkcija",
         lessons: [
             { 
                 id: "c1", 
@@ -238,7 +238,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "04. Neodređeni integral - trigonometrijske smene",
+        moduleTitle: "04. Trigonometrijske smene",
         lessons: [
             { 
                 id: "d1", 
@@ -273,7 +273,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "05. Neodređeni integral - integracija iracionalnih funkcija",
+        moduleTitle: "05. Integracija iracionalnih funkcija",
         lessons: [
             { 
                 id: "e1", 
@@ -363,7 +363,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "07. Određeni integral - površina ravnih likova",
+        moduleTitle: "07. Površina ravnih likova",
         lessons: [
             { 
                 id: "g1", 
@@ -383,7 +383,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "08. Određeni integral - dužina luka krive",
+        moduleTitle: "08. Dužina luka krive",
         lessons: [
             { 
                 id: "h1", 
@@ -413,7 +413,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "09. Određeni integral - zapremina rotacionog tela",
+        moduleTitle: "09. Zapremina rotacionog tela",
         lessons: [
             { 
                 id: "i1", 

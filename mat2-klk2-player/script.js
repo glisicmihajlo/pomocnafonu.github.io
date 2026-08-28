@@ -23,7 +23,7 @@ const CURRENT_COURSE_ID = "mat2-klk2";
 
 const courseData = [
     {
-        moduleTitle: "01. Neodredjeni integral - metoda smene",
+        moduleTitle: "01. Neodređeni integral - metoda smene",
         lessons: [
             { 
                 id: "a1", 
@@ -103,7 +103,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. Neodredjeni integral - parcijalna integracija",
+        moduleTitle: "02. Neodređeni integral - parcijalna integracija",
         lessons: [
             { 
                 id: "b1", 
@@ -163,31 +163,126 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "03. Neodredjeni integral - integracija racionalnih funkcija",
+        moduleTitle: "03. Neodređeni integral - integracija racionalnih funkcija",
         lessons: [
             { 
                 id: "c1", 
                 title: "Uvod", 
                 vdoId: ""
             },
+            { 
+                id: "c2", 
+                title: "Zadatak 1", 
+                vdoId: ""
+            },
+            { 
+                id: "c3", 
+                title: "Zadatak 2", 
+                vdoId: ""
+            },
+            { 
+                id: "c4", 
+                title: "Zadatak 3", 
+                vdoId: ""
+            },
+            { 
+                id: "c5", 
+                title: "Zadatak 4", 
+                vdoId: ""
+            },
+            { 
+                id: "c6", 
+                title: "Zadatak 5", 
+                vdoId: ""
+            },
+            { 
+                id: "c7", 
+                title: "Zadatak 6", 
+                vdoId: ""
+            },
+            { 
+                id: "c8", 
+                title: "Zadatak 7", 
+                vdoId: ""
+            },
+            { 
+                id: "c9", 
+                title: "Zadatak 8", 
+                vdoId: ""
+            },
+            { 
+                id: "c10", 
+                title: "Zadatak 9", 
+                vdoId: ""
+            },
         ]
     },
     {
-        moduleTitle: "04. Neodredjeni integral - trigonometrijske smene",
+        moduleTitle: "04. Neodređeni integral - trigonometrijske smene",
         lessons: [
             { 
                 id: "d1", 
                 title: "Uvod", 
                 vdoId: ""
             },
+            { 
+                id: "d2", 
+                title: "Zadatak 1", 
+                vdoId: ""
+            },
+            { 
+                id: "d3", 
+                title: "Zadatak 2", 
+                vdoId: ""
+            },
+            { 
+                id: "d4", 
+                title: "Zadatak 3", 
+                vdoId: ""
+            },
+            { 
+                id: "d5", 
+                title: "Zadatak 4", 
+                vdoId: ""
+            },
+            { 
+                id: "d6", 
+                title: "Zadatak 5", 
+                vdoId: ""
+            },
         ]
     },
     {
-        moduleTitle: "05. Neodredjeni integral - integracija iracionalnih funkcija",
+        moduleTitle: "05. Neodređeni integral - integracija iracionalnih funkcija",
         lessons: [
             { 
                 id: "e1", 
-                title: "Uvod", 
+                title: "Uvod i zadatak 1", 
+                vdoId: ""
+            },
+            { 
+                id: "e2", 
+                title: "Zadatak 2", 
+                vdoId: ""
+            },
+            { 
+                id: "e3", 
+                title: "Zadatak 3", 
+                vdoId: ""
+            },
+            { 
+                id: "e4", 
+                title: "Zadatak 4", 
+                vdoId: ""
+            },
+            { 
+                id: "e5", 
+                title: "Zadatak 5", 
+                vdoId: ""
+            },
+            { 
+                id: "e6", 
+                title: "Zadatak 6", 
                 vdoId: ""
             },
         ]
@@ -200,6 +295,51 @@ const courseData = [
                 title: "Uvod", 
                 vdoId: ""
             },
+            { 
+                id: "f2", 
+                title: "Zadatak 1", 
+                vdoId: ""
+            },
+            { 
+                id: "f3", 
+                title: "Zadatak 2", 
+                vdoId: ""
+            },
+            { 
+                id: "f4", 
+                title: "Zadatak 3", 
+                vdoId: ""
+            },
+            { 
+                id: "f5", 
+                title: "Zadatak 4", 
+                vdoId: ""
+            },
+            { 
+                id: "f6", 
+                title: "Zadatak 5", 
+                vdoId: ""
+            },
+            { 
+                id: "f7", 
+                title: "Zadatak 6", 
+                vdoId: ""
+            },
+            { 
+                id: "f8", 
+                title: "Zadatak 7", 
+                vdoId: ""
+            },
+            { 
+                id: "f9", 
+                title: "Zadatak 8", 
+                vdoId: ""
+            },
+            { 
+                id: "f10", 
+                title: "Zadatak 9", 
+                vdoId: ""
+            },
         ]
     },
     {
@@ -210,6 +350,16 @@ const courseData = [
                 title: "Uvod", 
                 vdoId: ""
             },
+            { 
+                id: "g2", 
+                title: "Zadatak 1", 
+                vdoId: ""
+            },
+            { 
+                id: "g3", 
+                title: "Zadatak 2", 
+                vdoId: ""
+            },
         ]
     },
     {
@@ -218,6 +368,26 @@ const courseData = [
             { 
                 id: "h1", 
                 title: "Uvod", 
+                vdoId: ""
+            },
+            { 
+                id: "h2", 
+                title: "Zadatak 1", 
+                vdoId: ""
+            },
+            { 
+                id: "h3", 
+                title: "Zadatak 2", 
+                vdoId: ""
+            },
+            { 
+                id: "h4", 
+                title: "Zadatak 3", 
+                vdoId: ""
+            },
+            { 
+                id: "h5", 
+                title: "Zadatak 4", 
                 vdoId: ""
             },
         ]

@@ -162,6 +162,66 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "03. Neodredjeni integral - integracija racionalnih funkcija",
+        lessons: [
+            { 
+                id: "c1", 
+                title: "Uvod", 
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "04. Neodredjeni integral - trigonometrijske smene",
+        lessons: [
+            { 
+                id: "d1", 
+                title: "Uvod", 
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "05. Neodredjeni integral - integracija iracionalnih funkcija",
+        lessons: [
+            { 
+                id: "e1", 
+                title: "Uvod", 
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "06. Određeni integral - smena promenljive i parcijalna integracija",
+        lessons: [
+            { 
+                id: "f1", 
+                title: "Uvod", 
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "07. Određeni integral - površina ravnih likova",
+        lessons: [
+            { 
+                id: "g1", 
+                title: "Uvod", 
+                vdoId: ""
+            },
+        ]
+    },
+    {
+        moduleTitle: "08. Određeni integral - dužina luka krive",
+        lessons: [
+            { 
+                id: "h1", 
+                title: "Uvod", 
+                vdoId: ""
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

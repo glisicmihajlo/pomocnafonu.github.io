@@ -42,61 +42,81 @@ const courseData = [
             },
             { 
                 id: "a4", 
-                title: "Metoda smene i zadatak 1", 
-                vdoId: "0e6472d8f18b4598904b0b291f38ec30"
+                title: "Zadatak 1", 
+                vdoId: "81cd58f56d624e759a8405953eae6f5b"
             },
             { 
                 id: "a5", 
                 title: "Zadatak 2", 
-                vdoId: "d735cd6db8054e56a405c6070d679ad0"
+                vdoId: "6ab89b3f0d86472fb66288a2f41965bc"
             },
             { 
                 id: "a6", 
                 title: "Zadatak 3", 
-                vdoId: "4f1201b54ecd4d02ab3f16ed85ccc94e"
+                vdoId: "1c48a336740747b496f1503e922a7d46"
             },
             { 
                 id: "a7", 
                 title: "Zadatak 4", 
-                vdoId: "724236bf48ae4180af32ffda1c54ca70"
+                vdoId: "96f9714cd59f4294bafe836d20d85daa"
             },
             { 
                 id: "a8", 
+                title: "Metoda smene i zadatak 5", 
+                vdoId: "0e6472d8f18b4598904b0b291f38ec30"
+            },
+            { 
+                id: "a9", 
+                title: "Zadatak 2", 
+                vdoId: "d735cd6db8054e56a405c6070d679ad0"
+            },
+            { 
+                id: "a10", 
+                title: "Zadatak 3", 
+                vdoId: "4f1201b54ecd4d02ab3f16ed85ccc94e"
+            },
+            { 
+                id: "a11", 
+                title: "Zadatak 4", 
+                vdoId: "724236bf48ae4180af32ffda1c54ca70"
+            },
+            { 
+                id: "a12", 
                 title: "Zadatak 5", 
                 vdoId: "8a732cbbd6b3442abb60d457810b3115"
             },
             { 
-                id: "a9", 
+                id: "a13", 
                 title: "Zadatak 6", 
                 vdoId: "dde3b5e2bca145d3ba625797f3420094"
             },
             { 
-                id: "a10", 
+                id: "a14", 
                 title: "Zadatak 7", 
                 vdoId: "f9b48e08c67a40f5afc41bb2e768cbfd"
             },
             { 
-                id: "a11", 
+                id: "a15", 
                 title: "Zadatak 8", 
                 vdoId: "51864cc18c8942d9821704f2d87405e8"
             },
             { 
-                id: "a12", 
+                id: "a16", 
                 title: "Zadatak 9", 
                 vdoId: "a778ed0f745b42438fe48b66562519a6"
             },
             { 
-                id: "a13", 
+                id: "a17", 
                 title: "Zadatak 10", 
                 vdoId: "c3cb26034b164bdf90f3a9821bc42b62"
             },
             { 
-                id: "a14", 
+                id: "a18", 
                 title: "Zadatak 11", 
                 vdoId: "36f897d7247b4da8988388be77028a4d"
             },
             { 
-                id: "a15", 
+                id: "a19", 
                 title: "Zadatak 12", 
                 vdoId: "d824313d58854425ac5e2951d35ce360"
             },
@@ -389,6 +409,36 @@ const courseData = [
                 id: "h5", 
                 title: "Zadatak 4", 
                 vdoId: "5d3f4a19ad8f4561aa14bde681949420"
+            },
+        ]
+    },
+    {
+        moduleTitle: "09. Određeni integral - zapremina rotacionog tela",
+        lessons: [
+            { 
+                id: "i1", 
+                title: "Uvod", 
+                vdoId: "17f4999fc7824fceb1d4c082633de381"
+            },
+            { 
+                id: "i2", 
+                title: "Zadatak 1", 
+                vdoId: "9310dd113d9c41358b57de0a40b86b61"
+            },
+            { 
+                id: "i3", 
+                title: "Zadatak 2", 
+                vdoId: "a86d4e6e26504c79805df1d251b31b64"
+            },
+            { 
+                id: "i4", 
+                title: "Zadatak 3", 
+                vdoId: "21639c95c6a14503a0eb122b9ddf7aa2"
+            },
+            { 
+                id: "i5", 
+                title: "Zadatak 4", 
+                vdoId: "a0c2debf3590420e9019f4f822705a4a"
             },
         ]
     },

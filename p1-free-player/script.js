@@ -4,7 +4,7 @@ const CURRENT_COURSE_ID = "p1";
 
 const courseData = [
     {
-        moduleTitle: "01. KOLOKVIJUM ROK - Praznici",
+        moduleTitle: "01. KOLOKVIJUMSKI ROK - Praznici",
         lessons: [
             { 
                 id: "a1", 

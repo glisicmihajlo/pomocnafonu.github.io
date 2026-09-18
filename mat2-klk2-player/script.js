@@ -442,6 +442,41 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "10. Površina obrtne površi",
+        lessons: [
+            { 
+                id: "j1", 
+                title: "Uvod", 
+                vdoId: "6db6cf6585e1466482c1353e8f7da481"
+            },
+            { 
+                id: "j2", 
+                title: "Zadatak 1", 
+                vdoId: "ceacb588cd2f4f19b804dd3066c5e6ef"
+            },
+            { 
+                id: "j3", 
+                title: "Zadatak 2", 
+                vdoId: "d673ea2441cd4ff5944c631eb33cdb8f"
+            },
+        ]
+    },
+    {
+        moduleTitle: "11. Dvojni integral",
+        lessons: [
+            { 
+                id: "k1", 
+                title: "Uvod", 
+                vdoId: "9b6acc2058764e14aada953f18a319fa"
+            },
+            { 
+                id: "k2", 
+                title: "Zadatak 1", 
+                vdoId: "18e881f0ba5b4ce18f8c1df21d2b061e"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

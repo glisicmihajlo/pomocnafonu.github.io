@@ -108,7 +108,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "07. KOLOKVIJUMSKI ROK - Praznici",
+        moduleTitle: "07. Rok - Praznici",
         lessons: [
             { 
                 id: "g1",
@@ -143,7 +143,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "08. KOLOKVIJUMSKI ROK - Zatvorenici",
+        moduleTitle: "08. Rok - Zatvorenici",
         lessons: [
             { 
                 id: "h1",
@@ -178,7 +178,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "09. KOLOKVIJUMSKI ROK - Police sa džakovima",
+        moduleTitle: "09. Rok - Police sa džakovima",
         lessons: [
             { 
                 id: "i1",
@@ -208,7 +208,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "10. KOLOKVIJUMSKI ROK - Računarski centar",
+        moduleTitle: "10. Rok - Računarski centar",
         lessons: [
             { 
                 id: "i1",
@@ -218,7 +218,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "11. KOLOKVIJUMSKI ROK - Plivači",
+        moduleTitle: "11. Rok - Plivači",
         lessons: [
             { 
                 id: "k1",
@@ -228,7 +228,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "12. KOLOKVIJUMSKI ROK - Telefoni",
+        moduleTitle: "12. Rok - Telefoni",
         lessons: [
             { 
                 id: "l1",
@@ -238,7 +238,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "13. KOLOKVIJUMSKI ROK - Atrakcije",
+        moduleTitle: "13. Rok - Atrakcije",
         lessons: [
             { 
                 id: "m1",
@@ -248,7 +248,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "14. KOLOKVIJUMSKI ROK - Teniseri",
+        moduleTitle: "14. Rok - Teniseri",
         lessons: [
             { 
                 id: "n1",
@@ -258,7 +258,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "15. KOLOKVIJUMSKI ROK - Prodavnica tastatura",
+        moduleTitle: "15. Rok - Prodavnica tastatura",
         lessons: [
             { 
                 id: "o1",

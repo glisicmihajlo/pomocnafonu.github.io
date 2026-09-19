@@ -62,8 +62,18 @@ const courseData = [
         lessons: [
             { 
                 id: "b1",
-                title: "",
-                vdoId: ""
+                title: "Uvod u stringove",
+                vdoId: "8560d238b8154c038785b8ffe8fc26e7"
+            },
+            { 
+                id: "b2",
+                title: "IndexOf, Substring, Split",
+                vdoId: "51cb2f5e745247afb468cf420d86fe71"
+            },
+            { 
+                id: "b3",
+                title: "Validacije",
+                vdoId: "6def1865c7e848829f0a661b19325d1a"
             },
         ]
     },
@@ -72,8 +82,23 @@ const courseData = [
         lessons: [
             { 
                 id: "c1",
-                title: "",
-                vdoId: ""
+                title: "Osnovne metode",
+                vdoId: "4e89b3376a1f4c3fa12ca44744d9346f"
+            },
+            { 
+                id: "c2",
+                title: "Razlika izmedju dva datuma",
+                vdoId: "c86f8f20842e4c95ba5f8972cd0022ff"
+            },
+            { 
+                id: "c3",
+                title: "Parsiranje i formatiranje datuma",
+                vdoId: "3b5262699852459fb71cb65a14c15e75"
+            },
+            { 
+                id: "c4",
+                title: "Validacije",
+                vdoId: "f63356780dcc4f3292e2975dff0e2fee"
             },
         ]
     },
@@ -212,8 +237,28 @@ const courseData = [
         lessons: [
             { 
                 id: "i1",
-                title: "",
-                vdoId: ""
+                title: "Enum StatusRacunara i klasa Racunar",
+                vdoId: "9aa967f39137402ab1f8d65a47e77239"
+            },
+            { 
+                id: "i2",
+                title: "Klasa RacunarskiCentar",
+                vdoId: "85cbfc576bd34e7591b6606762d0bd53"
+            },
+            { 
+                id: "i3",
+                title: "Metoda vratiLoseRacunare",
+                vdoId: "c2661d25bdfb459fa4c6f78a4efab015"
+            },
+            { 
+                id: "i4",
+                title: "Metoda brojSala",
+                vdoId: "5cbc06ee73254e0ba9e2b7e7da810d97"
+            },
+            { 
+                id: "i5",
+                title: "Klasa ProbaRacunarskiCentar",
+                vdoId: "1d85f4493f4e491089aa920bc7edb986"
             },
         ]
     },
@@ -222,8 +267,23 @@ const courseData = [
         lessons: [
             { 
                 id: "k1",
-                title: "",
-                vdoId: ""
+                title: "Enum StilPlivanja i klasa Plivac",
+                vdoId: "a14a126e73564935aafaab8bdcfd95f7"
+            },
+            { 
+                id: "k2",
+                title: "Klasa PlivackoTakmicenje",
+                vdoId: "d6c2a52bd4a44594985576d3625059e6"
+            },
+            { 
+                id: "k3",
+                title: "Metoda pronadjiRezultate",
+                vdoId: "47f66a64d8b34394a0692282dfa66b71"
+            },
+            { 
+                id: "k4",
+                title: "Klasa ProbaPlivackoTakmicenje",
+                vdoId: "5d637f0f0b7e46ccb8626abef91ea387"
             },
         ]
     },
@@ -232,8 +292,28 @@ const courseData = [
         lessons: [
             { 
                 id: "l1",
-                title: "",
-                vdoId: ""
+                title: "Klasa MobilniTelefon",
+                vdoId: "ff0ba18e0fb541c68901794eb0825090"
+            },
+            { 
+                id: "l2",
+                title: "Klasa SmartTelefon",
+                vdoId: "35152f4134df4f9da166fd74da4bf2f0"
+            },
+            { 
+                id: "l3",
+                title: "Klasa ProdavnicaTelefona",
+                vdoId: "fa826ade51484aba830063fa125487d4"
+            },
+            { 
+                id: "l4",
+                title: "Metoda ispisiPoDijagonalama",
+                vdoId: "86992f2853564616b6088c46b190f514"
+            },
+            { 
+                id: "l5",
+                title: "Klasa ProbaProdavnica",
+                vdoId: "f5fabdedb4234c089c44070e306fab9a"
             },
         ]
     },
@@ -242,8 +322,28 @@ const courseData = [
         lessons: [
             { 
                 id: "m1",
-                title: "",
-                vdoId: ""
+                title: "Klasa Atrakcija",
+                vdoId: "e3e70fd7474f4f0aa27cbdbb26dfa157"
+            },
+            { 
+                id: "m2",
+                title: "Klase Bazen i Tobogan",
+                vdoId: "b27441a3d8d347098af556c0a7cc293b"
+            },
+            { 
+                id: "m3",
+                title: "Klasa AkvaPark",
+                vdoId: "72f1e4fb3746467db07470e5c34f67b3"
+            },
+            { 
+                id: "m4",
+                title: "Metoda izlistajAtrakcije",
+                vdoId: "d7039ebac60e4537a0c99ac041eddee8"
+            },
+            { 
+                id: "m5",
+                title: "Metoda napraviIzvestaj",
+                vdoId: "c58223064e3c4482a32566df362254ea"
             },
         ]
     },
@@ -252,8 +352,28 @@ const courseData = [
         lessons: [
             { 
                 id: "n1",
-                title: "",
-                vdoId: ""
+                title: "Enum StatusTenisera i klasa Teniser",
+                vdoId: "9f80ef9ec5d348f0a5171bc7bd2a08e0"
+            },
+            { 
+                id: "n2",
+                title: "Klasa TeniskaRangLista",
+                vdoId: "8444494351ca4e2595a9bd83c3c04151"
+            },
+            { 
+                id: "n3",
+                title: "Metoda unesiTenisera",
+                vdoId: "c57d71db006e472595f1043112a3c593"
+            },
+            { 
+                id: "n4",
+                title: "Metoda vratiNajboljeMlade",
+                vdoId: "76301bef97714bddafff3dbd1c6ff3d2"
+            },
+            { 
+                id: "n5",
+                title: "Klasa ProbaTeniskaRangLista",
+                vdoId: "8799bb254fab41008e5e30ceb3b460cb"
             },
         ]
     },
@@ -262,8 +382,23 @@ const courseData = [
         lessons: [
             { 
                 id: "o1",
-                title: "",
-                vdoId: ""
+                title: "Enumi TipPrekidaca i BojaPrekidaca",
+                vdoId: "d264416421cd467ca16b304862d20904"
+            },
+            { 
+                id: "o2",
+                title: "Klasa ProdavnicaTastatura",
+                vdoId: "98f2b4282fc343fcb6d711e34ac01150"
+            },
+            { 
+                id: "o3",
+                title: "Metoda prijemRobe",
+                vdoId: "0a8ea41f06ce4e01bdd91eeebf1178d6"
+            },
+            { 
+                id: "o4",
+                title: "Klasa ProbaProdavnicaTastatura",
+                vdoId: "87e2861bf7b94488bbb0d930fc4a8a5d"
             },
         ]
     },

@@ -475,6 +475,51 @@ const courseData = [
                 title: "Zadatak 1", 
                 vdoId: "18e881f0ba5b4ce18f8c1df21d2b061e"
             },
+            { 
+                id: "k3", 
+                title: "Zadatak 2", 
+                vdoId: "fe6db2f5ebd742a093e60122e3623d50"
+            },
+        ]
+    },
+    {
+        moduleTitle: "12. Smena promenljivih u dvojnom integralu",
+        lessons: [
+            { 
+                id: "l1", 
+                title: "Uvod", 
+                vdoId: "bc89c6942539414f8cf8ef8f4f4eb54a"
+            },
+            { 
+                id: "l2", 
+                title: "Zadatak 1", 
+                vdoId: "a3de952de2b741c2bf5ab89c08ae1869"
+            },
+            { 
+                id: "l3", 
+                title: "Zadatak 2", 
+                vdoId: "c8a345fc850e4e5b90d7f383d0424e51"
+            },
+            { 
+                id: "l4", 
+                title: "Zadatak 3", 
+                vdoId: "71fe15c500d74883b3ed7b796d6abe03"
+            },
+            { 
+                id: "l5", 
+                title: "Zadatak 4", 
+                vdoId: "644ce004360f43d1b5fa412261b714a8"
+            },
+            { 
+                id: "l6", 
+                title: "Zadatak 5", 
+                vdoId: "d35a59731ad14e5e876528e15fee9a83"
+            },
+            { 
+                id: "l7", 
+                title: "Zadatak 6", 
+                vdoId: "aa04208e45544ad496d20af61e9cc657"
+            },
         ]
     },
 ];

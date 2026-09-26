@@ -231,6 +231,21 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; letter-
     color: #ffffff; /* Kada pređu mišem, zasvetli belo */
 }
 
+.course-duration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--primary);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin: 15px auto 5px auto;
+    width: fit-content;
+}
+
 @media (max-width: 900px) {
     .partial-pricing { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }

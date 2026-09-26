@@ -522,6 +522,116 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "14. Primena dvojnog integrala",
+        lessons: [
+            { 
+                id: "l1", 
+                title: "Uvod", 
+                vdoId: "a0fc7a9409cd4dd8a057ba6e32b91df4"
+            },
+            { 
+                id: "l2", 
+                title: "Zadatak 1", 
+                vdoId: "78eda97a7f3f4bbcbd8e1ef05213c2ab"
+            },
+            { 
+                id: "l3", 
+                title: "Zadatak 2", 
+                vdoId: "e7508cbaf68c44808b242ac37bce7f1b"
+            },
+        ]
+    },
+    {
+        moduleTitle: "15. 2021 Kolokvijum G2",
+        lessons: [
+            { 
+                id: "m1", 
+                title: "Zadatak 1", 
+                vdoId: "04dddb486e824c0a8ed728ff862dbfd8"
+            },
+            { 
+                id: "m2", 
+                title: "Zadatak 2", 
+                vdoId: "a826bb491a3640e488256d26639ee5f5"
+            },
+        ]
+    },
+    {
+        moduleTitle: "16. 2023 Kolokvijum G2",
+        lessons: [
+            { 
+                id: "n1", 
+                title: "Zadatak 1", 
+                vdoId: "dbb2cd99a4d84b08b3fad855ebb3fe12"
+            },
+        ]
+    },
+    {
+        moduleTitle: "17. 2023 Jun G4",
+        lessons: [
+            { 
+                id: "o1", 
+                title: "Zadatak 1", 
+                vdoId: "5bb97adcf0cc45d8bc34ddcd64c0ce43"
+            },
+            { 
+                id: "o2", 
+                title: "Zadatak 2", 
+                vdoId: "0ecdbd9c802347e890b977a86c2c0ed6"
+            },
+            { 
+                id: "o3", 
+                title: "Zadatak 3", 
+                vdoId: "89b69df7ed3e4951840b7fde58235df8"
+            },
+        ]
+    },
+    {
+        moduleTitle: "18. 2023 Jul G3",
+        lessons: [
+            { 
+                id: "p1", 
+                title: "Zadatak 1", 
+                vdoId: "e84278fdd73a4a50941014aa621a1544"
+            },
+            { 
+                id: "p2", 
+                title: "Zadatak 2", 
+                vdoId: "ac8cb3cbfd4b46f8920004ed87f07b11"
+            },
+            { 
+                id: "p3", 
+                title: "Zadatak 3", 
+                vdoId: "c5b28432c0f145729b5871dc590ec875"
+            },
+        ]
+    },
+    {
+        moduleTitle: "19. 2024 Sep G1",
+        lessons: [
+            { 
+                id: "r1", 
+                title: "Zadatak 1", 
+                vdoId: "eb7b44cf35b344f7b9bf8974af709d3d"
+            },
+            { 
+                id: "r2", 
+                title: "Zadatak 2", 
+                vdoId: "f30db92bc4e14359929b497b46bada38"
+            },
+        ]
+    },
+    {
+        moduleTitle: "20. 2021 Okt G1",
+        lessons: [
+            { 
+                id: "s1", 
+                title: "Zadatak 1", 
+                vdoId: "45f8e7c006554fb9baf08e846763bab5"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

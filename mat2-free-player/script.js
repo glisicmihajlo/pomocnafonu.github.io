@@ -58,6 +58,26 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "DRUGI KLK - 2023 Grupa 4",
+        lessons: [
+            { 
+                id: "c1",
+                title: "Zadatak 1",
+                url: "https://www.youtube.com/watch?v=JsBQ7NHWsOE&list=PLl8BFSumqv-ZTvwFboZ-QVo0Yj1NqTRcz&index=10"
+            },
+            { 
+                id: "c2",
+                title: "Zadatak 2",
+                url: "https://www.youtube.com/watch?v=Hrus9xqK8VA&list=PLl8BFSumqv-ZTvwFboZ-QVo0Yj1NqTRcz&index=11"
+            },
+            { 
+                id: "c3",
+                title: "Zadatak 3",
+                url: "https://www.youtube.com/watch?v=YI3zeP6JF7w&list=PLl8BFSumqv-ZTvwFboZ-QVo0Yj1NqTRcz&index=12"
+            },
+        ]
+    },
 ];
 
 // Inicijalizacija iz localStorage-a (ako postoji progres od ranije)

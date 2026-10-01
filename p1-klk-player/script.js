@@ -107,8 +107,33 @@ const courseData = [
         lessons: [
             { 
                 id: "d1",
-                title: "",
-                vdoId: ""
+                title: "Kreiranje klase, objekta, paketa, toString",
+                vdoId: "3edd5f5d2aa14e898ac5665835b991aa"
+            },
+            { 
+                id: "d2",
+                title: "Equals i ==",
+                vdoId: "00fb2a75083a4a57aeec837ab909f3c9"
+            },
+            { 
+                id: "d3",
+                title: "Get i set metode",
+                vdoId: "f9f2853f757b40f989789a0085dc96e0"
+            },
+            { 
+                id: "d4",
+                title: "Atribut datum",
+                vdoId: "fec50a424e4948de9b42f07186323db7"
+            },
+            { 
+                id: "d5",
+                title: "Enum",
+                vdoId: "e04d8a8c083a4ff08963a961e8cf573c"
+            },
+            { 
+                id: "d6",
+                title: "Zadatak za samostalan rad",
+                vdoId: "5a034b7dbaf440268aec97821bb83998"
             },
         ]
     },
@@ -117,8 +142,38 @@ const courseData = [
         lessons: [
             { 
                 id: "e1",
-                title: "",
-                vdoId: ""
+                title: "Uvod u nizove",
+                vdoId: "410cbf5733d04c5cb1f1e3983e8e3762"
+            },
+            { 
+                id: "e2",
+                title: "Konstruktori u klasi Osoba",
+                vdoId: "acafaf827dca4650a03d396352cc60c5"
+            },
+            { 
+                id: "e3",
+                title: "Konstruktori sa nizovima",
+                vdoId: "564e0494ce91409e9c057dd3a8872355"
+            },
+            { 
+                id: "e4",
+                title: "Metoda za dodavanje objekata u niz",
+                vdoId: "0c220d569e3342878601b9713463876f"
+            },
+            { 
+                id: "e5",
+                title: "Ostale metode za više poena",
+                vdoId: "8a0c9fb69c004022ac91c19988aea0fb"
+            },
+            { 
+                id: "e6",
+                title: "Sortiranje",
+                vdoId: "9e110ff4cdea44cfa3f5864b5846d5ef"
+            },
+            { 
+                id: "e7",
+                title: "Ažuriranje objekata",
+                vdoId: "c0f095b2fc72446abbd7bfe884a4bec3"
             },
         ]
     },
@@ -127,8 +182,13 @@ const courseData = [
         lessons: [
             { 
                 id: "f1",
-                title: "",
-                vdoId: ""
+                title: "Uvod u nasleđivanje",
+                vdoId: "1e9a576a4af441a2a81b7bed60347d0d"
+            },
+            { 
+                id: "f2",
+                title: "Teži primeri",
+                vdoId: "412aa2edda31499e966e0c2caf009206"
             },
         ]
     },
@@ -407,8 +467,43 @@ const courseData = [
         lessons: [
             { 
                 id: "p1",
-                title: "",
-                vdoId: ""
+                title: "Ispiši X",
+                vdoId: "75e7b2e3b7fc4267916cd2bf0ac08469"
+            },
+            { 
+                id: "p2",
+                title: "Ispiši M",
+                vdoId: "5a5fd9e134b74b82a5a8a040ecee4611"
+            },
+            { 
+                id: "p3",
+                title: "Ispiši A",
+                vdoId: "b2da9a3ce24f47aa9902d45cbbc3c09f"
+            },
+            { 
+                id: "p4",
+                title: "Poređenje stringova",
+                vdoId: "cb8200d70b174620ad470dc1a7225bb3"
+            },
+            { 
+                id: "p5",
+                title: "Fibonačijev niz",
+                vdoId: "caf559714096491d80d844f85157307b"
+            },
+            { 
+                id: "p6",
+                title: "Ispiši kvadrate",
+                vdoId: "be5277f33856433c929faa3ef02f4d16"
+            },
+            { 
+                id: "p7",
+                title: "Ispiši romb",
+                vdoId: "fbf523ca79b54f0e94a2cc6494c2c76d"
+            },
+            { 
+                id: "p8",
+                title: "Ispiši obrnuto M",
+                vdoId: "9db931ce87b748479e07ef99dec11c5d"
             },
         ]
     },

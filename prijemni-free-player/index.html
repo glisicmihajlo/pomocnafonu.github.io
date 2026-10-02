@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijemni FON - Pomoć na fonu</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="mobile-nav">
+            <div class="brand-logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">
+                Pomoć na fonu
+            </div>
+            <button id="menu-toggle" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <!-- GLAVNI SADRŽAJ (LIJEVO) -->
+        <main class="content-area-player">
+            <div class="player-wrapper">
+                <a href="/" class="back-link-player">
+                    <i class="fas fa-arrow-left"></i> Nazad na sajt
+                </a>
+                
+                <div class="video-frame" id="video-container">
+                    <iframe id="vdo-player" src="" allow="encrypted-media" allowfullscreen></iframe>
+                    
+                    <div id="locked-overlay" class="locked-overlay" style="display: none;">
+                        <div class="locked-content">
+                            <i class="fas fa-lock lock-icon-large"></i>
+                            <h2>Ova oblast je zaključana</h2>
+                            <p>Kompleksni brojevi su besplatni! Za pristup ovoj i svim ostalim oblastima, potrebno je da kupiš punu verziju kursa za prijemni.</p>
+                            
+                            <!-- GUMB KOJI OTVARA TVOJ MODAL -->
+                            <button class="buy-trigger button-glow" data-image="../images/uplatnica-prijemni-15000.png" style="border: none; cursor: pointer; font-family: inherit; font-size: 1rem;">
+                                <i class="fas fa-shopping-cart"></i> Prikaži uplatnicu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-footer">
+                    <div class="lesson-meta">
+                        <span class="badge">Priprema za prijemni - FON</span>
+                        <h1 id="lesson-title">Učitavanje...</h1>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SIDEBAR (DESNO) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="brand desktop-only">
+                    <img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">
+                    Pomoć na fonu
+                </div>
+                <div class="progress-card">
+                    <div class="card-header">
+                        <small>OTKLJUČANO</small>
+                        <b id="percent-text">1 / 18</b>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progress-fill" style="width: 5.5%;"></div>
+                    </div>
+                </div>
+            </div>
+            <nav class="course-nav" id="course-list"></nav>
+        </aside>
+    </div>
+
+    <!-- TVOJ MODAL ZA UPLATU -->
+    <div id="payment-modal" class="modal-overlay">
+        <div class="modal-container">
+            <span class="close-modal"><i class="fas fa-times"></i></span>
+            <h2 class="modal-title">Podaci za uplatu</h2>
+            <div class="modal-content">
+                <img src="../images/uplatnica-prijemni-15000.png" alt="Uplatnica za prijemni" class="modal-img">
+                <div class="modal-info">
+                    <p>Nakon uplate pošaljite screenshot online uplate ili sliku uplatnice na WhatsApp broj:</p>
+                    <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20za%20prijemni%20ispit%20iz%20matematike" target="_blank" class="wa-link">
+                        <i class="fab fa-whatsapp"></i> +381 65 975 24 02
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

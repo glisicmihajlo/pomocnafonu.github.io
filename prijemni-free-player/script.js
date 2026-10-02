@@ -1,11 +1,11 @@
 const courseData = [
-    { id: "oblast1", title: "1. Brojevni izrazi", url: "", isLocked: true },
-    { id: "oblast2", title: "2. Proporcije i procenti", url: "", isLocked: true },
-    { id: "oblast3", title: "3. Algebarski izrazi", url: "", isLocked: true },
+    { id: "oblast1", title: "1. Algebarski izrazi", url: "", isLocked: true },
+    { id: "oblast2", title: "2. Brojevni izrazi", url: "", isLocked: true },
+    { id: "oblast3", title: "3. Proporcionalnost", url: "", isLocked: true },
     { 
         id: "oblast4", 
         title: "4. Kompleksni brojevi", 
-        url: "https://www.youtube.com/embed/TVOJ_YOUTUBE_ID_OVDE",
+        url: "https://www.youtube.com/embed/NNx-biA-Eu0?si=8o4oICh1L1c7Irv4",
         isLocked: false
     },
     { id: "oblast5", title: "5. Linearne jednačine i nejednačine", url: "", isLocked: true },

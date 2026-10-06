@@ -48,12 +48,12 @@ const courseData = [
             { 
                 id: "a1",
                 title: "Uvod u liste",
-                vdoId: ""
+                vdoId: "faeb4850060041bcbd240c512f4f4e2f"
             },
             { 
                 id: "a2",
                 title: "Prolazak kroz listu",
-                vdoId: ""
+                vdoId: "73e8774902094b8a926058feab39cc73"
             },
             { 
                 id: "a3",

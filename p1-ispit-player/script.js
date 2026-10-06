@@ -23,40 +23,105 @@ const CURRENT_COURSE_ID = "p1-ispit";
 
 const courseData = [
     {
-        moduleTitle: "01. Izuzeci, apstraktne klase i interfejsi",
+        moduleTitle: "01. Ponavljanje gradiva sa kolokvijuma",
         lessons: [
             { 
                 id: "a1",
+                title: "Stringovi: Uvod",
+                vdoId: "8560d238b8154c038785b8ffe8fc26e7"
+            },
+            { 
+                id: "a2",
+                title: "Stringovi: IndexOf, Substring, Split",
+                vdoId: "51cb2f5e745247afb468cf420d86fe71"
+            },
+            { 
+                id: "a3",
+                title: "Stringovi: Validacije",
+                vdoId: "6def1865c7e848829f0a661b19325d1a"
+            },
+            { 
+                id: "a4",
+                title: "Datumi: Uvod",
+                vdoId: "4e89b3376a1f4c3fa12ca44744d9346f"
+            },
+            { 
+                id: "a5",
+                title: "Datumi: Razlika između dva datuma",
+                vdoId: "c86f8f20842e4c95ba5f8972cd0022ff"
+            },
+            { 
+                id: "a6",
+                title: "Datumi: Parsiranje i formatiranje",
+                vdoId: "3b5262699852459fb71cb65a14c15e75"
+            },
+            { 
+                id: "a7",
+                title: "Datumi: Validacije",
+                vdoId: "f63356780dcc4f3292e2975dff0e2fee"
+            },
+            { 
+                id: "a8",
+                title: "OOP: Kreiranje klase, objekta, paketa, toString",
+                vdoId: "3edd5f5d2aa14e898ac5665835b991aa"
+            },
+            { 
+                id: "a9",
+                title: "OOP: Equals i ==",
+                vdoId: "00fb2a75083a4a57aeec837ab909f3c9"
+            },
+            { 
+                id: "a10",
+                title: "OOP: Get i set metode",
+                vdoId: "f9f2853f757b40f989789a0085dc96e0"
+            },
+            { 
+                id: "a11",
+                title: "OOP: Atribut datum",
+                vdoId: "fec50a424e4948de9b42f07186323db7"
+            },
+            { 
+                id: "a12",
+                title: "OOP: Enum",
+                vdoId: "e04d8a8c083a4ff08963a961e8cf573c"
+            },
+        ]
+    },
+    {
+        moduleTitle: "02. Izuzeci, apstraktne klase i interfejsi",
+        lessons: [
+            { 
+                id: "b1",
                 title: "Izuzeci",
                 vdoId: "6a8388b618754426aa19d5586a1acb3d"
             },
             { 
-                id: "a2",
+                id: "b2",
                 title: "Apstraktne klase i interfejsi",
                 vdoId: "54ba473faa324457b9e87ed5e5d94135"
             },
             { 
-                id: "a3",
+                id: "b3",
                 title: "Primer zadatka",
                 vdoId: "e5c58aae5252403382ddcc4bcb991b0b"
             },
         ]
     },
     {
-        moduleTitle: "02. Liste",
+        moduleTitle: "03. Liste",
         lessons: [
             { 
-                id: "a1",
+                id: "c1",
                 title: "Uvod u liste",
                 vdoId: "faeb4850060041bcbd240c512f4f4e2f"
             },
             { 
-                id: "a2",
+                id: "c2",
                 title: "Prolazak kroz listu",
                 vdoId: "73e8774902094b8a926058feab39cc73"
             },
             { 
-                id: "a3",
+                id: "c3",
                 title: "Zadaci i primeri iz listi",
                 vdoId: "328a23d374384c9babe4f214b042ba6e"
             },

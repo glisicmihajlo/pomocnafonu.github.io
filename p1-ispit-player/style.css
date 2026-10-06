@@ -1,0 +1,509 @@
+:root {
+    --primary: #f59e0b;
+    --primary-soft: rgba(245, 158, 11, 0.12);
+    --bg-dark: #120d0b;
+    --sidebar-bg: #1c1412;
+    --card-bg: #2a1f1c;
+    --text-main: #fef3c7;
+    --text-muted: #a8a29e;
+    --success: #6ee7b7;
+    --success-bg: rgba(110, 231, 183, 0.08);
+    --border: rgba(245, 158, 11, 0.1);
+    --primary-glow: rgba(245, 158, 11, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+body {
+    user-select: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-shell {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+
+/* Desktop navigacija je sakrivena */
+
+.mobile-nav {
+    display: none;
+}
+
+
+/* Content Area */
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    /* Da ne bude preširok na ogromnim monitorima */
+    max-height: 85vh;
+    /* Ne dozvoljava plejeru da zauzme više od 85% visine ekrana */
+    display: flex;
+    flex-direction: column;
+}
+
+.video-frame {
+    position: relative;
+    flex-shrink: 1;
+    /* Dozvoljava okviru da se smanji ako nema mesta */
+    min-height: 0;
+    /* Važno za flexbox stabilnost */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.content-footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.badge {
+    background: var(--card-bg);
+    color: var(--primary);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.lesson-meta h1 {
+    margin: 5px 0;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.lesson-meta p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.btn-glow {
+    background: transparent;
+    /* Prazno dugme */
+    border: none;
+    position: relative;
+    /* Potrebno za gradijent okvir */
+    padding: 16px 36px;
+    border-radius: 0px;
+    /* Potpuno oštre ivice */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    /* Bela boja teksta */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    /* Ako je <a>, za svaki slučaj */
+}
+
+
+/* KREIRANJE GRADIENT OKVIRA POMOĆU ::BEFORE PSEUDO ELEMENTA */
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0px;
+    /* Gradijent okvir: od žute #fee084 do narandžaste #f59e0b */
+    padding: 2px;
+    /* Debljina okvira */
+    background: linear-gradient(90deg, #fee084 0%, #f59e0b 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    /* Okvir ne blokira klikove */
+}
+
+
+/* Hover efekat: popunjavanje pozadine gradijentom */
+
+.btn-glow:hover {
+    background: linear-gradient(90deg, #fee084 0%, #f59e0b 100%);
+    color: #120d0b;
+    /* Crna boja teksta na hover-u */
+}
+
+.btn-glow:active {
+    transform: translateY(1px);
+}
+
+
+/* Stil za ikonicu */
+
+.btn-glow i {
+    font-size: 1rem;
+}
+
+.button {
+    z-index: 5;
+    color: #fff;
+    text-align: center;
+    background-image: linear-gradient(135deg, #ffcf23, #ff8d3a);
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    /* Ovo određuje debljinu okvira */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    /* Možeš ostaviti svoj font */
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition: filter .5s, box-shadow .2s;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(255, 187, 56, 0.2);
+}
+
+.button_text {
+    background-color: #1c1412;
+    /* Boja tvog sidebara/pozadine da bi izgledalo šuplje */
+    padding: 0.9rem 1.8rem;
+    transition: padding .2s;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 50px rgba(255, 187, 56, 0.4);
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 320px;
+    background: var(--sidebar-bg);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-top {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.brand {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.card-header small {
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 0.65rem;
+}
+
+.card-header b {
+    color: var(--primary);
+    font-size: 0.85rem;
+}
+
+.progress-track {
+    background: #3d2b26;
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    background: var(--primary);
+    height: 100%;
+    width: 0%;
+    box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.course-nav {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.course-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.course-nav::-webkit-scrollbar-thumb {
+    background: #3d2b26;
+    border-radius: 10px;
+}
+
+.module-card {
+    margin-bottom: 5px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.module-header {
+    padding: 12px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.module-header h3 {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.module-card.module-done {
+    border: 1px solid rgba(110, 231, 183, 0.2);
+    background: var(--success-bg);
+}
+
+.module-card.module-done h3 {
+    color: var(--success);
+}
+
+.lesson-list {
+    display: none;
+    padding: 5px 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.lesson-list.active {
+    display: block;
+}
+
+.lesson-btn {
+    padding: 10px 15px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-btn.active-lesson {
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-left: 3px solid var(--primary);
+    font-weight: 600;
+}
+
+.lesson-btn.completed {
+    color: var(--success);
+}
+
+.brand {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    /* Vertikalno poravnanje slike i teksta */
+    gap: 10px;
+    /* Razmak između logoa i teksta */
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Razmak između slike i teksta */
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    /* Malo manji font za mobilni da sve stane */
+    white-space: nowrap;
+    /* Sprečava prelazak teksta u novi red */
+}
+
+.brand-logo-img {
+    height: 30px;
+    /* Podesi visinu logoa da odgovara headeru */
+    width: auto;
+    display: block;
+}
+
+
+/* Opciono: Ako želiš da logo malo zasija na hoveru */
+
+.brand:hover .brand-logo-img {
+    filter: drop-shadow(0 0 5px var(--primary-glow));
+    transition: filter 0.3s ease;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+.video-frame {
+    position: relative; /* Ovo već imaš, ali je ključno */
+}
+
+.watermark {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    pointer-events: none; /* Ključno: omogućava klikove "kroz" tekst na video plejer */
+    color: rgba(255, 255, 255, 0.3); /* Polu-providna bela */
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 10;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+    .app-shell {
+        flex-direction: column;
+    }
+    .mobile-nav {
+        display: flex;
+        /* Sakriveno na desktopu */
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: var(--sidebar-bg);
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+        height: 60px;
+        /* Fiksna visina pomaže u centriranju */
+    }
+    .sidebar {
+        position: fixed;
+        right: -100%;
+        width: 85%;
+        top: 60px;
+        height: calc(100vh - 60px);
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 100;
+        border-left: 2px solid var(--primary);
+    }
+    .sidebar.open {
+        right: 0;
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.7);
+    }
+    .content-area {
+        flex: 1;
+        height: 100vh;
+        /* Fiksira visinu na visinu ekrana */
+        overflow: hidden;
+        /* UKLANJA SKROLBAR */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Centrira video vertikalno ako ima mesta */
+        align-items: center;
+        /* Centrira video horizontalno */
+        padding: 20px;
+        /* Smanji padding da ostane više mesta za video */
+    }
+    .content-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+    .btn-glow {
+        width: 100%;
+        justify-content: center;
+        padding: 16px;
+        font-size: 1rem;
+    }
+    .button {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+    }
+    .desktop-only {
+        display: none;
+    }
+    .mobile-nav {
+        display: flex;
+        /* Prikazuje se samo na manjim ekranima */
+    }
+}

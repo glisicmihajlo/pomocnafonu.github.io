@@ -28,17 +28,17 @@ const courseData = [
             { 
                 id: "a1",
                 title: "Izuzeci",
-                vdoId: ""
+                vdoId: "6a8388b618754426aa19d5586a1acb3d"
             },
             { 
                 id: "a2",
                 title: "Apstraktne klase i interfejsi",
-                vdoId: ""
+                vdoId: "54ba473faa324457b9e87ed5e5d94135"
             },
             { 
                 id: "a3",
                 title: "Primer zadatka",
-                vdoId: ""
+                vdoId: "e5c58aae5252403382ddcc4bcb991b0b"
             },
         ]
     },

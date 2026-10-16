@@ -127,6 +127,51 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "04. Datoteke",
+        lessons: [
+            { 
+                id: "d1",
+                title: "Tekstualne datoteke",
+                vdoId: "8896e9ff54dc49a6be8efebf554fb5d2"
+            },
+            { 
+                id: "d2",
+                title: "Binarne datoteke",
+                vdoId: "3e84be08315143b1868663c7822def16"
+            },
+        ]
+    },
+    {
+        moduleTitle: "05. Rok bez GUI - Majice",
+        lessons: [
+            { 
+                id: "e1",
+                title: "Enum Velicina i klasa Majica",
+                vdoId: "7961986b46174c57b6783953313023b5"
+            },
+            { 
+                id: "e2",
+                title: "Klasa DecijaMajica",
+                vdoId: "76733c5f44a246a6ae03412b9571d610"
+            },
+            { 
+                id: "e3",
+                title: "Klasa ProdavnicaMajica",
+                vdoId: "7551c05c353c4ae293a08331a7951ef2"
+            },
+            { 
+                id: "e4",
+                title: "Klasa LanacProdavnica",
+                vdoId: "3f12b73971394c0faec725e98e4238c1"
+            },
+            { 
+                id: "e5",
+                title: "Metoda dopuniRadnju",
+                vdoId: "2fa406a7238c480fb3429f97f59477ef"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

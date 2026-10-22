@@ -158,22 +158,42 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "05. Akumulator (U izradi)",
+        moduleTitle: "05. Akumulator",
         lessons: [
             { 
                 id: "e1",
-                title: "",
-                vdoId: ""
+                title: "Zadatak 1",
+                vdoId: "3993eb7d9a0d480890f8e6ee105fac89"
+            },
+            { 
+                id: "e2",
+                title: "Zadatak 2",
+                vdoId: "4b6bf45284a4422f941befae3816ed03"
             },
         ]
     },
     {
-        moduleTitle: "06. Pakovanje i izvlačenje bitova (U izradi)",
+        moduleTitle: "06. Pakovanje i izvlačenje bitova",
         lessons: [
             { 
                 id: "f1",
-                title: "",
-                vdoId: ""
+                title: "Zadatak 1",
+                vdoId: "4b92b5fad88a44249d7a76e5949182a5"
+            },
+            { 
+                id: "f2",
+                title: "Zadatak 2",
+                vdoId: "ff22871b833745c5898a24a6049af356"
+            },
+            { 
+                id: "f3",
+                title: "Zadatak 3",
+                vdoId: "9ade1d209f57430895a2777f2e4cd4c2"
+            },
+            { 
+                id: "f4",
+                title: "Zadatak 4",
+                vdoId: "7f6a1a5aee194da894b0ec365d853a00"
             },
         ]
     },

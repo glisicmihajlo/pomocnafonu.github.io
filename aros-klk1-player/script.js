@@ -148,12 +148,62 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "04. Registri (U izradi)",
+        moduleTitle: "04. Registri",
         lessons: [
             { 
                 id: "d1",
-                title: "",
-                vdoId: ""
+                title: "Zadatak 1",
+                vdoId: "b526560c94784b50a98d5944a6999d17"
+            },
+            { 
+                id: "d2",
+                title: "Zadatak 2",
+                vdoId: "744fb26223834a7aa6418c5d1dca9134"
+            },
+            { 
+                id: "d3",
+                title: "Zadatak 3",
+                vdoId: "80baa1ebf12c4a589a1c05cb95ee87ea"
+            },
+            { 
+                id: "d4",
+                title: "Zadatak 4",
+                vdoId: "b5626d93ff444ab789b2bbfda4f48534"
+            },
+            { 
+                id: "d5",
+                title: "Zadatak 5",
+                vdoId: "1d15e04e060243ffbce954cceee69e94"
+            },
+            { 
+                id: "d6",
+                title: "Zadatak 6",
+                vdoId: "0b6cda60b3fc446f8ee8a80366572acd"
+            },
+            { 
+                id: "d7",
+                title: "Zadatak 7",
+                vdoId: "365673616da54b06bfc6d2fcccd3c97a"
+            },
+            { 
+                id: "d8",
+                title: "Zadatak 8",
+                vdoId: "bd2f678396fc4a74bd054f879f6c041a"
+            },
+            { 
+                id: "d9",
+                title: "Zadatak 9",
+                vdoId: "81eb09918be640719c5593e1f2eaf3ac"
+            },
+            { 
+                id: "d10",
+                title: "Zadatak 10",
+                vdoId: "a2850c2d3ae541b48195a534d6e34cf9"
+            },
+            { 
+                id: "d11",
+                title: "Zadatak 11",
+                vdoId: "919d5d4c77644803a3307163d4291e5a"
             },
         ]
     },
@@ -198,12 +248,42 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "07. Procesor (U izradi)",
+        moduleTitle: "07. Procesor",
         lessons: [
             { 
                 id: "g1",
-                title: "",
-                vdoId: ""
+                title: "Zadatak 1",
+                vdoId: "dbaa910e5b4b460ab7fa407e167e7c29"
+            },
+            { 
+                id: "g2",
+                title: "Zadatak 2",
+                vdoId: "4f820f6168e74f4b8d9c4c319658ccca"
+            },
+            { 
+                id: "g3",
+                title: "Zadatak 3",
+                vdoId: "a4cc846ad4ee46daadabfce1ed7f9e8a"
+            },
+            { 
+                id: "g4",
+                title: "Zadatak 4",
+                vdoId: "dacda483c7554e41a621b043e9203859"
+            },
+            { 
+                id: "g5",
+                title: "Zadatak 5",
+                vdoId: "f3c5eba3073a42bd887db77a5a0eb2c1"
+            },
+            { 
+                id: "g6",
+                title: "Zadatak 6",
+                vdoId: "4f2928916148482ebf59e9157b145319"
+            },
+            { 
+                id: "g7",
+                title: "Zadatak 7",
+                vdoId: "1a93f7285a17431c8a61a9a897ca986b"
             },
         ]
     },

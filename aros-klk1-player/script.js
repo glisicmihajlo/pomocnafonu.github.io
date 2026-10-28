@@ -288,12 +288,37 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "08. Amdalov zakon (U izradi)",
+        moduleTitle: "08. Amdalov zakon",
         lessons: [
             { 
                 id: "h1",
-                title: "",
-                vdoId: ""
+                title: "Zadatak 1",
+                vdoId: "d1b997947b7046e1b879ddec682a0628"
+            },
+            { 
+                id: "h2",
+                title: "Zadatak 2",
+                vdoId: "caa355290cd94cbda3bfe60e87a5f3bf"
+            },
+            { 
+                id: "h3",
+                title: "Zadatak 3",
+                vdoId: "77be6b93095b40c0b65c486b692d3282"
+            },
+            { 
+                id: "h4",
+                title: "Zadatak 4",
+                vdoId: "58fdc9d098554365b322adf55186678e"
+            },
+            { 
+                id: "h5",
+                title: "Zadatak 5",
+                vdoId: "eec1c4108a3d4d099288fa21bc2476e0"
+            },
+            { 
+                id: "h6",
+                title: "Zadatak 6",
+                vdoId: "7e5a4032794f422ba2e53b6b357622a0"
             },
         ]
     },

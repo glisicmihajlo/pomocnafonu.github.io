@@ -57,6 +57,91 @@ const courseData = [
             },
         ]
     },
+    {
+        moduleTitle: "02. Predikatski račun",
+        lessons: [
+            { 
+                id: "b1", 
+                title: "Zadatak 1", 
+                vdoId: "c6da224e7ac8489aadb041c942907d70"
+            },
+            { 
+                id: "b2", 
+                title: "Zadatak 2", 
+                vdoId: "42acf382f5814dc8b14d371f9fc00181"
+            },
+            { 
+                id: "b3", 
+                title: "Zadatak 3", 
+                vdoId: "21b2d44934be42bb9cfe6a91b8791095"
+            },
+            { 
+                id: "b4", 
+                title: "Zadatak 4", 
+                vdoId: "e063e91c6eb6468e9ddae68234d8c3ea"
+            },
+            { 
+                id: "b5", 
+                title: "Zadatak 5", 
+                vdoId: "39128f95fa6d4dc7b4b9b6eae6422c40"
+            },
+            { 
+                id: "b6", 
+                title: "Zadatak 6", 
+                vdoId: "6f9d9feec6f440c4a09f145e6fc17cb9"
+            },
+            { 
+                id: "b7", 
+                title: "Zadatak 7", 
+                vdoId: "0629bd1adb5846f599db8880869b8a83"
+            },
+            { 
+                id: "b8", 
+                title: "Rokovi - Zadatak 1", 
+                vdoId: "77957dadd98d4840a0ed045e9425576c"
+            },
+            { 
+                id: "b9", 
+                title: "Rokovi - Zadatak 2", 
+                vdoId: "d769ebb3a98a46608d0673fb111775ff"
+            },
+            { 
+                id: "b10", 
+                title: "Rokovi - Zadatak 3", 
+                vdoId: "b1273ca306234c87abebe1d4ab28f053"
+            },
+            { 
+                id: "b11", 
+                title: "Rokovi - Zadatak 4", 
+                vdoId: "cd8cfa8f06e945ffbd160eb5e82f214f"
+            },
+        ]
+    },
+    {
+        moduleTitle: "03. Relacije",
+        lessons: [
+            { 
+                id: "c1", 
+                title: "Zadatak 1", 
+                vdoId: "548ac8f3edf743639f941c9cb3582281"
+            },
+            { 
+                id: "c2", 
+                title: "Zadatak 2", 
+                vdoId: "7e31c969f06e413aa64d57739e43795f"
+            },
+            { 
+                id: "c3", 
+                title: "Zadatak 3", 
+                vdoId: "41df4265908a4bcf98c2775e69e07282"
+            },
+            { 
+                id: "c4", 
+                title: "ROKOVI - Zadatak 1", 
+                vdoId: "bdff7496237f4bcd849a80271e82beed"
+            },
+        ]
+    },
 ];
 
 let completedLessons = [];

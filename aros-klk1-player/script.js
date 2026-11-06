@@ -320,6 +320,41 @@ const courseData = [
                 title: "Zadatak 6",
                 vdoId: "7e5a4032794f422ba2e53b6b357622a0"
             },
+            { 
+                id: "h7",
+                title: "Zadatak 7",
+                vdoId: "dbac17cd709746509ba6541f2bff8368"
+            },
+            { 
+                id: "h8",
+                title: "Zadatak 8",
+                vdoId: "c6b17f56646441eeba107522d1e610a5"
+            },
+            { 
+                id: "h9",
+                title: "Zadatak 9",
+                vdoId: "011cdc4ab3d24b9f970aff3473322183"
+            },
+            { 
+                id: "h10",
+                title: "Zadatak 10",
+                vdoId: "61d4926125954518a95ca1eae37966e1"
+            },
+            { 
+                id: "h11",
+                title: "Zadatak 11",
+                vdoId: "a90cbffb634e43ac84f92273f7a4b2a3"
+            },
+            { 
+                id: "h12",
+                title: "Zadatak 12",
+                vdoId: "c096c0a569fb4dfbb152af82e15b337e"
+            },
+            { 
+                id: "h13",
+                title: "Zadatak 13",
+                vdoId: "cf1d7dde53a741b98d51aee4beef170d"
+            },
         ]
     },
 ];

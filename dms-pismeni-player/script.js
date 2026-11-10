@@ -55,6 +55,21 @@ const courseData = [
                 title: "Minimalna formula", 
                 vdoId: "3803d5d275474e08888e33b562d56d43"
             },
+            { 
+                id: "a7", 
+                title: "Zadatak 1", 
+                vdoId: "0b323fe802cc41b6b8c8347104520049"
+            },
+            { 
+                id: "a8", 
+                title: "Zadatak 2", 
+                vdoId: "5439956cdac5444881ba9b2e8702d95b"
+            },
+            { 
+                id: "a9", 
+                title: "Zadatak 3", 
+                vdoId: "ded991749f024544bc12f7ad5660005f"
+            },
         ]
     },
     {

@@ -23,7 +23,22 @@ const CURRENT_COURSE_ID = "dms-pismeni";
 
 const courseData = [
     {
-        moduleTitle: "01. Iskazni račun",
+        moduleTitle: "01. Skupovi",
+        lessons: [
+            { 
+                id: "d1", 
+                title: "Uvod", 
+                vdoId: "316d782b0cd24c8e945d9b2fda2ae939"
+            },
+            { 
+                id: "d2", 
+                title: "Zadatak", 
+                vdoId: "cc642d51449e48b2a0f302efb40a5fa9"
+            },
+        ]
+    },
+    {
+        moduleTitle: "02. Iskazni račun",
         lessons: [
             { 
                 id: "a1", 
@@ -73,7 +88,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. Predikatski račun",
+        moduleTitle: "03. Predikatski račun",
         lessons: [
             { 
                 id: "b1", 
@@ -148,7 +163,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "03. Relacije",
+        moduleTitle: "04. Relacije",
         lessons: [
             { 
                 id: "c1", 
@@ -172,6 +187,7 @@ const courseData = [
             },
         ]
     },
+    // sledeci modul treba da ima id e1,2...
 ];
 
 let completedLessons = [];

@@ -23,6 +23,21 @@ const CURRENT_COURSE_ID = "dms-usmeni";
 
 const courseData = [
     {
+        moduleTitle: "01. Skupovi",
+        lessons: [
+            { 
+                id: "f1", 
+                title: "Uvod", 
+                vdoId: "316d782b0cd24c8e945d9b2fda2ae939"
+            },
+            { 
+                id: "f2", 
+                title: "Zadatak", 
+                vdoId: "cc642d51449e48b2a0f302efb40a5fa9"
+            },
+        ]
+    },
+    {
         moduleTitle: "01. Iskazni račun - ponavljanje gradiva",
         lessons: [
             { 
@@ -141,17 +156,17 @@ const courseData = [
         moduleTitle: "04. Relacije - ponavljanje gradiva",
         lessons: [
             { 
-                id: "c1", 
+                id: "d1", 
                 title: "Zadatak 1", 
                 vdoId: "548ac8f3edf743639f941c9cb3582281"
             },
             { 
-                id: "c2", 
+                id: "d2", 
                 title: "Zadatak 2", 
                 vdoId: "7e31c969f06e413aa64d57739e43795f"
             },
             { 
-                id: "c3", 
+                id: "d3", 
                 title: "Zadatak 3", 
                 vdoId: "41df4265908a4bcf98c2775e69e07282"
             },
@@ -161,32 +176,33 @@ const courseData = [
         moduleTitle: "05. Relacije - rokovi sa usmenog",
         lessons: [
             { 
-                id: "a1", 
+                id: "e1", 
                 title: "Zadatak 1", 
                 vdoId: "984efc44c41d40f0a98130dbff144878"
             },
             { 
-                id: "a2", 
+                id: "e2", 
                 title: "Zadatak 2", 
                 vdoId: "7ead31aede39450f8b16314e1635a42c"
             },
             { 
-                id: "a3", 
+                id: "e3", 
                 title: "Zadatak 3", 
                 vdoId: "2efe37921a1b4676a2963a0bb651588e"
             },
             { 
-                id: "a4", 
+                id: "e4", 
                 title: "Zadatak 4", 
                 vdoId: "520b990de4e24e51889a53a7f0c62fe7"
             },
             { 
-                id: "a5", 
+                id: "e5", 
                 title: "Zadatak 5", 
                 vdoId: "156fd67039884194b2380595d8489b29"
             },
         ]
     },
+    // sledeci modul treba da ima id g1,2...
 ];
 
 let completedLessons = [];

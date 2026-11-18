@@ -95,6 +95,21 @@ const courseData = [
                 title: "Zadatak 7", 
                 vdoId: "0629bd1adb5846f599db8880869b8a83"
             },
+            { 
+                id: "b8", 
+                title: "Zadatak 8", 
+                vdoId: "ad4e41d205b14723b21ed990f9805d5b"
+            },
+            { 
+                id: "b9", 
+                title: "Zadatak 9", 
+                vdoId: "eeaab7cc64134726826073288f339e9c"
+            },
+            { 
+                id: "b10", 
+                title: "Zadatak 10", 
+                vdoId: "8cc1367ffc824db4a7fbd5a6154ec207"
+            },
         ]
     },
     {

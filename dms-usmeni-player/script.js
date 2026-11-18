@@ -38,7 +38,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "01. Iskazni račun - ponavljanje gradiva",
+        moduleTitle: "02. Iskazni račun - ponavljanje gradiva",
         lessons: [
             { 
                 id: "a1", 
@@ -73,7 +73,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. Predikatski račun - ponavljanje gradiva",
+        moduleTitle: "03. Predikatski račun - ponavljanje gradiva",
         lessons: [
             { 
                 id: "b1", 
@@ -128,7 +128,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "03. Predikatski račun - rokovi sa usmenog",
+        moduleTitle: "04. Predikatski račun - rokovi sa usmenog",
         lessons: [
             { 
                 id: "c1", 
@@ -153,7 +153,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "04. Relacije - ponavljanje gradiva",
+        moduleTitle: "05. Relacije - ponavljanje gradiva",
         lessons: [
             { 
                 id: "d1", 
@@ -173,7 +173,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "05. Relacije - rokovi sa usmenog",
+        moduleTitle: "06. Relacije - rokovi sa usmenog",
         lessons: [
             { 
                 id: "e1", 

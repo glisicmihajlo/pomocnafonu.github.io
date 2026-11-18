@@ -23,7 +23,7 @@ const CURRENT_COURSE_ID = "dms-usmeni";
 
 const courseData = [
     {
-        moduleTitle: "01. Skupovi",
+        moduleTitle: "01. Skupovi - ponavljanje gradiva",
         lessons: [
             { 
                 id: "f1", 

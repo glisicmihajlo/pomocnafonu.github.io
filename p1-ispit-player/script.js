@@ -142,7 +142,7 @@ const courseData = [
             },
         ]
     },
-    {
+    { // e,f,g,h,i,j,k,l,m,n,o,p
         moduleTitle: "05. Rok bez GUI - Majice",
         lessons: [
             { 
@@ -169,6 +169,56 @@ const courseData = [
                 id: "e5",
                 title: "Metoda dopuniRadnju",
                 vdoId: "2fa406a7238c480fb3429f97f59477ef"
+            },
+        ]
+    },
+    {
+        moduleTitle: "06. Rok bez GUI - Nameštaj",
+        lessons: [
+            { 
+                id: "f1",
+                title: "NamestajException i enum TipPresvlake",
+                vdoId: "ba41c95389ea4000aee16a95f18ba593"
+            },
+            { 
+                id: "f2",
+                title: "Klasa KancelarijskiNamestaj",
+                vdoId: "2ffebef17b97438899474ef6a75e5bc5"
+            },
+            { 
+                id: "f3",
+                title: "Klase Stolica i Sto",
+                vdoId: "27356eb938224ed5a5d42a1afdfcc604"
+            },
+            { 
+                id: "f4",
+                title: "Klasa FabrikaNamestaja",
+                vdoId: "b6fff69fd46344249c8a1a3322aafca6"
+            },
+        ]
+    },
+    {
+        moduleTitle: "07. Ispravka koda",
+        lessons: [
+            { 
+                id: "u1",
+                title: "Učitavanje brojeva",
+                vdoId: "75e5cef04366488e9ad1d49ea6dab30f"
+            },
+            { 
+                id: "u2",
+                title: "Učitavanje brojeva 2",
+                vdoId: "59099eb9b6724db99d0c10c4dca2d9a8"
+            },
+            { 
+                id: "u3",
+                title: "Fibonači",
+                vdoId: "e307b6eefe34489c80da2688585015ba"
+            },
+            { 
+                id: "u4",
+                title: "Izbaci duplikate iz niza",
+                vdoId: "b3906ff450804159b9e525a034ab13a0"
             },
         ]
     },

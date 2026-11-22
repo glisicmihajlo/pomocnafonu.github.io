@@ -142,7 +142,7 @@ const courseData = [
             },
         ]
     },
-    { // e,f,g,h,i,j,k,l,m,n,o,p
+    {
         moduleTitle: "05. Rok bez GUI - Majice",
         lessons: [
             { 

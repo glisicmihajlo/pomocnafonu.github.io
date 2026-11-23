@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijemni FON - Pomoć na fonu</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- EKRAN ZA PROVERU PRISTUPA (sakriva sadržaj dok se ne potvrdi pristup) -->
+    <div id="auth-gate" class="auth-gate">
+        <div class="auth-gate-inner">
+            <img src="/images/logo.png" alt="Pomoć na fonu" class="auth-gate-logo">
+            <div class="spinner"></div>
+            <p id="auth-gate-text">Proveravamo pristup kursu...</p>
+        </div>
+    </div>
+
+    <div class="app-shell" id="app-shell">
+        <header class="mobile-nav">
+            <div class="brand-logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">
+                Pomoć na fonu
+            </div>
+            <button id="menu-toggle" class="menu-btn" aria-label="Otvori listu lekcija">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <!-- GLAVNI SADRŽAJ -->
+        <main class="content-area-player">
+            <div class="player-wrapper">
+                <div class="top-row">
+                    <a href="/kupljeni-kursevi/" class="back-link-player">
+                        <i class="fas fa-arrow-left"></i> Kupljeni kursevi
+                    </a>
+                    <span id="user-email" class="user-chip"><i class="fas fa-user"></i> <span></span></span>
+                </div>
+
+                <div class="video-frame" id="video-container">
+                    <iframe id="vdo-player" src=""
+                        allow="autoplay; encrypted-media; fullscreen"
+                        allowfullscreen webkitallowfullscreen mozallowfullscreen
+                        playsinline webkit-playsinline></iframe>
+
+                    <div id="video-loader" class="video-loader" hidden>
+                        <div class="spinner"></div>
+                        <span>Učitavanje videa...</span>
+                    </div>
+
+                    <div id="video-empty" class="video-empty" hidden>
+                        <i class="fas fa-hourglass-half"></i>
+                        <h2>Video uskoro stiže</h2>
+                        <p>Ova lekcija se trenutno priprema. Biće dostupna uskoro.</p>
+                    </div>
+                </div>
+
+                <div class="content-footer">
+                    <div class="lesson-meta">
+                        <span class="badge" id="module-tag">Priprema za prijemni - FON</span>
+                        <h1 id="lesson-title">Učitavanje...</h1>
+                    </div>
+
+                    <div class="actions">
+                        <button id="btn-prev" class="nav-btn" title="Prethodna lekcija (←)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="btn-complete" class="button-glow">
+                            <i class="fas fa-check"></i> <span>Završi lekciju</span>
+                        </button>
+                        <button id="btn-next" class="nav-btn" title="Sledeća lekcija (→)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <p class="shortcut-hint">
+                    <i class="far fa-keyboard"></i> Prečice: <kbd>←</kbd> / <kbd>→</kbd> prethodna / sledeća lekcija,
+                    <kbd>C</kbd> označi kao završeno
+                </p>
+            </div>
+        </main>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="brand desktop-only">
+                    <img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">
+                    Pomoć na fonu
+                </div>
+                <div class="progress-card">
+                    <div class="card-header">
+                        <small>PROGRES</small>
+                        <b id="percent-text">0%</b>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progress-fill"></div>
+                    </div>
+                    <small class="progress-sub" id="progress-sub">0 / 0 lekcija</small>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="lesson-search" placeholder="Pretraži oblasti..." autocomplete="off">
+                </div>
+            </div>
+            <nav class="course-nav" id="course-list"></nav>
+        </aside>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

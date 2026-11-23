@@ -45,11 +45,13 @@ const lessons = [
     { id: "p13", title: "11. Logaritamske jednačine i nejednačine   ", vdoId: "9c264ca7cbd74d68836c2224fed8eb8b" },
     { id: "p14", title: "12. Trigonometrijski izrazi", vdoId: "0e0487cc95c649f1a10248f8d77b72cc" },
     { id: "p15", title: "12.1. Trigonometrijske jednačine i nejednaline", vdoId: "7c1ce05bdd8d48bcba0515f7d1c2ac82" },
-    { id: "p16", title: "13. Planimetrija", vdoId: "" },
-    { id: "p17", title: "14. Stereometrija", vdoId: "" },
+    { id: "p16", title: "13. Planimetrija", vdoId: "e8bf037bfc26407583c0862ebde5e360" },
+    { id: "p17", title: "14. Stereometrija", vdoId: "c5033f2987e54cb484899b7020ad40b3" },
     { id: "p18", title: "15. Analitička geometrija", vdoId: "" },
-    { id: "p19", title: "16. ", vdoId: "" },
-    { id: "p20", title: "17. ", vdoId: "" }
+    { id: "p19", title: "16. Nizovi", vdoId: "" },
+    { id: "p20", title: "17. Kombinatorika", vdoId: "" },
+    { id: "p21", title: "18. Binomna formula", vdoId: "" },
+    { id: "p22", title: "19. Primena izvoda", vdoId: "" },
 ];
 
 let completedLessons = [];
@@ -258,12 +260,8 @@ function toggleCurrentLesson() {
     if (!lesson) return;
 
     const i = completedLessons.indexOf(lesson.id);
-    if (i > -1) {
-        completedLessons.splice(i, 1);
-    } else {
-        completedLessons.push(lesson.id);
-        toast("Lekcija označena kao završena 🎉", "success");
-    }
+    if (i > -1) completedLessons.splice(i, 1);
+    else completedLessons.push(lesson.id);
 
     if (auth.currentUser) saveProgressToFirebase(auth.currentUser.uid);
     updateUI();

@@ -1,75 +1,116 @@
 <!DOCTYPE html>
 <html lang="sr">
-
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-C5JCE202MQ');
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomoć na fonu</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex">
+    <title>OIKT — 2. kolokvijum — Pomoć na fonu</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+
+    <link rel="stylesheet" href="/index_files/player.css">
 </head>
-
 <body>
+    <!-- EKRAN ZA PROVERU PRISTUPA (sakriva sadržaj dok se ne potvrdi pristup) -->
+    <div id="auth-gate" class="auth-gate">
+        <div class="auth-gate-inner">
+            <img src="/images/logo.png" alt="Pomoć na fonu" class="auth-gate-logo">
+            <div class="spinner"></div>
+            <p id="auth-gate-text">Proveravamo pristup kursu...</p>
+        </div>
+    </div>
 
-    <div class="app-shell">
+    <div class="app-shell" id="app-shell">
         <header class="mobile-nav">
-            <div class="brand-logo"><img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">Pomoć na fonu</div>
-            <button id="menu-toggle" style="background:none; border:none; color:#f59e0b; font-size:1.2rem;"><i class="fas fa-bars"></i></button>
+            <div class="brand-logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">
+                Pomoć na fonu
+            </div>
+            <button id="menu-toggle" class="menu-btn" aria-label="Otvori listu lekcija">
+                <i class="fas fa-bars"></i>
+            </button>
         </header>
 
-        <main class="content-area">
+        <!-- GLAVNI SADRŽAJ -->
+        <main class="content-area-player">
             <div class="player-wrapper">
-                <a href="/kupljeni-kursevi/" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Kupljeni kursevi
-                </a>
-                <div class="video-frame">
-                    <iframe 
-                        id="vdo-player"
-                        src="" 
-                        style="border:0;width:100%;height:100%" 
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen 
-                        webkitallowfullscreen 
-                        mozallowfullscreen
-                        playsinline
-                        webkit-playsinline>
-                    </iframe>
+                <div class="top-row">
+                    <a href="/kupljeni-kursevi/" class="back-link-player" id="back-link">
+                        <i class="fas fa-arrow-left"></i> <span>Kupljeni kursevi</span>
+                    </a>
+                    <span id="user-chip" class="user-chip" hidden><i class="fas fa-user"></i> <span id="user-email"></span></span>
+                </div>
+
+                <div class="video-frame" id="video-container">
+                    <iframe id="vdo-player" src=""
+                        allow="autoplay; encrypted-media; fullscreen"
+                        allowfullscreen webkitallowfullscreen mozallowfullscreen
+                        playsinline webkit-playsinline></iframe>
+
+                    <div id="video-loader" class="video-loader" hidden>
+                        <div class="spinner"></div>
+                        <span>Učitavanje videa...</span>
+                    </div>
+
+                    <div id="video-empty" class="video-empty" hidden>
+                        <i class="fas fa-hourglass-half"></i>
+                        <h2>Video uskoro stiže</h2>
+                        <p>Ova lekcija se trenutno priprema. Biće dostupna uskoro.</p>
+                    </div>
+
+                    <div id="video-locked" class="video-locked" hidden>
+                        <i class="fas fa-lock"></i>
+                        <h2>Ova lekcija je zaključana</h2>
+                        <p>Ova lekcija je deo punog kursa. Kupi kurs i otključaj sve lekcije.</p>
+                        <a href="/oikt/#cena" class="button-glow" id="locked-link"><i class="fas fa-unlock"></i> Otključaj kurs</a>
+                    </div>
                 </div>
 
                 <div class="content-footer">
                     <div class="lesson-meta">
-                        <span class="badge" id="module-tag">Modul</span>
-                        <h1 id="lesson-title">Izaberite lekciju</h1>
-                        <!--<p id="lesson-desc">Dobrodošli! Vaš napredak se automatski beleži.</p>-->
+                        <span class="badge" id="module-tag">OIKT — 2. kolokvijum</span>
+                        <h1 id="lesson-title">Učitavanje...</h1>
                     </div>
+
                     <div class="actions">
-                        <button id="btn-complete" class="button">
-                            <span class="button_text">
-                                <i class="fas fa-check"></i> Završi lekciju
-                            </span>
+                        <button id="btn-prev" class="nav-btn" title="Prethodna lekcija (←)" aria-label="Prethodna lekcija">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="btn-complete" class="button-glow">
+                            <i class="fas fa-check"></i> <span>Završi lekciju</span>
+                        </button>
+                        <button id="btn-next" class="nav-btn" title="Sledeća lekcija (→)" aria-label="Sledeća lekcija">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                 </div>
+
+                <p class="shortcut-hint">
+                    <i class="far fa-keyboard"></i> Prečice: <kbd>←</kbd> / <kbd>→</kbd> prethodna / sledeća lekcija,
+                    <kbd>C</kbd> označi kao završeno
+                </p>
             </div>
         </main>
 
+        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-top">
-                <div class="brand desktop-only"><img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">Pomoć na fonu</div>
+                <div class="brand desktop-only">
+                    <img src="/images/logo.png" alt="Pomoć na fonu Logo" class="brand-logo-img">
+                    Pomoć na fonu
+                </div>
                 <div class="progress-card">
                     <div class="card-header">
                         <small>PROGRES</small>
@@ -78,13 +119,19 @@
                     <div class="progress-track">
                         <div id="progress-fill"></div>
                     </div>
+                    <small class="progress-sub" id="progress-sub">0 / 0 lekcija</small>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="lesson-search" placeholder="Pretraži lekcije..." autocomplete="off">
                 </div>
             </div>
-            <nav class="course-nav" id="course-accordion"></nav>
+            <nav class="course-nav" id="course-list"></nav>
         </aside>
     </div>
 
+    <div id="toast" class="toast" hidden></div>
+
     <script type="module" src="script.js"></script>
 </body>
-
 </html>

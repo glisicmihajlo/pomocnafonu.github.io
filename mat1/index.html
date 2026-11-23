@@ -1,203 +1,337 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-C5JCE202MQ');
     </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomoć na fonu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Matematika 1 — video kurs za pismeni | Pomoć na fonu</title>
+    <meta name="description" content="Video kurs iz Matematike 1 za FON: uvodne lekcije i rešeni kolokvijumi i rokovi za oba kolokvijuma — matrice, determinante, vektori, analitička geometrija, nizovi, funkcije, Tejlorov polinom.">
+
+    <meta content="Matematika 1 — video kurs | Pomoć na fonu" property="og:title">
+    <meta content="Video kurs iz Matematike 1 za FON: uvodne lekcije i rešeni kolokvijumi i rokovi za oba kolokvijuma — matrice, determinante, vektori, analitička geometrija, nizovi, funkcije, Tejlorov polinom." property="og:description">
+    <meta content="https://pomocnafonu.com/images/logo2.png" property="og:image">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.pomocnafonu.com/mat1/">
+
     <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index_files/home.css">
+    <link rel="stylesheet" href="/index_files/course.css">
 </head>
+
 <body>
 
-    <div class="glow-bg"></div>
+    <!-- ============ NAVIGACIJA ============ -->
+    <nav class="site-nav" id="site-nav">
+        <div class="wrap nav-inner">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu logo" width="34" height="34">
+                <span>Pomoć na fonu</span>
+            </a>
 
-    <div class="content-area">
-                <a href="/kursevi/" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Kursevi
+            <button class="nav-burger" id="nav-burger" aria-label="Otvori meni" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="/kursevi" class="is-current">Kursevi</a>
+                <a href="/prijemni">Prijemni</a>
+                <div class="nav-dd" id="nav-dd">
+                    <button type="button" aria-expanded="false">Materijali <i class="fas fa-chevron-down"></i></button>
+                    <div class="nav-dd-menu">
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                </div>
+                <a href="#pitanja">Česta pitanja</a>
+                <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" hidden>Kupljeni kursevi</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="/login" id="authBtn" class="btn btn-ghost">
+                    <i class="fas fa-user"></i> <span id="authBtnText">Prijavi se</span>
                 </a>
-        
-        <header class="hero-section reveal">
-            <div class="tagline">PRVA GODINA</div>
-            <h1>Matematika 1</h1>
-            <p class="hero-subtitle">Sve što ti je potrebno da očistiš ispit sa maksimalnom ocenom.</p>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <header class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <nav class="crumbs" aria-label="Putanja">
+                        <a href="/kursevi">Kursevi</a><i class="fas fa-chevron-right"></i>
+                        <a href="/kursevi#y1">1. godina</a><i class="fas fa-chevron-right"></i>
+                        <span>Matematika 1</span>
+                    </nav>
+                    <h1>Matematika 1, <span class="grad-text">od matrica do Tejlorovog polinoma.</span></h1>
+                    <p class="hero-lead">
+                        Sve što ti je potrebno da očistiš pismeni sa maksimalnom ocenom — uvodne lekcije za svaku oblast i video objašnjenja rokova.
+                    </p>
+
+                    <div class="owned-banner" id="owned-banner" hidden>
+                        <i class="fas fa-circle-check"></i>
+                        <span>Već imaš ovaj kurs.</span>
+                        <a href="/mat1-klk1-player/" data-id="mat1-klk1">1. kolokvijum <i class="fas fa-arrow-right"></i></a>
+                        <a href="/mat1-klk2-player/" data-id="mat1-klk2">2. kolokvijum <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="hero-ctas" id="hero-ctas">
+                        <a href="#cena" class="btn btn-primary">Pogledaj cene</a>
+                        <a href="/mat1-free-player/" class="btn btn-ghost"><i class="fas fa-play"></i> Besplatno: rešen kolokvijum</a>
+                    </div>
+                </div>
+
+                <!-- Kako se polaže -->
+                <aside class="exam-card" aria-label="Kako se polaže Matematika 1">
+                    <small class="exam-label">Kako se polaže Matematika 1</small>
+                    <div class="exam-block is-main">
+                        <div class="exam-tag">Pismeni · 50% ocene</div>
+                        <div class="exam-split">
+                            <div><b>1. klk</b><b>2. klk</b><span>u toku semestra</span></div>
+                            <em>ili</em>
+                            <div><b>Ceo pismeni</b><span>u ispitnom roku</span></div>
+                        </div>
+                    </div>
+                    <div class="exam-plus">+</div>
+                    <div class="exam-block">
+                        <div class="exam-tag">Usmeni · 50% ocene</div>
+                        <div class="exam-items"><span><i class="far fa-calendar"></i> Samo u ispitnom roku</span></div>
+                    </div>
+                    <p class="exam-note">Kurs pokriva pismeni deo — oba kolokvijuma.</p>
+                </aside>
+            </div>
         </header>
 
-        <div class="marquee-container">
-            <div class="marquee-row">
-                <div class="marquee-content">
-                    <div class="topic-card">Algebarske strukture</div>
-                    <div class="topic-card">Determinante</div>
-                    <div class="topic-card">Matrične jednačine</div>
-                    <div class="topic-card">Vektori</div>
-                    <div class="topic-card">Sistemi jednačina</div>
-                    <div class="topic-card">Algebarske strukture</div>
-                    <div class="topic-card">Determinante</div>
-                    <div class="topic-card">Matrične jednačine</div>
-                    <div class="topic-card">Vektori</div>
-                    <div class="topic-card">Sistemi jednačina</div>
+        <!-- ============ NAČIN POLAGANJA ============ -->
+        <section class="section">
+            <div class="wrap strategy">
+                <div class="reveal">
+                    <div class="eyebrow">Način polaganja</div>
+                    <h2 class="h2">Pismeni i usmeni, svaki nosi pola ocene.</h2>
                 </div>
-            </div>
-            <div class="marquee-row reverse">
-                <div class="marquee-content">
-                    <div class="topic-card">Analitička geometrija</div>
-                    <div class="topic-card">Nizovi</div>
-                    <div class="topic-card">Tačke nagomilavanja</div>
-                    <div class="topic-card">Funkcije</div>
-                    <div class="topic-card">Maklorenov polinom</div>
-                    <div class="topic-card">Tejlorov polinom</div>
-                    <div class="topic-card">Analitička geometrija</div>
-                    <div class="topic-card">Nizovi</div>
-                    <div class="topic-card">Tačke nagomilavanja</div>
-                    <div class="topic-card">Funkcije</div>
-                    <div class="topic-card">Maklorenov polinom</div>
-                    <div class="topic-card">Tejlorov polinom</div>
-                </div>
-            </div>
-        </div>
-
-        <section class="guide-section reveal">
-            <div class="guide-content">
-                <div class="guide-text">
-                    <span class="small-badge">NAČIN POLAGANJA</span>
-                    <h2>Kako se polaže ovaj predmet?</h2>
-                    <p>Postoje dva dela ispita – pismeni i usmeni, oba nose po 50% ukupne ocene. Pismeni deo se može položiti u toku semestra preko dva uslovljena kolokvijuma, ili u ispitnom roku, dok se usmeni polaže isključivo u roku.</p>
-
-                    <p>Gradivo za I klk: Algebarske strukture, Determinante, Matrične jednačine, Vektori, Sistemi jednačina, Analitička geometrija </p>
-
-                    <p>Gradivo za II klk: Nizovi, Tačke nagomilavanja, Funkcije, Maklorenov polinom, Tejlorov polinom</p>
-
-                    <p>Usmeni deo je teži i može se podeliti na dva dela. Najbolje je učiti iz knjige, a može i iz skripte, s tim što skripta sadrži nekoliko grešaka na koje morate obratiti pažnju.</p>
-                </div>
-                <div class="guide-visual">
-                    <div class="visual-box">Pismeni</div>
-                    <div class="visual-box plus">+</div>
-                    <div class="visual-box">Usmeni</div>
+                <div class="strategy-body reveal">
+                    <p>Postoje dva dela ispita — pismeni i usmeni, oba nose po 50% ukupne ocene. Pismeni deo se može položiti u toku semestra preko dva uslovljena kolokvijuma, ili u ispitnom roku, dok se usmeni polaže isključivo u roku.</p>
+                    <p><b>Usmeni</b> je teži i može se podeliti na dva dela. Najbolje je učiti iz knjige, a može i iz skripte, s tim što skripta sadrži nekoliko grešaka na koje moraš da obratiš pažnju.</p>
+                    <ul class="checks">
+                        <li><i class="fas fa-check"></i> Uvodne lekcije za svaku oblast</li>
+                        <li><i class="fas fa-check"></i> Video objašnjenja rokova sa prethodnih godina</li>
+                        <li><i class="fas fa-check"></i> Besplatne skripte za usmeni u <a href="/materijali#matematika-1" class="inline-link">materijalima za 1. godinu</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <div class="player-wrapper reveal">
-            <div class="free-cta-box">
-                <span class="small-badge">POKLON</span>
-                <h2>Probaj pre nego što kupiš</h2>
-                <p>Jedan rok za 1. kolokvijum je potpuno besplatan. Pogledaj kako predajemo.</p>
-                <a href="/mat1-free-player/" style="text-decoration: none; display: inline-block; width: 100%; max-width: 320px;">
-                    <div class="btn-glow">GLEDAJ BESPLATNO <i class="fa-solid fa-play" style="margin-left: 10px;"></i></div>
-                </a>
-            </div>
-        </div>
-
-        <section id="cene" class="pricing-section">
-            <div class="pricing-aura"></div>
-            <h2 class="section-title">Investiraj u svoju ocenu</h2>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Prvi kolokvijum</h3>
-                            <div class="price">1.800 <span>RSD</span></div>
-                            <p>Uvodne lekcije i video objašnjenja rokova za svaku oblast.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-1800.png">
-                                <span class="button_text">KUPI 1. KLK</span>
-                            </button>
-                        </div>
-                    </div>
+        <!-- ============ PROGRAM ============ -->
+        <section class="section" id="program" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Program kursa</h2>
+                    <p>Za svaku oblast prvo uvodna lekcija, pa rešeni kolokvijumi i rokovi. Jedan rešen kolokvijum možeš da pogledaš besplatno.</p>
                 </div>
 
-                <div class="pricing-card featured reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">POPULARNO &bull; NAJVEĆA UŠTEDA</div>
-                            <h3>Pismeni</h3>
-                            <div class="price">
-                                <del class="old-price">3.600</del> 
-                                3.000 <span class="currency">RSD</span>
-                            </div>
-                            <p>Sve na jednom mestu. Uvodne lekcije i video objašnjenja rokova za ceo pismeni ispit.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-3000.png">KUPI PISMENI</button>
+                <div class="program-cols reveal">
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>1. kolokvijum</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">Algebarske strukture</span>
+                            <span class="topic-chip">Determinante</span>
+                            <span class="topic-chip">Matrične jednačine</span>
+                            <span class="topic-chip">Vektori</span>
+                            <span class="topic-chip">Sistemi jednačina</span>
+                            <span class="topic-chip">Analitička geometrija</span>
+                            <a href="/mat1-free-player/" class="topic-chip is-free"><i class="fas fa-list-check"></i> Rešeni kolokvijumi <span><i class="fas fa-play"></i> Jedan besplatno</span></a>
                         </div>
                     </div>
-                </div>
-
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Drugi kolokvijum</h3>
-                            <div class="price">1.800 <span>RSD</span></div>
-                            <p>Uvodne lekcije i video objašnjenja rokova za gradivo drugog kolokvijuma.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-1800.png">
-                                <span class="button_text">KUPI 2. KLK</span>
-                            </button>
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>2. kolokvijum</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">Nizovi</span>
+                            <span class="topic-chip">Tačke nagomilavanja</span>
+                            <span class="topic-chip">Funkcije</span>
+                            <span class="topic-chip">Maklorenov polinom</span>
+                            <span class="topic-chip">Tejlorov polinom</span>
+                            <span class="topic-chip is-rokovi"><i class="fas fa-list-check"></i> Rešeni kolokvijumi</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--<div class="partial-pricing reveal">
-                <div class="partial-card">
-                    <div class="p-header">
-                        <h4>Usmeni - I Kolokvijum</h4>
-                    </div>
-                    <div class="p-footer">
-                        <b class="p-price">1.200 RSD</b>
-                        <a href="#" class="btn-preorder buy-trigger" data-image="../images/uplatnica-pp-usmeni-deo.png">KUPI</a>
-                    </div>
-                </div>
-                <div class="partial-card">
-                    <div class="p-header">
-                        <h4>Usmeni - II Kolokvijum</h4>
-                        <!--<span class="status-badge">USKORO</span>--><!--
-                    </div>
-                    <div class="p-footer">
-                        <b class="p-price">1.200 RSD</b>
-                        <a href="#" class="btn-preorder buy-trigger" data-image="../images/uplatnica-pp-usmeni-deo.png">KUPI</a>
-                    </div>
-                </div>
-            </div>-->
         </section>
 
-        <footer class="main-footer">
-            <p>&copy; Pomoć na fonu</p>
-        </footer>
-    </div>
+        <!-- ============ CENE ============ -->
+        <section class="section" id="cena" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Investiraj u svoju ocenu</h2>
+                    <p>Uzmi samo kolokvijum koji ti treba, ili ceo pismeni po nižoj ceni.</p>
+                </div>
 
-    <div id="payment-modal" class="modal-overlay">
-        <div class="modal-container">
-            <span class="close-modal"><i class="fas fa-times"></i></span>
-            <h2 class="modal-title">Podaci za uplatu</h2>
-            <div class="modal-content">
-                <img src="../images/uplatnica-mat1.png" alt="Uplatnica" class="modal-img">
-                <div class="modal-info">
-                    <p>Nakon uplate pošaljite screenshot online uplate ili sliku uplatnice na WhatsApp broj:</p>
-                    <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20iz%20matematike%201" target="_blank" class="wa-link">
-                        <i class="fab fa-whatsapp"></i> +381 65 975 24 02
-                    </a>
+                <div class="tiers reveal">
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Prvi kolokvijum</h3>
+                        <div class="price">1.800 <small>RSD</small></div>
+                        <p class="price-sub">Uvodne lekcije i video objašnjenja rokova za svaku oblast.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Sve oblasti 1. kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> Rešeni kolokvijumi sa prethodnih godina</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-1800.png" data-label="Matematika 1 — 1. kolokvijum · 1.800 RSD" data-wa="Kupio/la sam Matematiku 1 - prvi kolokvijum">Kupi 1. kolokvijum</button>
+                    </div>
+
+                    <div class="tier is-featured">
+                        <div class="tier-top"><span class="label">Najveća ušteda</span></div>
+                        <h3>Pismeni</h3>
+                        <div class="price"><span class="old">3.600</span>3.000 <small>RSD</small></div>
+                        <span class="save">Uštediš 600 RSD</span>
+                        <p class="price-sub">Sve na jednom mestu — uvodne lekcije i rokovi za ceo pismeni.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Oba kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> Uvodne lekcije za sve oblasti</li>
+                            <li><i class="fas fa-check"></i> Rešeni kolokvijumi i rokovi</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-pay data-image="/images/uplatnica-3000.png" data-label="Matematika 1 — pismeni · 3.000 RSD" data-wa="Kupio/la sam Matematiku 1 - pismeni">Kupi pismeni</button>
+                    </div>
+
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Drugi kolokvijum</h3>
+                        <div class="price">1.800 <small>RSD</small></div>
+                        <p class="price-sub">Uvodne lekcije i video objašnjenja rokova za gradivo drugog kolokvijuma.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Sve oblasti 2. kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> Rešeni rokovi sa prethodnih godina</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-1800.png" data-label="Matematika 1 — 2. kolokvijum · 1.800 RSD" data-wa="Kupio/la sam Matematiku 1 - drugi kolokvijum">Kupi 2. kolokvijum</button>
+                    </div>
+                </div>
+
+                <div class="buy-steps is-row reveal" style="margin-top: 16px;">
+                    <h3>Kako do kursa</h3>
+                    <ol>
+                        <li><b>Napravi nalog</b><span><a href="/register/">Registruj se</a> mejlom koji ćeš koristiti za gledanje.</span></li>
+                        <li><b>Uplati</b><span>Uplatnicom ili online. Podatke dobijaš klikom na dugme za kupovinu.</span></li>
+                        <li><b>Pošalji potvrdu</b><span>Screenshot ili sliku uplatnice na WhatsApp <b>065 975 2402</b>, uz mejl naloga.</span></li>
+                        <li><b>Kreni sa učenjem</b><span>Kurs se pojavljuje u „Kupljeni kursevi” čim aktiviramo pristup.</span></li>
+                    </ol>
                 </div>
             </div>
+        </section>
+
+        <!-- ============ PITANJA ============ -->
+        <section class="section" id="pitanja" style="padding-top: 0;">
+            <div class="wrap faq-grid">
+                <div class="faq-side reveal">
+                    <h2 class="h2">Pitanja o kursu</h2>
+                    <p>Nešto nije jasno? Javi se direktno.</p>
+                    <div class="contact-lines">
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 065 975 2402</a>
+                        <a href="mailto:pomocnafonu@gmail.com"><i class="far fa-envelope"></i> pomocnafonu@gmail.com</a>
+                    </div>
+                </div>
+                <div class="faq-list reveal">
+                    <details>
+                        <summary>Da li kurs pokriva usmeni?</summary>
+                        <p>Kurs pokriva pismeni deo — oba kolokvijuma. Za usmeni preporučujemo knjigu, a besplatne skripte i ispitna pitanja su u <a href="/materijali#matematika-1">materijalima za 1. godinu</a>.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li prvo da probam?</summary>
+                        <p>Da. Jedan rešen kolokvijum za 1. kolokvijum je besplatan — <a href="/mat1-free-player/">pogledaj ga ovde</a>.</p>
+                    </details>
+                    <details>
+                        <summary>Da li mi treba predznanje?</summary>
+                        <p>Ne. Kurs je napravljen tako da bude razumljiv svima, bez obzira na prethodno znanje.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li da gledam sa telefona?</summary>
+                        <p>Da. Kurs možeš da gledaš sa telefona, tableta ili laptopa — najviše 2 uređaja po nalogu.</p>
+                    </details>
+                    <details>
+                        <summary>Kako se plaća?</summary>
+                        <p>Uplatnicom u banci ili pošti, ili online. Nakon uplate pošalji potvrdu na WhatsApp 065 975 2402 i aktiviramo ti pristup.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ZAVRŠNI CTA ============ -->
+        <section class="wrap">
+            <div class="final reveal">
+                <h2 class="h2">Pogledaj jedan rešen kolokvijum. <span class="grad-text">Besplatno je.</span></h2>
+                <p>Vidi kako predajemo i da li ti ovakav način učenja odgovara.</p>
+                <div class="hero-ctas">
+                    <a href="/mat1-free-player/" class="btn btn-primary"><i class="fas fa-play"></i> Gledaj besplatno</a>
+                    <a href="#cena" class="btn btn-ghost">Pogledaj cene</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"><span>Pomoć na fonu</span></a>
+                    <p>Video kursevi i besplatni materijali za studente Fakulteta organizacionih nauka.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Kursevi</h4>
+                        <a href="/kursevi">Svi kursevi</a>
+                        <a href="/prijemni">Prijemni</a>
+                        <a href="/kupljeni-kursevi/">Kupljeni kursevi</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Materijali</h4>
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kontakt</h4>
+                        <a href="mailto:pomocnafonu@gmail.com">pomocnafonu@gmail.com</a>
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener">WhatsApp: 065 975 2402</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; <span id="year">2026</span> Pomoć na fonu. Sva prava zadržana.</div>
+        </div>
+    </footer>
+
+    <!-- ============ MODAL ZA UPLATU ============ -->
+    <div class="pay-modal" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title" hidden>
+        <div class="pay-box">
+            <button type="button" class="pay-close" id="pay-close" aria-label="Zatvori"><i class="fas fa-xmark"></i></button>
+            <h2 id="pay-title">Podaci za uplatu</h2>
+            <p class="pay-sub" id="pay-sub">Matematika 1</p>
+            <img src="/images/uplatnica-3000.png" alt="Uplatnica" class="pay-img" id="pay-img">
+            <p>Nakon uplate pošalji screenshot online uplate ili sliku uplatnice, uz mejl svog naloga, na WhatsApp:</p>
+            <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="btn btn-wa" id="pay-wa">
+                <i class="fab fa-whatsapp"></i> +381 65 975 24 02
+            </a>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/index_files/course.js"></script>
+    <script src="/index_files/site.js"></script>
+    <script type="module" src="/index_files/site-auth.js"></script>
 </body>
+
 </html>

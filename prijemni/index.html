@@ -30,6 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/index_files/home.css">
+    <link rel="stylesheet" href="/index_files/course.css">
     <link rel="stylesheet" href="/prijemni/style.css">
 </head>
 
@@ -49,7 +50,7 @@
 
             <div class="nav-links">
                 <a href="/kursevi">Kursevi</a>
-                <a href="/prijemni" class="nav-highlight is-current" aria-current="page">Prijemni</a>
+                <a href="/prijemni" class="is-current" aria-current="page">Prijemni</a>
                 <div class="nav-dd" id="nav-dd">
                     <button type="button" aria-expanded="false">Materijali <i class="fas fa-chevron-down"></i></button>
                     <div class="nav-dd-menu">
@@ -85,7 +86,7 @@
                     <div class="owned-banner" id="owned-banner" hidden>
                         <i class="fas fa-circle-check"></i>
                         <span>Već imaš ovaj kurs.</span>
-                        <a href="/prijemni-player/">Nastavi gledanje <i class="fas fa-arrow-right"></i></a>
+                        <a href="/prijemni-player/" data-id="prijemni">Nastavi gledanje <i class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <div class="hero-ctas" id="hero-ctas">
@@ -202,7 +203,7 @@
                         <li><i class="fas fa-check"></i> Gledaš sa telefona ili laptopa (do 2 uređaja)</li>
                         <li><i class="fas fa-check"></i> Napredak se čuva — označavaš završene lekcije</li>
                     </ul>
-                    <button type="button" class="btn btn-primary btn-block" id="buy-btn">
+                    <button type="button" class="btn btn-primary btn-block" data-pay data-image="/images/uplatnica-15000.png" data-label="Kurs za prijemni — 15.000 RSD" data-wa="Kupio/la sam kurs za prijemni ispit iz matematike">
                         <i class="fas fa-receipt"></i> Prikaži podatke za uplatu
                     </button>
                     <a href="/prijemni-free-player/" class="price-alt">ili prvo pogledaj besplatnu lekciju <i class="fas fa-arrow-right"></i></a>
@@ -318,16 +319,16 @@
         <div class="pay-box">
             <button type="button" class="pay-close" id="pay-close" aria-label="Zatvori"><i class="fas fa-xmark"></i></button>
             <h2 id="pay-title">Podaci za uplatu</h2>
-            <p class="pay-sub">Kurs za prijemni — 15.000 RSD</p>
-            <img src="/images/uplatnica-15000.png" alt="Uplatnica za kurs za prijemni, 15.000 RSD" class="pay-img">
+            <p class="pay-sub" id="pay-sub">Kurs za prijemni — 15.000 RSD</p>
+            <img src="/images/uplatnica-15000.png" alt="Uplatnica — Kurs za prijemni, 15.000 RSD" class="pay-img" id="pay-img">
             <p>Nakon uplate pošalji screenshot online uplate ili sliku uplatnice, uz mejl svog naloga, na WhatsApp:</p>
-            <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20za%20prijemni%20ispit%20iz%20matematike" target="_blank" rel="noopener" class="btn btn-wa">
+            <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20za%20prijemni%20ispit%20iz%20matematike" target="_blank" rel="noopener" class="btn btn-wa" id="pay-wa">
                 <i class="fab fa-whatsapp"></i> +381 65 975 24 02
             </a>
         </div>
     </div>
 
-    <script src="/prijemni/script.js"></script>
+    <script src="/index_files/course.js"></script>
     <script src="/index_files/site.js"></script>
     <script type="module" src="/index_files/site-auth.js"></script>
 </body>

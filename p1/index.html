@@ -1,189 +1,336 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-C5JCE202MQ');
     </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomoć na fonu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Programiranje 1 — Java video kurs za kolokvijum i ispit | Pomoć na fonu</title>
+    <meta name="description" content="Video kurs iz Programiranja 1 (Java) za FON, snimljen u IntelliJ-u: stringovi, datumi, OOP, nizovi, nasleđivanje, izuzeci, liste, datoteke i najnoviji rokovi za kolokvijum i ispit.">
+
+    <meta content="Programiranje 1 — video kurs | Pomoć na fonu" property="og:title">
+    <meta content="Video kurs iz Programiranja 1 (Java) za FON, snimljen u IntelliJ-u: stringovi, datumi, OOP, nizovi, nasleđivanje, izuzeci, liste, datoteke i najnoviji rokovi za kolokvijum i ispit." property="og:description">
+    <meta content="https://pomocnafonu.com/images/logo2.png" property="og:image">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.pomocnafonu.com/p1/">
+
     <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index_files/home.css">
+    <link rel="stylesheet" href="/index_files/course.css">
 </head>
+
 <body>
 
-    <div class="glow-bg"></div>
+    <!-- ============ NAVIGACIJA ============ -->
+    <nav class="site-nav" id="site-nav">
+        <div class="wrap nav-inner">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu logo" width="34" height="34">
+                <span>Pomoć na fonu</span>
+            </a>
 
-    <div class="content-area">
-                <a href="/kursevi/" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Kursevi
+            <button class="nav-burger" id="nav-burger" aria-label="Otvori meni" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="/kursevi" class="is-current">Kursevi</a>
+                <a href="/prijemni">Prijemni</a>
+                <div class="nav-dd" id="nav-dd">
+                    <button type="button" aria-expanded="false">Materijali <i class="fas fa-chevron-down"></i></button>
+                    <div class="nav-dd-menu">
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                </div>
+                <a href="#pitanja">Česta pitanja</a>
+                <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" hidden>Kupljeni kursevi</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="/login" id="authBtn" class="btn btn-ghost">
+                    <i class="fas fa-user"></i> <span id="authBtnText">Prijavi se</span>
                 </a>
-        
-        <header class="hero-section reveal">
-            <div class="tagline">PROGRAMSKI JEZIK JAVA</div>
-            <h1>Programiranje 1</h1>
-            <p class="hero-subtitle">Sve što ti je potrebno da očistiš ispit sa maksimalnom ocenom.</p>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <header class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <nav class="crumbs" aria-label="Putanja">
+                        <a href="/kursevi">Kursevi</a><i class="fas fa-chevron-right"></i>
+                        <a href="/kursevi#y2">2. godina</a><i class="fas fa-chevron-right"></i>
+                        <span>Programiranje 1</span>
+                    </nav>
+                    <h1>Programiranje 1, <span class="grad-text">Java u IntelliJ-u, rok po rok.</span></h1>
+                    <p class="hero-lead">
+                        Sve što ti je potrebno da očistiš ispit sa maksimalnom ocenom — tipski zadaci i najnoviji rokovi, snimljeno u IntelliJ-u.
+                    </p>
+
+                    <div class="owned-banner" id="owned-banner" hidden>
+                        <i class="fas fa-circle-check"></i>
+                        <span>Već imaš ovaj kurs.</span>
+                        <a href="/p1-klk-player/" data-id="p1-klk">Kolokvijum <i class="fas fa-arrow-right"></i></a>
+                        <a href="/p1-ispit-player/" data-id="p1-ispit">Ispit <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="hero-ctas" id="hero-ctas">
+                        <a href="#cena" class="btn btn-primary">Pogledaj cene</a>
+                        <a href="/p1-free-player/" class="btn btn-ghost"><i class="fas fa-play"></i> Besplatno: rešen rok</a>
+                    </div>
+                </div>
+
+                <!-- Kako se polaže -->
+                <aside class="exam-card" aria-label="Kako se polaže Programiranje 1">
+                    <small class="exam-label">Kako se polaže Programiranje 1</small>
+                    <div class="points-bar">
+                        <div class="is-main" style="flex: 35;"><b>35</b><span>Kolokvijum</span></div>
+                        <div style="flex: 65;"><b>65</b><span>Ispit</span></div>
+                    </div>
+                    <ul class="exam-facts">
+                        <li><i class="fas fa-circle-exclamation"></i> Kolokvijum je nenadoknadiv — samo u prvoj kolokvijumskoj nedelji</li>
+                        <li><i class="fas fa-flag-checkered"></i> Za prolaz treba ukupno 51 poen, bez posebnog praga</li>
+                        <li><i class="fas fa-laptop-code"></i> Od 2025/26 radi se u IntelliJ-u</li>
+                    </ul>
+                </aside>
+            </div>
         </header>
 
-        <div class="marquee-container">
-            <div class="marquee-row">
-                <div class="marquee-content">
-                    <div class="topic-card">Uvod u programiranje</div>
-                    <div class="topic-card">Stringovi</div>
-                    <div class="topic-card">Datumi</div>
-                    <div class="topic-card">OOP</div>
-                    <div class="topic-card">Nizovi</div>
-                    <div class="topic-card">Nasleđivanje</div>
-                    <div class="topic-card">Rokovi</div>
-                    <div class="topic-card">Ispravka koda</div>
-                    <div class="topic-card">Uvod u programiranje</div>
-                    <div class="topic-card">Stringovi</div>
-                    <div class="topic-card">Datum</div>
-                    <div class="topic-card">OOP</div>
-                    <div class="topic-card">Nizovi</div>
-                    <div class="topic-card">Nasleđivanje</div>
-                    <div class="topic-card">Rokovi</div>
-                    <div class="topic-card">Ispravka koda</div>
+        <!-- ============ NAČIN POLAGANJA ============ -->
+        <section class="section">
+            <div class="wrap strategy">
+                <div class="reveal">
+                    <div class="eyebrow">Način polaganja</div>
+                    <h2 class="h2">Kolokvijum je nenadoknadiv. Kreni na vreme.</h2>
                 </div>
-            </div>
-            <div class="marquee-row reverse">
-                <div class="marquee-content">
-                    <div class="topic-card">Datoteke</div>
-                    <div class="topic-card">GUI</div>
-                    <div class="topic-card">Rokovi</div>
-                    <div class="topic-card">Ispravka koda</div>
-                    <div class="topic-card">Apstraktne klase</div>
-                    <div class="topic-card">Interfejsi</div>
-                    <div class="topic-card">Izuzeci</div>
-                    <div class="topic-card">Liste</div>
-                    <div class="topic-card">Datoteke</div>
-                    <div class="topic-card">GUI</div>
-                    <div class="topic-card">Rokovi</div>
-                    <div class="topic-card">Ispravka koda</div>
-                    <div class="topic-card">Apstraktne klase</div>
-                    <div class="topic-card">Interfejsi</div>
-                    <div class="topic-card">Izuzeci</div>
-                    <div class="topic-card">Liste</div>
-                </div>
-            </div>
-        </div>
-
-        <section class="guide-section reveal">
-            <div class="guide-content">
-                <div class="guide-text">
-                    <span class="small-badge">NAČIN POLAGANJA</span>
-                    <h2>Kako se polaže ovaj predmet?</h2>
-                    <p>Postoje dva dela - kolokvijum i ispit. Kolokvijum je nenadoknadiv, nosi 35 poena i polaže se isključivo u prvoj kolokvijumskoj nedelji. Ispit nosi 65 poena.</p>
-                    <p>Ako loše uradite kolokvijum, jako teško ćete položiti ispit. Gradivo nije teško, ali ga ima dosta, tako da treba na vreme da krenete sa pripremom.</p>
-                    <p>Nemate poseban prag za prolaz na kolokvijumu ili ispitu, ali je potrebno da ukupno ostvarite 51 poen da biste položili.</p>
-                    <p>Od školske godine 2025/26 se radi u IntelliJ-u, naš kurs je snimljen upravo u tom programu i pređeni su najnoviji rokovi.</p>
-                </div>
-                <div class="guide-visual">
-                    <div class="visual-box">Pismeni (Kod)</div>
-                    <div class="visual-box plus">+</div>
-                    <div class="visual-box">Usmeni (Teorija)</div>
+                <div class="strategy-body reveal">
+                    <p>Postoje dva dela — kolokvijum i ispit. Kolokvijum je nenadoknadiv, nosi 35 poena i polaže se isključivo u prvoj kolokvijumskoj nedelji. Ispit nosi 65 poena. Nema posebnog praga ni za jedan deo, ali je potrebno ukupno 51 poen.</p>
+                    <p>Ako loše uradiš kolokvijum, jako teško ćeš položiti ispit. Gradivo nije teško, ali ga ima dosta, tako da treba na vreme da kreneš sa pripremom. Od školske godine 2025/26 radi se u <b>IntelliJ-u</b> — kurs je snimljen upravo u tom programu i pređeni su najnoviji rokovi.</p>
+                    <ul class="checks">
+                        <li><i class="fas fa-check"></i> Snimljeno u IntelliJ-u, kao na ispitu</li>
+                        <li><i class="fas fa-check"></i> Najnoviji rokovi urađeni od nule</li>
+                        <li><i class="fas fa-check"></i> Ispravka koda za oba dela</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <div class="player-wrapper reveal">
-            <div class="free-cta-box">
-                <span class="small-badge">POKLON</span>
-                <h2>Probaj pre nego što kupiš</h2>
-                <p>Jedan rok za kolokvijum je potpuno besplatan. Pogledaj kako predajemo.</p>
-                <a href="/p1-free-player/" style="text-decoration: none; display: inline-block; width: 100%; max-width: 320px;">
-                    <div class="btn-glow">GLEDAJ BESPLATNO <i class="fa-solid fa-play" style="margin-left: 10px;"></i></div>
-                </a>
-            </div>
-        </div>
-
-        <section id="cene" class="pricing-section">
-            <div class="pricing-aura"></div>
-            <h2 class="section-title">Investiraj u svoju ocenu</h2>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Kolokvijum</h3>
-                            <div class="price">2.500 <span>RSD</span></div>
-                            <p>Sve za kolokvijum na jednom mestu. Video objašnjenja tipskih zadataka i rokova iz prethodnih godina.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-2500.png">
-                                <span class="button_text">KUPI KOLOKVIJUM</span>
-                            </button>
-                        </div>
-                    </div>
+        <!-- ============ PROGRAM ============ -->
+        <section class="section" id="program" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Program kursa</h2>
+                    <p>Prvo uvodne lekcije po oblastima, pa rešeni rokovi. Jedan rok za kolokvijum možeš da pogledaš besplatno.</p>
                 </div>
 
-                <div class="pricing-card featured reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">POPULARNO &bull; NAJVEĆA UŠTEDA</div>
-                            <h3>Kolokvijum + Ispit</h3>
-                            <div class="price">
-                                <del class="old-price">6.000</del> 
-                                5.000 <span class="currency">RSD</span>
-                            </div>
-                            <p>Sve potrebno za kolokvijum i ispit. Uvodne lekcije, tipski zadaci, novi rokovi. Prilagođeno novom načinu polaganja.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-5000.png">KUPI KOMPLET</button>
+                <div class="program-cols reveal">
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>Kolokvijum</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">Uvod u programiranje</span>
+                            <span class="topic-chip">Stringovi</span>
+                            <span class="topic-chip">Datumi</span>
+                            <span class="topic-chip">Objektno orijentisano programiranje</span>
+                            <span class="topic-chip">Nizovi</span>
+                            <span class="topic-chip">Nasleđivanje</span>
+                            <span class="topic-chip">Ispravka koda</span>
+                            <a href="/p1-free-player/" class="topic-chip is-free"><i class="fas fa-list-check"></i> Rešeni rokovi <span><i class="fas fa-play"></i> Jedan besplatno</span></a>
                         </div>
                     </div>
-                </div>
-
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Ispit</h3>
-                            <div class="price">3.500 <span>RSD</span></div>
-                            <p>Sve za ispit na jednom mestu. Video objašnjenja uvodnih lekcija, novih GUI zadataka i novijih rokova.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-3500.png">
-                                <span class="button_text">KUPI ISPIT</span>
-                            </button>
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>Ispit</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">Ponavljanje gradiva sa kolokvijuma</span>
+                            <span class="topic-chip">Izuzeci</span>
+                            <span class="topic-chip">Apstraktne klase i interfejsi</span>
+                            <span class="topic-chip">Liste</span>
+                            <span class="topic-chip">Datoteke</span>
+                            <span class="topic-chip">Ispravka koda</span>
+                            <span class="topic-chip is-rokovi"><i class="fas fa-list-check"></i> Rešeni rokovi</span>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
 
-        <footer class="main-footer">
-            <p>&copy; Pomoć na fonu</p>
-        </footer>
-    </div>
+        <!-- ============ CENE ============ -->
+        <section class="section" id="cena" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Investiraj u svoju ocenu</h2>
+                    <p>Uzmi samo deo koji ti treba, ili oba po nižoj ceni.</p>
+                </div>
 
-    <div id="payment-modal" class="modal-overlay">
-        <div class="modal-container">
-            <span class="close-modal"><i class="fas fa-times"></i></span>
-            <h2 class="modal-title">Podaci za uplatu</h2>
-            <div class="modal-content">
-                <img src="../images/uplatnica-mat1.png" alt="Uplatnica" class="modal-img">
-                <div class="modal-info">
-                    <p>Nakon uplate pošaljite screenshot online uplate ili sliku uplatnice na WhatsApp broj:</p>
-                    <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20iz%20programiranja%201" target="_blank" class="wa-link">
-                        <i class="fab fa-whatsapp"></i> +381 65 975 24 02
-                    </a>
+                <div class="tiers reveal">
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Kolokvijum</h3>
+                        <div class="price">2.500 <small>RSD</small></div>
+                        <p class="price-sub">Sve za kolokvijum na jednom mestu — tipski zadaci i rokovi iz prethodnih godina.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Sve oblasti kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> Rešeni rokovi</li>
+                            <li><i class="fas fa-check"></i> Ispravka koda</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-2500.png" data-label="Programiranje 1 — kolokvijum · 2.500 RSD" data-wa="Kupio/la sam Programiranje 1 - kolokvijum">Kupi kolokvijum</button>
+                    </div>
+
+                    <div class="tier is-featured">
+                        <div class="tier-top"><span class="label">Najveća ušteda</span></div>
+                        <h3>Kolokvijum + Ispit</h3>
+                        <div class="price"><span class="old">6.000</span>5.000 <small>RSD</small></div>
+                        <span class="save">Uštediš 1.000 RSD</span>
+                        <p class="price-sub">Sve potrebno za kolokvijum i ispit, prilagođeno novom načinu polaganja.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Uvodne lekcije i tipski zadaci</li>
+                            <li><i class="fas fa-check"></i> Najnoviji rokovi za oba dela</li>
+                            <li><i class="fas fa-check"></i> Snimljeno u IntelliJ-u</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-pay data-image="/images/uplatnica-5000.png" data-label="Programiranje 1 — kolokvijum + ispit · 5.000 RSD" data-wa="Kupio/la sam Programiranje 1 - kolokvijum + ispit">Kupi komplet</button>
+                    </div>
+
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Ispit</h3>
+                        <div class="price">3.500 <small>RSD</small></div>
+                        <p class="price-sub">Sve za ispit na jednom mestu — uvodne lekcije i noviji rokovi.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Izuzeci, interfejsi, liste, datoteke</li>
+                            <li><i class="fas fa-check"></i> Noviji rokovi</li>
+                            <li><i class="fas fa-check"></i> Ispravka koda</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-3500.png" data-label="Programiranje 1 — ispit · 3.500 RSD" data-wa="Kupio/la sam Programiranje 1 - ispit">Kupi ispit</button>
+                    </div>
+                </div>
+
+                <div class="buy-steps is-row reveal" style="margin-top: 16px;">
+                    <h3>Kako do kursa</h3>
+                    <ol>
+                        <li><b>Napravi nalog</b><span><a href="/register/">Registruj se</a> mejlom koji ćeš koristiti za gledanje.</span></li>
+                        <li><b>Uplati</b><span>Uplatnicom ili online. Podatke dobijaš klikom na dugme za kupovinu.</span></li>
+                        <li><b>Pošalji potvrdu</b><span>Screenshot ili sliku uplatnice na WhatsApp <b>065 975 2402</b>, uz mejl naloga.</span></li>
+                        <li><b>Kreni sa učenjem</b><span>Kurs se pojavljuje u „Kupljeni kursevi” čim aktiviramo pristup.</span></li>
+                    </ol>
                 </div>
             </div>
+        </section>
+
+        <!-- ============ PITANJA ============ -->
+        <section class="section" id="pitanja" style="padding-top: 0;">
+            <div class="wrap faq-grid">
+                <div class="faq-side reveal">
+                    <h2 class="h2">Pitanja o kursu</h2>
+                    <p>Nešto nije jasno? Javi se direktno.</p>
+                    <div class="contact-lines">
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 065 975 2402</a>
+                        <a href="mailto:pomocnafonu@gmail.com"><i class="far fa-envelope"></i> pomocnafonu@gmail.com</a>
+                    </div>
+                </div>
+                <div class="faq-list reveal">
+                    <details>
+                        <summary>Da li je kurs urađen u IntelliJ-u?</summary>
+                        <p>Da. Od 2025/26 se na ispitu radi u IntelliJ-u, pa je ceo kurs snimljen u tom programu.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li prvo da probam?</summary>
+                        <p>Da. Jedan rešen rok za kolokvijum je besplatan — <a href="/p1-free-player/">pogledaj ga ovde</a>.</p>
+                    </details>
+                    <details>
+                        <summary>Da li mi treba predznanje?</summary>
+                        <p>Ne. Kurs je napravljen tako da bude razumljiv svima, bez obzira na prethodno znanje.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li da gledam sa telefona?</summary>
+                        <p>Da. Kurs možeš da gledaš sa telefona, tableta ili laptopa — najviše 2 uređaja po nalogu.</p>
+                    </details>
+                    <details>
+                        <summary>Kako se plaća?</summary>
+                        <p>Uplatnicom u banci ili pošti, ili online. Nakon uplate pošalji potvrdu na WhatsApp 065 975 2402 i aktiviramo ti pristup.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ZAVRŠNI CTA ============ -->
+        <section class="wrap">
+            <div class="final reveal">
+                <h2 class="h2">Kolokvijum ne čeka. <span class="grad-text">Pogledaj rešen rok besplatno.</span></h2>
+                <p>Vidi kako predajemo i da li ti ovakav način učenja odgovara.</p>
+                <div class="hero-ctas">
+                    <a href="/p1-free-player/" class="btn btn-primary"><i class="fas fa-play"></i> Gledaj besplatno</a>
+                    <a href="#cena" class="btn btn-ghost">Pogledaj cene</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"><span>Pomoć na fonu</span></a>
+                    <p>Video kursevi i besplatni materijali za studente Fakulteta organizacionih nauka.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Kursevi</h4>
+                        <a href="/kursevi">Svi kursevi</a>
+                        <a href="/prijemni">Prijemni</a>
+                        <a href="/kupljeni-kursevi/">Kupljeni kursevi</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Materijali</h4>
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kontakt</h4>
+                        <a href="mailto:pomocnafonu@gmail.com">pomocnafonu@gmail.com</a>
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener">WhatsApp: 065 975 2402</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; <span id="year">2026</span> Pomoć na fonu. Sva prava zadržana.</div>
+        </div>
+    </footer>
+
+    <!-- ============ MODAL ZA UPLATU ============ -->
+    <div class="pay-modal" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title" hidden>
+        <div class="pay-box">
+            <button type="button" class="pay-close" id="pay-close" aria-label="Zatvori"><i class="fas fa-xmark"></i></button>
+            <h2 id="pay-title">Podaci za uplatu</h2>
+            <p class="pay-sub" id="pay-sub">Programiranje 1</p>
+            <img src="/images/uplatnica-5000.png" alt="Uplatnica" class="pay-img" id="pay-img">
+            <p>Nakon uplate pošalji screenshot online uplate ili sliku uplatnice, uz mejl svog naloga, na WhatsApp:</p>
+            <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="btn btn-wa" id="pay-wa">
+                <i class="fab fa-whatsapp"></i> +381 65 975 24 02
+            </a>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/index_files/course.js"></script>
+    <script src="/index_files/site.js"></script>
+    <script type="module" src="/index_files/site-auth.js"></script>
 </body>
+
 </html>

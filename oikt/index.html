@@ -1,205 +1,342 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-C5JCE202MQ');
     </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomoć na fonu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>OIKT — video kurs za kolokvijume i ispit | Pomoć na fonu</title>
+    <meta name="description" content="Video kurs iz OIKT-a za FON: video lekcije sa rešenim tipskim zadacima za oba kolokvijuma — brojevni sistemi, IP adrese, entropija, sortiranje, SQL, Java. Prva oblast besplatna.">
+
+    <meta content="OIKT — video kurs | Pomoć na fonu" property="og:title">
+    <meta content="Video kurs iz OIKT-a za FON: video lekcije sa rešenim tipskim zadacima za oba kolokvijuma — brojevni sistemi, IP adrese, entropija, sortiranje, SQL, Java. Prva oblast besplatna." property="og:description">
+    <meta content="https://pomocnafonu.com/images/logo2.png" property="og:image">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.pomocnafonu.com/oikt/">
+
     <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index_files/home.css">
+    <link rel="stylesheet" href="/index_files/course.css">
 </head>
+
 <body>
 
-    <div class="glow-bg"></div>
+    <!-- ============ NAVIGACIJA ============ -->
+    <nav class="site-nav" id="site-nav">
+        <div class="wrap nav-inner">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu logo" width="34" height="34">
+                <span>Pomoć na fonu</span>
+            </a>
 
-    <div class="content-area">
-                <a href="/kursevi/" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Kursevi
+            <button class="nav-burger" id="nav-burger" aria-label="Otvori meni" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="/kursevi" class="is-current">Kursevi</a>
+                <a href="/prijemni">Prijemni</a>
+                <div class="nav-dd" id="nav-dd">
+                    <button type="button" aria-expanded="false">Materijali <i class="fas fa-chevron-down"></i></button>
+                    <div class="nav-dd-menu">
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                </div>
+                <a href="#pitanja">Česta pitanja</a>
+                <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" hidden>Kupljeni kursevi</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="/login" id="authBtn" class="btn btn-ghost">
+                    <i class="fas fa-user"></i> <span id="authBtnText">Prijavi se</span>
                 </a>
-        
-        <header class="hero-section reveal">
-            <div class="tagline">PRVA GODINA</div>
-            <h1>OIKT</h1>
-            <p class="hero-subtitle">Sve što ti je potrebno da očistiš ispit sa maksimalnom ocenom.</p>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <header class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <nav class="crumbs" aria-label="Putanja">
+                        <a href="/kursevi">Kursevi</a><i class="fas fa-chevron-right"></i>
+                        <a href="/kursevi#y1">1. godina</a><i class="fas fa-chevron-right"></i>
+                        <span>OIKT</span>
+                    </nav>
+                    <h1>OIKT, <span class="grad-text">od brojevnih sistema do SQL-a i Jave.</span></h1>
+                    <p class="hero-lead">
+                        Sve što ti je potrebno da očistiš ispit sa maksimalnom ocenom — video lekcije sa detaljno rešenim tipskim zadacima za oba kolokvijuma.
+                    </p>
+
+                    <div class="owned-banner" id="owned-banner" hidden>
+                        <i class="fas fa-circle-check"></i>
+                        <span>Već imaš ovaj kurs.</span>
+                        <a href="/oikt-klk1-player/" data-id="oikt-klk1">1. kolokvijum <i class="fas fa-arrow-right"></i></a>
+                        <a href="/oikt-klk2-player/" data-id="oikt-klk2">2. kolokvijum <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="hero-ctas" id="hero-ctas">
+                        <a href="#cena" class="btn btn-primary">Pogledaj cene</a>
+                        <a href="/oikt-free-player/" class="btn btn-ghost"><i class="fas fa-play"></i> Besplatno: Brojevni sistemi</a>
+                    </div>
+                </div>
+
+                <!-- Kako se polaže -->
+                <aside class="exam-card" aria-label="Kako se polaže OIKT">
+                    <small class="exam-label">Kako se polaže OIKT</small>
+                    <div class="exam-block">
+                        <div class="exam-tag">Predispitne obaveze</div>
+                        <div class="exam-items">
+                            <span><i class="far fa-file-word"></i> Word</span>
+                            <span><i class="far fa-file-excel"></i> Excel</span>
+                            <span><i class="far fa-file-powerpoint"></i> PowerPoint</span>
+                        </div>
+                    </div>
+                    <div class="exam-plus">+</div>
+                    <div class="exam-block is-main">
+                        <div class="exam-tag">Ispitni deo · teorija + zadaci</div>
+                        <div class="exam-split">
+                            <div><b>1. klk</b><b>2. klk</b><span>u toku semestra</span></div>
+                            <em>ili</em>
+                            <div><b>Ceo ispit</b><span>u ispitnom roku</span></div>
+                        </div>
+                    </div>
+                    <p class="exam-note">Kurs pokriva ispitni deo — zadatke za oba kolokvijuma.</p>
+                </aside>
+            </div>
         </header>
 
-        <div class="marquee-container">
-            <div class="marquee-row">
-                <div class="marquee-content">
-                    <div class="topic-card">Brojevni sistemi</div>
-                    <div class="topic-card">BCD kod</div>
-                    <div class="topic-card">IP adrese</div>
-                    <div class="topic-card">Big Endian</div>
-                    <div class="topic-card">Little Endian</div>
-                    <div class="topic-card">Količina informacije</div>
-                    <div class="topic-card">Brojevni sistemi</div>
-                    <div class="topic-card">BCD kod</div>
-                    <div class="topic-card">IP adrese</div>
-                    <div class="topic-card">Big Endian</div>
-                    <div class="topic-card">Little Endian</div>
-                    <div class="topic-card">Količina informacije</div>
+        <!-- ============ NAČIN POLAGANJA ============ -->
+        <section class="section">
+            <div class="wrap strategy">
+                <div class="reveal">
+                    <div class="eyebrow">Način polaganja</div>
+                    <h2 class="h2">Dva kolokvijuma ili ceo ispit u roku.</h2>
                 </div>
-            </div>
-            <div class="marquee-row reverse">
-                <div class="marquee-content">
-                    <div class="topic-card">Entropija</div>
-                    <div class="topic-card">Algoritmi sortiranja</div>
-                    <div class="topic-card">SQL</div>
-                    <div class="topic-card">Magnetni diskovi</div>
-                    <div class="topic-card">Java</div>
-                    <div class="topic-card">IP adrese</div>
-                    <div class="topic-card">Entropija</div>
-                    <div class="topic-card">Algoritmi sortiranja</div>
-                    <div class="topic-card">SQL</div>
-                    <div class="topic-card">Magnetni diskovi</div>
-                    <div class="topic-card">Java</div>
-                    <div class="topic-card">IP adrese</div>
-                </div>
-            </div>
-        </div>
-
-        <section class="guide-section reveal">
-            <div class="guide-content">
-                <div class="guide-text">
-                    <span class="small-badge">NAČIN POLAGANJA</span>
-                    <h2>Kako se polaže ovaj predmet?</h2>
-                    <p>Predmet se sastoji iz predispitnih obaveza (Word, Excel, PowerPoint) i ispitnog dela koji se može položiti preko dva uslovljena kolokvijuma u toku semestra ili celog ispita u ispitnom roku. Ispitni deo se sastoji iz teorije i zadataka.</p>
-
-                    <p>Gradivo za I klk: Brojevni sistemi, BCD kod, IP adrese, Big Endian, Little Endian, Količina informacije, Entropija, Algoritmi sortiranja</p>
-
-                    <p>Gradivo za II klk: SQL, Java, Magnetni diskovi, IP adrese</p>
-
-                    <p>Teorijski deo: Teorija se uči iz skripte koja je podeljena na crvena i crna pitanja. Uz kupovinu kursa iz OIKT-a dobijate posebnu skriptu koja sadrži pitanja kojih nema u drugim skriptama.</p>
-                </div>
-                <div class="guide-visual">
-                    <div class="visual-box">Predispitne</div>
-                    <div class="visual-box plus">+</div>
-                    <div class="visual-box">Ispit (Ili dva klk)</div>
+                <div class="strategy-body reveal">
+                    <p>Predmet se sastoji iz predispitnih obaveza (Word, Excel, PowerPoint) i ispitnog dela, koji se polaže preko dva uslovljena kolokvijuma u toku semestra ili kao ceo ispit u ispitnom roku. Ispitni deo ima teoriju i zadatke.</p>
+                    <p><b>Teorija</b> se uči iz skripte podeljene na crvena i crna pitanja. Uz kupovinu kursa dobijaš i posebnu skriptu sa pitanjima kojih nema u drugim skriptama.</p>
+                    <ul class="checks">
+                        <li><i class="fas fa-check"></i> Svaki tip zadatka urađen korak po korak</li>
+                        <li><i class="fas fa-check"></i> Posebna skripta za teoriju uz kurs</li>
+                        <li><i class="fas fa-check"></i> Besplatne skripte i rokovi u <a href="/materijali#oikt" class="inline-link">materijalima za 1. godinu</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <div class="player-wrapper reveal">
-            <div class="free-cta-box">
-                <span class="small-badge">POKLON</span>
-                <h2>Probaj pre nego što kupiš</h2>
-                <p>Prva oblast 1. kolokvijuma (Brojevni sistemi) je potpuno besplatna. Pogledaj kako predajemo.</p>
-                <a href="/oikt-free-player/" style="text-decoration: none; display: inline-block; width: 100%; max-width: 320px;">
-                    <div class="btn-glow">GLEDAJ BESPLATNO <i class="fa-solid fa-play" style="margin-left: 10px;"></i></div>
-                </a>
-            </div>
-        </div>
-
-        <section id="cene" class="pricing-section">
-            <div class="pricing-aura"></div>
-            <h2 class="section-title">Investiraj u svoju ocenu</h2>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Prvi kolokvijum</h3>
-                            <div class="price">1.500 <span>RSD</span></div>
-                            <p>Sve za prvi kolokvijum na jednom mestu. Detaljno rešeni tipski zadaci.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-1500.png">
-                                <span class="button_text">KUPI 1. KLK</span>
-                            </button>
-                        </div>
-                    </div>
+        <!-- ============ PROGRAM ============ -->
+        <section class="section" id="program" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Program kursa</h2>
+                    <p>Lekcije su podeljene po oblastima, istim redom kao gradivo za kolokvijume. Brojevne sisteme možeš da pogledaš besplatno.</p>
                 </div>
 
-                <div class="pricing-card featured reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">POPULARNO &bull; NAJVEĆA UŠTEDA</div>
-                            <h3>Ispit</h3>
-                            <div class="price">
-                                <del class="old-price">3.000</del> 
-                                2.400 <span class="currency">RSD</span>
-                            </div>
-                            <p>Kompletan ispit. Preko 100 zadataka koji pokrivaju ceo ispit.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-2400.png">KUPI ISPIT</button>
+                <div class="program-cols reveal">
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>1. kolokvijum</h3></div>
+                        <div class="topic-chips">
+                            <a href="/oikt-free-player/" class="topic-chip is-free">Brojevni sistemi <span><i class="fas fa-play"></i> Besplatno</span></a>
+                            <span class="topic-chip">BCD kod</span>
+                            <span class="topic-chip">IP adrese</span>
+                            <span class="topic-chip">Big Endian</span>
+                            <span class="topic-chip">Little Endian</span>
+                            <span class="topic-chip">Količina informacije</span>
+                            <span class="topic-chip">Entropija</span>
+                            <span class="topic-chip">Algoritmi sortiranja</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <h3>Drugi kolokvijum</h3>
-                            <div class="price">1.500 <span>RSD</span></div>
-                            <p>Sve za drugi kolokvijum na jednom mestu. Detaljno rešeni tipski zadaci.</p>
-                        </div>
-                        <div class="p-card-action">
-                            <button class="button buy-trigger" data-image="../images/uplatnica-1500.png">
-                                <span class="button_text">KUPI 2. KLK</span>
-                            </button>
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>2. kolokvijum</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">SQL</span>
+                            <span class="topic-chip">Magnetni diskovi</span>
+                            <span class="topic-chip">Java</span>
+                            <span class="topic-chip">IP adrese</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--<div class="partial-pricing reveal">
-                <div class="partial-card">
-                    <div class="p-header">
-                        <h4>Usmeni - I Kolokvijum</h4>
-                    </div>
-                    <div class="p-footer">
-                        <b class="p-price">1.200 RSD</b>
-                        <a href="#" class="btn-preorder buy-trigger" data-image="../images/uplatnica-pp-usmeni-deo.png">KUPI</a>
-                    </div>
-                </div>
-                <div class="partial-card">
-                    <div class="p-header">
-                        <h4>Usmeni - II Kolokvijum</h4>
-                        <!--<span class="status-badge">USKORO</span>--><!--
-                    </div>
-                    <div class="p-footer">
-                        <b class="p-price">1.200 RSD</b>
-                        <a href="#" class="btn-preorder buy-trigger" data-image="../images/uplatnica-pp-usmeni-deo.png">KUPI</a>
-                    </div>
-                </div>
-            </div>-->
         </section>
 
-        <footer class="main-footer">
-            <p>&copy; Pomoć na fonu</p>
-        </footer>
-    </div>
+        <!-- ============ CENE ============ -->
+        <section class="section" id="cena" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Investiraj u svoju ocenu</h2>
+                    <p>Uzmi samo kolokvijum koji ti treba, ili ceo ispit po nižoj ceni.</p>
+                </div>
 
-    <div id="payment-modal" class="modal-overlay">
-        <div class="modal-container">
-            <span class="close-modal"><i class="fas fa-times"></i></span>
-            <h2 class="modal-title">Podaci za uplatu</h2>
-            <div class="modal-content">
-                <img src="../images/uplatnica-mat1.png" alt="Uplatnica" class="modal-img">
-                <div class="modal-info">
-                    <p>Nakon uplate pošaljite screenshot online uplate ili sliku uplatnice na WhatsApp broj:</p>
-                    <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20iz%20oikt-a" target="_blank" class="wa-link">
-                        <i class="fab fa-whatsapp"></i> +381 65 975 24 02
-                    </a>
+                <div class="tiers reveal">
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Prvi kolokvijum</h3>
+                        <div class="price">1.500 <small>RSD</small></div>
+                        <p class="price-sub">Sve za prvi kolokvijum na jednom mestu.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Video lekcije za sve oblasti 1. kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> Brojevni sistemi, IP adrese, entropija, sortiranje…</li>
+                            <li><i class="fas fa-check"></i> Detaljno rešeni tipski zadaci</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-1500.png" data-label="OIKT — 1. kolokvijum · 1.500 RSD" data-wa="Kupio/la sam OIKT - prvi kolokvijum">Kupi 1. kolokvijum</button>
+                    </div>
+
+                    <div class="tier is-featured">
+                        <div class="tier-top"><span class="label">Najveća ušteda</span></div>
+                        <h3>Ceo ispit</h3>
+                        <div class="price"><span class="old">3.000</span>2.400 <small>RSD</small></div>
+                        <span class="save">Uštediš 600 RSD</span>
+                        <p class="price-sub">Oba kolokvijuma — kompletna priprema za ispit.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Sve oblasti oba kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> Prvi i drugi kolokvijum</li>
+                            <li><i class="fas fa-check"></i> Detaljno rešeni tipski zadaci</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-pay data-image="/images/uplatnica-2400.png" data-label="OIKT — ceo ispit · 2.400 RSD" data-wa="Kupio/la sam OIKT - ceo ispit">Kupi ceo ispit</button>
+                    </div>
+
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Drugi kolokvijum</h3>
+                        <div class="price">1.500 <small>RSD</small></div>
+                        <p class="price-sub">Sve za drugi kolokvijum na jednom mestu.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Video lekcije za sve oblasti 2. kolokvijuma</li>
+                            <li><i class="fas fa-check"></i> SQL, Java, magnetni diskovi, IP adrese</li>
+                            <li><i class="fas fa-check"></i> Detaljno rešeni tipski zadaci</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-1500.png" data-label="OIKT — 2. kolokvijum · 1.500 RSD" data-wa="Kupio/la sam OIKT - drugi kolokvijum">Kupi 2. kolokvijum</button>
+                    </div>
+                </div>
+
+                <div class="buy-steps is-row reveal" style="margin-top: 16px;">
+                    <h3>Kako do kursa</h3>
+                    <ol>
+                        <li><b>Napravi nalog</b><span><a href="/register/">Registruj se</a> mejlom koji ćeš koristiti za gledanje.</span></li>
+                        <li><b>Uplati</b><span>Uplatnicom ili online. Podatke dobijaš klikom na dugme za kupovinu.</span></li>
+                        <li><b>Pošalji potvrdu</b><span>Screenshot ili sliku uplatnice na WhatsApp <b>065 975 2402</b>, uz mejl naloga.</span></li>
+                        <li><b>Kreni sa učenjem</b><span>Kurs se pojavljuje u „Kupljeni kursevi” čim aktiviramo pristup.</span></li>
+                    </ol>
                 </div>
             </div>
+        </section>
+
+        <!-- ============ PITANJA ============ -->
+        <section class="section" id="pitanja" style="padding-top: 0;">
+            <div class="wrap faq-grid">
+                <div class="faq-side reveal">
+                    <h2 class="h2">Pitanja o kursu</h2>
+                    <p>Nešto nije jasno? Javi se direktno.</p>
+                    <div class="contact-lines">
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 065 975 2402</a>
+                        <a href="mailto:pomocnafonu@gmail.com"><i class="far fa-envelope"></i> pomocnafonu@gmail.com</a>
+                    </div>
+                </div>
+                <div class="faq-list reveal">
+                    <details>
+                        <summary>Da li kurs pokriva i Word, Excel i PowerPoint?</summary>
+                        <p>Ne — kurs pokriva ispitni deo (zadatke za oba kolokvijuma). Rokove za Word, Excel i PowerPoint možeš da nađeš besplatno u <a href="/materijali#oikt">materijalima za 1. godinu</a>.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li prvo da probam?</summary>
+                        <p>Da. Cela oblast „Brojevni sistemi” je besplatna — <a href="/oikt-free-player/">pogledaj je ovde</a>.</p>
+                    </details>
+                    <details>
+                        <summary>Da li mi treba predznanje?</summary>
+                        <p>Ne. Kurs je napravljen tako da bude razumljiv svima, bez obzira na prethodno znanje.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li da gledam sa telefona?</summary>
+                        <p>Da. Kurs možeš da gledaš sa telefona, tableta ili laptopa — najviše 2 uređaja po nalogu.</p>
+                    </details>
+                    <details>
+                        <summary>Kako se plaća?</summary>
+                        <p>Uplatnicom u banci ili pošti, ili online. Nakon uplate pošalji potvrdu na WhatsApp 065 975 2402 i aktiviramo ti pristup.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ZAVRŠNI CTA ============ -->
+        <section class="wrap">
+            <div class="final reveal">
+                <h2 class="h2">Kreni od brojevnih sistema. <span class="grad-text">Besplatno je.</span></h2>
+                <p>Pogledaj celu oblast brojevnih sistema i vidi da li ti ovakav način učenja odgovara.</p>
+                <div class="hero-ctas">
+                    <a href="/oikt-free-player/" class="btn btn-primary"><i class="fas fa-play"></i> Gledaj besplatno</a>
+                    <a href="#cena" class="btn btn-ghost">Pogledaj cene</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"><span>Pomoć na fonu</span></a>
+                    <p>Video kursevi i besplatni materijali za studente Fakulteta organizacionih nauka.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Kursevi</h4>
+                        <a href="/kursevi">Svi kursevi</a>
+                        <a href="/prijemni">Prijemni</a>
+                        <a href="/kupljeni-kursevi/">Kupljeni kursevi</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Materijali</h4>
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kontakt</h4>
+                        <a href="mailto:pomocnafonu@gmail.com">pomocnafonu@gmail.com</a>
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener">WhatsApp: 065 975 2402</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; <span id="year">2026</span> Pomoć na fonu. Sva prava zadržana.</div>
+        </div>
+    </footer>
+
+    <!-- ============ MODAL ZA UPLATU ============ -->
+    <div class="pay-modal" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title" hidden>
+        <div class="pay-box">
+            <button type="button" class="pay-close" id="pay-close" aria-label="Zatvori"><i class="fas fa-xmark"></i></button>
+            <h2 id="pay-title">Podaci za uplatu</h2>
+            <p class="pay-sub" id="pay-sub">OIKT</p>
+            <img src="/images/uplatnica-2400.png" alt="Uplatnica" class="pay-img" id="pay-img">
+            <p>Nakon uplate pošalji screenshot online uplate ili sliku uplatnice, uz mejl svog naloga, na WhatsApp:</p>
+            <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="btn btn-wa" id="pay-wa">
+                <i class="fab fa-whatsapp"></i> +381 65 975 24 02
+            </a>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/index_files/course.js"></script>
+    <script src="/index_files/site.js"></script>
+    <script type="module" src="/index_files/site-auth.js"></script>
 </body>
+
 </html>

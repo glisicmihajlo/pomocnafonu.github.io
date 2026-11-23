@@ -1,0 +1,718 @@
+/* =========================================================
+   Zajednički stilovi za stranice kurseva (prijemni, oikt, mat1…)
+   Dopuna za /index_files/home.css
+   ========================================================= */
+
+/* Putanja (Kursevi / 1. godina / OIKT) */
+
+.crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-3);
+    margin-bottom: 26px;
+}
+
+.crumbs a { color: var(--text-2); }
+.crumbs a:hover { color: var(--text); }
+.crumbs i { font-size: 0.6rem; }
+
+/* Kartica "Kako se polaže" u heru */
+
+.exam-card {
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+}
+
+.exam-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 18px;
+}
+
+.exam-block {
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.exam-block.is-main {
+    background: linear-gradient(160deg, rgba(255, 176, 32, 0.1), transparent 70%), var(--bg-2);
+    border-color: rgba(255, 176, 32, 0.3);
+}
+
+.exam-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-2);
+    margin-bottom: 12px;
+}
+
+.exam-items { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.exam-items span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.exam-items i { color: var(--text-3); }
+
+.exam-plus {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-3);
+    line-height: 1;
+    padding: 10px 0;
+}
+
+.exam-split {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px 20px;
+}
+
+.exam-split > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-content: flex-start;
+}
+
+.exam-split b {
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: var(--grad);
+    color: #1a1208;
+    font-size: 0.9rem;
+}
+
+/* width 0 + min-width 100%: natpis ide u novi red, ali ne širi grupu */
+.exam-split span {
+    width: 0;
+    min-width: 100%;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    color: var(--text-3);
+}
+
+/* "ili" kao mali bedž između dve opcije, poravnat sa dugmićima */
+.exam-split em {
+    align-self: flex-start;
+    margin-top: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.03);
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.exam-split > div:last-child b {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+}
+
+.exam-note {
+    margin: 16px 0 0;
+    font-size: 0.85rem;
+    color: var(--text-3);
+}
+
+.inline-link { color: var(--amber); font-weight: 600; }
+.inline-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Predavač */
+
+.lecturer-row {
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    max-width: 560px;
+}
+
+.lecturer-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #1a1208;
+    background: var(--grad);
+    flex-shrink: 0;
+}
+
+.lecturer-row b { display: block; font-size: 0.98rem; }
+.lecturer-row span { font-size: 0.85rem; color: var(--text-3); }
+
+.yt-link {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-2);
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.yt-link i { color: #ff4d4d; font-size: 1rem; }
+.yt-link:hover { color: var(--text); border-color: rgba(255, 77, 77, 0.5); }
+
+/* Bodovi po delovima ispita (traka) */
+
+.points-bar {
+    display: flex;
+    gap: 4px;
+    height: 56px;
+    margin-bottom: 14px;
+}
+
+.points-bar > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 14px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    min-width: 0;
+}
+
+.points-bar > div:first-child { border-radius: 12px 6px 6px 12px; }
+.points-bar > div:last-child { border-radius: 6px 12px 12px 6px; }
+.points-bar > div.is-main { background: var(--grad); color: #1a1208; }
+.points-bar b { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.points-bar span { font-size: 0.72rem; font-weight: 700; opacity: 0.75; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.exam-facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--text-2);
+}
+
+.exam-facts li { display: flex; gap: 10px; }
+.exam-facts i { color: var(--amber); margin-top: 4px; font-size: 0.75rem; }
+
+/* Oblast u izradi / rešeni rokovi */
+
+.topic-chip.is-soon { color: var(--text-3); border-style: dashed; }
+.topic-chip.is-soon small { font-size: 0.7rem; font-weight: 700; color: var(--text-3); }
+.topic-chip.is-rokovi { border-color: rgba(255, 176, 32, 0.35); color: var(--amber); }
+
+/* Dodatni manji paketi ispod cenovnika */
+
+.extra-tiers {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.extra-tier {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.extra-tier div { flex: 1; min-width: 0; }
+.extra-tier b { display: block; }
+.extra-tier span { font-size: 0.88rem; color: var(--text-3); }
+.extra-tier .btn { height: 42px; padding: 0 16px; font-size: 0.85rem; }
+
+/* Već kupljeno */
+
+.owned-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px 14px;
+    flex-wrap: wrap;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(94, 224, 160, 0.08);
+    border: 1px solid rgba(94, 224, 160, 0.3);
+    max-width: 560px;
+    font-weight: 600;
+}
+
+.owned-banner > i { color: var(--green); }
+
+.owned-banner a {
+    color: var(--green);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.owned-banner > span { margin-right: auto; }
+.owned-banner a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Tekst + lista sa kvačicama */
+
+.strategy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: start;
+}
+
+.strategy-body p { color: var(--text-2); margin: 0 0 16px; font-size: 1.02rem; }
+.strategy-body p b { color: var(--text); }
+
+.checks {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: grid;
+    gap: 12px;
+}
+
+.checks li { display: flex; gap: 12px; align-items: flex-start; }
+
+.checks li i {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    font-size: 0.7rem;
+    color: var(--amber);
+    background: rgba(255, 176, 32, 0.12);
+}
+
+/* Program (numerisana lista) */
+
+.syllabus {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    border-top: 1px solid var(--line);
+}
+
+.syllabus li {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 600;
+}
+
+.syllabus li > span:first-child {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-3);
+    font-variant-numeric: tabular-nums;
+    width: 22px;
+}
+
+.syllabus li.is-free > span:first-child { color: var(--green); }
+
+.syllabus .count {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-3);
+    white-space: nowrap;
+}
+
+.free-tag {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: var(--green);
+    background: rgba(94, 224, 160, 0.1);
+    border: 1px solid rgba(94, 224, 160, 0.25);
+    white-space: nowrap;
+}
+
+.free-tag + .count { margin-left: 12px; }
+.free-tag i { font-size: 0.6rem; }
+.free-tag:hover { background: rgba(94, 224, 160, 0.18); }
+
+/* Program po kolokvijumima (dve kolone sa modulima) */
+
+.program-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.program-col {
+    padding: 28px;
+    border-radius: 18px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.program-col-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.program-col-head h3 { margin: 0; font-size: 1.25rem; letter-spacing: -0.015em; }
+.program-col-head span { font-size: 0.85rem; color: var(--amber); font-weight: 700; }
+
+.program-col .syllabus { grid-template-columns: minmax(0, 1fr); border-top: none; }
+.program-col .syllabus li:last-child { border-bottom: none; }
+
+/* Oblasti kao čipovi (kolokvijumi sa različitim brojem oblasti izgledaju ujednačeno) */
+
+.program-cols { align-items: stretch; }
+.program-col-head { margin-bottom: 18px; }
+
+.topic-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.topic-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line-strong);
+}
+
+.topic-chip.is-free {
+    border-color: rgba(94, 224, 160, 0.4);
+    background: rgba(94, 224, 160, 0.07);
+    transition: background 0.15s;
+}
+
+.topic-chip.is-free span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.topic-chip.is-free span i { font-size: 0.55rem; }
+.topic-chip.is-free:hover { background: rgba(94, 224, 160, 0.14); }
+
+/* Cena — jedna kartica (prijemni) */
+
+.price-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.price-card {
+    border-radius: 22px;
+    padding: 40px;
+    background:
+        radial-gradient(500px 260px at 100% 0%, rgba(255, 207, 35, 0.16), transparent 70%),
+        linear-gradient(160deg, #1f1a14, #15120f);
+    border: 1px solid rgba(255, 176, 32, 0.3);
+}
+
+.price-card .label,
+.tier .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1a1208;
+    background: var(--grad);
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.price-card h2 { margin: 18px 0 4px; font-size: 1.5rem; letter-spacing: -0.02em; }
+
+.price {
+    font-size: clamp(3rem, 6vw, 4.2rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+
+.price small { font-size: 1.1rem; font-weight: 700; color: var(--text-3); letter-spacing: 0; }
+
+.price-sub { color: var(--text-2); margin: 10px 0 0; }
+
+.price-card .checks { margin: 28px 0 32px; }
+
+.btn-block { width: 100%; height: 56px; font-size: 1rem; }
+
+.price-alt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--text-3);
+    font-weight: 600;
+}
+
+.price-alt:hover { color: var(--text); }
+
+/* Cena — više paketa (kolokvijumi / ispit) */
+
+.tiers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+.tier {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    border-radius: 20px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.tier.is-featured {
+    background:
+        radial-gradient(400px 220px at 100% 0%, rgba(255, 207, 35, 0.16), transparent 70%),
+        linear-gradient(160deg, #1f1a14, #15120f);
+    border-color: rgba(255, 176, 32, 0.35);
+    box-shadow: 0 30px 60px -30px rgba(255, 141, 58, 0.35);
+}
+
+.tier-top { min-height: 28px; margin-bottom: 14px; }
+
+.tier h3 { margin: 0 0 6px; font-size: 1.3rem; letter-spacing: -0.015em; }
+
+.tier .price { font-size: clamp(2.4rem, 4vw, 3rem); }
+
+.tier .old {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-3);
+    text-decoration: line-through;
+    margin-right: 8px;
+    letter-spacing: 0;
+}
+
+.tier .price-sub { font-size: 0.92rem; }
+.tier .checks { margin: 22px 0 28px; font-size: 0.93rem; }
+.tier .btn { margin-top: auto; width: 100%; height: 52px; }
+
+.tier .save {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--green);
+}
+
+/* Koraci kupovine */
+
+.buy-steps {
+    border-radius: 22px;
+    padding: 40px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.buy-steps h3 { margin: 0 0 26px; font-size: 1.3rem; letter-spacing: -0.015em; }
+
+.buy-steps ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: s;
+    display: grid;
+    gap: 24px;
+}
+
+.buy-steps.is-row ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.buy-steps li {
+    counter-increment: s;
+    position: relative;
+    padding-left: 52px;
+}
+
+.buy-steps li::before {
+    content: counter(s, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--amber);
+    background: rgba(255, 176, 32, 0.1);
+    border: 1px solid rgba(255, 176, 32, 0.25);
+}
+
+.buy-steps li b { display: block; margin-bottom: 2px; }
+.buy-steps li span { color: var(--text-2); font-size: 0.92rem; }
+.buy-steps li span b { display: inline; margin: 0; color: var(--text); }
+.buy-steps a,
+.faq-list details p a { color: var(--amber); font-weight: 600; }
+.buy-steps a:hover,
+.faq-list details p a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Modal za uplatu */
+
+.pay-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.pay-box {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    animation: payIn 0.2s ease;
+}
+
+@keyframes payIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+}
+
+.pay-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+    background: none;
+    cursor: pointer;
+    color: var(--text-2);
+}
+
+.pay-close:hover { color: var(--text); }
+
+.pay-box h2 { margin: 0; font-size: 1.5rem; letter-spacing: -0.02em; }
+.pay-sub { margin: 4px 0 20px; color: var(--text-3); font-size: 0.9rem; }
+
+.pay-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    margin-bottom: 18px;
+}
+
+.pay-box > p { color: var(--text-2); font-size: 0.92rem; margin: 0 0 16px; }
+
+.btn-wa {
+    width: 100%;
+    background: #25d366;
+    color: #fff;
+    height: 52px;
+}
+
+.btn-wa:hover { background: #1ebe57; transform: translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+    .pay-box { animation: none; }
+}
+
+/* Responsive */
+
+@media (max-width: 1040px) {
+    .strategy,
+    .price-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .tiers { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
+    .tier.is-featured { order: -1; }
+    .buy-steps.is-row ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .program-cols { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 720px) {
+    .syllabus { grid-template-columns: minmax(0, 1fr); }
+    .price-card,
+    .buy-steps,
+    .program-col,
+    .tier { padding: 28px 22px; }
+    .buy-steps.is-row ol { grid-template-columns: minmax(0, 1fr); }
+    .pay-box { padding: 26px 18px; }
+    .exam-card { padding: 22px; }
+    .yt-link { margin-left: 0; }
+    .points-bar b { font-size: 1.1rem; }
+    .points-bar > div { padding: 0 10px; }
+}

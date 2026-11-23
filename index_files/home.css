@@ -157,7 +157,6 @@ button { font: inherit; color: inherit; }
 .nav-dd > button:hover,
 .nav-dd.open > button { color: var(--text); background: rgba(255, 255, 255, 0.04); }
 
-.nav-links .nav-highlight { color: var(--amber); }
 
 .nav-dd { position: relative; }
 

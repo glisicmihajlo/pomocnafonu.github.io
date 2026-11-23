@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
     <script>
@@ -8,201 +9,325 @@
         gtag('js', new Date());
         gtag('config', 'G-C5JCE202MQ');
     </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurs iz DMS-a - FON | Pomoć na fonu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DMS — video kurs za pismeni i usmeni | Pomoć na fonu</title>
+    <meta name="description" content="Video kurs iz Diskretnih matematičkih struktura za FON: skupovi, iskazni i predikatski račun, relacije — tipski zadaci za pismeni i ponavljanje gradiva i rokovi za usmeni.">
+
+    <meta content="DMS — video kurs | Pomoć na fonu" property="og:title">
+    <meta content="Video kurs iz Diskretnih matematičkih struktura za FON: skupovi, iskazni i predikatski račun, relacije — tipski zadaci za pismeni i ponavljanje gradiva i rokovi za usmeni." property="og:description">
+    <meta content="https://pomocnafonu.com/images/logo2.png" property="og:image">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.pomocnafonu.com/dms/">
+
     <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
-    
-    <!-- Eksterni CSS fajl -->
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index_files/home.css">
+    <link rel="stylesheet" href="/index_files/course.css">
 </head>
+
 <body>
 
-    <div class="glow-bg"></div>
+    <!-- ============ NAVIGACIJA ============ -->
+    <nav class="site-nav" id="site-nav">
+        <div class="wrap nav-inner">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Pomoć na fonu logo" width="34" height="34">
+                <span>Pomoć na fonu</span>
+            </a>
 
-    <div class="content-area">
-        <a href="/kursevi/" class="back-link">
-            <i class="fas fa-arrow-left"></i> Svi kursevi
-        </a>
-        
-        <header class="hero-section reveal">
-            <div class="tagline">POLOŽI DMS U ROKU</div>
-            <h1>Kompletan kurs iz DMS&#8209;a</h1>
+            <button class="nav-burger" id="nav-burger" aria-label="Otvori meni" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
 
-            <div class="course-duration-badge">
-                <i class="fa-solid fa-graduation-cap"></i> Priprema za pismeni i usmeni deo
+            <div class="nav-links">
+                <a href="/kursevi" class="is-current">Kursevi</a>
+                <a href="/prijemni">Prijemni</a>
+                <div class="nav-dd" id="nav-dd">
+                    <button type="button" aria-expanded="false">Materijali <i class="fas fa-chevron-down"></i></button>
+                    <div class="nav-dd-menu">
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                </div>
+                <a href="#pitanja">Česta pitanja</a>
+                <a href="/kupljeni-kursevi/" id="kupljeniKurseviLink" hidden>Kupljeni kursevi</a>
             </div>
 
-            <p class="hero-subtitle">Sve oblasti objašnjene od nule sa fokusom na tipske zadatke za pismeni i usmeni. Spremaj se svojim tempom, iz svoje sobe.</p>
+            <div class="nav-actions">
+                <a href="/login" id="authBtn" class="btn btn-ghost">
+                    <i class="fas fa-user"></i> <span id="authBtnText">Prijavi se</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <header class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <nav class="crumbs" aria-label="Putanja">
+                        <a href="/kursevi">Kursevi</a><i class="fas fa-chevron-right"></i>
+                        <a href="/kursevi#y2">2. godina</a><i class="fas fa-chevron-right"></i>
+                        <span>DMS</span>
+                    </nav>
+                    <h1>DMS, <span class="grad-text">od iskaznog računa do relacija.</span></h1>
+                    <p class="hero-lead">
+                        Priprema za pismeni i usmeni deo — sve oblasti objašnjene od nule, sa fokusom na tipske zadatke. Spremaš se svojim tempom, iz svoje sobe.
+                    </p>
+
+                    <div class="owned-banner" id="owned-banner" hidden>
+                        <i class="fas fa-circle-check"></i>
+                        <span>Već imaš ovaj kurs.</span>
+                        <a href="/dms-pismeni-player/" data-id="dms-pismeni">Pismeni <i class="fas fa-arrow-right"></i></a>
+                        <a href="/dms-usmeni-player/" data-id="dms-usmeni">Usmeni <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="hero-ctas" id="hero-ctas">
+                        <a href="#cena" class="btn btn-primary">Pogledaj cene</a>
+                        <a href="#program" class="btn btn-ghost">Šta je u kursu</a>
+                    </div>
+                </div>
+
+                <!-- Kako se polaže -->
+                <aside class="exam-card" aria-label="Kako se polaže DMS">
+                    <small class="exam-label">Kako se polaže DMS</small>
+                    <div class="exam-block is-main">
+                        <div class="exam-tag">Pismeni deo</div>
+                        <div class="exam-split">
+                            <div><b>1. klk</b><b>2. klk</b><span>u toku semestra</span></div>
+                            <em>ili</em>
+                            <div><b>Integralni</b><span>pismeni u roku</span></div>
+                        </div>
+                    </div>
+                    <div class="exam-plus">+</div>
+                    <div class="exam-block">
+                        <div class="exam-tag">Usmeni deo</div>
+                        <div class="exam-items"><span><i class="far fa-comments"></i> Teorija i pitanja</span></div>
+                    </div>
+                    <p class="exam-note">Kurs pokriva oba dela — pismeni i usmeni.</p>
+                </aside>
+            </div>
         </header>
 
-        <div class="marquee-container">
-            <div class="marquee-row">
-                <div class="marquee-content">
-                    <div class="topic-card">Iskazni račun</div>
-                    <div class="topic-card">Predikatski račun</div>
-                    <div class="topic-card">Relacije</div>
-                    <div class="topic-card">Grafovi</div>
-                    <div class="topic-card">Stabla</div>
-                    <div class="topic-card">Automati</div>
-                    <div class="topic-card">Iskazni račun</div>
-                    <div class="topic-card">Predikatski račun</div>
-                    <div class="topic-card">Relacije</div>
-                    <div class="topic-card">Grafovi</div>
-                    <div class="topic-card">Stabla</div>
-                    <div class="topic-card">Automati</div>
-                    <div class="topic-card">Iskazni račun</div>
-                    <div class="topic-card">Predikatski račun</div>
-                    <div class="topic-card">Relacije</div>
-                    <div class="topic-card">Grafovi</div>
-                    <div class="topic-card">Stabla</div>
-                    <div class="topic-card">Automati</div>
+        <!-- ============ NAČIN POLAGANJA ============ -->
+        <section class="section">
+            <div class="wrap strategy">
+                <div class="reveal">
+                    <div class="eyebrow">Način polaganja</div>
+                    <h2 class="h2">Kako bez stresa do desetke iz DMS-a?</h2>
                 </div>
-            </div>
-            <div class="marquee-row reverse">
-                <div class="marquee-content">
-                    <div class="topic-card">Iskazni račun</div>
-                    <div class="topic-card">Predikatski račun</div>
-                    <div class="topic-card">Relacije</div>
-                    <div class="topic-card">Grafovi</div>
-                    <div class="topic-card">Stabla</div>
-                    <div class="topic-card">Automati</div>
-                    <div class="topic-card">Iskazni račun</div>
-                    <div class="topic-card">Predikatski račun</div>
-                    <div class="topic-card">Relacije</div>
-                    <div class="topic-card">Grafovi</div>
-                    <div class="topic-card">Stabla</div>
-                    <div class="topic-card">Automati</div>
-                    <div class="topic-card">Iskazni račun</div>
-                    <div class="topic-card">Predikatski račun</div>
-                    <div class="topic-card">Relacije</div>
-                    <div class="topic-card">Grafovi</div>
-                    <div class="topic-card">Stabla</div>
-                    <div class="topic-card">Automati</div>
-                </div>
-            </div>
-        </div>
-
-        <section class="guide-section reveal">
-            <div class="guide-content">
-                <div class="guide-text">
-                    <span class="small-badge">STRATEGIJA ZA POLAGANjE</span>
-                    <h2>Kako bez stresa do desetke iz DMS&#8209;a?</h2>
-                    <p>Ispit iz Diskretnih matematičkih struktura polaže se kroz <strong>pismeni deo</strong> (koji možeš položiti preko dva kolokvijuma tokom semestra) i <strong>usmeni deo</strong> ispita.</p>
-
-                    <p>Kroz naš kurs pokrivamo kompletnu teoriju, tipski rešene zadatke sa pismenog dela, kao i detaljno objašnjene rokove sa prethodnih ispitnih rokova.</p>
-
-                    <p><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Priprema za 1. i 2. kolokvijum ili integralni pismeni.</p>
-                    <p><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Prelazak teorije i pitanja za usmeni deo ispita.</p>
-                    <p><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Uz usmeni deo kursa dobijate skriptu sa rešenim rokovima.</p>
-                </div>
-                <div class="guide-visual">
-                    <div class="visual-box" style="font-size: 1.05rem;">Pismeni<br>(2 Kolokvijuma)</div>
-                    <div class="visual-box plus">+</div>
-                    <div class="visual-box" style="font-size: 1.05rem;">Usmeni<br>Deo</div>
+                <div class="strategy-body reveal">
+                    <p>Ispit iz Diskretnih matematičkih struktura polaže se kroz pismeni deo (koji možeš položiti preko dva kolokvijuma tokom semestra) i usmeni deo ispita.</p>
+                    <p>Kroz kurs pokrivamo teoriju, tipski rešene zadatke sa pismenog dela i detaljno objašnjene rokove sa prethodnih ispitnih rokova.</p>
+                    <ul class="checks">
+                        <li><i class="fas fa-check"></i> Priprema za 1. i 2. kolokvijum ili integralni pismeni</li>
+                        <li><i class="fas fa-check"></i> Prelazak teorije i pitanja za usmeni</li>
+                        <li><i class="fas fa-check"></i> Uz usmeni deo dobijaš skriptu sa rešenim rokovima</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section id="cene" class="pricing-section">
-            <h2 class="section-title">Izaberi paket po svojoj meri</h2>
-            
-            <div class="pricing-grid">
-                
-                <!-- Pismeni deo -->
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">PISMENI DEO</div>
-                            <h3 style="font-size: 1.8rem; margin-top: 10px; color: #fff;">Pismeni</h3>
-                            <div class="price">
-                                2.000 <span class="currency">RSD</span>
-                            </div>
-                            <p style="font-size: 0.95rem; margin-top: 15px; color: var(--text-muted);">Sve za pismeni deo.</p>
-                            
-                            <ul style="text-align: left; margin-top: 25px; list-style: none; padding: 0; color: var(--text-main); font-size: 0.95rem;">
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Video lekcije za 1. i 2. kolokvijum</li>
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Rešeni rokovi sa objašnjenjima</li>
-                            </ul>
+        <!-- ============ PROGRAM ============ -->
+        <section class="section" id="program" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Program kursa</h2>
+                    <p>Pismeni i usmeni su podeljeni po oblastima. Za usmeni prvo ponavljanje gradiva, pa rokovi sa usmenog.</p>
+                </div>
+
+                <div class="program-cols reveal">
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>Pismeni</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">Skupovi</span>
+                            <span class="topic-chip">Iskazni račun</span>
+                            <span class="topic-chip">Predikatski račun</span>
+                            <span class="topic-chip">Relacije</span>
                         </div>
-                        <div class="p-card-action" style="margin-top: 30px;">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-2000.png" style="width: 100%; padding: 15px; font-size: 1rem;">KUPI PISMENI</button>
+                    </div>
+                    <div class="program-col">
+                        <div class="program-col-head"><h3>Usmeni</h3></div>
+                        <div class="topic-chips">
+                            <span class="topic-chip">Skupovi</span>
+                            <span class="topic-chip">Iskazni račun</span>
+                            <span class="topic-chip">Predikatski račun</span>
+                            <span class="topic-chip">Relacije</span>
+                            <span class="topic-chip is-rokovi"><i class="fas fa-list-check"></i> Rokovi sa usmenog</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Ceo kurs (Featured) -->
-                <div class="pricing-card featured reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">NAJPOPULARNIJE</div>
-                            <h3 style="font-size: 1.8rem; margin-top: 10px; color: #fff;">Komplet</h3>
-                            <div class="price">
-                                3.800 <span class="currency">RSD</span>
-                            </div>
-                            <p style="font-size: 0.95rem; margin-top: 15px; color: var(--text-muted);">Kompletna priprema za ceo ispit (pismeni + usmeni).</p>
-                            
-                            <ul style="text-align: left; margin-top: 25px; list-style: none; padding: 0; color: var(--text-main); font-size: 0.95rem;">
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Sve iz pismenog dela i rokovi</li>
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Kompletan usmeni deo ispita</li>
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Najveća ušteda</li>
-                            </ul>
-                        </div>
-                        <div class="p-card-action" style="margin-top: 30px;">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-3800.png" style="width: 100%; padding: 15px; font-size: 1rem;">KUPI KOMPLET</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Usmeni deo -->
-                <div class="pricing-card reveal">
-                    <div class="card-inner">
-                        <div class="p-card-header">
-                            <div class="preorder-badge">USMENI DEO</div>
-                            <h3 style="font-size: 1.8rem; margin-top: 10px; color: #fff;">Usmeni</h3>
-                            <div class="price">
-                                2.500 <span class="currency">RSD</span>
-                            </div>
-                            <p style="font-size: 0.95rem; margin-top: 15px; color: var(--text-muted);">Sve za usmeni deo.</p>
-                            
-                            <ul style="text-align: left; margin-top: 25px; list-style: none; padding: 0; color: var(--text-main); font-size: 0.95rem;">
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Video lekcije za usmeni</li>
-                                <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Skripta sa rešenim rokovima + objašnjenja</li>
-                            </ul>
-                        </div>
-                        <div class="p-card-action" style="margin-top: 30px;">
-                            <button class="btn-glow buy-trigger" data-image="../images/uplatnica-2500.png" style="width: 100%; padding: 15px; font-size: 1rem;">KUPI USMENI</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <footer class="main-footer" style="text-align: center; padding-top: 50px; border-top: 1px solid var(--border); margin-top: 50px; color: var(--text-muted);">
-            <p>&copy; Pomoć na fonu</p>
-        </footer>
-    </div>
+        <!-- ============ CENE ============ -->
+        <section class="section" id="cena" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2>Izaberi paket po svojoj meri</h2>
+                    <p>Uzmi samo deo koji ti treba, ili komplet po nižoj ceni.</p>
+                </div>
 
-    <div id="payment-modal" class="modal-overlay">
-        <div class="modal-container">
-            <span class="close-modal"><i class="fas fa-times"></i></span>
-            <h2 class="modal-title">Podaci za uplatu</h2>
-            <div class="modal-content">
-                <img src="../images/uplatnica-celo.png" alt="Uplatnica za kurs DMS" class="modal-img">
-                <div class="modal-info">
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Nakon uplate pošaljite screenshot online uplate ili sliku uplatnice na WhatsApp broj:</p>
-                    <a href="https://wa.me/381659752402?text=Kupio/la%20sam%20kurs%20iz%20DMS-a" target="_blank" class="wa-link">
-                        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> +381 65 975 24 02
-                    </a>
+                <div class="tiers reveal">
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Pismeni</h3>
+                        <div class="price">2.000 <small>RSD</small></div>
+                        <p class="price-sub">Sve za pismeni deo.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Video lekcije za 1. i 2. kolokvijum</li>
+                            <li><i class="fas fa-check"></i> Rešeni rokovi sa objašnjenjima</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-2000.png" data-label="DMS — pismeni · 2.000 RSD" data-wa="Kupio/la sam DMS - pismeni">Kupi pismeni</button>
+                    </div>
+
+                    <div class="tier is-featured">
+                        <div class="tier-top"><span class="label">Najpopularnije</span></div>
+                        <h3>Komplet</h3>
+                        <div class="price"><span class="old">4.500</span>3.800 <small>RSD</small></div>
+                        <span class="save">Uštediš 700 RSD</span>
+                        <p class="price-sub">Kompletna priprema za ceo ispit — pismeni + usmeni.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Sve iz pismenog dela i rokovi</li>
+                            <li><i class="fas fa-check"></i> Kompletan usmeni deo</li>
+                            <li><i class="fas fa-check"></i> Skripta sa rešenim rokovima</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-pay data-image="/images/uplatnica-3800.png" data-label="DMS — komplet · 3.800 RSD" data-wa="Kupio/la sam DMS - komplet">Kupi komplet</button>
+                    </div>
+
+                    <div class="tier">
+                        <div class="tier-top"></div>
+                        <h3>Usmeni</h3>
+                        <div class="price">2.500 <small>RSD</small></div>
+                        <p class="price-sub">Sve za usmeni deo.</p>
+                        <ul class="checks">
+                            <li><i class="fas fa-check"></i> Video lekcije za usmeni</li>
+                            <li><i class="fas fa-check"></i> Skripta sa rešenim rokovima + objašnjenja</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost" data-pay data-image="/images/uplatnica-2500.png" data-label="DMS — usmeni · 2.500 RSD" data-wa="Kupio/la sam DMS - usmeni">Kupi usmeni</button>
+                    </div>
+                </div>
+
+                <div class="buy-steps is-row reveal" style="margin-top: 16px;">
+                    <h3>Kako do kursa</h3>
+                    <ol>
+                        <li><b>Napravi nalog</b><span><a href="/register/">Registruj se</a> mejlom koji ćeš koristiti za gledanje.</span></li>
+                        <li><b>Uplati</b><span>Uplatnicom ili online. Podatke dobijaš klikom na dugme za kupovinu.</span></li>
+                        <li><b>Pošalji potvrdu</b><span>Screenshot ili sliku uplatnice na WhatsApp <b>065 975 2402</b>, uz mejl naloga.</span></li>
+                        <li><b>Kreni sa učenjem</b><span>Kurs se pojavljuje u „Kupljeni kursevi” čim aktiviramo pristup.</span></li>
+                    </ol>
                 </div>
             </div>
+        </section>
+
+        <!-- ============ PITANJA ============ -->
+        <section class="section" id="pitanja" style="padding-top: 0;">
+            <div class="wrap faq-grid">
+                <div class="faq-side reveal">
+                    <h2 class="h2">Pitanja o kursu</h2>
+                    <p>Nešto nije jasno? Javi se direktno.</p>
+                    <div class="contact-lines">
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 065 975 2402</a>
+                        <a href="mailto:pomocnafonu@gmail.com"><i class="far fa-envelope"></i> pomocnafonu@gmail.com</a>
+                    </div>
+                </div>
+                <div class="faq-list reveal">
+                    <details>
+                        <summary>Šta dobijam uz usmeni deo?</summary>
+                        <p>Video lekcije sa ponavljanjem gradiva po oblastima, rokove sa usmenog i skriptu sa rešenim rokovima i objašnjenjima.</p>
+                    </details>
+                    <details>
+                        <summary>Da li postoji besplatna lekcija?</summary>
+                        <p>Za DMS trenutno ne postoji besplatna lekcija. Ako nisi siguran da li ti kurs odgovara, javi nam se na WhatsApp i pitaj šta god te zanima.</p>
+                    </details>
+                    <details>
+                        <summary>Da li mi treba predznanje?</summary>
+                        <p>Ne. Kurs je napravljen tako da bude razumljiv svima, bez obzira na prethodno znanje.</p>
+                    </details>
+                    <details>
+                        <summary>Mogu li da gledam sa telefona?</summary>
+                        <p>Da. Kurs možeš da gledaš sa telefona, tableta ili laptopa — najviše 2 uređaja po nalogu.</p>
+                    </details>
+                    <details>
+                        <summary>Kako se plaća?</summary>
+                        <p>Uplatnicom u banci ili pošti, ili online. Nakon uplate pošalji potvrdu na WhatsApp 065 975 2402 i aktiviramo ti pristup.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ZAVRŠNI CTA ============ -->
+        <section class="wrap">
+            <div class="final reveal">
+                <h2 class="h2">Položi DMS u roku. <span class="grad-text">Kreni na vreme.</span></h2>
+                <p>Izaberi paket koji ti treba i počni sa pripremom već danas.</p>
+                <div class="hero-ctas">
+                    <a href="#cena" class="btn btn-primary">Pogledaj cene</a>
+                    <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-whatsapp"></i> Postavi pitanje</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"><span>Pomoć na fonu</span></a>
+                    <p>Video kursevi i besplatni materijali za studente Fakulteta organizacionih nauka.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Kursevi</h4>
+                        <a href="/kursevi">Svi kursevi</a>
+                        <a href="/prijemni">Prijemni</a>
+                        <a href="/kupljeni-kursevi/">Kupljeni kursevi</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Materijali</h4>
+                        <a href="/materijali">1. godina</a>
+                        <a href="/materijali2">2. godina — ISIT</a>
+                        <a href="/materijali2mio">2. godina — MIO</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kontakt</h4>
+                        <a href="mailto:pomocnafonu@gmail.com">pomocnafonu@gmail.com</a>
+                        <a href="https://wa.me/381659752402" target="_blank" rel="noopener">WhatsApp: 065 975 2402</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; <span id="year">2026</span> Pomoć na fonu. Sva prava zadržana.</div>
+        </div>
+    </footer>
+
+    <!-- ============ MODAL ZA UPLATU ============ -->
+    <div class="pay-modal" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title" hidden>
+        <div class="pay-box">
+            <button type="button" class="pay-close" id="pay-close" aria-label="Zatvori"><i class="fas fa-xmark"></i></button>
+            <h2 id="pay-title">Podaci za uplatu</h2>
+            <p class="pay-sub" id="pay-sub">DMS</p>
+            <img src="/images/uplatnica-3800.png" alt="Uplatnica" class="pay-img" id="pay-img">
+            <p>Nakon uplate pošalji screenshot online uplate ili sliku uplatnice, uz mejl svog naloga, na WhatsApp:</p>
+            <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="btn btn-wa" id="pay-wa">
+                <i class="fab fa-whatsapp"></i> +381 65 975 24 02
+            </a>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/index_files/course.js"></script>
+    <script src="/index_files/site.js"></script>
+    <script type="module" src="/index_files/site-auth.js"></script>
 </body>
+
 </html>

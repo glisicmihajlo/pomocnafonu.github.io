@@ -1,17 +1,18 @@
+/* Paleta usklađena sa ostatkom sajta (index_files/home.css) */
 :root {
-    --bg-main: #0d0d0f;
-    --sidebar-bg: #141417;
-    --card-bg: #1c1c21;
-    --border: rgba(255, 255, 255, 0.08);
-    --primary: #f59e0b;
-    --primary-soft: rgba(245, 158, 11, 0.1);
-    --primary-glow: rgba(245, 158, 11, 0.5);
-    --success: #34d399;
-    --success-soft: rgba(52, 211, 153, 0.1);
-    --danger: #f87171;
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --bg-main: #0b0a09;
+    --sidebar-bg: #12100e;
+    --card-bg: #1a1714;
+    --border: rgba(255, 236, 210, 0.09);
+    --primary: #ffb020;
+    --primary-soft: rgba(255, 176, 32, 0.1);
+    --primary-glow: rgba(255, 141, 58, 0.5);
+    --success: #5ee0a0;
+    --success-soft: rgba(94, 224, 160, 0.1);
+    --danger: #f07a6a;
+    --text-main: #f6f1ea;
+    --text-muted: #b9b0a5;
+    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 * {
@@ -147,7 +148,7 @@ button { font-family: inherit; }
 #progress-fill {
     width: 0;
     height: 100%;
-    background: linear-gradient(90deg, #ffcf23, var(--primary));
+    background: linear-gradient(90deg, #ffcf23, #ff8d3a);
     border-radius: 10px;
     box-shadow: 0 0 8px var(--primary-glow);
     transition: width 0.5s ease;
@@ -187,7 +188,7 @@ button { font-family: inherit; }
 }
 
 .search-box input:focus {
-    border-color: rgba(245, 158, 11, 0.4);
+    border-color: rgba(255, 176, 32, 0.4);
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -224,7 +225,7 @@ button { font-family: inherit; }
 .lesson-btn.active-lesson {
     background: var(--primary-soft);
     color: var(--primary);
-    border-color: rgba(245, 158, 11, 0.3);
+    border-color: rgba(255, 176, 32, 0.3);
     font-weight: 700;
 }
 
@@ -278,16 +279,25 @@ button { font-family: inherit; }
 }
 
 .back-link-player {
-    color: var(--text-muted);
+    color: var(--text-main);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.2s;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 236, 210, 0.16);
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.2s, background 0.2s;
 }
 
-.back-link-player:hover { color: var(--text-main); }
+.back-link-player:hover {
+    border-color: rgba(255, 176, 32, 0.5);
+    background: rgba(255, 176, 32, 0.06);
+}
 
 .user-chip {
     font-size: 0.78rem;
@@ -337,7 +347,7 @@ button { font-family: inherit; }
     gap: 14px;
     text-align: center;
     padding: 20px;
-    background: radial-gradient(circle at center, #1a1a1f 0%, #000 75%);
+    background: radial-gradient(circle at center, #1c1915 0%, #000 75%);
     color: var(--text-muted);
     z-index: 5;
 }
@@ -394,11 +404,11 @@ button { font-family: inherit; }
     transition: all 0.2s;
 }
 
-.nav-btn:hover:not(:disabled) { border-color: rgba(245, 158, 11, 0.4); color: var(--primary); }
+.nav-btn:hover:not(:disabled) { border-color: rgba(255, 176, 32, 0.4); color: var(--primary); }
 .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
 .button-glow {
-    background: linear-gradient(135deg, #ffcf23, var(--primary));
+    background: linear-gradient(120deg, #ffcf23, #ff8d3a);
     color: #000;
     border: none;
     cursor: pointer;
@@ -416,7 +426,7 @@ button { font-family: inherit; }
 
 .button-glow:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.7);
+    box-shadow: 0 6px 20px rgba(255, 176, 32, 0.7);
 }
 
 .button-glow.is-done {
@@ -464,8 +474,8 @@ kbd {
     max-width: calc(100% - 32px);
 }
 
-.toast-success { border-color: rgba(52, 211, 153, 0.4); }
-.toast-error { border-color: rgba(248, 113, 113, 0.5); color: var(--danger); }
+.toast-success { border-color: rgba(94, 224, 160, 0.4); }
+.toast-error { border-color: rgba(240, 122, 106, 0.5); color: var(--danger); }
 
 @keyframes toastIn {
     from { opacity: 0; transform: translate(-50%, 10px); }

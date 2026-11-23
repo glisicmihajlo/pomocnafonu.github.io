@@ -1,45 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const buyTriggers = document.querySelectorAll('.buy-trigger');
-const modal = document.getElementById('payment-modal');
-const modalImg = document.querySelector('.modal-img');
-const closeBtn = document.querySelector('.close-modal');
+// Stranica: Prijemni — modal sa uplatnicom i oznaka ako korisnik već ima kurs
+(function () {
+    var modal = document.getElementById('pay-modal');
+    var openBtn = document.getElementById('buy-btn');
+    var closeBtn = document.getElementById('pay-close');
+    var lastFocus = null;
 
-buyTriggers.forEach(trigger => {
-    // DODATO 'e' OVDE U ZAGRADU
-    trigger.addEventListener('click', function(e) { 
-        // Sada 'e' radi i sprečava skok na vrh
-        e.preventDefault(); 
-        
-        const newImageSrc = this.getAttribute('data-image');
-        
-        if(newImageSrc) {
-            modalImg.src = newImageSrc;
-        }
-
-        modal.style.display = 'flex';
-    });
-});
-
-// Zatvaranje modala na X
-closeBtn.onclick = function() {
-    modal.style.display = 'none';
-}
-
-// Zatvaranje klika van modala
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
+    function open() {
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+        if (window.gtag) gtag('event', 'prijemni_show_payment');
     }
-}
 
-    // Reveal animacija
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal');
-            }
-        });
-    }, { threshold: 0.1 });
+    function close() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+    }
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-});
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+
+    // Ako je korisnik već kupio kurs, umesto "Kupi" prikaži "Nastavi gledanje"
+    document.addEventListener('pnf:user', function (e) {
+        if ((e.detail.kursevi || []).indexOf('prijemni') === -1) return;
+        document.getElementById('owned-banner').hidden = false;
+        document.getElementById('hero-ctas').hidden = true;
+    });
+})();

@@ -1097,3 +1097,310 @@ button { font: inherit; color: inherit; }
     .fact + .fact { border-left: none; border-top: 1px solid var(--line); }
     .logo span { display: none; }
 }
+
+/* =========================================================
+   Stranica: Kursevi
+   ========================================================= */
+
+.nav-links > a.is-current { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+
+.page-head {
+    position: relative;
+    padding: 72px 0 0;
+    overflow: hidden;
+}
+
+.page-head::before {
+    content: "";
+    position: absolute;
+    top: -300px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(closest-side, rgba(255, 141, 58, 0.15), transparent);
+    pointer-events: none;
+}
+
+.page-head .wrap { position: relative; }
+
+.page-head h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    margin: 0 0 20px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-2);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text-3);
+}
+
+.filter:hover { color: var(--text); border-color: rgba(255, 176, 32, 0.4); }
+
+.filter.is-active {
+    background: var(--grad);
+    border-color: transparent;
+    color: #1a1208;
+}
+
+.filter.is-active span { background: rgba(0, 0, 0, 0.15); color: #1a1208; }
+
+.owned-note {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(94, 224, 160, 0.08);
+    border: 1px solid rgba(94, 224, 160, 0.25);
+    font-size: 0.88rem;
+    color: var(--text-2);
+}
+
+.owned-note i { color: var(--green); }
+
+.courses-page { padding-top: 56px; }
+
+.courses-page .year { margin-top: 0; }
+.courses-page .year:not([hidden]) ~ .year:not([hidden]) { margin-top: 56px; }
+
+.course-wide { grid-column: 1 / -1; }
+
+.owned-badge {
+    margin-left: auto;
+    margin-right: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 9px;
+    border-radius: 999px;
+    color: var(--green);
+    background: rgba(94, 224, 160, 0.1);
+    border: 1px solid rgba(94, 224, 160, 0.25);
+}
+
+.course.is-owned { border-color: rgba(94, 224, 160, 0.22); }
+
+.course-parts .part-owned {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+    color: #0b0a09;
+    background: var(--green);
+    border: 1px solid var(--green);
+    transition: filter 0.15s;
+}
+
+.course-parts .part-owned i { font-size: 0.6rem; }
+.course-parts .part-owned:hover { filter: brightness(1.1); }
+
+.help-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background:
+        radial-gradient(420px 200px at 0% 0%, rgba(255, 176, 32, 0.12), transparent 70%),
+        var(--bg-2);
+}
+
+.help-strip h2 {
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+}
+
+.help-strip p { margin: 0; color: var(--text-2); max-width: 520px; }
+
+.help-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+@media (max-width: 720px) {
+    .page-head { padding-top: 40px; }
+    .help-strip { padding: 28px 22px; }
+    .help-actions .btn { flex: 1 1 100%; }
+}
+
+/* =========================================================
+   Stranica: Kupljeni kursevi
+   ========================================================= */
+
+.account-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.account-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 0.88rem;
+    font-weight: 600;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-chip i { color: var(--amber); }
+.account-chip.muted { color: var(--text-3); font-weight: 500; }
+.account-chip.muted i { color: var(--text-3); }
+
+.owned-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.owned-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+    padding: 24px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.owned-card:hover {
+    border-color: rgba(255, 176, 32, 0.35);
+    transform: translateY(-3px);
+    background: var(--surface-2);
+}
+
+.owned-card:hover .course-arrow { color: var(--amber); transform: translate(3px, -3px); }
+
+.owned-card h3 {
+    margin: 0 0 4px;
+    font-size: 1.25rem;
+    letter-spacing: -0.015em;
+}
+
+.owned-part {
+    color: var(--text-2);
+    font-size: 0.92rem;
+}
+
+.owned-foot {
+    margin-top: auto;
+    padding-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+}
+
+.owned-card .owned-part { margin-bottom: 22px; }
+
+.owned-stat { color: var(--text-2); display: inline-flex; align-items: center; gap: 7px; }
+.owned-stat i { color: var(--green); }
+.owned-stat.is-new { color: var(--text-3); }
+.owned-stat.is-new i { color: var(--text-3); }
+
+.owned-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #1a1208;
+    background: var(--grad);
+    padding: 7px 14px;
+    border-radius: 8px;
+}
+
+.owned-go i { font-size: 0.7rem; }
+
+.owned-card.skeleton {
+    background: linear-gradient(100deg, var(--surface) 30%, var(--surface-2) 50%, var(--surface) 70%);
+    background-size: 300% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: 0 0; }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 20px;
+    background: var(--bg-2);
+}
+
+.empty-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    color: var(--amber);
+    background: rgba(255, 176, 32, 0.1);
+    border: 1px solid rgba(255, 176, 32, 0.25);
+}
+
+.empty-state h2 { margin: 0 0 10px; font-size: 1.6rem; letter-spacing: -0.02em; }
+.empty-state p { margin: 0 auto 28px; max-width: 520px; color: var(--text-2); }
+.empty-state .hero-ctas { justify-content: center; }
+
+@media (prefers-reduced-motion: reduce) {
+    .owned-card.skeleton { animation: none; }
+}
+
+@media (max-width: 1040px) {
+    .owned-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+    .owned-grid { grid-template-columns: minmax(0, 1fr); }
+    .owned-card { min-height: 0; }
+}

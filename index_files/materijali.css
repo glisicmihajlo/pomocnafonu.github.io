@@ -1,0 +1,218 @@
+/* Stranice sa materijalima (dopuna za home.css) */
+
+.nav-dd > button.is-current { color: var(--text); }
+
+a.filter { text-decoration: none; }
+
+/* Istaknute kartice (brucoši, prijemni) */
+
+.mat-highlights {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 860px;
+}
+
+.mat-hl {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.mat-hl:hover { border-color: var(--line-strong); background: var(--surface-2); }
+.mat-hl small { display: block; font-size: 0.75rem; color: var(--text-3); font-weight: 600; }
+.mat-hl b { font-size: 0.95rem; }
+.mat-hl > i { margin-left: auto; color: var(--text-3); font-size: 0.85rem; }
+
+.mat-hl.is-accent { border-color: rgba(255, 176, 32, 0.3); background: linear-gradient(135deg, rgba(255, 176, 32, 0.08), transparent 70%), var(--surface); }
+.mat-hl.is-accent .material-icon { color: #1a1208; background: var(--grad); border-color: transparent; }
+
+/* Predmeti — veliki obojeni blokovi, svaki predmet ima svoju boju (--c) */
+
+.subjects { display: grid; gap: 22px; }
+
+.subject {
+    --c: #ffb020;
+    position: relative;
+    padding: 26px;
+    border-radius: 18px;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--c) 9%, transparent), transparent 140px),
+        var(--bg-2);
+    border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+    scroll-margin-top: 200px;
+    overflow: hidden;
+}
+
+.subject::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--c);
+}
+
+.subject:target { box-shadow: 0 0 0 2px var(--c); }
+
+.subject-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.subject-head h3 {
+    margin: 0;
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+    color: var(--c);
+}
+
+.subject-head > span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-3);
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.subject-course {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #0b0a09;
+    background: var(--c);
+    transition: transform 0.15s, filter 0.15s;
+}
+
+.subject-course i { font-size: 0.7rem; }
+.subject-course:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.files {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+}
+
+.file {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 60px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--text);
+    background: color-mix(in srgb, var(--c) 7%, rgba(255, 255, 255, 0.02));
+    border: 2px solid color-mix(in srgb, var(--c) 55%, transparent);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.file > i:first-child { font-size: 1.15rem; color: var(--c); width: 20px; text-align: center; flex-shrink: 0; }
+.file span { flex: 1; min-width: 0; }
+.file .ext { font-size: 0.72rem; color: var(--text-3); opacity: 0; transition: opacity 0.15s; }
+
+.file:hover {
+    transform: translateY(-3px);
+    background: color-mix(in srgb, var(--c) 16%, rgba(255, 255, 255, 0.02));
+    border-color: var(--c);
+}
+
+.file:hover .ext { opacity: 1; color: var(--c); }
+
+@media (prefers-reduced-motion: reduce) {
+    .file, .subject-course { transition: none; }
+}
+
+/* Zajednica */
+
+.community {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 16px;
+}
+
+.community-col {
+    padding: 26px;
+    border-radius: var(--radius);
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.community-col h3 {
+    margin: 0 0 16px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.community-col h3 .fa-whatsapp { color: #25d366; }
+.community-col h3 .fa-telegram { color: #2aabee; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-2);
+    transition: all 0.15s;
+}
+
+.chip i { font-size: 0.9rem; color: var(--text-3); }
+.chip:hover { color: var(--text); border-color: rgba(255, 176, 32, 0.4); }
+.chip:hover .fa-whatsapp { color: #25d366; }
+.chip:hover .fa-telegram { color: #2aabee; }
+
+.ig-strip {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: linear-gradient(110deg, rgba(225, 48, 108, 0.1), rgba(255, 176, 32, 0.06) 60%, transparent), var(--bg-2);
+    transition: border-color 0.2s;
+}
+
+.ig-strip > i:first-child { font-size: 1.8rem; color: #e1306c; }
+.ig-strip b { display: block; }
+.ig-strip span { font-size: 0.88rem; color: var(--text-3); }
+.ig-strip > i:last-child { margin-left: auto; color: var(--text-3); }
+.ig-strip:hover { border-color: rgba(225, 48, 108, 0.4); }
+
+@media (max-width: 1040px) {
+    .community { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 720px) {
+    .mat-highlights { grid-template-columns: minmax(0, 1fr); }
+    .subject { padding: 20px 16px 20px 20px; }
+    .subject-course { margin-left: 0; width: 100%; justify-content: center; }
+    .files { grid-template-columns: minmax(0, 1fr); }
+    .file .ext { opacity: 1; }
+}

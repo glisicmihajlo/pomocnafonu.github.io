@@ -1,212 +1,184 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Registracija — Pomoć na fonu</title>
 
-    gtag('config', 'G-C5JCE202MQ');
-</script>
+    <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registracija - Pomoć na Fonu</title>
-  <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/png">
-  <style>
-    /* Reset i osnovni stilovi */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      user-select: none;
-    }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #121212;
-      color: #fff;
-    }
-
-    /* Kontejner forme */
-    .register-container {
-      background: #1e1e1e;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      width: 100%;
-      max-width: 400px;
-      transition: all 0.3s ease;
-    }
-
-    .register-container h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 600;
-      color: #f5f5f5;
-    }
-
-    /* Input polja */
-    .register-container input[type="email"],
-    .register-container input[type="password"] {
-      width: 100%;
-      padding: 14px 16px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 8px;
-      background: #2c2c2c;
-      color: #fff;
-      font-size: 16px;
-      outline: none;
-      transition: background 0.3s;
-    }
-
-    .register-container input[type="email"]::placeholder,
-    .register-container input[type="password"]::placeholder {
-      color: #aaa;
-    }
-
-    .register-container input:focus {
-      background: #3a3a3a;
-    }
-
-    /* Dugme */
-    .register-container button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #4a90e2;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .register-container button:hover {
-      background: #357ab8;
-    }
-
-    /* Linkovi */
-    .register-container .links {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
-    }
-
-    .register-container .links a {
-      color: #4a90e2;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .register-container .links a:hover {
-      color: #357ab8;
-    }
-
-    .register-container p {
-      padding-top: 0.5rem;
-    }
-
-    /* Responzivnost */
-    @media (max-width: 500px) {
-      .register-container {
-        padding: 30px 20px;
-      }
-    }
-  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index_files/auth.css">
 </head>
+
 <body>
+    <div class="auth">
+        <aside class="auth-side">
+            <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"> Pomoć na fonu</a>
 
-  <div class="register-container">
-    <h2>Registracija</h2>
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Lozinka">
-      <button id="registerBtn">Registruj se</button>
-    <div class="links">
-        <p id="errorMsg"></p>
-        <p>Već imaš nalog? <a href="/login">Prijavi se</a></p>
+            <div class="side-copy">
+                <h2>Napravi nalog. <span class="grad-text">Kurs je na njemu čim ga aktiviramo.</span></h2>
+                <ul class="side-list">
+                    <li><i class="fas fa-check"></i> Registracija traje pola minuta</li>
+                    <li><i class="fas fa-check"></i> Posle uplate kurs se pojavljuje u „Kupljeni kursevi”</li>
+                    <li><i class="fas fa-check"></i> Gledaš sa telefona ili laptopa (do 2 uređaja)</li>
+                </ul>
+            </div>
+
+            <div class="side-foot">
+                <span class="side-foot-label">Imaš pitanje? Javi nam se</span>
+                <div class="contact-row">
+                    <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="contact is-wa">
+                        <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
+                        <span><small>WhatsApp</small>065 975 2402</span>
+                    </a>
+                    <a href="mailto:pomocnafonu@gmail.com" class="contact">
+                        <span class="contact-icon"><i class="far fa-envelope"></i></span>
+                        <span><small>Email</small>pomocnafonu@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="auth-main">
+            <div class="auth-card">
+                <a href="/" class="logo mobile-logo"><img src="/images/logo.png" alt="" width="34" height="34"> Pomoć na fonu</a>
+
+                <h1>Registracija</h1>
+                <p class="auth-sub">Napravi nalog da bi mogao da gledaš kupljene kurseve.</p>
+
+                <form id="registerForm" novalidate>
+                    <div class="field">
+                        <label for="email">Studentski email</label>
+                        <div class="input-wrap">
+                            <i class="far fa-envelope"></i>
+                            <input type="email" id="email" autocomplete="email" placeholder="mg20240050@student.fon.bg.ac.rs" required>
+                        </div>
+                        <p class="hint">Registracija je moguća samo studentskim FON mejlom (<code>@student.fon.bg.ac.rs</code>).</p>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Lozinka</label>
+                        <div class="input-wrap">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" autocomplete="new-password" placeholder="Najmanje 6 karaktera" required>
+                            <button type="button" class="toggle-pass" aria-label="Prikaži lozinku"><i class="far fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" id="registerBtn">Registruj se</button>
+                    <div class="msg" id="msg" role="alert" hidden></div>
+                </form>
+
+                <p class="switch">Već imaš nalog? <a href="/login">Prijavi se</a></p>
+                <a href="/" class="back-home"><i class="fas fa-arrow-left"></i> Nazad na početnu</a>
+            </div>
+        </main>
     </div>
-  </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
-      authDomain: "pomoc-na-fonu.firebaseapp.com",
-      projectId: "pomoc-na-fonu",
-      storageBucket: "pomoc-na-fonu.appspot.com",
-      messagingSenderId: "947001381183",
-      appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
-      measurementId: "G-768582D9M9"
-    };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+            authDomain: "pomoc-na-fonu.firebaseapp.com",
+            projectId: "pomoc-na-fonu",
+            storageBucket: "pomoc-na-fonu.appspot.com",
+            messagingSenderId: "947001381183",
+            appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+            measurementId: "G-768582D9M9"
+        };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
-    const registerBtn = document.getElementById("registerBtn");
-    const errorMsg = document.getElementById("errorMsg");
+        const form = document.getElementById("registerForm");
+        const emailEl = document.getElementById("email");
+        const passEl = document.getElementById("password");
+        const btn = document.getElementById("registerBtn");
+        const msg = document.getElementById("msg");
 
-    // Regex dozvoljava oblik poput mg20240050@student.fon.bg.ac.rs
-    const studentEmailRegex = /^[a-z]{2}\d{8}@student\.fon\.bg\.ac\.rs$/;
+        // Regex dozvoljava oblik poput mg20240050@student.fon.bg.ac.rs
+        const studentEmailRegex = /^[a-z]{2}\d{8}@student\.fon\.bg\.ac\.rs$/;
 
-    registerBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      errorMsg.style.color = "red";
-      errorMsg.textContent = "";
+        function show(text) {
+            msg.className = "msg is-error";
+            msg.innerHTML = '<i class="fas fa-circle-exclamation"></i><span></span>';
+            msg.querySelector("span").textContent = text;
+            msg.hidden = false;
+        }
 
-      if (!email || !password) {
-        errorMsg.textContent = "Popuni oba polja!";
-        return;
-      }
+        function busy(on) {
+            btn.disabled = on;
+            btn.innerHTML = on ? '<span class="spinner"></span> Pravimo nalog...' : "Registruj se";
+        }
 
-      // Provera studentskog emaila
-      if (!studentEmailRegex.test(email)) {
-        errorMsg.textContent = "Možeš se registrovati samo studentskim FON emailom!";
-        return;
-      }
-
-      try {
-        // Kreiranje naloga
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // Kreiraj dokument u Firestore
-        await setDoc(doc(db, "users", user.uid), {
-          email: email,
-          kursevi: []
+        document.querySelector(".toggle-pass").addEventListener("click", (e) => {
+            const show = passEl.type === "password";
+            passEl.type = show ? "text" : "password";
+            e.currentTarget.innerHTML = `<i class="far ${show ? "fa-eye-slash" : "fa-eye"}"></i>`;
+            e.currentTarget.setAttribute("aria-label", show ? "Sakrij lozinku" : "Prikaži lozinku");
         });
 
-        // Redirekcija
-        window.location.href = "/kursevi/";
+        emailEl.addEventListener("input", () => emailEl.removeAttribute("aria-invalid"));
 
-      } catch (err) {
-        if (err.code === "auth/email-already-in-use") {
-          errorMsg.textContent = "Ovaj email je već registrovan.";
-        } else if (err.code === "auth/weak-password") {
-          errorMsg.textContent = "Lozinka mora biti duža od 6 karaktera.";
-        } else if (err.code === "auth/invalid-email") {
-          errorMsg.textContent = "Unet je nevalidan email.";
-        } else {
-          errorMsg.textContent = "Greška pri registraciji. Pokušaj ponovo.";
-        }
-      }
-    });
-  </script>
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = emailEl.value.trim();
+            const password = passEl.value.trim();
+            msg.hidden = true;
 
+            if (!email || !password) {
+                show("Popuni oba polja!");
+                return;
+            }
+
+            // Provera studentskog emaila
+            if (!studentEmailRegex.test(email)) {
+                emailEl.setAttribute("aria-invalid", "true");
+                show("Možeš se registrovati samo studentskim FON emailom!");
+                return;
+            }
+
+            busy(true);
+            try {
+                // Kreiranje naloga
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Kreiraj dokument u Firestore
+                await setDoc(doc(db, "users", user.uid), {
+                    email: email,
+                    kursevi: []
+                });
+
+                window.location.href = "/kursevi/";
+            } catch (err) {
+                busy(false);
+                if (err.code === "auth/email-already-in-use") show("Ovaj email je već registrovan. Prijavi se umesto toga.");
+                else if (err.code === "auth/weak-password") show("Lozinka mora imati najmanje 6 karaktera.");
+                else if (err.code === "auth/invalid-email") show("Unet je nevalidan email.");
+                else show("Greška pri registraciji. Pokušaj ponovo.");
+            }
+        });
+    </script>
 </body>
+
 </html>

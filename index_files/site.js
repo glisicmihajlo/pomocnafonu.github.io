@@ -3,9 +3,7 @@
     var nav = document.getElementById('site-nav');
     var burger = document.getElementById('nav-burger');
     var dd = document.getElementById('nav-dd');
-    var yearEl = document.getElementById('year');
 
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     if (nav) {
         var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };

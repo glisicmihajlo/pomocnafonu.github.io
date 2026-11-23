@@ -1,0 +1,360 @@
+/* Stranice za prijavu i registraciju (paleta ista kao home.css) */
+
+:root {
+    --bg: #0b0a09;
+    --bg-2: #12100e;
+    --surface: #1a1714;
+    --line: rgba(255, 236, 210, 0.09);
+    --line-strong: rgba(255, 236, 210, 0.16);
+    --text: #f6f1ea;
+    --text-2: #b9b0a5;
+    --text-3: #8a8178;
+    --amber: #ffb020;
+    --grad: linear-gradient(120deg, #ffcf23, #ff8d3a);
+    --green: #5ee0a0;
+    --danger: #f07a6a;
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+/* Stranica je tačno visine ekrana i ne skroluje se */
+html, body { height: 100%; overflow: hidden; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 6px; }
+
+.auth {
+    height: 100vh;
+    height: 100dvh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+/* Leva strana — brend */
+
+.auth-side {
+    position: relative;
+    overflow: hidden;
+    padding: 48px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+        radial-gradient(600px 400px at 0% 0%, rgba(255, 176, 32, 0.16), transparent 70%),
+        radial-gradient(500px 400px at 100% 100%, rgba(255, 141, 58, 0.1), transparent 70%),
+        var(--bg-2);
+    border-right: 1px solid var(--line);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+.logo img { height: 34px; width: auto; }
+
+.side-copy h2 {
+    margin: 0 0 18px;
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    max-width: 460px;
+}
+
+.grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.side-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+}
+
+.side-list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text-2); }
+
+.side-list i {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    font-size: 0.72rem;
+    color: var(--amber);
+    background: rgba(255, 176, 32, 0.12);
+    margin-top: 1px;
+}
+
+.side-foot-label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.contact-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.contact small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-3);
+    line-height: 1.2;
+}
+
+.contact-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 1.05rem;
+    color: var(--amber);
+    background: rgba(255, 176, 32, 0.12);
+}
+
+.contact.is-wa .contact-icon { color: #fff; background: #25d366; font-size: 1.25rem; }
+
+.contact:hover { border-color: rgba(255, 176, 32, 0.45); background: rgba(255, 176, 32, 0.05); }
+.contact.is-wa:hover { border-color: rgba(37, 211, 102, 0.55); background: rgba(37, 211, 102, 0.06); }
+
+/* Desna strana — forma */
+
+.auth-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+}
+
+.auth-card { width: 100%; max-width: 400px; }
+
+.mobile-logo { display: none; margin-bottom: 32px; }
+
+.auth-card h1 {
+    margin: 0 0 6px;
+    font-size: 1.9rem;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+}
+
+.auth-sub { margin: 0 0 30px; color: var(--text-2); }
+
+.field { margin-bottom: 18px; }
+
+.field label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-2);
+}
+
+.field label a,
+.field label button {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--amber);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.field label a:hover,
+.field label button:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.input-wrap { position: relative; }
+
+.input-wrap > i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-3);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.input-wrap input {
+    width: 100%;
+    height: 50px;
+    padding: 0 46px 0 42px;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-wrap input::placeholder { color: var(--text-3); }
+
+.input-wrap input:focus {
+    border-color: rgba(255, 176, 32, 0.6);
+    box-shadow: 0 0 0 4px rgba(255, 176, 32, 0.1);
+}
+
+.input-wrap input[aria-invalid="true"] { border-color: rgba(240, 122, 106, 0.7); }
+
+.toggle-pass {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    border: none;
+    background: none;
+    color: var(--text-3);
+    cursor: pointer;
+}
+
+.toggle-pass:hover { color: var(--text); }
+
+.hint { margin: 8px 0 0; font-size: 0.8rem; color: var(--text-3); }
+.hint code { font-family: inherit; color: var(--text-2); }
+
+.btn {
+    width: 100%;
+    height: 52px;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 12px;
+    border: none;
+    background: var(--grad);
+    color: #1a1208;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 26px -10px rgba(255, 141, 58, 0.7);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+
+.btn:hover:not(:disabled) { transform: translateY(-2px); }
+.btn:disabled { opacity: 0.65; cursor: wait; }
+
+.btn .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(26, 18, 8, 0.25);
+    border-top-color: #1a1208;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.msg {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.msg.is-error { color: var(--danger); background: rgba(240, 122, 106, 0.08); border: 1px solid rgba(240, 122, 106, 0.3); }
+.msg.is-ok { color: var(--green); background: rgba(94, 224, 160, 0.08); border: 1px solid rgba(94, 224, 160, 0.3); }
+.msg i { margin-top: 3px; }
+
+.switch {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--text-2);
+    font-size: 0.92rem;
+}
+
+.switch a { color: var(--amber); font-weight: 700; }
+.switch a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 0.85rem;
+    color: var(--text-3);
+}
+
+.back-home:hover { color: var(--text); }
+
+@media (max-width: 900px) {
+    .auth { grid-template-columns: minmax(0, 1fr); }
+    .auth-side { display: none; }
+    .mobile-logo { display: inline-flex; }
+    .auth-main { padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px)); }
+    .mobile-logo { margin-bottom: 24px; }
+    .auth-sub { margin-bottom: 22px; }
+    .switch { margin-top: 20px; padding-top: 16px; }
+}
+
+/* Niži ekrani (manji telefoni): zbijeniji raspored da sve stane bez skrolovanja */
+@media (max-height: 700px) {
+    .auth-card h1 { font-size: 1.6rem; }
+    .auth-sub { margin-bottom: 16px; }
+    .field { margin-bottom: 12px; }
+    .input-wrap input { height: 46px; }
+    .btn { height: 48px; }
+    .msg { margin-top: 10px; padding: 9px 12px; }
+    .switch { margin-top: 14px; padding-top: 12px; }
+    .back-home { margin-top: 10px; }
+    .mobile-logo { margin-bottom: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn, .input-wrap input { transition: none; }
+}

@@ -1,229 +1,186 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Prijava — Pomoć na fonu</title>
 
-    gtag('config', 'G-C5JCE202MQ');
-</script>
+    <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pomocnafonu.com/images/logo.png" rel="apple-touch-icon">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prijava - Pomoć na Fonu</title>
-  <link href="https://pomocnafonu.com/images/logo.png" rel="shortcut icon" type="image/png">
-  <style>
-    /* Reset i osnovni stilovi */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      user-select: none;
-    }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #121212;
-      color: #fff;
-    }
-
-    /* Kontejner forme */
-    .login-container {
-      background: #1e1e1e;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      width: 100%;
-      max-width: 400px;
-      transition: all 0.3s ease;
-    }
-
-    .login-container h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 600;
-      color: #f5f5f5;
-    }
-
-    /* Input polja */
-    .login-container input[type="email"],
-    .login-container input[type="password"] {
-      width: 100%;
-      padding: 14px 16px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 8px;
-      background: #2c2c2c;
-      color: #fff;
-      font-size: 16px;
-      outline: none;
-      transition: background 0.3s;
-    }
-
-    .login-container input[type="email"]::placeholder,
-    .login-container input[type="password"]::placeholder {
-      color: #aaa;
-    }
-
-    .login-container input:focus {
-      background: #3a3a3a;
-    }
-
-    /* Dugme */
-    .login-container button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #4a90e2;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .login-container button:hover {
-      background: #357ab8;
-    }
-
-    /* Linkovi */
-    .login-container .links {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
-    }
-
-    .login-container .links a {
-      color: #4a90e2;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .login-container .links a:hover {
-      color: #357ab8;
-    }
-
-    .login-container p {
-      padding-top: 0.5rem;
-    }
-
-    /* Responzivnost */
-    @media (max-width: 500px) {
-      .login-container {
-        padding: 30px 20px;
-      }
-    }
-  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index_files/auth.css">
 </head>
+
 <body>
+    <div class="auth">
+        <aside class="auth-side">
+            <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"> Pomoć na fonu</a>
 
-  <div class="login-container">
-    <h2>Prijava na nalog</h2>
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Lozinka">
-      <button id="loginBtn">Prijavi se</button>
-    <div class="links">
-        <p><a href="#" id="forgotPass">Zaboravio si lozinku?</a></p>
-        <p id="errorMsg"></p>
-        <p>Nemaš nalog? <a href="/register">Registruj se</a></p>
+            <div class="side-copy">
+                <h2>Dobro došao nazad. <span class="grad-text">Nastavi gde si stao.</span></h2>
+                <ul class="side-list">
+                    <li><i class="fas fa-check"></i> Tvoji kupljeni kursevi su na jednom mestu</li>
+                    <li><i class="fas fa-check"></i> Napredak se čuva — vidiš šta si već prešao</li>
+                    <li><i class="fas fa-check"></i> Gledaš sa telefona ili laptopa (do 2 uređaja)</li>
+                </ul>
+            </div>
+
+            <div class="side-foot">
+                <span class="side-foot-label">Imaš pitanje? Javi nam se</span>
+                <div class="contact-row">
+                    <a href="https://wa.me/381659752402" target="_blank" rel="noopener" class="contact is-wa">
+                        <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
+                        <span><small>WhatsApp</small>065 975 2402</span>
+                    </a>
+                    <a href="mailto:pomocnafonu@gmail.com" class="contact">
+                        <span class="contact-icon"><i class="far fa-envelope"></i></span>
+                        <span><small>Email</small>pomocnafonu@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="auth-main">
+            <div class="auth-card">
+                <a href="/" class="logo mobile-logo"><img src="/images/logo.png" alt="" width="34" height="34"> Pomoć na fonu</a>
+
+                <h1>Prijava</h1>
+                <p class="auth-sub">Prijavi se da bi gledao svoje kurseve.</p>
+
+                <form id="loginForm" novalidate>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <div class="input-wrap">
+                            <i class="far fa-envelope"></i>
+                            <input type="email" id="email" autocomplete="email" placeholder="mg20240050@student.fon.bg.ac.rs" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Lozinka <button type="button" id="forgotPass">Zaboravio si lozinku?</button></label>
+                        <div class="input-wrap">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" autocomplete="current-password" placeholder="Tvoja lozinka" required>
+                            <button type="button" class="toggle-pass" aria-label="Prikaži lozinku"><i class="far fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" id="loginBtn">Prijavi se</button>
+                    <div class="msg" id="msg" role="alert" hidden></div>
+                </form>
+
+                <p class="switch">Nemaš nalog? <a href="/register">Registruj se</a></p>
+                <a href="/" class="back-home"><i class="fas fa-arrow-left"></i> Nazad na početnu</a>
+            </div>
+        </main>
     </div>
-  </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      sendPasswordResetEmail
-    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
-      authDomain: "pomoc-na-fonu.firebaseapp.com",
-      projectId: "pomoc-na-fonu",
-      storageBucket: "pomoc-na-fonu.appspot.com",
-      messagingSenderId: "947001381183",
-      appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
-      measurementId: "G-768582D9M9"
-    };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
+            authDomain: "pomoc-na-fonu.firebaseapp.com",
+            projectId: "pomoc-na-fonu",
+            storageBucket: "pomoc-na-fonu.appspot.com",
+            messagingSenderId: "947001381183",
+            appId: "1:947001381183:web:11a68f03a52c6ebb2a038a",
+            measurementId: "G-768582D9M9"
+        };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-    const loginBtn = document.getElementById("loginBtn");
-    const forgotPass = document.getElementById("forgotPass");
-    const errorMsg = document.getElementById("errorMsg");
+        const form = document.getElementById("loginForm");
+        const emailEl = document.getElementById("email");
+        const passEl = document.getElementById("password");
+        const btn = document.getElementById("loginBtn");
+        const msg = document.getElementById("msg");
 
-    // LOGIN
-    loginBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      errorMsg.style.color = "red";
-      errorMsg.textContent = "";
-
-      if (!email || !password) {
-        errorMsg.textContent = "Popuni oba polja!";
-        return;
-      }
-
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = "/kupljeni-kursevi/";
-      } catch (err) {
-        console.log(err);
-
-        if (err.code === "auth/user-not-found") {
-          errorMsg.textContent = "Korisnik sa tim email-om ne postoji.";
-        } else if (err.code === "auth/wrong-password") {
-          errorMsg.textContent = "Pogrešna lozinka.";
-        } else if (err.code === "auth/invalid-email") {
-          errorMsg.textContent = "Unet je nevalidan email.";
-        } else {
-          errorMsg.textContent = "Došlo je do greške. Pokušaj ponovo.";
+        function show(text, ok = false) {
+            msg.className = "msg " + (ok ? "is-ok" : "is-error");
+            msg.innerHTML = `<i class="fas ${ok ? "fa-circle-check" : "fa-circle-exclamation"}"></i><span></span>`;
+            msg.querySelector("span").textContent = text;
+            msg.hidden = false;
         }
-      }
-    });
 
-    // RESET LOZINKE
-    forgotPass.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-
-      errorMsg.style.color = "red";
-      errorMsg.textContent = "";
-
-      if (!email) {
-        errorMsg.textContent = "Unesi email da bi resetovao lozinku.";
-        return;
-      }
-
-      try {
-        await sendPasswordResetEmail(auth, email);
-        errorMsg.style.color = "lightgreen";
-        errorMsg.textContent = "Poslat je email za reset lozinke.";
-      } catch (err) {
-        console.log(err);
-
-        if (err.code === "auth/user-not-found") {
-          errorMsg.textContent = "Nalog sa ovim email-om ne postoji.";
-        } else if (err.code === "auth/invalid-email") {
-          errorMsg.textContent = "Email nije validan.";
-        } else {
-          errorMsg.textContent = "Došlo je do greške. Pokušaj ponovo.";
+        function busy(on) {
+            btn.disabled = on;
+            btn.innerHTML = on ? '<span class="spinner"></span> Prijavljivanje...' : "Prijavi se";
         }
-      }
-    });
-  </script>
 
+        document.querySelector(".toggle-pass").addEventListener("click", (e) => {
+            const show = passEl.type === "password";
+            passEl.type = show ? "text" : "password";
+            e.currentTarget.innerHTML = `<i class="far ${show ? "fa-eye-slash" : "fa-eye"}"></i>`;
+            e.currentTarget.setAttribute("aria-label", show ? "Sakrij lozinku" : "Prikaži lozinku");
+        });
+
+        // PRIJAVA
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = emailEl.value.trim();
+            const password = passEl.value;
+            msg.hidden = true;
+
+            if (!email || !password) {
+                show("Popuni oba polja!");
+                return;
+            }
+
+            busy(true);
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                window.location.href = "/kupljeni-kursevi/";
+            } catch (err) {
+                console.log(err);
+                busy(false);
+                if (err.code === "auth/user-not-found") show("Korisnik sa tim email-om ne postoji.");
+                else if (err.code === "auth/wrong-password") show("Pogrešna lozinka.");
+                else if (err.code === "auth/invalid-credential") show("Pogrešan email ili lozinka.");
+                else if (err.code === "auth/invalid-email") show("Unet je nevalidan email.");
+                else if (err.code === "auth/too-many-requests") show("Previše pokušaja. Sačekaj malo pa pokušaj ponovo.");
+                else show("Došlo je do greške. Pokušaj ponovo.");
+            }
+        });
+
+        // RESET LOZINKE
+        document.getElementById("forgotPass").addEventListener("click", async () => {
+            const email = emailEl.value.trim();
+            msg.hidden = true;
+
+            if (!email) {
+                show("Unesi email iznad, pa klikni ponovo da bi resetovao lozinku.");
+                emailEl.focus();
+                return;
+            }
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                show("Poslat je email za reset lozinke. Proveri i spam folder.", true);
+            } catch (err) {
+                console.log(err);
+                if (err.code === "auth/user-not-found") show("Nalog sa ovim email-om ne postoji.");
+                else if (err.code === "auth/invalid-email") show("Email nije validan.");
+                else show("Došlo je do greške. Pokušaj ponovo.");
+            }
+        });
+    </script>
 </body>
+
 </html>

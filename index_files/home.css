@@ -1,0 +1,1099 @@
+/* =========================================================
+   Pomoć na fonu — početna stranica
+   ========================================================= */
+
+:root {
+    --bg: #0b0a09;
+    --bg-2: #12100e;
+    --surface: #1a1714;
+    --surface-2: #221e1a;
+    --line: rgba(255, 236, 210, 0.09);
+    --line-strong: rgba(255, 236, 210, 0.16);
+    --text: #f6f1ea;
+    --text-2: #b9b0a5;
+    --text-3: #8a8178;
+    --amber: #ffb020;
+    --orange: #ff8d3a;
+    --yellow: #ffcf23;
+    --grad: linear-gradient(120deg, #ffcf23, #ff8d3a);
+    --green: #5ee0a0;
+    --radius: 14px;
+    --wrap: 1180px;
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+
+:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding-inline: 24px;
+}
+
+.grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---------------- Dugmad ---------------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 50px;
+    padding: 0 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--grad);
+    color: #1a1208;
+    box-shadow: 0 8px 24px -8px rgba(255, 141, 58, 0.6);
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(255, 141, 58, 0.75); }
+
+.btn-ghost {
+    border-color: var(--line-strong);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.btn-ghost:hover { border-color: rgba(255, 176, 32, 0.5); background: rgba(255, 176, 32, 0.06); }
+
+.btn i { font-size: 0.85em; }
+
+/* ---------------- Navigacija ---------------- */
+
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 10, 9, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.site-nav.scrolled { border-bottom-color: var(--line); }
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    height: 72px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+}
+
+.logo img { height: 34px; width: auto; }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.nav-links > a,
+.nav-dd > button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+}
+
+.nav-links > a:hover,
+.nav-dd > button:hover,
+.nav-dd.open > button { color: var(--text); background: rgba(255, 255, 255, 0.04); }
+
+.nav-links .nav-highlight { color: var(--amber); }
+
+.nav-dd { position: relative; }
+
+.nav-dd > button i { font-size: 0.65rem; margin-left: 4px; transition: transform 0.2s; }
+.nav-dd.open > button i { transform: rotate(180deg); }
+
+.nav-dd-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 230px;
+    padding: 6px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.nav-dd.open .nav-dd-menu { display: block; }
+
+.nav-dd-menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-2);
+}
+
+.nav-dd-menu a:hover { background: rgba(255, 255, 255, 0.05); color: var(--text); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.nav-actions .btn { height: 42px; padding: 0 18px; font-size: 0.85rem; }
+
+.nav-burger {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+    background: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+    position: relative;
+    padding: 72px 0 40px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -260px;
+    right: -180px;
+    width: 720px;
+    height: 720px;
+    background: radial-gradient(closest-side, rgba(255, 141, 58, 0.18), transparent);
+    pointer-events: none;
+}
+
+.hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 22px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--grad);
+    border-radius: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5.4vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    margin: 0 0 22px;
+}
+
+.hero-lead {
+    font-size: 1.12rem;
+    color: var(--text-2);
+    max-width: 520px;
+    margin: 0 0 34px;
+}
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-note {
+    margin-top: 22px;
+    font-size: 0.85rem;
+    color: var(--text-3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-note i { color: var(--green); }
+
+/* Mock plejera u heru */
+
+.mock {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.4);
+    transform: rotate(1.2deg);
+}
+
+.mock-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px 12px;
+}
+
+.mock-bar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.mock-bar small {
+    margin-left: auto;
+    font-size: 0.72rem;
+    color: var(--text-3);
+}
+
+.mock-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 12px;
+}
+
+.mock-video {
+    position: relative;
+    min-height: 300px;
+    border-radius: 10px;
+    background:
+        linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.7)),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 22px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 22px),
+        #0f0d0b;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+}
+
+.mock-board {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.mock-board b { color: var(--yellow); font-weight: 600; }
+
+.mock-play {
+    position: absolute;
+    top: 42%;
+    left: 74%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--grad);
+    color: #1a1208;
+    display: grid;
+    place-items: center;
+    font-size: 1rem;
+    box-shadow: 0 10px 30px -6px rgba(255, 141, 58, 0.7);
+}
+
+.mock-play i { margin-left: 3px; }
+
+.mock-meta small {
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.mock-meta p { margin: 2px 0 8px; font-weight: 700; font-size: 0.9rem; }
+
+.mock-scrub {
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+}
+
+.mock-scrub::after {
+    content: "";
+    display: block;
+    width: 38%;
+    height: 100%;
+    background: var(--grad);
+}
+
+.mock-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.mock-progress {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.7rem;
+    color: var(--text-3);
+}
+
+.mock-progress div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.mock-progress b { color: var(--amber); }
+
+.mock-track {
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mock-track span {
+    display: block;
+    width: 62%;
+    height: 100%;
+    border-radius: 4px;
+    background: var(--grad);
+}
+
+.mock-lesson {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.74rem;
+    color: var(--text-2);
+    background: rgba(255, 255, 255, 0.025);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mock-lesson i { font-size: 0.8rem; flex-shrink: 0; }
+.mock-lesson.done i { color: var(--green); }
+.mock-lesson.active {
+    color: var(--amber);
+    background: rgba(255, 176, 32, 0.1);
+    border: 1px solid rgba(255, 176, 32, 0.25);
+    font-weight: 700;
+}
+
+.mock-tag {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    background: var(--surface-2);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.7);
+    transform: rotate(-2deg);
+}
+
+.mock-tag i {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: rgba(94, 224, 160, 0.14);
+    color: var(--green);
+}
+
+/* ---------------- Činjenice ---------------- */
+
+.facts {
+    border-block: 1px solid var(--line);
+    margin-top: 64px;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.fact {
+    padding: 26px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.fact + .fact { border-left: 1px solid var(--line); }
+
+.fact i {
+    color: var(--amber);
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+
+.fact b { display: block; font-size: 0.95rem; }
+.fact span { font-size: 0.85rem; color: var(--text-3); }
+
+/* ---------------- Sekcije ---------------- */
+
+.section { padding: 110px 0; }
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.section-head h2,
+.h2 {
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin: 0;
+    max-width: 640px;
+}
+
+.section-head p {
+    color: var(--text-2);
+    max-width: 400px;
+    margin: 0;
+}
+
+/* ---------------- Prijemni ---------------- */
+
+.prijemni {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+        radial-gradient(600px 300px at 100% 0%, rgba(255, 207, 35, 0.16), transparent 70%),
+        linear-gradient(135deg, #1f1a14, #15120f);
+    border: 1px solid rgba(255, 176, 32, 0.22);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    padding: 52px;
+}
+
+.prijemni .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1a1208;
+    background: var(--grad);
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.prijemni h2 {
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+}
+
+.prijemni p { color: var(--text-2); margin: 0 0 28px; max-width: 480px; }
+
+.prijemni-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: center;
+}
+
+.topics span {
+    font-size: 0.82rem;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    color: var(--text-2);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.topics span.more {
+    border-style: dashed;
+    color: var(--amber);
+    border-color: rgba(255, 176, 32, 0.4);
+}
+
+.lecturer {
+    margin-top: 26px;
+    font-size: 0.85rem;
+    color: var(--text-3);
+}
+
+.lecturer b { color: var(--text); }
+
+/* ---------------- Kursevi ---------------- */
+
+.year {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+}
+
+.year + .year { margin-top: 56px; }
+
+.year-label {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+.year-label b {
+    display: block;
+    font-size: 3.2rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--text-3);
+}
+
+.year-label span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-2);
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.course {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.course:hover {
+    border-color: rgba(255, 176, 32, 0.35);
+    transform: translateY(-3px);
+    background: var(--surface-2);
+}
+
+.course-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.course-code {
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(255, 176, 32, 0.1);
+    color: var(--amber);
+}
+
+.course-arrow {
+    color: var(--text-3);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.course:hover .course-arrow { color: var(--amber); transform: translate(3px, -3px); }
+
+.course h3 {
+    font-size: 1.3rem;
+    letter-spacing: -0.015em;
+    margin: 0 0 8px;
+}
+
+.course p {
+    color: var(--text-2);
+    font-size: 0.92rem;
+    margin: 0 0 20px;
+    flex: 1;
+}
+
+.course-parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.course-parts span {
+    font-size: 0.75rem;
+    color: var(--text-3);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    border-radius: 6px;
+}
+
+.course-foot {
+    display: flex;
+    gap: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.course-foot a { display: inline-flex; align-items: center; gap: 7px; }
+.course-foot a:first-child { color: var(--text); }
+.course-foot .free { color: var(--green); }
+.course-foot a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Ceo card klikabilan, ali linkovi u dnu ostaju zasebni */
+.course .stretched::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.course-foot a { position: relative; z-index: 1; }
+
+/* ---------------- Kako funkcioniše ---------------- */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    counter-reset: step;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.step {
+    padding: 34px 30px 36px;
+    background: var(--bg-2);
+}
+
+.step + .step { border-left: 1px solid var(--line); }
+
+.step-num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-num::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 176, 32, 0.4), transparent);
+}
+
+.step h3 { font-size: 1.2rem; margin: 0 0 10px; letter-spacing: -0.01em; }
+.step p { margin: 0; color: var(--text-2); font-size: 0.93rem; }
+.step a { color: var(--amber); font-weight: 600; }
+.step a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------------- Poređenje ---------------- */
+
+.compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.compare-col {
+    border-radius: 18px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+}
+
+.compare-col.good {
+    background: linear-gradient(160deg, rgba(255, 176, 32, 0.09), rgba(255, 141, 58, 0.02) 60%), var(--surface);
+    border-color: rgba(255, 176, 32, 0.28);
+}
+
+.compare-col h3 {
+    margin: 0 0 4px;
+    font-size: 1.35rem;
+    letter-spacing: -0.015em;
+}
+
+.compare-col > small {
+    color: var(--text-3);
+    font-size: 0.85rem;
+}
+
+.compare-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: grid;
+    gap: 14px;
+}
+
+.compare-col li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    color: var(--text-2);
+    font-size: 0.95rem;
+}
+
+.compare-col li i { margin-top: 5px; font-size: 0.8rem; width: 14px; }
+.compare-col.bad li i { color: #f07a6a; }
+.compare-col.good li { color: var(--text); }
+.compare-col.good li i { color: var(--green); }
+
+/* ---------------- Materijali ---------------- */
+
+.materials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.material {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.material:hover { border-color: var(--line-strong); background: var(--surface); }
+
+.material-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    color: var(--amber);
+}
+
+.material b { display: block; }
+.material span { font-size: 0.85rem; color: var(--text-3); }
+.material > i { margin-left: auto; color: var(--text-3); }
+
+/* ---------------- FAQ ---------------- */
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.faq-side p { color: var(--text-2); margin: 18px 0 26px; }
+
+.contact-lines { display: grid; gap: 10px; }
+
+.contact-lines a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-2);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.contact-lines a:hover { color: var(--text); }
+.contact-lines i { color: var(--amber); width: 18px; }
+
+.faq-list { border-top: 1px solid var(--line); }
+
+.faq-list details { border-bottom: 1px solid var(--line); }
+
+.faq-list summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-weight: 700;
+    font-size: 1.02rem;
+}
+
+.faq-list summary::-webkit-details-marker { display: none; }
+
+.faq-list summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--amber);
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+
+.faq-list details p {
+    margin: -6px 0 22px;
+    color: var(--text-2);
+    max-width: 620px;
+}
+
+/* ---------------- Završni CTA ---------------- */
+
+.final {
+    text-align: center;
+    padding: 90px 24px;
+    border-radius: 24px;
+    background:
+        radial-gradient(500px 240px at 50% 0%, rgba(255, 176, 32, 0.18), transparent 70%),
+        var(--bg-2);
+    border: 1px solid var(--line);
+}
+
+.final h2 { margin: 0 auto 16px; max-width: 700px; }
+.final p { color: var(--text-2); margin: 0 auto 32px; max-width: 520px; }
+.final .hero-ctas { justify-content: center; }
+
+/* ---------------- Footer ---------------- */
+
+.footer {
+    margin-top: 110px;
+    border-top: 1px solid var(--line);
+    padding: 44px 0 calc(44px + env(safe-area-inset-bottom, 0px));
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer p { margin: 12px 0 0; color: var(--text-3); font-size: 0.88rem; max-width: 320px; }
+
+.footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+
+.footer-col h4 {
+    margin: 0 0 14px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    padding: 4px 0;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+    color: var(--text-3);
+}
+
+/* ---------------- Animacije ---------------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn, .course, .course-arrow { transition: none; }
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 1040px) {
+    .nav-links,
+    .nav-actions { display: none; }
+    .nav-burger { display: grid; place-items: center; }
+
+    .site-nav.menu-open .nav-links,
+    .site-nav.menu-open .nav-actions {
+        display: flex;
+    }
+
+    .site-nav.menu-open .nav-inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding-block: 15px 20px;
+    }
+
+    .site-nav.menu-open .nav-links {
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        margin: 10px 0 0;
+        gap: 2px;
+    }
+
+    .site-nav.menu-open .nav-links > a,
+    .site-nav.menu-open .nav-dd > button {
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .nav-dd-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: none;
+        padding: 0 0 0 12px;
+    }
+
+    .site-nav.menu-open .nav-actions {
+        order: 4;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .site-nav.menu-open .nav-actions .btn { flex: 1; height: 48px; }
+
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; }
+    .mock { transform: none; max-width: 640px; }
+    .prijemni { grid-template-columns: minmax(0, 1fr); padding: 40px 32px; }
+    .year { grid-template-columns: 1fr; gap: 20px; }
+    .year-label { position: static; display: flex; align-items: baseline; gap: 14px; }
+    .year-label b { font-size: 2.4rem; }
+    .faq-grid { grid-template-columns: 1fr; gap: 30px; }
+    .materials { grid-template-columns: 1fr; }
+    .facts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fact:nth-child(3) { border-left: none; }
+    .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+@media (max-width: 720px) {
+    .wrap { padding-inline: 18px; }
+    .hero { padding-top: 40px; }
+    .hero-lead { font-size: 1.02rem; }
+    .hero-ctas .btn { flex: 1 1 100%; }
+    .mock-body { grid-template-columns: minmax(0, 1fr); }
+    .mock-video { min-height: 230px; }
+    .mock-side .mock-lesson:nth-child(n+5) { display: none; }
+    .mock-tag { right: 10px; bottom: -18px; }
+    .section { padding: 80px 0; }
+    .course-grid,
+    .steps,
+    .compare { grid-template-columns: 1fr; }
+    .step + .step { border-left: none; border-top: 1px solid var(--line); }
+    .step-num { margin-bottom: 20px; }
+    .prijemni { padding: 32px 22px; }
+    .prijemni-ctas .btn { flex: 1 1 100%; }
+    .compare-col { padding: 26px 22px; }
+    .final { padding: 60px 20px; }
+    .footer-cols { gap: 40px; }
+}
+
+@media (max-width: 480px) {
+    .facts-grid { grid-template-columns: 1fr; }
+    .fact + .fact { border-left: none; border-top: 1px solid var(--line); }
+    .logo span { display: none; }
+}

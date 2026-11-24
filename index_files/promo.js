@@ -11,7 +11,8 @@
     // redovna cena -> akcijska cena
     var PRICES = {
         1500: 1200, 1800: 1500, 2000: 1500, 2200: 1800, 2400: 2000, 2500: 2000,
-        2700: 2200, 3000: 2400, 3500: 2700, 3800: 3000, 4000: 3000, 5000: 4000
+        2700: 2200, 3000: 2400, 3500: 2700, 3800: 3000, 4000: 3000, 5000: 4000,
+        15000: 12000
     };
 
     var now = Date.now();
@@ -33,7 +34,7 @@
         }
         if (btn.dataset.wa) btn.dataset.wa += ' (' + NAME + ')';
 
-        var tier = btn.closest('.tier');
+        var tier = btn.closest('.tier, .price-card');
         var price = tier && tier.querySelector('.price');
         if (!price) return;
         price.innerHTML = '<span class="old">' + fmt(regular) + '</span>' + fmt(sale) + ' <small>RSD</small>';
@@ -53,9 +54,14 @@
         }
     });
 
-    /* ---------- Traka sa odbrojavanjem (dole, ne pomera sadržaj) ---------- */
-    try { if (sessionStorage.getItem('promoClosed') === String(END)) return; } catch (e) { /* storage blokiran */ }
+    // Tekst "Uplati X RSD" u koracima kupovine
+    document.querySelectorAll('b').forEach(function (b) {
+        var m = /^Uplati ([\d.]+) RSD$/.exec(b.textContent.trim());
+        var sale = m && PRICES[Number(m[1].replace(/\./g, ''))];
+        if (sale) b.textContent = 'Uplati ' + fmt(sale) + ' RSD';
+    });
 
+    /* ---------- Traka sa odbrojavanjem (dole, ne pomera sadržaj) ---------- */
     var css = document.createElement('style');
     css.textContent =
         '.promo-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:150;display:flex;align-items:center;gap:12px;' +
@@ -69,9 +75,14 @@
         '.promo-bar button:hover{color:#fff;background:rgba(255,255,255,.08)}' +
         '.promo-label{background:#000!important;color:#FFC93C!important;border:1px solid #FFC93C}' +
         '.promo-save{color:#FFC93C!important}' +
+        '.price-card .old{font-size:1.1rem;font-weight:600;color:#8a8178;text-decoration:line-through;margin-right:8px;letter-spacing:0}' +
+        '.price-card .save{display:inline-block;margin-top:8px;font-size:.85rem;font-weight:700}' +
         'body.has-promo{padding-bottom:96px}' +
         '@media (max-width:520px){.promo-bar{font-size:.85rem;left:8px;right:8px;bottom:8px;padding:10px 8px 10px 14px}.promo-bar a{padding:9px 12px}}';
     document.head.appendChild(css);
+
+    try { if (sessionStorage.getItem('promoClosed') === String(END)) return; } catch (e) { /* storage blokiran */ }
+
 
     var onCourse = !!document.getElementById('cena');
     var bar = document.createElement('div');

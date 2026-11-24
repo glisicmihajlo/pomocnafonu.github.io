@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5JCE202MQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-C5JCE202MQ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Stranica nije pronađena — Pomoć na fonu</title>
+
+    <link href="/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="/images/logo.png" rel="apple-touch-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0b0a09;
+            --bg-2: #12100e;
+            --surface: #1a1714;
+            --line: rgba(255, 236, 210, 0.09);
+            --line-strong: rgba(255, 236, 210, 0.16);
+            --text: #f6f1ea;
+            --text-2: #b9b0a5;
+            --text-3: #8a8178;
+            --amber: #ffb020;
+            --grad: linear-gradient(120deg, #ffcf23, #ff8d3a);
+            --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html, body { height: 100%; overflow: hidden; }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            background:
+                radial-gradient(700px 450px at 15% 0%, rgba(255, 176, 32, 0.14), transparent 70%),
+                radial-gradient(600px 450px at 100% 100%, rgba(255, 141, 58, 0.09), transparent 70%),
+                var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 15px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 6px; }
+
+        header { padding: 28px 32px; }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.05rem;
+        }
+
+        .logo img { height: 34px; width: auto; }
+
+        main {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            min-height: 0;
+            padding: 16px 24px 48px;
+            text-align: center;
+        }
+
+        .code {
+            margin: 0;
+            font-size: clamp(6rem, 22vw, 11rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.06em;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h1 {
+            margin: 12px 0 10px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            letter-spacing: -0.02em;
+        }
+
+        .sub {
+            margin: 0 auto 32px;
+            max-width: 440px;
+            color: var(--text-2);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: transform .15s ease, border-color .15s ease, background .15s ease;
+        }
+
+        .btn:hover { transform: translateY(-1px); }
+
+        .btn-primary { background: var(--grad); color: #1a1004; }
+
+        .btn-ghost {
+            border: 1px solid var(--line-strong);
+            background: var(--surface);
+        }
+
+        .btn-ghost:hover { border-color: rgba(255, 176, 32, 0.45); }
+
+        .help {
+            margin-top: 36px;
+            font-size: 0.9rem;
+            color: var(--text-3);
+        }
+
+        .help a { color: var(--amber); font-weight: 600; }
+        .help a:hover { text-decoration: underline; }
+
+        @media (max-height: 600px) {
+            header { padding: 16px 24px; }
+            main { padding-bottom: 16px; }
+            .code { font-size: clamp(4rem, 18vh, 7rem); }
+            h1 { margin: 6px 0; }
+            .sub { margin-bottom: 18px; }
+            .help { margin-top: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo"><img src="/images/logo.png" alt="" width="34" height="34"> Pomoć na fonu</a>
+    </header>
+
+    <main>
+        <div>
+            <p class="code" aria-hidden="true">404</p>
+            <h1>Stranica nije pronađena</h1>
+            <p class="sub">Stranica koju tražiš ne postoji ili je premeštena. Proveri adresu ili se vrati na početnu.</p>
+
+            <div class="actions">
+                <a href="/" class="btn btn-primary"><i class="fas fa-house"></i> Početna</a>
+                <a href="/kursevi/" class="btn btn-ghost"><i class="fas fa-book-open"></i> Kursevi</a>
+            </div>
+
+            <p class="help">Misliš da je greška? Javi nam se na
+                <a href="https://wa.me/381659752402" target="_blank" rel="noopener">WhatsApp</a> ili
+                <a href="mailto:pomocnafonu@gmail.com">pomocnafonu@gmail.com</a>.
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>

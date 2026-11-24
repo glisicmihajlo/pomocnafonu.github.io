@@ -691,3 +691,6 @@ kbd {
 @media (prefers-reduced-motion: reduce) {
     .chevron, .module-check, #progress-fill { transition: none; }
 }
+
+/* Reč "fonu" u nazivu pored loga — boja loga */
+.brand-accent { color: #FFC93C; }

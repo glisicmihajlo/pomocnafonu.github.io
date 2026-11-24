@@ -216,3 +216,6 @@ a.filter { text-decoration: none; }
     .files { grid-template-columns: minmax(0, 1fr); }
     .file .ext { opacity: 1; }
 }
+
+/* Reč "fonu" u nazivu pored loga — boja loga */
+.brand-accent { color: #FFC93C; }

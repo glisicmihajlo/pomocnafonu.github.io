@@ -716,3 +716,6 @@
     .points-bar b { font-size: 1.1rem; }
     .points-bar > div { padding: 0 10px; }
 }
+
+/* Reč "fonu" u nazivu pored loga — boja loga */
+.brand-accent { color: #FFC93C; }

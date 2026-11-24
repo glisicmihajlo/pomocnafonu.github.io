@@ -7,7 +7,8 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Admin — Pomoć na fonu</title>
 
-    <link href="/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" sizes="any">
+    <link rel="icon" href="/images/pomoc-na-fonu-znak.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -79,6 +80,7 @@
 
         .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.02rem; }
         .logo img { height: 30px; width: auto; }
+        .brand-accent { color: #FFC93C; }
         .logo .tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: rgba(255,176,32,.14); color: var(--amber); }
 
         .msg { margin-top: 12px; padding: 10px 12px; border-radius: 10px; font-size: 13px; }
@@ -219,7 +221,7 @@
     <!-- Prijava / provera pristupa -->
     <div class="gate" id="gate">
         <div class="gate-card">
-            <span class="logo"><img src="/images/logo-68.png" alt="" width="73" height="68"> Pomoć na fonu <span class="tag">ADMIN</span></span>
+            <span class="logo"><img src="/images/pomoc-na-fonu-znak.svg" alt="" width="34" height="34"> Pomoć na <span class="brand-accent">fonu</span> <span class="tag">ADMIN</span></span>
 
             <div id="gateLoading"><p style="margin-top:20px"><span class="spinner"></span>&nbsp; Provera pristupa...</p></div>
 
@@ -243,7 +245,7 @@
     <!-- Panel -->
     <div id="app" hidden>
         <header class="top">
-            <a href="/" class="logo"><img src="/images/logo-68.png" alt="" width="73" height="68"> Pomoć na fonu <span class="tag">ADMIN</span></a>
+            <a href="/" class="logo"><img src="/images/pomoc-na-fonu-znak.svg" alt="" width="34" height="34"> Pomoć na <span class="brand-accent">fonu</span> <span class="tag">ADMIN</span></a>
             <div class="top-right">
                 <span class="hide-sm" id="adminEmail"></span>
                 <button class="btn btn-sm" id="reloadBtn" title="Osveži"><i class="fas fa-rotate"></i></button>

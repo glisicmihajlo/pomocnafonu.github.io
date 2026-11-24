@@ -1411,3 +1411,6 @@ button { font: inherit; color: inherit; }
     .owned-grid { grid-template-columns: minmax(0, 1fr); }
     .owned-card { min-height: 0; }
 }
+
+/* Reč "fonu" u nazivu pored loga — boja loga */
+.brand-accent { color: #FFC93C; }

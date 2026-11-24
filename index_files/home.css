@@ -972,7 +972,7 @@ button { font: inherit; color: inherit; }
 
 .footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
 
-.footer-col h4 {
+.footer-col h3 {
     margin: 0 0 14px;
     font-size: 0.75rem;
     letter-spacing: 0.12em;

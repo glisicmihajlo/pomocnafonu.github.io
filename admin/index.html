@@ -167,10 +167,50 @@
         .spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin .7s linear infinite; display: inline-block; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body { overflow-x: hidden; }
+
         @media (max-width: 720px) {
             .hide-sm { display: none; }
-            main.panel { padding: 16px; }
-            header.top { padding: 12px 16px; }
+            main.panel { padding: 14px; }
+            header.top { padding: 10px 14px; }
+            .logo { font-size: .95rem; }
+            .logo img { height: 26px; }
+
+            /* iOS zumira polja sa fontom manjim od 16px */
+            input[type=text], input[type=email], input[type=password], input[type=search], select { font-size: 16px; }
+
+            .stats { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+            .stat { padding: 12px; }
+            .stat strong { font-size: 1.3rem; }
+
+            .toolbar { gap: 8px; }
+            .toolbar .search { flex: 1 1 100%; }
+            .toolbar select { flex: 1 1 calc(50% - 4px); min-width: 0; }
+
+            /* Tabela postaje lista kartica */
+            .table-wrap { overflow: visible; border: 0; background: none; }
+            table, tbody, tr, td { display: block; width: 100%; }
+            thead { display: none; }
+            tbody tr {
+                position: relative; margin-bottom: 8px; padding: 12px 14px;
+                border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2);
+            }
+            tbody tr:hover { background: var(--bg-2); }
+            tbody tr:active { background: var(--surface); }
+            td { padding: 0; border: 0; }
+            td:first-child { padding-right: 52px; }
+            td:nth-child(2) { margin-top: 8px; }
+            td:nth-child(3) { position: absolute; top: 12px; right: 14px; width: auto; }
+            .empty-row td { padding: 24px 0; }
+            .more { padding: 6px 0 14px; }
+
+            .drawer { padding: 16px; }
+            .section { padding: 14px; }
+            .check { padding: 9px 6px; }
+            .check code { display: none; }
+            .row .btn, .section > .btn { flex: 1 1 auto; }
+            .toast { left: 14px; right: 14px; transform: none; text-align: center; }
         }
     </style>
 </head>
@@ -527,6 +567,8 @@
         }
 
         $("moreBtn").onclick = () => { shown += 100; render(); };
+        // Na telefonu: Enter / "Traži" zatvara tastaturu
+        $("search").addEventListener("keydown", e => { if (e.key === "Enter") e.target.blur(); });
         ["search", "courseFilter", "sortBy"].forEach(id => $(id).addEventListener("input", () => { shown = 100; render(); }));
 
         /* ---------- detalji korisnika ---------- */

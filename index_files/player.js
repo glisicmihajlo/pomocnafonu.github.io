@@ -63,7 +63,6 @@ export function startPlayer(cfg) {
     const btnComplete = $("btn-complete");
     const btnPrev = $("btn-prev");
     const btnNext = $("btn-next");
-    const search = $("lesson-search");
     const gate = $("auth-gate");
     const gateText = $("auth-gate-text");
     const toastEl = $("toast");
@@ -99,7 +98,6 @@ export function startPlayer(cfg) {
         return url;
     }
 
-    const norm = s => s.toLowerCase().replace(/[čć]/g, "c").replace(/š/g, "s").replace(/ž/g, "z").replace(/đ/g, "dj");
     const hasVideo = l => Boolean(l.vdoId || l.url || l.youtube);
 
     /* ---------- napredak ---------- */
@@ -271,27 +269,7 @@ export function startPlayer(cfg) {
         select(idx === -1 ? 0 : idx);
     }
 
-    /* ---------- pretraga, dugmad, prečice ---------- */
-
-    search.addEventListener("input", () => {
-        const q = norm(search.value.trim());
-        if (isFlat) {
-            flat.forEach(l => { $(`lesson-${l.idx}`).hidden = Boolean(q) && !norm(l.title).includes(q); });
-            return;
-        }
-        modules.forEach((m, mIndex) => {
-            const card = $(`module-${mIndex}`);
-            const moduleMatch = norm(m.moduleTitle).includes(q);
-            let any = false;
-            flat.filter(l => l.mIndex === mIndex).forEach(l => {
-                const match = !q || moduleMatch || norm(l.title).includes(q);
-                $(`lesson-${l.idx}`).hidden = !match;
-                if (match) any = true;
-            });
-            card.hidden = !any;
-            if (q && any) card.classList.add("open");
-        });
-    });
+    /* ---------- dugmad, prečice ---------- */
 
     btnComplete.onclick = toggleCurrent;
     btnPrev.onclick = () => select(current - 1);

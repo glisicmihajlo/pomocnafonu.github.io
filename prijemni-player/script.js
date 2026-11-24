@@ -72,7 +72,6 @@ const menuToggle = $('menu-toggle');
 const btnComplete = $('btn-complete');
 const btnPrev = $('btn-prev');
 const btnNext = $('btn-next');
-const searchInput = $('lesson-search');
 const authGate = $('auth-gate');
 const authGateText = $('auth-gate-text');
 const toastEl = $('toast');
@@ -266,20 +265,6 @@ function toggleCurrentLesson() {
     if (auth.currentUser) saveProgressToFirebase(auth.currentUser.uid);
     updateUI();
 }
-
-/* ---------------- Pretraga ---------------- */
-
-function normalize(s) {
-    return s.toLowerCase()
-        .replace(/[čć]/g, 'c').replace(/š/g, 's').replace(/ž/g, 'z').replace(/đ/g, 'dj');
-}
-
-searchInput.addEventListener('input', () => {
-    const q = normalize(searchInput.value.trim());
-    lessons.forEach(l => {
-        $(`btn-${l.id}`).hidden = Boolean(q) && !normalize(l.title).includes(q);
-    });
-});
 
 /* ---------------- Događaji ---------------- */
 

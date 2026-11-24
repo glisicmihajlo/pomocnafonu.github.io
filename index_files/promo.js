@@ -79,7 +79,7 @@
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Akcija ' + NAME);
     bar.innerHTML =
-        '<p>🖤 <b>' + NAME + ':</b> do −25% na sve kurseve za FON ispite' +
+        '<p>🖤 <b>' + NAME + ':</b> do −25% na sve kurseve za FON' +
         '<span class="promo-time">Još <span id="promo-left"></span></span></p>' +
         '<a href="' + (onCourse ? '#cena' : '/kursevi') + '">' + (onCourse ? 'Vidi cene' : 'Vidi kurseve') + '</a>' +
         '<button type="button" aria-label="Zatvori obaveštenje o akciji">×</button>';

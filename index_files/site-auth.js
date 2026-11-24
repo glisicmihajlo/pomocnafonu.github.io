@@ -6,7 +6,8 @@
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { guardDevice, MAX_DEVICES } from "/index_files/devices.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
@@ -34,45 +35,19 @@ authBtn?.addEventListener("click", async (e) => {
     }
 });
 
-function generateSessionToken() {
-    return Math.random().toString(36).substring(2) + Date.now().toString(36);
-}
-
 // Najviše 2 uređaja po nalogu. Vraća snapshot korisnika (ili null ako je odjavljen).
-async function setupMaxTwoDevices(user) {
-    const userRef = doc(db, "users", user.uid);
-    let sessionToken = localStorage.getItem("sessionToken");
-    if (!sessionToken) {
-        sessionToken = generateSessionToken();
-        localStorage.setItem("sessionToken", sessionToken);
-    }
-
-    const snap = await getDoc(userRef);
-    const sessionTokens = (snap.exists() && Array.isArray(snap.data().sessionTokens)) ? snap.data().sessionTokens : [];
-
-    if (sessionTokens.includes(sessionToken)) return snap;
-
-    if (sessionTokens.length >= 2) {
-        alert("Dostignut je maksimalan broj uređaja za ovaj nalog (2). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.");
-        await signOut(auth);
-        window.location.href = "/login";
-        return null;
-    }
-
-    sessionTokens.push(sessionToken);
-    await setDoc(userRef, { sessionTokens }, { merge: true });
-
-    onSnapshot(userRef, (docSnap) => {
-        const data = docSnap.data();
-        if (!data || !Array.isArray(data.sessionTokens)) return;
-        if (!data.sessionTokens.includes(sessionToken)) {
-            alert("Pristup ovom uređaju je uklonjen.");
-            signOut(auth);
+function setupMaxTwoDevices(user) {
+    return guardDevice({
+        auth, db, user,
+        onRemoved: () => {
+            alert("Pristup ovom uređaju je uklonjen. Prijavi se ponovo.");
+            window.location.href = "/login";
+        },
+        onLimit: () => {
+            alert(`Dostignut je maksimalan broj uređaja za ovaj nalog (${MAX_DEVICES}). Javite se putem mejla pomocnafonu@gmail.com za sva dodatna pitanja.`);
             window.location.href = "/login";
         }
     });
-
-    return snap;
 }
 
 onAuthStateChanged(auth, async (user) => {

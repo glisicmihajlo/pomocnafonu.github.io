@@ -1,7 +1,8 @@
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-functions.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { guardDevice, MAX_DEVICES } from "/index_files/devices.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCacNqpdT5RARz4gvtmwewULR2Xv-tqv6c",
@@ -96,41 +97,15 @@ function denyAccess(message, redirectTo) {
 
 /* ---------------- Ograničenje na 2 uređaja ---------------- */
 
-function generateSessionToken() {
-    return Math.random().toString(36).substring(2) + Date.now().toString(36);
-}
-
-async function setupMaxTwoDevices(user) {
-    const userRef = doc(db, "users", user.uid);
-    let sessionToken = localStorage.getItem("sessionToken");
-    if (!sessionToken) {
-        sessionToken = generateSessionToken();
-        localStorage.setItem("sessionToken", sessionToken);
-    }
-
-    const snap = await getDoc(userRef);
-    const sessionTokens = (snap.exists() && snap.data().sessionTokens) ? snap.data().sessionTokens : [];
-
-    if (!sessionTokens.includes(sessionToken)) {
-        if (sessionTokens.length >= 2) {
-            await signOut(auth);
-            denyAccess("Dostignut je maksimalan broj uređaja (2).", "/login");
-            return null;
-        }
-        sessionTokens.push(sessionToken);
-        await setDoc(userRef, { sessionTokens }, { merge: true });
-    }
-
-    onSnapshot(userRef, (docSnap) => {
-        const data = docSnap.data();
-        if (data && (!data.sessionTokens || !data.sessionTokens.includes(sessionToken))) {
+function setupMaxTwoDevices(user) {
+    return guardDevice({
+        auth, db, user,
+        onRemoved: () => {
             vdoPlayer.src = "";
-            signOut(auth);
-            denyAccess("Pristup ovom uređaju je uklonjen.", "/login");
-        }
+            denyAccess("Pristup ovom uređaju je uklonjen. Prijavi se ponovo.", "/login");
+        },
+        onLimit: () => denyAccess(`Dostignut je maksimalan broj uređaja (${MAX_DEVICES}).`, "/login")
     });
-
-    return snap;
 }
 
 /* ---------------- Progres ---------------- */

@@ -2,6 +2,14 @@
    Pomoć na fonu — početna stranica
    ========================================================= */
 
+/* Font Awesome se učitava bez blokiranja prikaza: ikonice unapred zauzimaju
+   svoje mesto, da se tekst ne pomeri kad se učitaju (CLS) */
+i.fas, i.far, i.fab {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+}
+
 :root {
     --bg: #0b0a09;
     --bg-2: #12100e;

@@ -1,0 +1,42 @@
+rules_version = '2';
+
+// Korisnik sme da čita samo svoj dokument i da menja samo svoj napredak i uređaje.
+// "kursevi" menja isključivo admin panel (Cloud Functions, Admin SDK zaobilazi ova pravila).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{uid} {
+      function isOwner() {
+        return request.auth != null && request.auth.uid == uid;
+      }
+
+      // Uređaji: lista može samo da raste i najviše do 2 (reset radi samo admin)
+      function devicesOk(before) {
+        let after = request.resource.data.get('sessionTokens', []);
+        return after is list && after.size() <= 2 && after.hasAll(before);
+      }
+
+      allow read: if isOwner();
+
+      // Novi nalog: bez kupljenih kurseva
+      allow create: if isOwner()
+        && request.resource.data.keys().hasOnly(['email', 'kursevi', 'sessionTokens', 'completedLessons'])
+        && request.resource.data.get('kursevi', []) == []
+        && request.resource.data.get('email', request.auth.token.email) == request.auth.token.email
+        && devicesOk([]);
+
+      // Postojeći nalog: menjaju se samo napredak i uređaji
+      allow update: if isOwner()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['sessionTokens', 'completedLessons'])
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['sessionTokens'])
+            || devicesOk(resource.data.get('sessionTokens', [])));
+
+      allow delete: if false;
+    }
+
+    // Sve ostalo je zatvoreno
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

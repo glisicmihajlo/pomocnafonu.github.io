@@ -1,4 +1,7 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "functions": [
     {
       "codebase": "default",
@@ -9,6 +12,9 @@
         "firebase-debug.log",
         "firebase-debug.*.log",
         "*.local"
+      ],
+      "predeploy": [
+        "node functions/scripts/build-video-map.js"
       ],
       "source": "functions"
     }

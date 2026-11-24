@@ -10,8 +10,11 @@
 
     // redovna cena -> akcijska cena
     var PRICES = {
-        1500: 1200, 1800: 1500, 2000: 1500, 2200: 1800, 2400: 2000, 2500: 2000,
-        2700: 2200, 3000: 2400, 3500: 2700, 3800: 3000, 4000: 3000, 5000: 4000,
+        // pojedinačni delovi: ~20%
+        1500: 1200, 1800: 1500, 2000: 1500, 2200: 1800, 2500: 2000, 2700: 2200, 3500: 2700,
+        // paketi (ceo ispit / pismeni / komplet): 30%
+        2400: 1700, 3000: 2100, 3800: 2650, 4000: 2800, 5000: 3500,
+        // prijemni: 20%
         15000: 12000
     };
 
@@ -90,7 +93,7 @@
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Akcija ' + NAME);
     bar.innerHTML =
-        '<p>🖤 <b>' + NAME + ':</b> do −25% na sve kurseve za FON' +
+        '<p>🖤 <b>' + NAME + ':</b> do −30% na sve kurseve za FON' +
         '<span class="promo-time">Još <span id="promo-left"></span></span></p>' +
         '<a href="' + (onCourse ? '#cena' : '/kursevi') + '">' + (onCourse ? 'Vidi cene' : 'Vidi kurseve') + '</a>' +
         '<button type="button" aria-label="Zatvori obaveštenje o akciji">×</button>';

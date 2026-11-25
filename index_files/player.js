@@ -125,7 +125,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
                 <input type="range" class="vc-seek" min="0" max="0" step="0.1" value="0" aria-label="Pozicija u videu">
                 <div class="vc-row">
                     <span class="vc-time">0:00 / 0:00</span>
-                    <button type="button" class="vc-btn vc-desktop" data-act="mute" aria-label="Isključi zvuk" title="Zvuk (M)"><i class="fas fa-volume-high"></i></button>
+                    <button type="button" class="vc-btn" data-act="mute" aria-label="Isključi zvuk" title="Zvuk (M)"><i class="fas fa-volume-high"></i></button>
                     <input type="range" class="vc-volume vc-desktop" min="0" max="1" step="0.05" value="1" aria-label="Jačina zvuka">
                     <button type="button" class="vc-btn" data-act="quality" aria-label="Kvalitet" title="Kvalitet" hidden><i class="fas fa-gear"></i></button>
                     <button type="button" class="vc-btn vc-speed" data-act="speed" aria-label="Brzina" title="Brzina">1x</button>
@@ -142,6 +142,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
                 <button type="button" class="vc-pill" data-act="next-cancel">Otkaži</button>
             </div>
         </div>
+        <button type="button" class="vc-pill vc-unmute" data-act="unmute" hidden><i class="fas fa-volume-xmark"></i> Uključi zvuk</button>
         <div class="vc-hud" aria-hidden="true"></div>`;
     frame.append(ui);
 
@@ -163,6 +164,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
     const nextBox = q(".vc-next");
     const nextCount = q(".vc-next-count");
     const nextTitleEl = q(".vc-next-title");
+    const unmuteBtn = q(".vc-unmute");
 
     const prefs = readPrefs();
 
@@ -181,6 +183,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
     let lastSaved = 0;
     // Nastavak: VdoCipher ignoriše pomeranje dok plejer nije spreman, pa ponavljamo
     // dok video stvarno ne dođe na sačuvano mesto. Do tada se pozicija ne čuva.
+    let autoStarted = false;  // autoplay se pokušava samo jednom po videu
     let resumeTarget = 0;
     let resumeTries = 0;
     let resumeLastTry = 0;
@@ -250,6 +253,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
         const icon = on ? "fa-pause" : (ended ? "fa-rotate-right" : "fa-play");
         playBtn.innerHTML = `<i class="fas ${icon}"></i>`;
         playBtn.setAttribute("aria-label", on ? "Pauza" : "Pusti");
+        renderVolume();
         showChrome();
     }
 
@@ -266,6 +270,8 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
         muteBtn.setAttribute("aria-label", level === 0 ? "Uključi zvuk" : "Isključi zvuk");
         vol.value = level;
         vol.style.setProperty("--p", `${level * 100}%`);
+        // Browser je pustio video bez zvuka (samostalno puštanje): ponudi da se uključi
+        unmuteBtn.hidden = !(muted && playing);
     }
 
     /* ---------- upravljanje videom ---------- */
@@ -448,7 +454,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
                 renderTime(resumeTarget);
                 trySeek();
             }
-            if (opts.autoplay && !playing) v.play();
+            if (opts.autoplay && !autoStarted && !playing) { autoStarted = true; v.play(); }
         };
         const trySeek = () => {
             if (!resumeTarget) return;
@@ -474,6 +480,11 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
         };
         v.addEventListener("loadedmetadata", readDuration);
         v.addEventListener("durationchange", readDuration);
+        v.addEventListener("canplay", mine(() => {
+            readDuration();
+            // Autoplay i kad trajanje još nije poznato
+            if (opts.autoplay && !autoStarted && !playing && !ended && !ui.hidden) { autoStarted = true; v.play(); }
+        }));
         v.addEventListener("play", mine(() => { ended = false; cancelCountdown(); setPlaying(true); }));
         v.addEventListener("playing", mine(() => {
             ui.classList.remove("is-buffering");
@@ -579,6 +590,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
         else if (act === "next") { if (opts.hasNext) onNext?.(); }
         else if (act === "speed") cycleSpeed();
         else if (act === "mute") toggleMute();
+        else if (act === "unmute") { if (muted) toggleMute(); }
         else if (act === "fs") toggleFull();
         else if (act === "autoplay") toggleAutoplay();
         else if (act === "next-now") { cancelCountdown(); onNext?.(); return; }
@@ -677,6 +689,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
             seeking = false;
             started = false;
             lastSaved = 0;
+            autoStarted = false;
             resumeTarget = Number(o.resumeAt) || 0;
             resumeTries = 0;
             resumeLastTry = 0;
@@ -707,7 +720,9 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
             // Bez fullscreen dozvole iframe ne može sam preko celog ekrana
             iframe.setAttribute("allow", ALLOW_CUSTOM);
             FS_ATTRS.forEach(a => iframe.removeAttribute(a));
-            iframe.src = `${src}&controls=off${o.autoplay ? "&autoplay=true" : ""}`;
+            // Bez VdoCipher-ovog autoplay parametra: on na telefonu pušta video bez zvuka.
+            // Puštamo sami preko API-ja (start() u bind), isto kao kad se pritisne play.
+            iframe.src = `${src}&controls=off`;
             try {
                 const VdoPlayer = await loadVdoApi();
                 if (myGen !== gen) return;

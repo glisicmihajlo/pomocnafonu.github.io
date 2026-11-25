@@ -1013,3 +1013,19 @@ kbd {
     color: var(--primary);
 }
 .lesson-resume[hidden] { display: none; }
+
+/* "Uključi zvuk" kad browser pusti video utišan */
+.vc-unmute {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.7);
+    border-color: var(--primary);
+}
+.vc-unmute[hidden] { display: none; }
+.vc-unmute i { color: var(--primary); }

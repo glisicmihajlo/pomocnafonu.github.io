@@ -184,7 +184,6 @@
         (function () {
             // Svi kursevi: id iz baze -> prikaz. "subject" grupiše delove istog predmeta.
             var COURSES = {
-                "prijemni":    { code: "PRIJEMNI", name: "Prijemni ispit — Matematika", part: "Ceo kurs", subject: "prijemni" },
                 "oikt-klk1":   { code: "OIKT",  name: "OIKT", part: "1. kolokvijum", subject: "oikt" },
                 "oikt-klk2":   { code: "OIKT",  name: "OIKT", part: "2. kolokvijum", subject: "oikt" },
                 "mat1-klk1":   { code: "MAT 1", name: "Matematika 1", part: "1. kolokvijum", subject: "mat1" },
@@ -199,7 +198,8 @@
                 "aros-klk1":   { code: "AROS",  name: "AROS", part: "1. kolokvijum", subject: "aros" },
                 "aros-klk2":   { code: "AROS",  name: "AROS", part: "2. kolokvijum", subject: "aros" },
                 "dms-pismeni": { code: "DMS",   name: "DMS", part: "Pismeni", subject: "dms" },
-                "dms-usmeni":  { code: "DMS",   name: "DMS", part: "Usmeni", subject: "dms" }
+                "dms-usmeni":  { code: "DMS",   name: "DMS", part: "Usmeni", subject: "dms" },
+                "prijemni":    { code: "PRIJEMNI", name: "Prijemni ispit — Matematika", part: "Ceo kurs", subject: "prijemni" }
             };
 
             var SUBJECTS = [
@@ -277,7 +277,10 @@
                     } else {
                         var list = $("course-list");
                         list.innerHTML = "";
-                        kursevi.forEach(function (id) {
+                        // Redosled kao u COURSES (ne kako je upisano u bazi); nepoznati idu na kraj
+                        var ORDER = Object.keys(COURSES);
+                        var rank = function (id) { var i = ORDER.indexOf(id); return i === -1 ? 999 : i; };
+                        kursevi.slice().sort(function (a, b) { return rank(a) - rank(b); }).forEach(function (id) {
                             var done = Array.isArray(progress[id]) ? progress[id].length : 0;
                             list.appendChild(renderCourse(id, done));
                         });

@@ -79,11 +79,28 @@ function formatTime(sec) {
     return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`;
 }
 
+// Podešavanja plejera koja važe za sve kurseve
+const PREFS_KEY = "playerPrefs";
+const NEXT_COUNTDOWN_S = 5;
+function readPrefs() {
+    let p = {};
+    try { p = JSON.parse(localStorage.getItem(PREFS_KEY)) || {}; } catch { /* prazno */ }
+    return {
+        autoplay: p.autoplay !== false,
+        speedIdx: Number.isInteger(p.speedIdx) && SPEEDS[p.speedIdx] ? p.speedIdx : 0,
+        volume: typeof p.volume === "number" && p.volume >= 0 && p.volume <= 1 ? p.volume : 1,
+        muted: p.muted === true
+    };
+}
+function savePrefs(p) {
+    try { localStorage.setItem(PREFS_KEY, JSON.stringify(p)); } catch { /* pun storage */ }
+}
+
 const ALLOW_NATIVE = "autoplay; encrypted-media; fullscreen";
 const ALLOW_CUSTOM = "autoplay; encrypted-media";
 const FS_ATTRS = ["allowfullscreen", "webkitallowfullscreen", "mozallowfullscreen"];
 
-function customPlayer(frame, iframe, { watermark }) {
+function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPosition }) {
     const ui = document.createElement("div");
     ui.className = "vc";
     ui.classList.toggle("is-touch", IS_TOUCH);
@@ -92,10 +109,17 @@ function customPlayer(frame, iframe, { watermark }) {
         <div class="vc-gesture"></div>
         <div class="vc-chrome">
             <div class="vc-shade"></div>
+            <div class="vc-top">
+                <button type="button" class="vc-switch" role="switch" aria-checked="true" data-act="autoplay" aria-label="Automatski pusti sledeću lekciju" title="Automatski pusti sledeću lekciju">
+                    <span class="vc-switch-track"><span class="vc-switch-knob"><i class="fas fa-play"></i></span></span>
+                </button>
+            </div>
             <div class="vc-center">
+                <button type="button" class="vc-btn vc-nav" data-act="prev" aria-label="Prethodna lekcija" title="Prethodna lekcija (Shift+P)"><i class="fas fa-backward-step"></i></button>
                 <button type="button" class="vc-btn vc-skip" data-act="back" aria-label="${SEEK_STEP} sekundi nazad" title="${SEEK_STEP} s nazad (J)"><i class="fas fa-rotate-left"></i><span>${SEEK_STEP}</span></button>
                 <button type="button" class="vc-btn vc-play" data-act="play" aria-label="Pusti" title="Pusti / pauza (razmak)"><i class="fas fa-play"></i></button>
                 <button type="button" class="vc-btn vc-skip" data-act="fwd" aria-label="${SEEK_STEP} sekundi napred" title="${SEEK_STEP} s napred (L)"><i class="fas fa-rotate-right"></i><span>${SEEK_STEP}</span></button>
+                <button type="button" class="vc-btn vc-nav" data-act="next" aria-label="Sledeća lekcija" title="Sledeća lekcija (Shift+N)"><i class="fas fa-forward-step"></i></button>
             </div>
             <div class="vc-bottom">
                 <input type="range" class="vc-seek" min="0" max="0" step="0.1" value="0" aria-label="Pozicija u videu">
@@ -109,6 +133,14 @@ function customPlayer(frame, iframe, { watermark }) {
                 </div>
             </div>
             <div class="vc-menu" role="menu" aria-label="Kvalitet" hidden></div>
+        </div>
+        <div class="vc-next" hidden>
+            <div class="vc-next-label">Sledeća lekcija za <b class="vc-next-count">${NEXT_COUNTDOWN_S}</b> s</div>
+            <div class="vc-next-title"></div>
+            <div class="vc-next-actions">
+                <button type="button" class="vc-pill vc-pill-primary" data-act="next-now"><i class="fas fa-play"></i> Pusti odmah</button>
+                <button type="button" class="vc-pill" data-act="next-cancel">Otkaži</button>
+            </div>
         </div>
         <div class="vc-hud" aria-hidden="true"></div>`;
     frame.append(ui);
@@ -125,6 +157,14 @@ function customPlayer(frame, iframe, { watermark }) {
     const fsBtn = q('[data-act="fs"]');
     const menu = q(".vc-menu");
     const hud = q(".vc-hud");
+    const autoBtn = q('[data-act="autoplay"]');
+    const prevBtn = q('[data-act="prev"]');
+    const nextBtn = q('[data-act="next"]');
+    const nextBox = q(".vc-next");
+    const nextCount = q(".vc-next-count");
+    const nextTitleEl = q(".vc-next-title");
+
+    const prefs = readPrefs();
 
     let vp = null;          // VdoCipher player instanca
     let gen = 0;            // menja se pri svakom novom videu
@@ -133,9 +173,13 @@ function customPlayer(frame, iframe, { watermark }) {
     let ended = false;
     let seeking = false;
     let duration = 0;
-    let speedIdx = 0;
-    let volume = 1;
-    let muted = false;
+    let speedIdx = prefs.speedIdx;
+    let volume = prefs.volume;
+    let muted = prefs.muted;
+    let opts = {};          // { autoplay, resumeAt, hasPrev, hasNext, nextTitle } za trenutni video
+    let started = false;    // da li su brzina/zvuk/pozicija primenjeni na ovaj video
+    let lastSaved = 0;
+    let countdownTimer = null;
     let qualities = [];     // lista iz VdoCipher API-ja, redom kao u meniju
     let moveTimer = null;
     let hideTimer = null;
@@ -242,6 +286,10 @@ function customPlayer(frame, iframe, { watermark }) {
         flash(delta > 0 ? `+${delta} s` : `−${-delta} s`);
     }
 
+    function persist() {
+        savePrefs({ autoplay: prefs.autoplay, speedIdx, volume, muted });
+    }
+
     function cycleSpeed() {
         const v = video();
         if (!v) return;
@@ -249,6 +297,7 @@ function customPlayer(frame, iframe, { watermark }) {
         v.playbackRate = SPEEDS[speedIdx];
         speedBtn.textContent = `${SPEEDS[speedIdx]}x`;
         flash(`${SPEEDS[speedIdx]}x`);
+        persist();
     }
 
     function toggleMute() {
@@ -259,6 +308,47 @@ function customPlayer(frame, iframe, { watermark }) {
         v.muted = muted;
         renderVolume();
         flash(muted ? "Zvuk isključen" : "Zvuk uključen");
+        persist();
+    }
+
+    /* ---------- autoplay sledeće lekcije ---------- */
+
+    function renderAutoplay() {
+        autoBtn.setAttribute("aria-checked", String(prefs.autoplay));
+        autoBtn.classList.toggle("is-on", prefs.autoplay);
+        autoBtn.title = prefs.autoplay ? "Automatsko puštanje sledeće lekcije je uključeno" : "Automatsko puštanje sledeće lekcije je isključeno";
+    }
+
+    function toggleAutoplay() {
+        prefs.autoplay = !prefs.autoplay;
+        renderAutoplay();
+        persist();
+        flash(prefs.autoplay ? "Autoplay uključen" : "Autoplay isključen");
+        if (!prefs.autoplay) cancelCountdown();
+    }
+
+    function cancelCountdown() {
+        clearInterval(countdownTimer);
+        countdownTimer = null;
+        nextBox.hidden = true;
+    }
+
+    function startCountdown() {
+        cancelCountdown();
+        let left = NEXT_COUNTDOWN_S;
+        nextCount.textContent = left;
+        nextTitleEl.textContent = opts.nextTitle || "";
+        nextBox.hidden = false;
+        countdownTimer = setInterval(() => {
+            left -= 1;
+            nextCount.textContent = Math.max(0, left);
+            if (left <= 0) { cancelCountdown(); onNext?.(); }
+        }, 1000);
+    }
+
+    function renderNav() {
+        prevBtn.disabled = !opts.hasPrev;
+        nextBtn.disabled = !opts.hasNext;
     }
 
     /* ---------- kvalitet ---------- */
@@ -338,24 +428,54 @@ function customPlayer(frame, iframe, { watermark }) {
     function bind(inst) {
         const v = inst.video;
         const mine = fn => (...args) => { if (inst === vp) fn(...args); };
+        // Prvi put kad je trajanje poznato: brzina, zvuk, nastavak i autoplay
+        const start = () => {
+            if (started) return;
+            started = true;
+            if (SPEEDS[speedIdx] !== 1) v.playbackRate = SPEEDS[speedIdx];
+            v.volume = volume;
+            v.muted = muted;
+            const at = Number(opts.resumeAt) || 0;
+            if (at > 10 && at < duration - 15) {
+                v.currentTime = at;
+                seek.value = at;
+                renderTime(at);
+                lastSaved = at;
+                flash(`Nastavljeno od ${formatTime(at)}`);
+            }
+            if (opts.autoplay && !playing) v.play();
+        };
         const readDuration = mine(() => {
             const d = Number(v.duration);
             if (d && isFinite(d)) {
                 duration = d;
                 seek.max = d;
                 renderTime(Number(v.currentTime) || 0);
+                start();
             }
         });
+        const savePosition = () => {
+            if (ui.hidden || !started) return;   // događaj starog videa posle promene lekcije
+            const t = Number(v.currentTime) || 0;
+            lastSaved = t;
+            if (duration) onPosition?.(t, duration);
+        };
         v.addEventListener("loadedmetadata", readDuration);
         v.addEventListener("durationchange", readDuration);
-        v.addEventListener("play", mine(() => { ended = false; setPlaying(true); }));
+        v.addEventListener("play", mine(() => { ended = false; cancelCountdown(); setPlaying(true); }));
         v.addEventListener("playing", mine(() => {
             ui.classList.remove("is-buffering");
             setPlaying(true);
             if (qualities.length < 2) readQualities();
         }));
-        v.addEventListener("pause", mine(() => setPlaying(false)));
-        v.addEventListener("ended", mine(() => { ended = true; setPlaying(false); }));
+        v.addEventListener("pause", mine(() => { setPlaying(false); if (!ended) savePosition(); }));
+        v.addEventListener("ended", mine(() => {
+            if (ui.hidden || !started) return;
+            ended = true;
+            setPlaying(false);
+            onEnded?.();
+            if (prefs.autoplay && opts.hasNext) startCountdown();
+        }));
         v.addEventListener("waiting", mine(() => ui.classList.add("is-buffering")));
         v.addEventListener("volumechange", mine(() => {
             const level = Number(v.volume);
@@ -369,6 +489,7 @@ function customPlayer(frame, iframe, { watermark }) {
             const t = Number(v.currentTime) || 0;
             seek.value = t;
             renderTime(t);
+            if (Math.abs(t - lastSaved) >= 5) savePosition();
         }));
     }
 
@@ -428,9 +549,14 @@ function customPlayer(frame, iframe, { watermark }) {
         if (act === "play") togglePlay();
         else if (act === "back") seekBy(-SEEK_STEP);
         else if (act === "fwd") seekBy(SEEK_STEP);
+        else if (act === "prev") { if (opts.hasPrev) onPrev?.(); }
+        else if (act === "next") { if (opts.hasNext) onNext?.(); }
         else if (act === "speed") cycleSpeed();
         else if (act === "mute") toggleMute();
         else if (act === "fs") toggleFull();
+        else if (act === "autoplay") toggleAutoplay();
+        else if (act === "next-now") { cancelCountdown(); onNext?.(); return; }
+        else if (act === "next-cancel") { cancelCountdown(); }
         showChrome();
     });
 
@@ -453,6 +579,7 @@ function customPlayer(frame, iframe, { watermark }) {
         if (v) { v.volume = volume; v.muted = muted; }
         renderVolume();
         showChrome();
+        persist();
     });
 
     /* ---------- tastatura (računar) ---------- */
@@ -470,6 +597,8 @@ function customPlayer(frame, iframe, { watermark }) {
         else if (k === "l") seekBy(SEEK_STEP);
         else if (k === "f") toggleFull();
         else if (k === "m") toggleMute();
+        else if (k === "n" && e.shiftKey) { if (opts.hasNext) onNext?.(); return; }
+        else if (k === "p" && e.shiftKey) { if (opts.hasPrev) onPrev?.(); return; }
         else return;
         showChrome();
     });
@@ -511,20 +640,24 @@ function customPlayer(frame, iframe, { watermark }) {
     /* ---------- javno ---------- */
 
     return {
-        async load(src, userEmail) {
+        // o: { autoplay, resumeAt, hasPrev, hasNext, nextTitle }
+        async load(src, userEmail, o = {}) {
             const myGen = ++gen;
             email = userEmail || "";
+            opts = o;
             playing = false;
             ended = false;
             seeking = false;
+            started = false;
+            lastSaved = 0;
             duration = 0;
-            speedIdx = 0;
-            volume = 1;
-            muted = false;
             qualities = [];
+            cancelCountdown();
             seek.max = 0;
             seek.value = 0;
-            speedBtn.textContent = "1x";
+            speedBtn.textContent = `${SPEEDS[speedIdx]}x`;
+            renderAutoplay();
+            renderNav();
             qualityBtn.hidden = true;
             menu.hidden = true;
             renderTime(0);
@@ -544,7 +677,7 @@ function customPlayer(frame, iframe, { watermark }) {
             // Bez fullscreen dozvole iframe ne može sam preko celog ekrana
             iframe.setAttribute("allow", ALLOW_CUSTOM);
             FS_ATTRS.forEach(a => iframe.removeAttribute(a));
-            iframe.src = `${src}&controls=off`;
+            iframe.src = `${src}&controls=off${o.autoplay ? "&autoplay=true" : ""}`;
             try {
                 const VdoPlayer = await loadVdoApi();
                 if (myGen !== gen) return;
@@ -566,6 +699,7 @@ function customPlayer(frame, iframe, { watermark }) {
             playing = false;
             clearInterval(moveTimer);
             clearTimeout(hideTimer);
+            cancelCountdown();
             ui.hidden = true;
             if (wm) wm.hidden = true;
             if (isFull()) toggleFull();
@@ -578,6 +712,7 @@ export function startPlayer(cfg) {
     const COURSE_ID = cfg.courseId;
     const PROGRESS_KEY = `progress_${COURSE_ID}`;
     const LAST_KEY = `lastLesson_${COURSE_ID}`;
+    const POS_KEY = `positions_${COURSE_ID}`;
 
     /* ---------- podaci ---------- */
 
@@ -615,7 +750,13 @@ export function startPlayer(cfg) {
     document.title = `${cfg.title} — Pomoć na fonu`;
     if (!isPaid) gate.hidden = true;
 
-    const custom = isPaid ? customPlayer($("video-container"), player, { watermark: IS_TOUCH }) : null;
+    const custom = isPaid ? customPlayer($("video-container"), player, {
+        watermark: IS_TOUCH,
+        onPrev: () => { const i = prevPlayable(current); if (i > -1) select(i, { autoplay: true }); },
+        onNext: () => { const i = nextPlayable(current); if (i > -1) select(i, { autoplay: true }); },
+        onEnded: () => lessonEnded(),
+        onPosition: (t, d) => savePosition(t, d)
+    }) : null;
 
     /* ---------- pomoćne ---------- */
 
@@ -646,6 +787,56 @@ export function startPlayer(cfg) {
     }
 
     const hasVideo = l => Boolean(l.vdoId || l.url || l.youtube);
+    const playable = l => Boolean(l && !l.isLocked && hasVideo(l));
+
+    function nextPlayable(from) {
+        for (let i = from + 1; i < flat.length; i++) if (playable(flat[i])) return i;
+        return -1;
+    }
+    function prevPlayable(from) {
+        for (let i = from - 1; i >= 0; i--) if (playable(flat[i])) return i;
+        return -1;
+    }
+
+    /* ---------- gde je korisnik stao (po lekciji, samo na ovom uređaju) ---------- */
+
+    let positions = {};
+    try { positions = JSON.parse(localStorage.getItem(POS_KEY)) || {}; } catch { positions = {}; }
+
+    function storePositions() {
+        try { localStorage.setItem(POS_KEY, JSON.stringify(positions)); } catch { /* pun storage */ }
+    }
+
+    function savePosition(t, d) {
+        const l = flat[current];
+        if (!l) return;
+        if (t > 10 && t < d - 15) positions[l.id] = Math.floor(t);
+        else delete positions[l.id];
+        storePositions();
+        renderResume(l);
+    }
+
+    function renderResume(l) {
+        const el = $(`lesson-${l.idx}`)?.querySelector(".lesson-resume");
+        if (!el) return;
+        const at = positions[l.id];
+        const show = Boolean(at) && !completed.includes(l.id);
+        el.hidden = !show;
+        el.textContent = show ? `Stao na ${formatTime(at)}` : "";
+    }
+
+    // Video odgledan do kraja: lekcija je završena
+    function lessonEnded() {
+        const l = flat[current];
+        if (!l) return;
+        delete positions[l.id];
+        storePositions();
+        if (!completed.includes(l.id)) {
+            completed.push(l.id);
+            saveProgress();
+        }
+        refresh();
+    }
 
     /* ---------- napredak ---------- */
 
@@ -680,12 +871,16 @@ export function startPlayer(cfg) {
         const name = document.createElement("span");
         name.className = "lesson-name";
         name.textContent = l.title;
+        const resume = document.createElement("span");
+        resume.className = "lesson-resume";
+        resume.hidden = true;
+        name.append(resume);
         btn.append(icon, name);
 
         if (l.isLocked) btn.insertAdjacentHTML("beforeend", '<i class="fas fa-lock lock-icon"></i>');
         else if (!hasVideo(l)) btn.insertAdjacentHTML("beforeend", '<span class="soon-tag">uskoro</span>');
 
-        btn.onclick = () => select(l.idx);
+        btn.onclick = () => select(l.idx, { autoplay: true });
         return btn;
     }
 
@@ -726,6 +921,7 @@ export function startPlayer(cfg) {
             btn.classList.toggle("active-lesson", l.idx === current);
             btn.querySelector(".status-icon").className = "status-icon " +
                 (done ? "fas fa-check-circle" : l.idx === current ? "fas fa-play-circle" : "far fa-circle");
+            renderResume(l);
         });
 
         if (!isFlat) {
@@ -757,7 +953,8 @@ export function startPlayer(cfg) {
 
     /* ---------- izbor lekcije ---------- */
 
-    async function select(idx) {
+    // o.autoplay: pusti odmah (klik na lekciju, sledeća/prethodna). Pri otvaranju stranice ne.
+    async function select(idx, o = {}) {
         const l = flat[idx];
         if (!l) return;
         current = idx;
@@ -792,7 +989,14 @@ export function startPlayer(cfg) {
             const { otp, playbackInfo } = result.data;
             // primaryColor: boja sajta za VdoCipher-ove kontrole ako se naše ne učitaju (vidi customPlayer)
             const src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}&primaryColor=ffb020`;
-            if (custom) custom.load(src, firebase.auth.currentUser?.email);
+            const nextIdx = nextPlayable(idx);
+            if (custom) custom.load(src, firebase.auth.currentUser?.email, {
+                autoplay: Boolean(o.autoplay),
+                resumeAt: positions[l.id] || 0,
+                hasPrev: prevPlayable(idx) > -1,
+                hasNext: nextIdx > -1,
+                nextTitle: nextIdx > -1 ? flat[nextIdx].title : ""
+            });
             else player.src = src;
         } catch (err) {
             console.error("Greška kod backenda:", err);
@@ -823,14 +1027,14 @@ export function startPlayer(cfg) {
     /* ---------- dugmad, prečice ---------- */
 
     btnComplete.onclick = toggleCurrent;
-    btnPrev.onclick = () => select(current - 1);
-    btnNext.onclick = () => select(current + 1);
+    btnPrev.onclick = () => select(current - 1, { autoplay: true });
+    btnNext.onclick = () => select(current + 1, { autoplay: true });
     $("menu-toggle").onclick = () => sidebar.classList.toggle("open");
 
     document.addEventListener("keydown", e => {
         if (!gate.hidden || /INPUT|TEXTAREA/.test(e.target.tagName)) return;
-        if (e.key === "ArrowLeft" && current > 0) select(current - 1);
-        else if (e.key === "ArrowRight" && current < flat.length - 1) select(current + 1);
+        if (e.key === "ArrowLeft" && current > 0) select(current - 1, { autoplay: true });
+        else if (e.key === "ArrowRight" && current < flat.length - 1) select(current + 1, { autoplay: true });
         else if (e.key.toLowerCase() === "c") toggleCurrent();
     });
 

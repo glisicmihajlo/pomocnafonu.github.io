@@ -366,7 +366,6 @@
 
         // Nazivi za prikaz (lista kurseva dolazi sa servera; nepoznat id se prikazuje kako jeste)
         const COURSES = {
-            "prijemni":    { name: "Prijemni ispit", part: "Ceo kurs", subject: "Prijemni" },
             "oikt-klk1":   { name: "OIKT", part: "1. kolokvijum", subject: "OIKT" },
             "oikt-klk2":   { name: "OIKT", part: "2. kolokvijum", subject: "OIKT" },
             "mat1-klk1":   { name: "MAT 1", part: "1. kolokvijum", subject: "Matematika 1" },
@@ -381,8 +380,13 @@
             "aros-klk1":   { name: "AROS", part: "1. kolokvijum", subject: "AROS" },
             "aros-klk2":   { name: "AROS", part: "2. kolokvijum", subject: "AROS" },
             "dms-pismeni": { name: "DMS", part: "Pismeni", subject: "DMS" },
-            "dms-usmeni":  { name: "DMS", part: "Usmeni", subject: "DMS" }
+            "dms-usmeni":  { name: "DMS", part: "Usmeni", subject: "DMS" },
+            "prijemni":    { name: "Prijemni ispit", part: "Ceo kurs", subject: "Prijemni" }
         };
+        // Redosled kao u COURSES (kao svuda na sajtu); nepoznati idu na kraj
+        const ORDER = Object.keys(COURSES);
+        const rank = id => { const i = ORDER.indexOf(id); return i === -1 ? 999 : i; };
+        const sortCourses = ids => [...ids].sort((a, b) => rank(a) - rank(b));
         const info = id => COURSES[id] || { name: id, part: "", subject: "Ostalo" };
         const label = id => { const c = info(id); return c.part ? `${c.name} · ${c.part}` : c.name; };
 
@@ -475,6 +479,7 @@
         async function load() {
             const res = await api.listUsers();
             state = res.data;
+            state.courses = sortCourses(state.courses);
             renderFilters();
             render();
         }
@@ -555,7 +560,7 @@
                 const c2 = el("td");
                 const chips = el("div", "chips");
                 if (!u.kursevi.length) chips.append(el("span", "muted", "—"));
-                u.kursevi.forEach(id => chips.append(el("span", "chip", label(id))));
+                sortCourses(u.kursevi).forEach(id => chips.append(el("span", "chip", label(id))));
                 c2.append(chips);
 
                 const c3 = el("td");
@@ -620,7 +625,7 @@
             // Kursevi grupisani po predmetu
             const box = $("dCourses");
             box.innerHTML = "";
-            const all = [...new Set([...state.courses, ...u.kursevi])];
+            const all = sortCourses(new Set([...state.courses, ...u.kursevi]));
             const groups = new Map();
             all.forEach(id => {
                 const s = info(id).subject;

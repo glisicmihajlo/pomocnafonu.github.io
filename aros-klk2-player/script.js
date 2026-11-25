@@ -52,12 +52,63 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "02. Gantovi dijagrami - u izradi",
+        moduleTitle: "02. Gantovi dijagrami",
         lessons: [
             { 
                 id: "b1",
-                title: "",
-                vdoId: ""
+                title: "FCFS",
+                vdoId: "57d357d99bb24189acc98a00274e7c45"
+            },
+            { 
+                id: "b2",
+                title: "MIN i MAX vreme čekanja",
+                vdoId: "e122ad1236f84f5097fe6c001a8ec8d7"
+            },
+            { 
+                id: "b3",
+                title: "SJF",
+                vdoId: "ff59625b210c417dbeb0804e9d6ef68e"
+            },
+            { 
+                id: "b4",
+                title: "SRTF",
+                vdoId: "bb924dad239e4eca9056f2ed223fc822"
+            },
+            { 
+                id: "b5",
+                title: "RR",
+                vdoId: "1205c85ab96c4d54862c15e3edef7acb"
+            },
+            { 
+                id: "b6",
+                title: "HPF",
+                vdoId: "f69b19d0b9a64d7a968819b6a9e825d4"
+            },
+            // ovde ide b7
+            { 
+                id: "b8",
+                title: "FIFO",
+                vdoId: "e444cdefb3894811aee28b8426879eda"
+            },
+            { 
+                id: "b9",
+                title: "SSTF",
+                vdoId: "b3d8feb6a30349ef8b5b958c9b43c0bf"
+            },
+            { 
+                id: "b10",
+                title: "MAX i MIN vreme izvršenja",
+                vdoId: "1a179366f3024deca15c993b92f63ec1"
+            },
+            { 
+                id: "b11",
+                title: "FCFS, SJF, NP i RR",
+                vdoId: "36ea16d256a241d494a57f952f306538"
+            },
+            { 
+                id: "b12",
+                title: "MIN prosečno vreme",
+                vdoId: "fc432cc47ce64f84bb98573c4e796879"
             },
         ]
     },

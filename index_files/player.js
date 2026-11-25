@@ -101,10 +101,12 @@ function mobilePlayer(frame, iframe) {
                 <input type="range" class="vc-seek" min="0" max="0" step="0.1" value="0" aria-label="Pozicija u videu">
                 <div class="vc-row">
                     <span class="vc-time">0:00 / 0:00</span>
+                    <button type="button" class="vc-btn" data-act="quality" aria-label="Kvalitet"><i class="fas fa-gear"></i></button>
                     <button type="button" class="vc-btn vc-speed" data-act="speed" aria-label="Brzina">1x</button>
                     <button type="button" class="vc-btn" data-act="fs" aria-label="Ceo ekran"><i class="fas fa-expand"></i></button>
                 </div>
             </div>
+            <div class="vc-menu" role="menu" aria-label="Kvalitet" hidden></div>
         </div>
         <div class="vc-hud" aria-hidden="true"></div>`;
 
@@ -124,6 +126,7 @@ function mobilePlayer(frame, iframe) {
     const speedBtn = q(".vc-speed");
     const fsBtn = q('[data-act="fs"]');
     const hud = q(".vc-hud");
+    const menu = q(".vc-menu");
 
     let vp = null;          // VdoCipher player instanca
     let gen = 0;            // menja se pri svakom novom videu
@@ -136,6 +139,7 @@ function mobilePlayer(frame, iframe) {
     let moveTimer = null;
     let hideTimer = null;
     let hudTimer = null;
+    let qualities = [];     // lista iz VdoCipher API-ja, redom kao u meniju
 
     /* ---------- watermark ---------- */
 
@@ -165,7 +169,7 @@ function mobilePlayer(frame, iframe) {
     function showChrome() {
         ui.classList.remove("is-idle");
         clearTimeout(hideTimer);
-        if (playing) hideTimer = setTimeout(() => ui.classList.add("is-idle"), CHROME_HIDE_MS);
+        if (playing && menu.hidden) hideTimer = setTimeout(() => ui.classList.add("is-idle"), CHROME_HIDE_MS);
     }
 
     function flash(text) {
@@ -222,6 +226,67 @@ function mobilePlayer(frame, iframe) {
         flash(`${SPEEDS[speedIdx]}x`);
     }
 
+    /* ---------- kvalitet ---------- */
+
+    function qualityLabel(item) {
+        if (!item) return "";
+        const h = Number(item.height) || Number(item.resolution) || 0;
+        if (h) return `${h}p`;
+        if (item.label) return String(item.label);
+        const b = Number(item.bitrate) || Number(item.bandwidth) || 0;
+        return b ? `${Math.round(b / 1000)} kbps` : `#${item.id}`;
+    }
+
+    function closeMenu() {
+        menu.hidden = true;
+        showChrome();
+    }
+
+    async function openQualityMenu() {
+        const api = vp && vp.api;
+        if (!api) return;
+        let info;
+        try { info = await api.getVideoQualities(); } catch (err) { console.error(err); return; }
+        const rank = item => Number(item.height) || Number(item.bitrate) || Number(item.bandwidth) || 0;
+        qualities = (info && Array.isArray(info.qualities) ? info.qualities : []).slice().sort((a, b) => rank(b) - rank(a));
+        if (!qualities.length) { flash("Kvalitet još nije dostupan"); return; }
+
+        const labels = qualities.map(qualityLabel);
+        const auto = Boolean(info.adaptive);
+        menu.innerHTML = `<button type="button" role="menuitemradio" data-q="auto" class="${auto ? "is-active" : ""}">Auto</button>` +
+            qualities.map((item, i) => {
+                // Ista rezolucija sa više bitrate-ova: dodaj kbps da se razlikuju
+                const dup = labels.filter(l => l === labels[i]).length > 1;
+                const b = Number(item.bitrate) || Number(item.bandwidth) || 0;
+                const text = dup && b ? `${labels[i]} · ${Math.round(b / 1000)} kbps` : labels[i];
+                const active = !auto && item.active;
+                return `<button type="button" role="menuitemradio" data-q="${i}" class="${active ? "is-active" : ""}">${text}</button>`;
+            }).join("");
+        menu.hidden = false;
+        clearTimeout(hideTimer);
+    }
+
+    async function pickQuality(value) {
+        const api = vp && vp.api;
+        menu.hidden = true;
+        if (!api) return;
+        try {
+            if (value === "auto") {
+                await api.enableAdaptiveVideo();
+                flash("Kvalitet: Auto");
+            } else {
+                const item = qualities[Number(value)];
+                if (!item) return;
+                await api.setVideoQuality(item.id);
+                flash(`Kvalitet: ${qualityLabel(item)}`);
+            }
+        } catch (err) {
+            console.error(err);
+            flash("Kvalitet nije promenjen");
+        }
+        showChrome();
+    }
+
     function bind(inst) {
         const v = inst.video;
         const mine = fn => (...args) => { if (inst === vp) fn(...args); };
@@ -256,6 +321,7 @@ function mobilePlayer(frame, iframe) {
     let lastSide = 0;
     let tapTimer = null;
     gesture.addEventListener("click", e => {
+        if (!menu.hidden) { closeMenu(); return; }
         const rect = gesture.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width;
         const side = x < 0.35 ? -1 : x > 0.65 ? 1 : 0;
@@ -278,9 +344,17 @@ function mobilePlayer(frame, iframe) {
     });
 
     ui.addEventListener("click", e => {
+        const opt = e.target.closest(".vc-menu [data-q]");
+        if (opt) { pickQuality(opt.dataset.q); return; }
         const btn = e.target.closest("[data-act]");
         if (!btn) return;
         const act = btn.dataset.act;
+        if (act === "quality") {
+            if (menu.hidden) openQualityMenu();
+            else closeMenu();
+            return;
+        }
+        if (!menu.hidden) menu.hidden = true;
         if (act === "play") togglePlay();
         else if (act === "back") seekBy(-SEEK_STEP);
         else if (act === "fwd") seekBy(SEEK_STEP);
@@ -349,6 +423,8 @@ function mobilePlayer(frame, iframe) {
             seek.max = 0;
             seek.value = 0;
             speedBtn.textContent = "1x";
+            qualities = [];
+            menu.hidden = true;
             renderTime(0);
             setPlaying(false);
             ui.classList.remove("is-idle", "is-buffering");

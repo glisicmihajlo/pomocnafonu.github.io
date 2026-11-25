@@ -840,3 +840,36 @@ kbd {
     transition: opacity 0.2s ease;
 }
 .vc-hud.is-on { opacity: 1; }
+
+/* Meni za kvalitet */
+.vc-menu {
+    position: absolute;
+    right: 8px;
+    bottom: 66px;
+    z-index: 4;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    max-height: calc(100% - 80px);
+    overflow-y: auto;
+    padding: 4px;
+    border-radius: 10px;
+    background: rgba(15, 13, 10, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.vc-menu[hidden] { display: none; }
+.vc-menu button {
+    border: 0;
+    background: none;
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    padding: 9px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.vc-menu button.is-active { color: var(--primary); }
+.vc-menu button.is-active::after { content: " ✓"; }

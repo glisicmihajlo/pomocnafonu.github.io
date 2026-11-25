@@ -30,17 +30,16 @@ const firebaseConfig = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Plejer za telefon / tablet                                         */
+/*  Plejer: naše kontrole preko VdoCipher-a (računar i telefon)         */
 /* ------------------------------------------------------------------ */
-// Na računaru VdoCipher sam ucrtava mejl u video (annotate u functions/index.js).
-// Na telefonu to ne radi, a iPhone pušta video u svom ugrađenom plejeru preko
-// celog ekrana, gde se ništa sa naše stranice ne vidi. Zato na telefonu:
-//   - VdoCipher-ove kontrole su ugašene (controls=off), a naše kontrole
-//     upravljaju videom preko VdoCipher Player API-ja;
-//   - preko iframe-a je sloj koji hvata dodire, pa iPhone nikad ne otvara
-//     svoj plejer;
-//   - mejl je HTML sloj preko videa koji se pomera na svakih 5 sekundi;
-//   - "ceo ekran" stavlja ceo okvir (video + kontrole + mejl) preko ekrana.
+// VdoCipher se učitava bez svojih kontrola (controls=off), a naše kontrole
+// upravljaju videom preko VdoCipher Player API-ja (api.js).
+//   - Računar: mejl ucrtava VdoCipher u sam video (annotate u functions/index.js),
+//     to ne zavisi od kontrola i ostaje kao ranije.
+//   - Telefon: VdoCipher-ov watermark tu ne radi, pa je mejl HTML sloj preko
+//     videa koji se pomera na svakih 5 s. Sloj preko iframe-a prima sve dodire,
+//     pa iPhone nikad ne otvara svoj plejer (u kome se ništa sa stranice ne vidi).
+//   - "Ceo ekran" stavlja ceo okvir (video + kontrole + mejl) preko ekrana.
 
 const IS_TOUCH = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 const WM_MOVE_MS = 5000;
@@ -80,53 +79,52 @@ function formatTime(sec) {
     return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`;
 }
 
-function mobilePlayer(frame, iframe) {
-    // Bez fullscreen dozvole iframe ne može sam da ode preko celog ekrana
-    iframe.setAttribute("allow", "autoplay; encrypted-media");
-    ["allowfullscreen", "webkitallowfullscreen", "mozallowfullscreen"].forEach(a => iframe.removeAttribute(a));
+const ALLOW_NATIVE = "autoplay; encrypted-media; fullscreen";
+const ALLOW_CUSTOM = "autoplay; encrypted-media";
+const FS_ATTRS = ["allowfullscreen", "webkitallowfullscreen", "mozallowfullscreen"];
 
+function customPlayer(frame, iframe, { watermark }) {
     const ui = document.createElement("div");
     ui.className = "vc";
+    ui.classList.toggle("is-touch", IS_TOUCH);
     ui.hidden = true;
     ui.innerHTML = `
         <div class="vc-gesture"></div>
         <div class="vc-chrome">
             <div class="vc-shade"></div>
             <div class="vc-center">
-                <button type="button" class="vc-btn vc-skip" data-act="back" aria-label="${SEEK_STEP} sekundi nazad"><i class="fas fa-rotate-left"></i><span>${SEEK_STEP}</span></button>
-                <button type="button" class="vc-btn vc-play" data-act="play" aria-label="Pusti"><i class="fas fa-play"></i></button>
-                <button type="button" class="vc-btn vc-skip" data-act="fwd" aria-label="${SEEK_STEP} sekundi napred"><i class="fas fa-rotate-right"></i><span>${SEEK_STEP}</span></button>
+                <button type="button" class="vc-btn vc-skip" data-act="back" aria-label="${SEEK_STEP} sekundi nazad" title="${SEEK_STEP} s nazad (J)"><i class="fas fa-rotate-left"></i><span>${SEEK_STEP}</span></button>
+                <button type="button" class="vc-btn vc-play" data-act="play" aria-label="Pusti" title="Pusti / pauza (razmak)"><i class="fas fa-play"></i></button>
+                <button type="button" class="vc-btn vc-skip" data-act="fwd" aria-label="${SEEK_STEP} sekundi napred" title="${SEEK_STEP} s napred (L)"><i class="fas fa-rotate-right"></i><span>${SEEK_STEP}</span></button>
             </div>
             <div class="vc-bottom">
                 <input type="range" class="vc-seek" min="0" max="0" step="0.1" value="0" aria-label="Pozicija u videu">
                 <div class="vc-row">
                     <span class="vc-time">0:00 / 0:00</span>
-                    <button type="button" class="vc-btn" data-act="quality" aria-label="Kvalitet"><i class="fas fa-gear"></i></button>
-                    <button type="button" class="vc-btn vc-speed" data-act="speed" aria-label="Brzina">1x</button>
-                    <button type="button" class="vc-btn" data-act="fs" aria-label="Ceo ekran"><i class="fas fa-expand"></i></button>
+                    <button type="button" class="vc-btn vc-desktop" data-act="mute" aria-label="Isključi zvuk" title="Zvuk (M)"><i class="fas fa-volume-high"></i></button>
+                    <input type="range" class="vc-volume vc-desktop" min="0" max="1" step="0.05" value="1" aria-label="Jačina zvuka">
+                    <button type="button" class="vc-btn" data-act="quality" aria-label="Kvalitet" title="Kvalitet" hidden><i class="fas fa-gear"></i></button>
+                    <button type="button" class="vc-btn vc-speed" data-act="speed" aria-label="Brzina" title="Brzina">1x</button>
+                    <button type="button" class="vc-btn" data-act="fs" aria-label="Ceo ekran" title="Ceo ekran (F)"><i class="fas fa-expand"></i></button>
                 </div>
             </div>
             <div class="vc-menu" role="menu" aria-label="Kvalitet" hidden></div>
         </div>
         <div class="vc-hud" aria-hidden="true"></div>`;
-
-    const wm = document.createElement("div");
-    wm.className = "video-watermark";
-    wm.setAttribute("aria-hidden", "true");
-    wm.setAttribute("translate", "no");
-    wm.hidden = true;
-
-    frame.append(ui, wm);
+    frame.append(ui);
 
     const q = sel => ui.querySelector(sel);
     const gesture = q(".vc-gesture");
     const playBtn = q(".vc-play");
     const seek = q(".vc-seek");
     const timeEl = q(".vc-time");
+    const muteBtn = q('[data-act="mute"]');
+    const vol = q(".vc-volume");
+    const qualityBtn = q('[data-act="quality"]');
     const speedBtn = q(".vc-speed");
     const fsBtn = q('[data-act="fs"]');
-    const hud = q(".vc-hud");
     const menu = q(".vc-menu");
+    const hud = q(".vc-hud");
 
     let vp = null;          // VdoCipher player instanca
     let gen = 0;            // menja se pri svakom novom videu
@@ -136,14 +134,37 @@ function mobilePlayer(frame, iframe) {
     let seeking = false;
     let duration = 0;
     let speedIdx = 0;
+    let volume = 1;
+    let muted = false;
+    let qualities = [];     // lista iz VdoCipher API-ja, redom kao u meniju
     let moveTimer = null;
     let hideTimer = null;
     let hudTimer = null;
-    let qualities = [];     // lista iz VdoCipher API-ja, redom kao u meniju
 
-    /* ---------- watermark ---------- */
+    /* ---------- watermark (samo telefon) ---------- */
+
+    let wm = null;
+    if (watermark) {
+        wm = document.createElement("div");
+        wm.className = "video-watermark";
+        wm.setAttribute("aria-hidden", "true");
+        wm.setAttribute("translate", "no");
+        wm.hidden = true;
+        frame.append(wm);
+
+        // Ako neko ukloni, sakrije ili promeni sloj, vrati ga
+        const guard = () => {
+            if (!email) return;
+            if (wm.parentNode !== frame) frame.append(wm);
+            if (wm.textContent !== email) wm.textContent = email;
+            if (wm.hidden) wm.hidden = false;
+        };
+        new MutationObserver(guard).observe(frame, { childList: true });
+        new MutationObserver(guard).observe(wm, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class"] });
+    }
 
     function move() {
+        if (!wm) return;
         wm.classList.add("is-moving");
         setTimeout(() => {
             const maxX = Math.max(0, frame.clientWidth - wm.offsetWidth - 12);
@@ -154,22 +175,17 @@ function mobilePlayer(frame, iframe) {
         }, 400);
     }
 
-    // Ako neko ukloni, sakrije ili promeni sloj, vrati ga
-    function guard() {
-        if (!email) return;
-        if (wm.parentNode !== frame) frame.append(wm);
-        if (wm.textContent !== email) wm.textContent = email;
-        if (wm.hidden) wm.hidden = false;
-    }
-    new MutationObserver(guard).observe(frame, { childList: true });
-    new MutationObserver(guard).observe(wm, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class"] });
-
     /* ---------- prikaz kontrola ---------- */
+
+    function idle() {
+        clearTimeout(hideTimer);
+        ui.classList.add("is-idle");
+    }
 
     function showChrome() {
         ui.classList.remove("is-idle");
         clearTimeout(hideTimer);
-        if (playing && menu.hidden) hideTimer = setTimeout(() => ui.classList.add("is-idle"), CHROME_HIDE_MS);
+        if (playing && menu.hidden && !seeking) hideTimer = setTimeout(idle, CHROME_HIDE_MS);
     }
 
     function flash(text) {
@@ -191,6 +207,15 @@ function mobilePlayer(frame, iframe) {
         const pct = duration ? Math.min(100, (t / duration) * 100) : 0;
         seek.style.setProperty("--p", `${pct}%`);
         timeEl.textContent = `${formatTime(t)} / ${formatTime(duration)}`;
+    }
+
+    function renderVolume() {
+        const level = muted ? 0 : volume;
+        const icon = level === 0 ? "fa-volume-xmark" : level < 0.5 ? "fa-volume-low" : "fa-volume-high";
+        muteBtn.innerHTML = `<i class="fas ${icon}"></i>`;
+        muteBtn.setAttribute("aria-label", level === 0 ? "Uključi zvuk" : "Isključi zvuk");
+        vol.value = level;
+        vol.style.setProperty("--p", `${level * 100}%`);
     }
 
     /* ---------- upravljanje videom ---------- */
@@ -226,7 +251,18 @@ function mobilePlayer(frame, iframe) {
         flash(`${SPEEDS[speedIdx]}x`);
     }
 
+    function toggleMute() {
+        const v = video();
+        if (!v) return;
+        muted = !muted;
+        if (!muted && volume === 0) { volume = 0.5; v.volume = volume; }
+        v.muted = muted;
+        renderVolume();
+        flash(muted ? "Zvuk isključen" : "Zvuk uključen");
+    }
+
     /* ---------- kvalitet ---------- */
+    // Dugme se vidi samo ako VdoCipher ponudi više od jednog kvaliteta.
 
     function qualityLabel(item) {
         if (!item) return "";
@@ -237,19 +273,29 @@ function mobilePlayer(frame, iframe) {
         return b ? `${Math.round(b / 1000)} kbps` : `#${item.id}`;
     }
 
+    async function readQualities() {
+        const api = vp && vp.api;
+        if (!api) return null;
+        try {
+            const info = await api.getVideoQualities();
+            const rank = item => Number(item.height) || Number(item.bitrate) || Number(item.bandwidth) || 0;
+            qualities = (info && Array.isArray(info.qualities) ? info.qualities : []).slice().sort((a, b) => rank(b) - rank(a));
+            qualityBtn.hidden = qualities.length < 2;
+            return info;
+        } catch (err) {
+            console.error(err);
+            return null;
+        }
+    }
+
     function closeMenu() {
         menu.hidden = true;
         showChrome();
     }
 
     async function openQualityMenu() {
-        const api = vp && vp.api;
-        if (!api) return;
-        let info;
-        try { info = await api.getVideoQualities(); } catch (err) { console.error(err); return; }
-        const rank = item => Number(item.height) || Number(item.bitrate) || Number(item.bandwidth) || 0;
-        qualities = (info && Array.isArray(info.qualities) ? info.qualities : []).slice().sort((a, b) => rank(b) - rank(a));
-        if (!qualities.length) { flash("Kvalitet još nije dostupan"); return; }
+        const info = await readQualities();
+        if (!info || qualities.length < 2) { flash("Drugi kvaliteti nisu dostupni"); return; }
 
         const labels = qualities.map(qualityLabel);
         const auto = Boolean(info.adaptive);
@@ -287,6 +333,8 @@ function mobilePlayer(frame, iframe) {
         showChrome();
     }
 
+    /* ---------- događaji videa ---------- */
+
     function bind(inst) {
         const v = inst.video;
         const mine = fn => (...args) => { if (inst === vp) fn(...args); };
@@ -301,10 +349,20 @@ function mobilePlayer(frame, iframe) {
         v.addEventListener("loadedmetadata", readDuration);
         v.addEventListener("durationchange", readDuration);
         v.addEventListener("play", mine(() => { ended = false; setPlaying(true); }));
-        v.addEventListener("playing", mine(() => { ui.classList.remove("is-buffering"); setPlaying(true); }));
+        v.addEventListener("playing", mine(() => {
+            ui.classList.remove("is-buffering");
+            setPlaying(true);
+            if (qualities.length < 2) readQualities();
+        }));
         v.addEventListener("pause", mine(() => setPlaying(false)));
         v.addEventListener("ended", mine(() => { ended = true; setPlaying(false); }));
         v.addEventListener("waiting", mine(() => ui.classList.add("is-buffering")));
+        v.addEventListener("volumechange", mine(() => {
+            const level = Number(v.volume);
+            if (isFinite(level)) volume = level;
+            muted = Boolean(v.muted);
+            renderVolume();
+        }));
         v.addEventListener("timeupdate", mine(() => {
             if (!duration) readDuration();
             if (seeking) return;
@@ -314,34 +372,46 @@ function mobilePlayer(frame, iframe) {
         }));
     }
 
-    /* ---------- dodiri ---------- */
+    /* ---------- klik / dodir na video ---------- */
 
-    // Jedan dodir: pokaži/sakrij kontrole. Dupli dodir levo/desno: ±10 s.
     let lastTap = 0;
     let lastSide = 0;
     let tapTimer = null;
-    gesture.addEventListener("click", e => {
-        if (!menu.hidden) { closeMenu(); return; }
-        const rect = gesture.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const side = x < 0.35 ? -1 : x > 0.65 ? 1 : 0;
-        const now = Date.now();
-        if (now - lastTap < 300 && side && side === lastSide) {
+
+    if (IS_TOUCH) {
+        // Jedan dodir: pokaži/sakrij kontrole. Dupli dodir levo/desno: ±10 s.
+        gesture.addEventListener("click", e => {
+            if (!menu.hidden) { closeMenu(); return; }
+            const rect = gesture.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const side = x < 0.35 ? -1 : x > 0.65 ? 1 : 0;
+            const now = Date.now();
+            if (now - lastTap < 300 && side && side === lastSide) {
+                clearTimeout(tapTimer);
+                seekBy(side * SEEK_STEP);
+                showChrome();
+                lastTap = 0;
+                return;
+            }
+            lastTap = now;
+            lastSide = side;
             clearTimeout(tapTimer);
-            seekBy(side * SEEK_STEP);
-            showChrome();
-            lastTap = 0;
-            return;
-        }
-        lastTap = now;
-        lastSide = side;
-        clearTimeout(tapTimer);
-        tapTimer = setTimeout(() => {
-            if (ui.classList.contains("is-idle")) showChrome();
-            else if (playing) { clearTimeout(hideTimer); ui.classList.add("is-idle"); }
-            else showChrome();
-        }, side ? 300 : 0);
-    });
+            tapTimer = setTimeout(() => {
+                if (ui.classList.contains("is-idle")) showChrome();
+                else if (playing) idle();
+                else showChrome();
+            }, side ? 300 : 0);
+        });
+    } else {
+        // Klik: pusti/pauza. Dupli klik: ceo ekran. Kontrole se vide dok se miš pomera.
+        gesture.addEventListener("click", () => {
+            if (!menu.hidden) { closeMenu(); return; }
+            togglePlay();
+        });
+        gesture.addEventListener("dblclick", () => toggleFull());
+        frame.addEventListener("mousemove", () => { if (!ui.hidden) showChrome(); });
+        frame.addEventListener("mouseleave", () => { if (playing && menu.hidden && !seeking) idle(); });
+    }
 
     ui.addEventListener("click", e => {
         const opt = e.target.closest(".vc-menu [data-q]");
@@ -359,6 +429,7 @@ function mobilePlayer(frame, iframe) {
         else if (act === "back") seekBy(-SEEK_STEP);
         else if (act === "fwd") seekBy(SEEK_STEP);
         else if (act === "speed") cycleSpeed();
+        else if (act === "mute") toggleMute();
         else if (act === "fs") toggleFull();
         showChrome();
     });
@@ -372,6 +443,34 @@ function mobilePlayer(frame, iframe) {
         const v = video();
         if (v) v.currentTime = Number(seek.value);
         seeking = false;
+        showChrome();
+    });
+
+    vol.addEventListener("input", () => {
+        const v = video();
+        volume = Number(vol.value);
+        muted = volume === 0;
+        if (v) { v.volume = volume; v.muted = muted; }
+        renderVolume();
+        showChrome();
+    });
+
+    /* ---------- tastatura (računar) ---------- */
+    // Strelice levo/desno ostaju za prethodnu/sledeću lekciju, C za završetak lekcije.
+
+    document.addEventListener("keydown", e => {
+        if (ui.hidden || e.ctrlKey || e.metaKey || e.altKey) return;
+        const t = e.target;
+        const k = e.key.toLowerCase();
+        if (t && (t.isContentEditable || /^(TEXTAREA|SELECT)$/.test(t.tagName))) return;
+        if (t && t.tagName === "INPUT" && t !== seek && t !== vol) return;
+        if (t && t.tagName === "BUTTON" && (k === " " || k === "enter")) return;
+        if (k === " " || k === "k") { e.preventDefault(); togglePlay(); }
+        else if (k === "j") seekBy(-SEEK_STEP);
+        else if (k === "l") seekBy(SEEK_STEP);
+        else if (k === "f") toggleFull();
+        else if (k === "m") toggleMute();
+        else return;
         showChrome();
     });
 
@@ -394,12 +493,12 @@ function mobilePlayer(frame, iframe) {
             return;
         }
         setFull(true);
-        // Android: pravi fullscreen + landscape. iPhone ne podržava fullscreen
-        // za elemente, tamo okvir pokriva celu stranicu (okreni telefon).
+        // Računar i Android: pravi fullscreen (Android se okreće u landscape).
+        // iPhone ne podržava fullscreen za elemente, tamo okvir pokriva celu stranicu.
         if (frame.requestFullscreen) {
             try {
                 await frame.requestFullscreen({ navigationUI: "hide" });
-                await screen.orientation?.lock?.("landscape");
+                if (IS_TOUCH) await screen.orientation?.lock?.("landscape");
             } catch { /* nije podržano */ }
         }
     }
@@ -420,22 +519,31 @@ function mobilePlayer(frame, iframe) {
             seeking = false;
             duration = 0;
             speedIdx = 0;
+            volume = 1;
+            muted = false;
+            qualities = [];
             seek.max = 0;
             seek.value = 0;
             speedBtn.textContent = "1x";
-            qualities = [];
+            qualityBtn.hidden = true;
             menu.hidden = true;
             renderTime(0);
+            renderVolume();
             setPlaying(false);
             ui.classList.remove("is-idle", "is-buffering");
             ui.hidden = false;
 
-            wm.textContent = email;
-            wm.hidden = !email;
-            move();
-            clearInterval(moveTimer);
-            moveTimer = setInterval(move, WM_MOVE_MS);
+            if (wm) {
+                wm.textContent = email;
+                wm.hidden = !email;
+                move();
+                clearInterval(moveTimer);
+                moveTimer = setInterval(move, WM_MOVE_MS);
+            }
 
+            // Bez fullscreen dozvole iframe ne može sam preko celog ekrana
+            iframe.setAttribute("allow", ALLOW_CUSTOM);
+            FS_ATTRS.forEach(a => iframe.removeAttribute(a));
             iframe.src = `${src}&controls=off`;
             try {
                 const VdoPlayer = await loadVdoApi();
@@ -447,6 +555,8 @@ function mobilePlayer(frame, iframe) {
                 console.error(err);
                 if (myGen !== gen) return;
                 ui.hidden = true;
+                iframe.setAttribute("allow", ALLOW_NATIVE);
+                FS_ATTRS.forEach(a => iframe.setAttribute(a, ""));
                 iframe.src = src;
             }
         },
@@ -457,7 +567,7 @@ function mobilePlayer(frame, iframe) {
             clearInterval(moveTimer);
             clearTimeout(hideTimer);
             ui.hidden = true;
-            wm.hidden = true;
+            if (wm) wm.hidden = true;
             if (isFull()) toggleFull();
         }
     };
@@ -505,7 +615,7 @@ export function startPlayer(cfg) {
     document.title = `${cfg.title} — Pomoć na fonu`;
     if (!isPaid) gate.hidden = true;
 
-    const mobile = isPaid && IS_TOUCH ? mobilePlayer($("video-container"), player) : null;
+    const custom = isPaid ? customPlayer($("video-container"), player, { watermark: IS_TOUCH }) : null;
 
     /* ---------- pomoćne ---------- */
 
@@ -663,7 +773,7 @@ export function startPlayer(cfg) {
 
         const token = ++loadToken;
         player.src = "";
-        mobile?.hide();
+        custom?.hide();
         loader.hidden = true;
         empty.hidden = true;
         locked.hidden = true;
@@ -680,9 +790,9 @@ export function startPlayer(cfg) {
             const result = await firebase.getVideoAuth({ videoId: l.vdoId });
             if (token !== loadToken) return;
             const { otp, playbackInfo } = result.data;
-            // primaryColor boji VdoCipher-ove kontrole (računar) u boju sajta (--primary u player.css)
+            // primaryColor: boja sajta za VdoCipher-ove kontrole ako se naše ne učitaju (vidi customPlayer)
             const src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}&primaryColor=ffb020`;
-            if (mobile) mobile.load(src, firebase.auth.currentUser?.email);
+            if (custom) custom.load(src, firebase.auth.currentUser?.email);
             else player.src = src;
         } catch (err) {
             console.error("Greška kod backenda:", err);

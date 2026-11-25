@@ -873,3 +873,43 @@ kbd {
 }
 .vc-menu button.is-active { color: var(--primary); }
 .vc-menu button.is-active::after { content: " ✓"; }
+
+/* Dugmad sa hidden atributom (npr. kvalitet kad VdoCipher ne nudi izbor) */
+.vc-btn[hidden] { display: none; }
+
+/* Samo računar: zvuk, hover, sakriven kursor dok video ide */
+.vc.is-touch .vc-desktop { display: none; }
+.vc:not(.is-touch) .vc-btn:hover { background-color: rgba(255, 255, 255, 0.12); }
+.vc:not(.is-touch) .vc-play:hover,
+.vc:not(.is-touch) .vc-skip:hover { background-color: rgba(0, 0, 0, 0.7); color: var(--primary); }
+.vc:not(.is-touch).is-idle .vc-gesture { cursor: none; }
+.vc:not(.is-touch) .vc-gesture { cursor: pointer; }
+.vc:not(.is-touch) .vc-bottom { padding: 0 14px 6px; }
+.vc:not(.is-touch) .vc-time { font-size: 13px; }
+
+.vc-volume {
+    pointer-events: auto;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 22px;
+    margin: 0 6px 0 0;
+    background: transparent;
+}
+.vc-volume::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #fff var(--p, 100%), rgba(255, 255, 255, 0.3) var(--p, 100%));
+}
+.vc-volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: #fff;
+    border: 0;
+}
+.vc-volume::-moz-range-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.3); }
+.vc-volume::-moz-range-progress { height: 4px; border-radius: 2px; background: #fff; }
+.vc-volume::-moz-range-thumb { width: 12px; height: 12px; border: 0; border-radius: 50%; background: #fff; }

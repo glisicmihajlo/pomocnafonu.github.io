@@ -604,7 +604,8 @@ export function startPlayer(cfg) {
             const result = await firebase.getVideoAuth({ videoId: l.vdoId });
             if (token !== loadToken) return;
             const { otp, playbackInfo } = result.data;
-            const src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}`;
+            // primaryColor boji VdoCipher-ove kontrole (računar) u boju sajta (--primary u player.css)
+            const src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}&primaryColor=ffb020`;
             if (mobile) mobile.load(src, firebase.auth.currentUser?.email);
             else player.src = src;
         } catch (err) {

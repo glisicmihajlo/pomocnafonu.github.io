@@ -694,3 +694,55 @@ kbd {
 
 /* Reč "fonu" u nazivu pored loga — boja loga */
 .brand-accent { color: #FFC93C; }
+
+/* ---------- Watermark sa mejlom (telefon / tablet, vidi player.js) ---------- */
+.video-watermark {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    z-index: 4;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    white-space: nowrap;
+    font-size: clamp(11px, 2.8vw, 15px);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    transition: opacity 0.4s ease;
+}
+.video-watermark.is-moving { opacity: 0; }
+.video-watermark[hidden] { display: none; }
+
+.video-fs-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 4;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+.video-fs-btn[hidden] { display: none; }
+
+/* Ceo ekran: pravi fullscreen (Android) ili prikaz preko cele stranice (iPhone) */
+.video-frame.is-fullscreen,
+.video-frame:fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    aspect-ratio: auto;
+    z-index: 9000;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+.video-fs-lock,
+.video-fs-lock body { overflow: hidden; }

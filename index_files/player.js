@@ -29,6 +29,113 @@ const firebaseConfig = {
     measurementId: "G-768582D9M9"
 };
 
+/* ------------------------------------------------------------------ */
+/*  Watermark za telefon / tablet                                      */
+/* ------------------------------------------------------------------ */
+// Na računaru VdoCipher sam ucrtava mejl u video (annotate u functions/index.js).
+// Na telefonu to ne radi pouzdano, pa mejl crtamo kao HTML sloj preko videa.
+// Fullscreen iz VdoCipher iframe-a bi sakrio taj sloj (na ekranu ostaje samo iframe),
+// zato je na telefonu fullscreen iframe-a ugašen i umesto njega naše dugme
+// stavlja ceo okvir (video + watermark) preko celog ekrana.
+
+const IS_TOUCH = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+const WM_MOVE_MS = 5000;
+
+function mobileWatermark(frame, iframe) {
+    iframe.setAttribute("allow", "autoplay; encrypted-media");
+    ["allowfullscreen", "webkitallowfullscreen", "mozallowfullscreen"].forEach(a => iframe.removeAttribute(a));
+
+    const wm = document.createElement("div");
+    wm.className = "video-watermark";
+    wm.setAttribute("aria-hidden", "true");
+    wm.hidden = true;
+
+    const fsBtn = document.createElement("button");
+    fsBtn.type = "button";
+    fsBtn.className = "video-fs-btn";
+    fsBtn.setAttribute("aria-label", "Ceo ekran");
+    fsBtn.innerHTML = '<i class="fas fa-expand"></i>';
+    fsBtn.hidden = true;
+
+    frame.append(wm, fsBtn);
+
+    let timer = null;
+    let email = "";
+
+    function move() {
+        wm.classList.add("is-moving");
+        setTimeout(() => {
+            const maxX = Math.max(0, frame.clientWidth - wm.offsetWidth - 12);
+            const maxY = Math.max(0, frame.clientHeight - wm.offsetHeight - 12);
+            wm.style.left = `${6 + Math.random() * maxX}px`;
+            wm.style.top = `${6 + Math.random() * maxY}px`;
+            wm.classList.remove("is-moving");
+        }, 400);
+    }
+
+    // Ako neko ukloni ili sakrije sloj, vrati ga
+    new MutationObserver(() => {
+        if (!email) return;
+        if (!wm.isConnected) frame.append(wm);
+        if (wm.textContent !== email) wm.textContent = email;
+        if (wm.hidden) wm.hidden = false;
+    }).observe(frame, { childList: true, subtree: true, attributes: true, characterData: true });
+
+    /* ---------- ceo ekran ---------- */
+
+    const isFull = () => frame.classList.contains("is-fullscreen");
+
+    function setFull(on) {
+        frame.classList.toggle("is-fullscreen", on);
+        document.documentElement.classList.toggle("video-fs-lock", on);
+        fsBtn.innerHTML = on ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+        fsBtn.setAttribute("aria-label", on ? "Izađi iz celog ekrana" : "Ceo ekran");
+        move();
+    }
+
+    fsBtn.onclick = async () => {
+        if (isFull()) {
+            if (document.fullscreenElement) await document.exitFullscreen().catch(() => {});
+            setFull(false);
+            return;
+        }
+        setFull(true);
+        // Android: pravi fullscreen + okretanje u landscape. iPhone ne podržava
+        // fullscreen za elemente, tamo ostaje prikaz preko cele stranice.
+        if (frame.requestFullscreen) {
+            try {
+                await frame.requestFullscreen({ navigationUI: "hide" });
+                await screen.orientation?.lock?.("landscape");
+            } catch { /* nije podržano */ }
+        }
+    };
+
+    document.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement && isFull()) setFull(false);
+    });
+    window.addEventListener("resize", () => { if (email) move(); });
+
+    return {
+        show(userEmail) {
+            if (!userEmail) return;
+            email = userEmail;
+            wm.textContent = email;
+            wm.hidden = false;
+            fsBtn.hidden = false;
+            move();
+            clearInterval(timer);
+            timer = setInterval(move, WM_MOVE_MS);
+        },
+        hide() {
+            email = "";
+            clearInterval(timer);
+            wm.hidden = true;
+            fsBtn.hidden = true;
+            if (isFull()) fsBtn.click();
+        }
+    };
+}
+
 export function startPlayer(cfg) {
     const isPaid = cfg.mode !== "free";
     const COURSE_ID = cfg.courseId;
@@ -70,6 +177,8 @@ export function startPlayer(cfg) {
 
     document.title = `${cfg.title} — Pomoć na fonu`;
     if (!isPaid) gate.hidden = true;
+
+    const watermark = isPaid && IS_TOUCH ? mobileWatermark($("video-container"), player) : null;
 
     /* ---------- pomoćne ---------- */
 
@@ -227,6 +336,7 @@ export function startPlayer(cfg) {
 
         const token = ++loadToken;
         player.src = "";
+        watermark?.hide();
         loader.hidden = true;
         empty.hidden = true;
         locked.hidden = true;
@@ -244,6 +354,7 @@ export function startPlayer(cfg) {
             if (token !== loadToken) return;
             const { otp, playbackInfo } = result.data;
             player.src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}`;
+            watermark?.show(firebase.auth.currentUser?.email);
         } catch (err) {
             console.error("Greška kod backenda:", err);
             if (token === loadToken) toast("Došlo je do greške pri učitavanju videa. Pokušaj ponovo.", "error");

@@ -179,6 +179,12 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
     let opts = {};          // { autoplay, resumeAt, hasPrev, hasNext, nextTitle } za trenutni video
     let started = false;    // da li su brzina/zvuk/pozicija primenjeni na ovaj video
     let lastSaved = 0;
+    // Nastavak: VdoCipher ignoriše pomeranje dok plejer nije spreman, pa ponavljamo
+    // dok video stvarno ne dođe na sačuvano mesto. Do tada se pozicija ne čuva.
+    let resumeTarget = 0;
+    let resumeTries = 0;
+    let resumeLastTry = 0;
+    const RESUME_MAX_TRIES = 6;
     let countdownTimer = null;
     let qualities = [];     // lista iz VdoCipher API-ja, redom kao u meniju
     let moveTimer = null;
@@ -279,6 +285,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
     function seekBy(delta) {
         const v = video();
         if (!v || !duration) return;
+        resumeTarget = 0;
         const t = Math.min(duration, Math.max(0, (Number(v.currentTime) || 0) + delta));
         v.currentTime = t;
         seek.value = t;
@@ -435,15 +442,19 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
             if (SPEEDS[speedIdx] !== 1) v.playbackRate = SPEEDS[speedIdx];
             v.volume = volume;
             v.muted = muted;
-            const at = Number(opts.resumeAt) || 0;
-            if (at > 10 && at < duration - 15) {
-                v.currentTime = at;
-                seek.value = at;
-                renderTime(at);
-                lastSaved = at;
-                flash(`Nastavljeno od ${formatTime(at)}`);
+            if (!(resumeTarget > 10 && resumeTarget < duration - 15)) resumeTarget = 0;
+            if (resumeTarget) {
+                seek.value = resumeTarget;
+                renderTime(resumeTarget);
+                trySeek();
             }
             if (opts.autoplay && !playing) v.play();
+        };
+        const trySeek = () => {
+            if (!resumeTarget) return;
+            v.currentTime = resumeTarget;
+            resumeTries++;
+            resumeLastTry = Date.now();
         };
         const readDuration = mine(() => {
             const d = Number(v.duration);
@@ -456,6 +467,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
         });
         const savePosition = () => {
             if (ui.hidden || !started) return;   // događaj starog videa posle promene lekcije
+            if (resumeTarget) return;            // nastavak još nije uspeo — ne briši staru poziciju
             const t = Number(v.currentTime) || 0;
             lastSaved = t;
             if (duration) onPosition?.(t, duration);
@@ -467,6 +479,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
             ui.classList.remove("is-buffering");
             setPlaying(true);
             if (qualities.length < 2) readQualities();
+            if (resumeTarget && resumeTries < RESUME_MAX_TRIES) trySeek();
         }));
         v.addEventListener("pause", mine(() => { setPlaying(false); if (!ended) savePosition(); }));
         v.addEventListener("ended", mine(() => {
@@ -487,6 +500,19 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
             if (!duration) readDuration();
             if (seeking) return;
             const t = Number(v.currentTime) || 0;
+            if (resumeTarget) {
+                if (Math.abs(t - resumeTarget) < 3) {
+                    flash(`Nastavljeno od ${formatTime(resumeTarget)}`);
+                    resumeTarget = 0;
+                    lastSaved = t;
+                } else if (resumeTries < RESUME_MAX_TRIES) {
+                    if (Date.now() - resumeLastTry > 800) trySeek();
+                    return;
+                } else {
+                    resumeTarget = 0;   // ne uspeva — odustani, ali ne briši odmah staru poziciju
+                    lastSaved = t;
+                }
+            }
             seek.value = t;
             renderTime(t);
             if (Math.abs(t - lastSaved) >= 5) savePosition();
@@ -567,6 +593,7 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
     });
     seek.addEventListener("change", () => {
         const v = video();
+        resumeTarget = 0;
         if (v) v.currentTime = Number(seek.value);
         seeking = false;
         showChrome();
@@ -650,6 +677,9 @@ function customPlayer(frame, iframe, { watermark, onPrev, onNext, onEnded, onPos
             seeking = false;
             started = false;
             lastSaved = 0;
+            resumeTarget = Number(o.resumeAt) || 0;
+            resumeTries = 0;
+            resumeLastTry = 0;
             duration = 0;
             qualities = [];
             cancelCountdown();

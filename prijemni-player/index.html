@@ -12,7 +12,8 @@
     <meta charset="UTF-8">
     <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prijemni FON - Pomoć na fonu</title>
+    <meta name="robots" content="noindex">
+    <title>Priprema za prijemni — FON — Pomoć na fonu</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,7 +23,7 @@
     <link rel="icon" href="/images/favicon-96.png?v=2" sizes="96x96" type="image/png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=2">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/index_files/player.css">
 </head>
 <body>
     <!-- EKRAN ZA PROVERU PRISTUPA (sakriva sadržaj dok se ne potvrdi pristup) -->
@@ -49,10 +50,10 @@
         <main class="content-area-player">
             <div class="player-wrapper">
                 <div class="top-row">
-                    <a href="/kupljeni-kursevi/" class="back-link-player">
-                        <i class="fas fa-arrow-left"></i> Kupljeni kursevi
+                    <a href="/kupljeni-kursevi/" class="back-link-player" id="back-link">
+                        <i class="fas fa-arrow-left"></i> <span>Kupljeni kursevi</span>
                     </a>
-                    <span id="user-email" class="user-chip"><i class="fas fa-user"></i> <span></span></span>
+                    <span id="user-chip" class="user-chip" hidden><i class="fas fa-user"></i> <span id="user-email"></span></span>
                 </div>
 
                 <div class="video-frame" id="video-container">
@@ -71,22 +72,29 @@
                         <h2>Video uskoro stiže</h2>
                         <p>Ova lekcija se trenutno priprema. Biće dostupna uskoro.</p>
                     </div>
+
+                    <div id="video-locked" class="video-locked" hidden>
+                        <i class="fas fa-lock"></i>
+                        <h2>Ova lekcija je zaključana</h2>
+                        <p>Ova lekcija je deo punog kursa. Kupi kurs i otključaj sve lekcije.</p>
+                        <a href="/prijemni#cena" class="button-glow" id="locked-link"><i class="fas fa-unlock"></i> Otključaj kurs</a>
+                    </div>
                 </div>
 
                 <div class="content-footer">
                     <div class="lesson-meta">
-                        <span class="badge" id="module-tag">Priprema za prijemni - FON</span>
+                        <span class="badge" id="module-tag">Priprema za prijemni — FON</span>
                         <h1 id="lesson-title">Učitavanje...</h1>
                     </div>
 
                     <div class="actions">
-                        <button id="btn-prev" class="nav-btn" title="Prethodna lekcija (←)">
+                        <button id="btn-prev" class="nav-btn" title="Prethodna lekcija (←)" aria-label="Prethodna lekcija">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <button id="btn-complete" class="button-glow">
                             <i class="fas fa-check"></i> <span>Završi lekciju</span>
                         </button>
-                        <button id="btn-next" class="nav-btn" title="Sledeća lekcija (→)">
+                        <button id="btn-next" class="nav-btn" title="Sledeća lekcija (→)" aria-label="Sledeća lekcija">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>

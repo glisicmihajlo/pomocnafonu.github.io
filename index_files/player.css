@@ -540,11 +540,6 @@ kbd {
    Dodaci za ostale playere
    ========================================================= */
 
-/* Video ne sme da gurne naziv i dugmad ispod ekrana */
-.player-wrapper {
-    max-width: min(1000px, max(480px, calc((100dvh - 210px) * 16 / 9 + 60px)));
-}
-
 /* Moduli (sekcije koje se otvaraju) */
 
 .module-card {

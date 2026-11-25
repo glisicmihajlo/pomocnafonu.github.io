@@ -698,9 +698,9 @@ kbd {
 /* ---------- Watermark sa mejlom (telefon / tablet, vidi player.js) ---------- */
 .video-watermark {
     position: absolute;
+    z-index: 6;
     left: 8px;
     top: 8px;
-    z-index: 4;
     pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
@@ -713,22 +713,6 @@ kbd {
 }
 .video-watermark.is-moving { opacity: 0; }
 .video-watermark[hidden] { display: none; }
-
-.video-fs-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 4;
-    width: 36px;
-    height: 36px;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.45);
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-}
-.video-fs-btn[hidden] { display: none; }
 
 /* Ceo ekran: pravi fullscreen (Android) ili prikaz preko cele stranice (iPhone) */
 .video-frame.is-fullscreen,
@@ -746,3 +730,113 @@ kbd {
 }
 .video-fs-lock,
 .video-fs-lock body { overflow: hidden; }
+/* iOS pretvara mejl u link — neka izgleda kao običan tekst */
+.video-watermark a,
+.video-watermark a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    pointer-events: none !important;
+}
+
+/* ---------- Naše kontrole za VdoCipher na telefonu (vidi player.js) ---------- */
+.vc { position: absolute; inset: 0; z-index: 4; color: #fff; -webkit-tap-highlight-color: transparent; }
+.vc[hidden] { display: none; }
+.vc-gesture { position: absolute; inset: 0; z-index: 1; touch-action: manipulation; }
+
+.vc-chrome {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+.vc.is-idle .vc-chrome { opacity: 0; }
+.vc.is-idle .vc-chrome * { pointer-events: none !important; }
+.vc-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0.25) 100%);
+}
+
+.vc-btn {
+    pointer-events: auto;
+    border: 0;
+    background: none;
+    color: #fff;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.vc-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14%;
+}
+.vc-play { width: 58px; height: 58px; font-size: 24px; background: rgba(0, 0, 0, 0.5); }
+.vc-skip { width: 46px; height: 46px; background: rgba(0, 0, 0, 0.4); font-size: 15px; }
+.vc-skip span { font-size: 11px; font-weight: 700; }
+.vc.is-buffering .vc-play i { animation: spin 1s linear infinite; }
+.vc.is-buffering .vc-play i::before { content: "\f110"; }
+
+.vc-bottom { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 10px 2px; }
+.vc-row { display: flex; align-items: center; gap: 4px; }
+.vc-time { flex: 1; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.vc-speed { font-size: 13px; font-weight: 700; min-width: 44px; }
+
+.vc-seek {
+    pointer-events: auto;
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 22px;
+    margin: 0;
+    background: transparent;
+    touch-action: none;
+}
+.vc-seek::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--primary) var(--p, 0%), rgba(255, 255, 255, 0.3) var(--p, 0%));
+}
+.vc-seek::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 0;
+}
+.vc-seek::-moz-range-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.3); }
+.vc-seek::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--primary); }
+.vc-seek::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--primary); }
+
+.vc-hud {
+    position: absolute;
+    left: 50%;
+    top: 14%;
+    z-index: 3;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-weight: 700;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.vc-hud.is-on { opacity: 1; }

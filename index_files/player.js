@@ -30,37 +30,114 @@ const firebaseConfig = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Watermark za telefon / tablet                                      */
+/*  Plejer za telefon / tablet                                         */
 /* ------------------------------------------------------------------ */
 // Na računaru VdoCipher sam ucrtava mejl u video (annotate u functions/index.js).
-// Na telefonu to ne radi pouzdano, pa mejl crtamo kao HTML sloj preko videa.
-// Fullscreen iz VdoCipher iframe-a bi sakrio taj sloj (na ekranu ostaje samo iframe),
-// zato je na telefonu fullscreen iframe-a ugašen i umesto njega naše dugme
-// stavlja ceo okvir (video + watermark) preko celog ekrana.
+// Na telefonu to ne radi, a iPhone pušta video u svom ugrađenom plejeru preko
+// celog ekrana, gde se ništa sa naše stranice ne vidi. Zato na telefonu:
+//   - VdoCipher-ove kontrole su ugašene (controls=off), a naše kontrole
+//     upravljaju videom preko VdoCipher Player API-ja;
+//   - preko iframe-a je sloj koji hvata dodire, pa iPhone nikad ne otvara
+//     svoj plejer;
+//   - mejl je HTML sloj preko videa koji se pomera na svakih 5 sekundi;
+//   - "ceo ekran" stavlja ceo okvir (video + kontrole + mejl) preko ekrana.
 
 const IS_TOUCH = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 const WM_MOVE_MS = 5000;
+const CHROME_HIDE_MS = 3000;
+const SEEK_STEP = 10;
+const SPEEDS = [1, 1.25, 1.5, 1.75, 2, 0.75];
 
-function mobileWatermark(frame, iframe) {
+// iOS Safari sam pretvara mejl u link, što menja watermark
+if (IS_TOUCH && !document.querySelector('meta[name="format-detection"]')) {
+    const meta = document.createElement("meta");
+    meta.name = "format-detection";
+    meta.content = "telephone=no, date=no, email=no, address=no";
+    document.head.append(meta);
+}
+
+let vdoApi = null;
+function loadVdoApi() {
+    if (!vdoApi) {
+        vdoApi = new Promise((resolve, reject) => {
+            if (window.VdoPlayer) return resolve(window.VdoPlayer);
+            const s = document.createElement("script");
+            s.src = "https://player.vdocipher.com/v2/api.js";
+            s.async = true;
+            s.onload = () => window.VdoPlayer ? resolve(window.VdoPlayer) : reject(new Error("VdoPlayer nije učitan"));
+            s.onerror = () => reject(new Error("VdoCipher API nije učitan"));
+            document.head.append(s);
+        }).catch(err => { vdoApi = null; throw err; });
+    }
+    return vdoApi;
+}
+
+function formatTime(sec) {
+    const s = Math.max(0, Math.floor(Number(sec) || 0));
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const ss = String(s % 60).padStart(2, "0");
+    return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`;
+}
+
+function mobilePlayer(frame, iframe) {
+    // Bez fullscreen dozvole iframe ne može sam da ode preko celog ekrana
     iframe.setAttribute("allow", "autoplay; encrypted-media");
     ["allowfullscreen", "webkitallowfullscreen", "mozallowfullscreen"].forEach(a => iframe.removeAttribute(a));
+
+    const ui = document.createElement("div");
+    ui.className = "vc";
+    ui.hidden = true;
+    ui.innerHTML = `
+        <div class="vc-gesture"></div>
+        <div class="vc-chrome">
+            <div class="vc-shade"></div>
+            <div class="vc-center">
+                <button type="button" class="vc-btn vc-skip" data-act="back" aria-label="${SEEK_STEP} sekundi nazad"><i class="fas fa-rotate-left"></i><span>${SEEK_STEP}</span></button>
+                <button type="button" class="vc-btn vc-play" data-act="play" aria-label="Pusti"><i class="fas fa-play"></i></button>
+                <button type="button" class="vc-btn vc-skip" data-act="fwd" aria-label="${SEEK_STEP} sekundi napred"><i class="fas fa-rotate-right"></i><span>${SEEK_STEP}</span></button>
+            </div>
+            <div class="vc-bottom">
+                <input type="range" class="vc-seek" min="0" max="0" step="0.1" value="0" aria-label="Pozicija u videu">
+                <div class="vc-row">
+                    <span class="vc-time">0:00 / 0:00</span>
+                    <button type="button" class="vc-btn vc-speed" data-act="speed" aria-label="Brzina">1x</button>
+                    <button type="button" class="vc-btn" data-act="fs" aria-label="Ceo ekran"><i class="fas fa-expand"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="vc-hud" aria-hidden="true"></div>`;
 
     const wm = document.createElement("div");
     wm.className = "video-watermark";
     wm.setAttribute("aria-hidden", "true");
+    wm.setAttribute("translate", "no");
     wm.hidden = true;
 
-    const fsBtn = document.createElement("button");
-    fsBtn.type = "button";
-    fsBtn.className = "video-fs-btn";
-    fsBtn.setAttribute("aria-label", "Ceo ekran");
-    fsBtn.innerHTML = '<i class="fas fa-expand"></i>';
-    fsBtn.hidden = true;
+    frame.append(ui, wm);
 
-    frame.append(wm, fsBtn);
+    const q = sel => ui.querySelector(sel);
+    const gesture = q(".vc-gesture");
+    const playBtn = q(".vc-play");
+    const seek = q(".vc-seek");
+    const timeEl = q(".vc-time");
+    const speedBtn = q(".vc-speed");
+    const fsBtn = q('[data-act="fs"]');
+    const hud = q(".vc-hud");
 
-    let timer = null;
+    let vp = null;          // VdoCipher player instanca
+    let gen = 0;            // menja se pri svakom novom videu
     let email = "";
+    let playing = false;
+    let ended = false;
+    let seeking = false;
+    let duration = 0;
+    let speedIdx = 0;
+    let moveTimer = null;
+    let hideTimer = null;
+    let hudTimer = null;
+
+    /* ---------- watermark ---------- */
 
     function move() {
         wm.classList.add("is-moving");
@@ -73,13 +150,156 @@ function mobileWatermark(frame, iframe) {
         }, 400);
     }
 
-    // Ako neko ukloni ili sakrije sloj, vrati ga
-    new MutationObserver(() => {
+    // Ako neko ukloni, sakrije ili promeni sloj, vrati ga
+    function guard() {
         if (!email) return;
-        if (!wm.isConnected) frame.append(wm);
+        if (wm.parentNode !== frame) frame.append(wm);
         if (wm.textContent !== email) wm.textContent = email;
         if (wm.hidden) wm.hidden = false;
-    }).observe(frame, { childList: true, subtree: true, attributes: true, characterData: true });
+    }
+    new MutationObserver(guard).observe(frame, { childList: true });
+    new MutationObserver(guard).observe(wm, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class"] });
+
+    /* ---------- prikaz kontrola ---------- */
+
+    function showChrome() {
+        ui.classList.remove("is-idle");
+        clearTimeout(hideTimer);
+        if (playing) hideTimer = setTimeout(() => ui.classList.add("is-idle"), CHROME_HIDE_MS);
+    }
+
+    function flash(text) {
+        hud.textContent = text;
+        hud.classList.add("is-on");
+        clearTimeout(hudTimer);
+        hudTimer = setTimeout(() => hud.classList.remove("is-on"), 700);
+    }
+
+    function setPlaying(on) {
+        playing = on;
+        const icon = on ? "fa-pause" : (ended ? "fa-rotate-right" : "fa-play");
+        playBtn.innerHTML = `<i class="fas ${icon}"></i>`;
+        playBtn.setAttribute("aria-label", on ? "Pauza" : "Pusti");
+        showChrome();
+    }
+
+    function renderTime(t) {
+        const pct = duration ? Math.min(100, (t / duration) * 100) : 0;
+        seek.style.setProperty("--p", `${pct}%`);
+        timeEl.textContent = `${formatTime(t)} / ${formatTime(duration)}`;
+    }
+
+    /* ---------- upravljanje videom ---------- */
+
+    const video = () => vp && vp.video;
+
+    function togglePlay() {
+        const v = video();
+        if (!v) return;
+        if (playing) v.pause();
+        else {
+            if (ended) v.currentTime = 0;
+            v.play();
+        }
+    }
+
+    function seekBy(delta) {
+        const v = video();
+        if (!v || !duration) return;
+        const t = Math.min(duration, Math.max(0, (Number(v.currentTime) || 0) + delta));
+        v.currentTime = t;
+        seek.value = t;
+        renderTime(t);
+        flash(delta > 0 ? `+${delta} s` : `−${-delta} s`);
+    }
+
+    function cycleSpeed() {
+        const v = video();
+        if (!v) return;
+        speedIdx = (speedIdx + 1) % SPEEDS.length;
+        v.playbackRate = SPEEDS[speedIdx];
+        speedBtn.textContent = `${SPEEDS[speedIdx]}x`;
+        flash(`${SPEEDS[speedIdx]}x`);
+    }
+
+    function bind(inst) {
+        const v = inst.video;
+        const mine = fn => (...args) => { if (inst === vp) fn(...args); };
+        const readDuration = mine(() => {
+            const d = Number(v.duration);
+            if (d && isFinite(d)) {
+                duration = d;
+                seek.max = d;
+                renderTime(Number(v.currentTime) || 0);
+            }
+        });
+        v.addEventListener("loadedmetadata", readDuration);
+        v.addEventListener("durationchange", readDuration);
+        v.addEventListener("play", mine(() => { ended = false; setPlaying(true); }));
+        v.addEventListener("playing", mine(() => { ui.classList.remove("is-buffering"); setPlaying(true); }));
+        v.addEventListener("pause", mine(() => setPlaying(false)));
+        v.addEventListener("ended", mine(() => { ended = true; setPlaying(false); }));
+        v.addEventListener("waiting", mine(() => ui.classList.add("is-buffering")));
+        v.addEventListener("timeupdate", mine(() => {
+            if (!duration) readDuration();
+            if (seeking) return;
+            const t = Number(v.currentTime) || 0;
+            seek.value = t;
+            renderTime(t);
+        }));
+    }
+
+    /* ---------- dodiri ---------- */
+
+    // Jedan dodir: pokaži/sakrij kontrole. Dupli dodir levo/desno: ±10 s.
+    let lastTap = 0;
+    let lastSide = 0;
+    let tapTimer = null;
+    gesture.addEventListener("click", e => {
+        const rect = gesture.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const side = x < 0.35 ? -1 : x > 0.65 ? 1 : 0;
+        const now = Date.now();
+        if (now - lastTap < 300 && side && side === lastSide) {
+            clearTimeout(tapTimer);
+            seekBy(side * SEEK_STEP);
+            showChrome();
+            lastTap = 0;
+            return;
+        }
+        lastTap = now;
+        lastSide = side;
+        clearTimeout(tapTimer);
+        tapTimer = setTimeout(() => {
+            if (ui.classList.contains("is-idle")) showChrome();
+            else if (playing) { clearTimeout(hideTimer); ui.classList.add("is-idle"); }
+            else showChrome();
+        }, side ? 300 : 0);
+    });
+
+    ui.addEventListener("click", e => {
+        const btn = e.target.closest("[data-act]");
+        if (!btn) return;
+        const act = btn.dataset.act;
+        if (act === "play") togglePlay();
+        else if (act === "back") seekBy(-SEEK_STEP);
+        else if (act === "fwd") seekBy(SEEK_STEP);
+        else if (act === "speed") cycleSpeed();
+        else if (act === "fs") toggleFull();
+        showChrome();
+    });
+
+    seek.addEventListener("input", () => {
+        seeking = true;
+        clearTimeout(hideTimer);
+        renderTime(Number(seek.value));
+    });
+    seek.addEventListener("change", () => {
+        const v = video();
+        if (v) v.currentTime = Number(seek.value);
+        seeking = false;
+        showChrome();
+    });
 
     /* ---------- ceo ekran ---------- */
 
@@ -93,45 +313,76 @@ function mobileWatermark(frame, iframe) {
         move();
     }
 
-    fsBtn.onclick = async () => {
+    async function toggleFull() {
         if (isFull()) {
             if (document.fullscreenElement) await document.exitFullscreen().catch(() => {});
             setFull(false);
             return;
         }
         setFull(true);
-        // Android: pravi fullscreen + okretanje u landscape. iPhone ne podržava
-        // fullscreen za elemente, tamo ostaje prikaz preko cele stranice.
+        // Android: pravi fullscreen + landscape. iPhone ne podržava fullscreen
+        // za elemente, tamo okvir pokriva celu stranicu (okreni telefon).
         if (frame.requestFullscreen) {
             try {
                 await frame.requestFullscreen({ navigationUI: "hide" });
                 await screen.orientation?.lock?.("landscape");
             } catch { /* nije podržano */ }
         }
-    };
+    }
 
     document.addEventListener("fullscreenchange", () => {
         if (!document.fullscreenElement && isFull()) setFull(false);
     });
     window.addEventListener("resize", () => { if (email) move(); });
 
+    /* ---------- javno ---------- */
+
     return {
-        show(userEmail) {
-            if (!userEmail) return;
-            email = userEmail;
+        async load(src, userEmail) {
+            const myGen = ++gen;
+            email = userEmail || "";
+            playing = false;
+            ended = false;
+            seeking = false;
+            duration = 0;
+            speedIdx = 0;
+            seek.max = 0;
+            seek.value = 0;
+            speedBtn.textContent = "1x";
+            renderTime(0);
+            setPlaying(false);
+            ui.classList.remove("is-idle", "is-buffering");
+            ui.hidden = false;
+
             wm.textContent = email;
-            wm.hidden = false;
-            fsBtn.hidden = false;
+            wm.hidden = !email;
             move();
-            clearInterval(timer);
-            timer = setInterval(move, WM_MOVE_MS);
+            clearInterval(moveTimer);
+            moveTimer = setInterval(move, WM_MOVE_MS);
+
+            iframe.src = `${src}&controls=off`;
+            try {
+                const VdoPlayer = await loadVdoApi();
+                if (myGen !== gen) return;
+                const inst = VdoPlayer.getInstance(iframe);
+                if (inst !== vp) { vp = inst; bind(inst); }
+            } catch (err) {
+                // Bez API-ja naše kontrole ne rade, pa vraćamo VdoCipher-ove
+                console.error(err);
+                if (myGen !== gen) return;
+                ui.hidden = true;
+                iframe.src = src;
+            }
         },
         hide() {
+            gen++;
             email = "";
-            clearInterval(timer);
+            playing = false;
+            clearInterval(moveTimer);
+            clearTimeout(hideTimer);
+            ui.hidden = true;
             wm.hidden = true;
-            fsBtn.hidden = true;
-            if (isFull()) fsBtn.click();
+            if (isFull()) toggleFull();
         }
     };
 }
@@ -178,7 +429,7 @@ export function startPlayer(cfg) {
     document.title = `${cfg.title} — Pomoć na fonu`;
     if (!isPaid) gate.hidden = true;
 
-    const watermark = isPaid && IS_TOUCH ? mobileWatermark($("video-container"), player) : null;
+    const mobile = isPaid && IS_TOUCH ? mobilePlayer($("video-container"), player) : null;
 
     /* ---------- pomoćne ---------- */
 
@@ -336,7 +587,7 @@ export function startPlayer(cfg) {
 
         const token = ++loadToken;
         player.src = "";
-        watermark?.hide();
+        mobile?.hide();
         loader.hidden = true;
         empty.hidden = true;
         locked.hidden = true;
@@ -353,8 +604,9 @@ export function startPlayer(cfg) {
             const result = await firebase.getVideoAuth({ videoId: l.vdoId });
             if (token !== loadToken) return;
             const { otp, playbackInfo } = result.data;
-            player.src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}`;
-            watermark?.show(firebase.auth.currentUser?.email);
+            const src = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}`;
+            if (mobile) mobile.load(src, firebase.auth.currentUser?.email);
+            else player.src = src;
         } catch (err) {
             console.error("Greška kod backenda:", err);
             if (token === loadToken) toast("Došlo je do greške pri učitavanju videa. Pokušaj ponovo.", "error");

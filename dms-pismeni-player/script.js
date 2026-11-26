@@ -166,7 +166,161 @@ const courseData = [
             },
         ]
     },
-    // sledeci modul treba da ima id e1,2...
+    {
+        moduleTitle: "05. Neorijentisani grafovi",
+        lessons: [
+            { 
+                id: "e1", 
+                title: "Crtanje", 
+                vdoId: "99c923bd50b243188209a51e89cfb1ec"
+            },
+            { 
+                id: "e2", 
+                title: "Stepeni", 
+                vdoId: "9fd76d5b9b4641f39e1e46ee75eb5dba"
+            },
+            { 
+                id: "e3", 
+                title: "Zbir elemenata", 
+                vdoId: "1f6ef56888c04a0f9d6e54d1c142183a"
+            },
+            { 
+                id: "e4", 
+                title: "Broj puteva", 
+                vdoId: "2eaec39e43164e4b9da321aa21e571b1"
+            },
+            { 
+                id: "e5", 
+                title: "Podgraf", 
+                vdoId: "40c1dfc10f75413eb169b635a4af8307"
+            },
+            { 
+                id: "e6", 
+                title: "Ojler", 
+                vdoId: "b6ecc409264044a3bb82dab5486f7823"
+            },
+            { 
+                id: "e7", 
+                title: "Ojler - Matrica", 
+                vdoId: "d3ce2a18250c45bbb22df3ec5d52d779"
+            },
+            { 
+                id: "e8", 
+                title: "Hamilton", 
+                vdoId: "7b1bbded35dd441f967118c61e337821"
+            },
+            { 
+                id: "e9", 
+                title: "Matrica rastojanja", 
+                vdoId: "dade1a5978494b338699cc0cd479a17b"
+            },
+            { 
+                id: "e10", 
+                title: "Graf preko matrice", 
+                vdoId: "f2eb79f1727d4877b7f8c3af29d3f820"
+            },
+            { 
+                id: "e11", 
+                title: "Graf preko matrice svojstva", 
+                vdoId: "9d4c3a6dc25242a2b6f5b46a34d854e6"
+            },
+        ]
+    },
+    {
+        moduleTitle: "06. Orijentisani grafovi",
+        lessons: [
+            { 
+                id: "f1", 
+                title: "Crtanje", 
+                vdoId: "3f84383df90d4677b172352dc64ce816"
+            },
+            { 
+                id: "f1", 
+                title: "Stepeni", 
+                vdoId: "b857b0eed91b4c5e97edba260b92e4ed"
+            },
+            { 
+                id: "f1", 
+                title: "Zbir elemenata", 
+                vdoId: "c7f24723cbe44b1695d2a479119bb778"
+            },
+            { 
+                id: "f1", 
+                title: "Broj puteva", 
+                vdoId: "4f3be4bc8e044a57838102f5a154bd77"
+            },
+            { 
+                id: "f1", 
+                title: "Podgraf", 
+                vdoId: "f7f0314c249c42048f9057aeaf78e24f"
+            },
+            { 
+                id: "f1", 
+                title: "Putevi konture", 
+                vdoId: "473f27c4bc6445e7b5e7ba49896006fa"
+            },
+            { 
+                id: "f1", 
+                title: "Matrica rastojanja", 
+                vdoId: "0121751c4b8a47789c43442e8e29658d"
+            },
+        ]
+    },
+    {
+        moduleTitle: "07. Stabla",
+        lessons: [
+            { 
+                id: "g1", 
+                title: "Uvod", 
+                vdoId: "ef59688502364da786010ff6047a6d1f"
+            },
+            { 
+                id: "g1", 
+                title: "Kodiranje", 
+                vdoId: "853a312cd8104d7d91624fe6c44180ef"
+            },
+            { 
+                id: "g1", 
+                title: "Dekodiranje", 
+                vdoId: "63179da220ca4b98b53f07d1dd215b0b"
+            },
+            { 
+                id: "g1", 
+                title: "LKD", 
+                vdoId: "7affcd43a49347e1a045973e16956468"
+            },
+            { 
+                id: "g1", 
+                title: "KLD", 
+                vdoId: "e1896c1627f54add80aeba3c582613b6"
+            },
+            { 
+                id: "g1", 
+                title: "LDK", 
+                vdoId: "2950b1d5bfe04fd9ab7f40f6ba11acc9"
+            },
+            { 
+                id: "g1", 
+                title: "Sortiranje", 
+                vdoId: "8dcafd25edc74db89404f4cc4d06e8a0"
+            },
+            { 
+                id: "g1", 
+                title: "Nivoi", 
+                vdoId: "78b148ce191c4f41b0562c8122e41e7f"
+            },
+            { 
+                id: "g1", 
+                title: "Kodiranje 2", 
+                vdoId: "f6aaad0c83e64b879f433b3a9bd34c82"
+            },
+            { 
+                id: "g1", 
+                title: "Prolaz", 
+                vdoId: "ee7b8cf582a0429d9635ae6fb269a144"
+            },
+        ]
+    },
 ];
 
 startPlayer({

@@ -113,7 +113,7 @@ const courseData = [
         ]
     },
     {
-        moduleTitle: "03. Adrese - u izradi",
+        moduleTitle: "03. Adrese",
         lessons: [
             { 
                 id: "c1",

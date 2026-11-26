@@ -117,8 +117,28 @@ const courseData = [
         lessons: [
             { 
                 id: "c1",
-                title: "",
-                vdoId: ""
+                title: "Broj stranica",
+                vdoId: "5dd63cee757f4a4194e982dfc717ff58"
+            },
+            { 
+                id: "c2",
+                title: "Preslikavanje virtualne u fizičke adrese",
+                vdoId: "50e3a216f38649459a45b750a1a9f706"
+            },
+            { 
+                id: "c3",
+                title: "Slogovi",
+                vdoId: "59a4976e19154c41aa8795519b9d6a8c"
+            },
+            { 
+                id: "c4",
+                title: "Veličina stranice",
+                vdoId: "561486208b4e490bab9de817f192d680"
+            },
+            { 
+                id: "c5",
+                title: "Veličina invertovane stranice",
+                vdoId: "d7a73fd0e1084f818a158671d2de3b51"
             },
         ]
     },

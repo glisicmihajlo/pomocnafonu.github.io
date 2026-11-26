@@ -1,0 +1,133 @@
+/* =========================================================
+   Pomoć na fonu — dizajn tokeni (jedini izvor boja, fontova, razmaka)
+   Učitava se PRE svih ostalih CSS fajlova na svakoj stranici.
+   Pravila: vidi CLAUDE.md → "Dizajn sistem".
+   ========================================================= */
+
+:root {
+    color-scheme: dark;
+
+    /* ---- Pozadine i površine ---- */
+    --bg: #0b0a09;
+    --bg-2: #12100e;
+    --surface: #1a1714;
+    --surface-2: #221e1a;
+    --line: rgba(255, 236, 210, 0.09);
+    --line-strong: rgba(255, 236, 210, 0.16);
+
+    /* ---- Tekst (svi parovi ≥ 4.5:1 na --surface-2) ---- */
+    --text: #f6f1ea;
+    --text-2: #b9b0a5;
+    --text-3: #9a9087;
+    --on-accent: #1a1208;
+
+    /* ---- Brend ---- */
+    --amber: #ffb020;
+    --orange: #ff8d3a;
+    --yellow: #ffcf23;
+    --brand-accent: #ffc93c;
+    --grad: linear-gradient(120deg, #ffcf23, #ff8d3a);
+    --amber-soft: rgba(255, 176, 32, 0.1);
+    --amber-line: rgba(255, 176, 32, 0.3);
+    --glow: rgba(255, 141, 58, 0.5);
+
+    /* ---- Stanja ---- */
+    --green: #5ee0a0;
+    --green-soft: rgba(94, 224, 160, 0.1);
+    --danger: #f07a6a;
+    --wa: #25d366;
+
+    /* ---- Fontovi ---- */
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+    /* ---- Tipografska skala (ništa ispod --fs-xs = 12px) ---- */
+    --fs-xs: 0.75rem;   /* 12 */
+    --fs-sm: 0.875rem;  /* 14 */
+    --fs-base: 1rem;    /* 16 */
+    --fs-md: 1.125rem;  /* 18 */
+    --fs-lg: 1.25rem;   /* 20 */
+    --fs-xl: 1.5rem;    /* 24 */
+    --fs-2xl: 2rem;     /* 32 */
+    --fs-3xl: 2.75rem;  /* 44 */
+    --fs-4xl: 4rem;     /* 64 */
+
+    /* ---- Razmaci (osnova 4px) ---- */
+    --sp-1: 4px;
+    --sp-2: 8px;
+    --sp-3: 12px;
+    --sp-4: 16px;
+    --sp-5: 24px;
+    --sp-6: 32px;
+    --sp-7: 48px;
+    --sp-8: 64px;
+    --sp-9: 96px;
+    --section: 96px;
+
+    /* ---- Zaobljenja ---- */
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --radius: var(--r-lg);
+
+    /* ---- Senke ---- */
+    --shadow-card: 0 24px 48px -24px rgba(0, 0, 0, 0.7);
+    --shadow-float: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+    --shadow-cta: 0 8px 24px -8px rgba(255, 141, 58, 0.6);
+
+    /* ---- Pokret ---- */
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --dur-fast: 150ms;
+    --dur: 200ms;
+
+    /* ---- Raspored ---- */
+    --wrap: 1180px;
+    --tap: 44px;
+
+    /* ---- Aliasi za plejere (player.css koristi stara imena) ---- */
+    --bg-main: var(--bg);
+    --sidebar-bg: var(--bg-2);
+    --card-bg: var(--surface);
+    --border: var(--line);
+    --primary: var(--amber);
+    --primary-soft: var(--amber-soft);
+    --primary-glow: var(--glow);
+    --success: var(--green);
+    --success-soft: var(--green-soft);
+    --text-main: var(--text);
+    --text-muted: var(--text-2);
+    --font-main: var(--font);
+}
+
+@media (max-width: 720px) {
+    :root { --section: 64px; }
+}
+
+/* Naslovi koriste display font; veličine i razmake određuje svaka stranica */
+h1, h2, h3, .h2, .logo, .brand, .brand-logo, .price, .code {
+    font-family: var(--font-display);
+}
+
+.brand-accent { color: var(--brand-accent); }
+
+/* Ritam sekcija bez inline stilova */
+.pt-0 { padding-top: 0 !important; }
+.pb-0 { padding-bottom: 0 !important; }
+.pt-7 { padding-top: var(--sp-7) !important; }
+.mt-4 { margin-top: var(--sp-4) !important; }
+.mt-section { margin-top: var(--section) !important; }
+
+/* Tekst samo za čitače ekrana */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

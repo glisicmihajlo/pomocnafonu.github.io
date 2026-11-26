@@ -1,19 +1,5 @@
 /* Zajednički izgled svih playera — isti kao prijemni-player, plus moduli, zaključane lekcije i traka za besplatne */
-:root {
-    --bg-main: #0b0a09;
-    --sidebar-bg: #12100e;
-    --card-bg: #1a1714;
-    --border: rgba(255, 236, 210, 0.09);
-    --primary: #ffb020;
-    --primary-soft: rgba(255, 176, 32, 0.1);
-    --primary-glow: rgba(255, 141, 58, 0.5);
-    --success: #5ee0a0;
-    --success-soft: rgba(94, 224, 160, 0.1);
-    --danger: #f07a6a;
-    --text-main: #f6f1ea;
-    --text-muted: #b9b0a5;
-    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
+/* Boje i fontovi dolaze iz /index_files/tokens.css (aliasi --bg-main, --primary, …) */
 
 * {
     box-sizing: border-box;
@@ -27,11 +13,18 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-main);
     color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
     overflow: hidden;
     user-select: none;
 }
 
 button { font-family: inherit; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 6px; }
+
+.lesson-btn:focus-visible,
+.module-head:focus-visible { outline-offset: -2px; }
 
 .app-shell {
     display: flex;
@@ -206,7 +199,9 @@ button { font-family: inherit; }
 
 .lesson-btn {
     width: 100%;
-    padding: 13px 14px;
+    min-height: var(--tap);
+    padding: 12px 14px;
+    line-height: 1.35;
     font-size: 0.9rem;
     color: var(--text-muted);
     cursor: pointer;
@@ -242,7 +237,7 @@ button { font-family: inherit; }
 }
 
 .soon-tag {
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--text-muted);
@@ -383,8 +378,12 @@ button { font-family: inherit; }
 
 #lesson-title {
     margin-top: 10px;
-    font-size: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
     font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
 }
 
 .actions {
@@ -394,9 +393,9 @@ button { font-family: inherit; }
 }
 
 .nav-btn {
-    width: 46px;
-    height: 46px;
-    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-md);
     border: 1px solid var(--border);
     background: var(--card-bg);
     color: var(--text-main);
@@ -413,16 +412,18 @@ button { font-family: inherit; }
     border: none;
     cursor: pointer;
     font-size: 0.95rem;
-    height: 46px;
+    height: 48px;
     padding: 0 22px;
-    border-radius: 8px;
+    border-radius: var(--r-md);
     font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    transition: all 0.3s ease;
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
     box-shadow: 0 4px 15px var(--primary-glow);
 }
+
+.button-glow:active:not(:disabled) { transform: scale(0.98); }
 
 .button-glow:hover {
     transform: translateY(-2px);
@@ -447,7 +448,7 @@ button { font-family: inherit; }
 
 kbd {
     font-family: inherit;
-    font-size: 0.72rem;
+    font-size: var(--fs-xs);
     padding: 2px 6px;
     border-radius: 4px;
     border: 1px solid var(--border);
@@ -502,12 +503,20 @@ kbd {
 }
 
 .menu-btn {
+    width: var(--tap);
+    height: var(--tap);
+    margin-right: -8px;
+    display: grid;
+    place-items: center;
     background: none;
     border: none;
+    border-radius: var(--r-md);
     color: var(--primary);
     font-size: 1.4rem;
     cursor: pointer;
 }
+
+.menu-btn:hover { background: rgba(255, 255, 255, 0.05); }
 
 @media (max-width: 992px) {
     .app-shell { flex-direction: column; }
@@ -553,10 +562,11 @@ kbd {
 
 .module-head {
     width: 100%;
+    min-height: var(--tap);
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 13px 14px;
+    padding: 12px 14px;
     background: none;
     border: none;
     color: var(--text-main);
@@ -592,7 +602,7 @@ kbd {
 }
 
 .module-count {
-    font-size: 0.72rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
     background: rgba(255, 255, 255, 0.06);
     padding: 2px 8px;
@@ -686,6 +696,3 @@ kbd {
 @media (prefers-reduced-motion: reduce) {
     .chevron, .module-check, #progress-fill { transition: none; }
 }
-
-/* Reč "fonu" u nazivu pored loga — boja loga */
-.brand-accent { color: #FFC93C; }

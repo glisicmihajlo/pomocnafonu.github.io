@@ -1,20 +1,6 @@
 /* Stranice za prijavu i registraciju (paleta ista kao home.css) */
 
-:root {
-    --bg: #0b0a09;
-    --bg-2: #12100e;
-    --surface: #1a1714;
-    --line: rgba(255, 236, 210, 0.09);
-    --line-strong: rgba(255, 236, 210, 0.16);
-    --text: #f6f1ea;
-    --text-2: #b9b0a5;
-    --text-3: #8a8178;
-    --amber: #ffb020;
-    --grad: linear-gradient(120deg, #ffcf23, #ff8d3a);
-    --green: #5ee0a0;
-    --danger: #f07a6a;
-    --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
+/* Boje, fontovi i razmaci dolaze iz /index_files/tokens.css */
 
 *,
 *::before,
@@ -22,15 +8,16 @@
 
 [hidden] { display: none !important; }
 
-/* Stranica je tačno visine ekrana i ne skroluje se */
-html, body { height: 100%; overflow: hidden; }
+/* Stranica je visine ekrana; skroluje se samo kad sadržaj ne stane
+   (mali telefon, otvorena tastatura, poruka o grešci) */
+html, body { min-height: 100%; }
 
 body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: var(--font);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
 }
@@ -41,8 +28,8 @@ button, input { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 6px; }
 
 .auth {
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
@@ -106,7 +93,7 @@ button, input { font: inherit; color: inherit; }
     border-radius: 7px;
     display: grid;
     place-items: center;
-    font-size: 0.72rem;
+    font-size: var(--fs-xs);
     color: var(--amber);
     background: rgba(255, 176, 32, 0.12);
     margin-top: 1px;
@@ -139,7 +126,7 @@ button, input { font: inherit; color: inherit; }
 
 .contact small {
     display: block;
-    font-size: 0.72rem;
+    font-size: var(--fs-xs);
     font-weight: 600;
     color: var(--text-3);
     line-height: 1.2;
@@ -164,11 +151,13 @@ button, input { font: inherit; color: inherit; }
 
 /* Desna strana — forma */
 
+/* Topli sjaj iza forme (po uzoru na 21st "Split Login") */
 .auth-main {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 48px 24px;
+    background: radial-gradient(520px 360px at 50% 30%, rgba(255, 176, 32, 0.06), transparent 70%);
 }
 
 .auth-card { width: 100%; max-width: 400px; }
@@ -177,9 +166,9 @@ button, input { font: inherit; color: inherit; }
 
 .auth-card h1 {
     margin: 0 0 6px;
-    font-size: 1.9rem;
-    letter-spacing: -0.025em;
-    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    font-weight: 700;
 }
 
 .auth-sub { margin: 0 0 30px; color: var(--text-2); }
@@ -203,7 +192,8 @@ button, input { font: inherit; color: inherit; }
     color: var(--amber);
     background: none;
     border: none;
-    padding: 0;
+    padding: 8px 0;
+    margin: -8px 0;
     cursor: pointer;
 }
 
@@ -244,11 +234,11 @@ button, input { font: inherit; color: inherit; }
 
 .toggle-pass {
     position: absolute;
-    right: 6px;
+    right: 3px;
     top: 50%;
     transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
+    width: var(--tap);
+    height: var(--tap);
     border-radius: 9px;
     border: none;
     background: none;
@@ -281,6 +271,7 @@ button, input { font: inherit; color: inherit; }
 }
 
 .btn:hover:not(:disabled) { transform: translateY(-2px); }
+.btn:active:not(:disabled) { transform: scale(0.98); }
 .btn:disabled { opacity: 0.65; cursor: wait; }
 
 .btn .spinner {
@@ -358,6 +349,3 @@ button, input { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
     .btn, .input-wrap input { transition: none; }
 }
-
-/* Reč "fonu" u nazivu pored loga — boja loga */
-.brand-accent { color: #FFC93C; }

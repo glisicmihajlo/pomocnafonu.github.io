@@ -127,7 +127,7 @@ a.filter { text-decoration: none; }
 
 .file > i:first-child { font-size: 1.15rem; color: var(--c); width: 20px; text-align: center; flex-shrink: 0; }
 .file span { flex: 1; min-width: 0; }
-.file .ext { font-size: 0.72rem; color: var(--text-3); opacity: 0; transition: opacity 0.15s; }
+.file .ext { font-size: var(--fs-xs); color: var(--text-3); opacity: 0; transition: opacity 0.15s; }
 
 .file:hover {
     transform: translateY(-3px);
@@ -173,7 +173,8 @@ a.filter { text-decoration: none; }
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px;
+    min-height: 40px;
+    padding: 8px 14px;
     border-radius: 999px;
     border: 1px solid var(--line-strong);
     font-size: 0.85rem;
@@ -217,5 +218,3 @@ a.filter { text-decoration: none; }
     .file .ext { opacity: 1; }
 }
 
-/* Reč "fonu" u nazivu pored loga — boja loga */
-.brand-accent { color: #FFC93C; }

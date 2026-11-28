@@ -5,7 +5,7 @@
  */
 (function () {
     var START = Date.parse('2026-11-24T00:00:00+01:00');
-    var END = Date.parse('2026-11-27T23:59:59+01:00');
+    var END = Date.parse('2026-11-30T23:59:59+01:00'); // produženo do Sajber ponedeljka (prvobitno 27.11.)
     var NAME = 'Crni petak';
 
     // redovna cena -> akcijska cena
@@ -93,7 +93,7 @@
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Akcija ' + NAME);
     bar.innerHTML =
-        '<p>🖤 <b>' + NAME + ':</b> do −30% na sve kurseve za FON' +
+        '<p>🖤 <b>' + NAME + ', produženo do ponedeljka:</b> do −30% na sve kurseve za FON' +
         '<span class="promo-time">Još <span id="promo-left"></span></span></p>' +
         '<a href="' + (onCourse ? '#cena' : '/kursevi') + '">' + (onCourse ? 'Vidi cene' : 'Vidi kurseve') + '</a>' +
         '<button type="button" aria-label="Zatvori obaveštenje o akciji">×</button>';
